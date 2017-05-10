@@ -1,0 +1,538 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A786DEC81D80105C00A0AFFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A786DEC71D80105C00A0AFFA /* main.m */; };
+		A786DECB1D80105C00A0AFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A786DECA1D80105C00A0AFFA /* AppDelegate.m */; };
+		A786DECE1D80105C00A0AFFA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A786DECD1D80105C00A0AFFA /* ViewController.m */; };
+		A786DED11D80105C00A0AFFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A786DECF1D80105C00A0AFFA /* Main.storyboard */; };
+		A786DED41D80105C00A0AFFA /* iOS____.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A786DED21D80105C00A0AFFA /* iOS____.xcdatamodeld */; };
+		A786DED61D80105C00A0AFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A786DED51D80105C00A0AFFA /* Assets.xcassets */; };
+		A786DED91D80105C00A0AFFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A786DED71D80105C00A0AFFA /* LaunchScreen.storyboard */; };
+		A786DEE41D80105D00A0AFFA /* iOS____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A786DEE31D80105D00A0AFFA /* iOS____Tests.m */; };
+		A786DEEF1D80105D00A0AFFA /* iOS____UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A786DEEE1D80105D00A0AFFA /* iOS____UITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A786DEE01D80105D00A0AFFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A786DEBB1D80105C00A0AFFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A786DEC21D80105C00A0AFFA;
+			remoteInfo = "iOS原生扫码";
+		};
+		A786DEEB1D80105D00A0AFFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A786DEBB1D80105C00A0AFFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A786DEC21D80105C00A0AFFA;
+			remoteInfo = "iOS原生扫码";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A786DEC31D80105C00A0AFFA /* iOS原生扫码.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS原生扫码.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A786DEC71D80105C00A0AFFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A786DEC91D80105C00A0AFFA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A786DECA1D80105C00A0AFFA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A786DECC1D80105C00A0AFFA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A786DECD1D80105C00A0AFFA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A786DED01D80105C00A0AFFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A786DED31D80105C00A0AFFA /* iOS____.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "iOS____.xcdatamodel"; sourceTree = "<group>"; };
+		A786DED51D80105C00A0AFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A786DED81D80105C00A0AFFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A786DEDA1D80105C00A0AFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A786DEDF1D80105D00A0AFFA /* iOS原生扫码Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS原生扫码Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A786DEE31D80105D00A0AFFA /* iOS____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iOS____Tests.m"; sourceTree = "<group>"; };
+		A786DEE51D80105D00A0AFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A786DEEA1D80105D00A0AFFA /* iOS原生扫码UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS原生扫码UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A786DEEE1D80105D00A0AFFA /* iOS____UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iOS____UITests.m"; sourceTree = "<group>"; };
+		A786DEF01D80105D00A0AFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A786DEC01D80105C00A0AFFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A786DEDC1D80105D00A0AFFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A786DEE71D80105D00A0AFFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A786DEBA1D80105C00A0AFFA = {
+			isa = PBXGroup;
+			children = (
+				A786DEC51D80105C00A0AFFA /* iOS原生扫码 */,
+				A786DEE21D80105D00A0AFFA /* iOS原生扫码Tests */,
+				A786DEED1D80105D00A0AFFA /* iOS原生扫码UITests */,
+				A786DEC41D80105C00A0AFFA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A786DEC41D80105C00A0AFFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A786DEC31D80105C00A0AFFA /* iOS原生扫码.app */,
+				A786DEDF1D80105D00A0AFFA /* iOS原生扫码Tests.xctest */,
+				A786DEEA1D80105D00A0AFFA /* iOS原生扫码UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A786DEC51D80105C00A0AFFA /* iOS原生扫码 */ = {
+			isa = PBXGroup;
+			children = (
+				A786DEC91D80105C00A0AFFA /* AppDelegate.h */,
+				A786DECA1D80105C00A0AFFA /* AppDelegate.m */,
+				A786DECC1D80105C00A0AFFA /* ViewController.h */,
+				A786DECD1D80105C00A0AFFA /* ViewController.m */,
+				A786DECF1D80105C00A0AFFA /* Main.storyboard */,
+				A786DED51D80105C00A0AFFA /* Assets.xcassets */,
+				A786DED71D80105C00A0AFFA /* LaunchScreen.storyboard */,
+				A786DEDA1D80105C00A0AFFA /* Info.plist */,
+				A786DED21D80105C00A0AFFA /* iOS____.xcdatamodeld */,
+				A786DEC61D80105C00A0AFFA /* Supporting Files */,
+			);
+			path = "iOS原生扫码";
+			sourceTree = "<group>";
+		};
+		A786DEC61D80105C00A0AFFA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A786DEC71D80105C00A0AFFA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A786DEE21D80105D00A0AFFA /* iOS原生扫码Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A786DEE31D80105D00A0AFFA /* iOS____Tests.m */,
+				A786DEE51D80105D00A0AFFA /* Info.plist */,
+			);
+			path = "iOS原生扫码Tests";
+			sourceTree = "<group>";
+		};
+		A786DEED1D80105D00A0AFFA /* iOS原生扫码UITests */ = {
+			isa = PBXGroup;
+			children = (
+				A786DEEE1D80105D00A0AFFA /* iOS____UITests.m */,
+				A786DEF01D80105D00A0AFFA /* Info.plist */,
+			);
+			path = "iOS原生扫码UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A786DEC21D80105C00A0AFFA /* iOS原生扫码 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A786DEF31D80105D00A0AFFA /* Build configuration list for PBXNativeTarget "iOS原生扫码" */;
+			buildPhases = (
+				A786DEBF1D80105C00A0AFFA /* Sources */,
+				A786DEC01D80105C00A0AFFA /* Frameworks */,
+				A786DEC11D80105C00A0AFFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS原生扫码";
+			productName = "iOS原生扫码";
+			productReference = A786DEC31D80105C00A0AFFA /* iOS原生扫码.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A786DEDE1D80105D00A0AFFA /* iOS原生扫码Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A786DEF61D80105D00A0AFFA /* Build configuration list for PBXNativeTarget "iOS原生扫码Tests" */;
+			buildPhases = (
+				A786DEDB1D80105D00A0AFFA /* Sources */,
+				A786DEDC1D80105D00A0AFFA /* Frameworks */,
+				A786DEDD1D80105D00A0AFFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A786DEE11D80105D00A0AFFA /* PBXTargetDependency */,
+			);
+			name = "iOS原生扫码Tests";
+			productName = "iOS原生扫码Tests";
+			productReference = A786DEDF1D80105D00A0AFFA /* iOS原生扫码Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A786DEE91D80105D00A0AFFA /* iOS原生扫码UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A786DEF91D80105D00A0AFFA /* Build configuration list for PBXNativeTarget "iOS原生扫码UITests" */;
+			buildPhases = (
+				A786DEE61D80105D00A0AFFA /* Sources */,
+				A786DEE71D80105D00A0AFFA /* Frameworks */,
+				A786DEE81D80105D00A0AFFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A786DEEC1D80105D00A0AFFA /* PBXTargetDependency */,
+			);
+			name = "iOS原生扫码UITests";
+			productName = "iOS原生扫码UITests";
+			productReference = A786DEEA1D80105D00A0AFFA /* iOS原生扫码UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A786DEBB1D80105C00A0AFFA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = organization;
+				TargetAttributes = {
+					A786DEC21D80105C00A0AFFA = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					A786DEDE1D80105D00A0AFFA = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = A786DEC21D80105C00A0AFFA;
+					};
+					A786DEE91D80105D00A0AFFA = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = A786DEC21D80105C00A0AFFA;
+					};
+				};
+			};
+			buildConfigurationList = A786DEBE1D80105C00A0AFFA /* Build configuration list for PBXProject "iOS原生扫码" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A786DEBA1D80105C00A0AFFA;
+			productRefGroup = A786DEC41D80105C00A0AFFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A786DEC21D80105C00A0AFFA /* iOS原生扫码 */,
+				A786DEDE1D80105D00A0AFFA /* iOS原生扫码Tests */,
+				A786DEE91D80105D00A0AFFA /* iOS原生扫码UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A786DEC11D80105C00A0AFFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A786DED91D80105C00A0AFFA /* LaunchScreen.storyboard in Resources */,
+				A786DED61D80105C00A0AFFA /* Assets.xcassets in Resources */,
+				A786DED11D80105C00A0AFFA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A786DEDD1D80105D00A0AFFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A786DEE81D80105D00A0AFFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A786DEBF1D80105C00A0AFFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A786DECE1D80105C00A0AFFA /* ViewController.m in Sources */,
+				A786DECB1D80105C00A0AFFA /* AppDelegate.m in Sources */,
+				A786DEC81D80105C00A0AFFA /* main.m in Sources */,
+				A786DED41D80105C00A0AFFA /* iOS____.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A786DEDB1D80105D00A0AFFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A786DEE41D80105D00A0AFFA /* iOS____Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A786DEE61D80105D00A0AFFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A786DEEF1D80105D00A0AFFA /* iOS____UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A786DEE11D80105D00A0AFFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A786DEC21D80105C00A0AFFA /* iOS原生扫码 */;
+			targetProxy = A786DEE01D80105D00A0AFFA /* PBXContainerItemProxy */;
+		};
+		A786DEEC1D80105D00A0AFFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A786DEC21D80105C00A0AFFA /* iOS原生扫码 */;
+			targetProxy = A786DEEB1D80105D00A0AFFA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A786DECF1D80105C00A0AFFA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A786DED01D80105C00A0AFFA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A786DED71D80105C00A0AFFA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A786DED81D80105C00A0AFFA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A786DEF11D80105D00A0AFFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A786DEF21D80105D00A0AFFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A786DEF41D80105D00A0AFFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "iOS原生扫码/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.iOS----";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A786DEF51D80105D00A0AFFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "iOS原生扫码/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.iOS----";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A786DEF71D80105D00A0AFFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "iOS原生扫码Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.iOS----Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOS原生扫码.app/iOS原生扫码";
+			};
+			name = Debug;
+		};
+		A786DEF81D80105D00A0AFFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "iOS原生扫码Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.iOS----Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOS原生扫码.app/iOS原生扫码";
+			};
+			name = Release;
+		};
+		A786DEFA1D80105D00A0AFFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "iOS原生扫码UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.iOS----UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "iOS原生扫码";
+			};
+			name = Debug;
+		};
+		A786DEFB1D80105D00A0AFFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "iOS原生扫码UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.iOS----UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "iOS原生扫码";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A786DEBE1D80105C00A0AFFA /* Build configuration list for PBXProject "iOS原生扫码" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A786DEF11D80105D00A0AFFA /* Debug */,
+				A786DEF21D80105D00A0AFFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A786DEF31D80105D00A0AFFA /* Build configuration list for PBXNativeTarget "iOS原生扫码" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A786DEF41D80105D00A0AFFA /* Debug */,
+				A786DEF51D80105D00A0AFFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A786DEF61D80105D00A0AFFA /* Build configuration list for PBXNativeTarget "iOS原生扫码Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A786DEF71D80105D00A0AFFA /* Debug */,
+				A786DEF81D80105D00A0AFFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A786DEF91D80105D00A0AFFA /* Build configuration list for PBXNativeTarget "iOS原生扫码UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A786DEFA1D80105D00A0AFFA /* Debug */,
+				A786DEFB1D80105D00A0AFFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A786DED21D80105C00A0AFFA /* iOS____.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A786DED31D80105C00A0AFFA /* iOS____.xcdatamodel */,
+			);
+			currentVersion = A786DED31D80105C00A0AFFA /* iOS____.xcdatamodel */;
+			path = "iOS____.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A786DEBB1D80105C00A0AFFA /* Project object */;
+}

@@ -1,0 +1,577 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BAE19501DDEE2B00030972A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE194F1DDEE2B00030972A /* main.m */; };
+		1BAE19531DDEE2B00030972A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE19521DDEE2B00030972A /* AppDelegate.m */; };
+		1BAE19561DDEE2B00030972A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE19551DDEE2B00030972A /* ViewController.m */; };
+		1BAE19591DDEE2B00030972A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE19571DDEE2B00030972A /* Main.storyboard */; };
+		1BAE195C1DDEE2B00030972A /* ____ip__.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE195A1DDEE2B00030972A /* ____ip__.xcdatamodeld */; };
+		1BAE195E1DDEE2B00030972A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE195D1DDEE2B00030972A /* Assets.xcassets */; };
+		1BAE19611DDEE2B00030972A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAE195F1DDEE2B00030972A /* LaunchScreen.storyboard */; };
+		1BAE196C1DDEE2B00030972A /* ____ip__Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE196B1DDEE2B00030972A /* ____ip__Tests.m */; };
+		1BAE19771DDEE2B00030972A /* ____ip__UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE19761DDEE2B00030972A /* ____ip__UITests.m */; };
+		1BAE19861DDEE7590030972A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAE19851DDEE7590030972A /* SystemConfiguration.framework */; };
+		1BAE19881DDEF0A90030972A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAE19871DDEF0A90030972A /* NetworkExtension.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1BAE19681DDEE2B00030972A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BAE19431DDEE2B00030972A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BAE194A1DDEE2B00030972A;
+			remoteInfo = "获取网卡ip地址";
+		};
+		1BAE19731DDEE2B00030972A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BAE19431DDEE2B00030972A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BAE194A1DDEE2B00030972A;
+			remoteInfo = "获取网卡ip地址";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1BAE194B1DDEE2B00030972A /* 获取网卡ip地址.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "获取网卡ip地址.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BAE194F1DDEE2B00030972A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1BAE19511DDEE2B00030972A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1BAE19521DDEE2B00030972A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1BAE19541DDEE2B00030972A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1BAE19551DDEE2B00030972A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1BAE19581DDEE2B00030972A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1BAE195B1DDEE2B00030972A /* ____ip__.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "____ip__.xcdatamodel"; sourceTree = "<group>"; };
+		1BAE195D1DDEE2B00030972A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1BAE19601DDEE2B00030972A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1BAE19621DDEE2B00030972A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BAE19671DDEE2B00030972A /* 获取网卡ip地址Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "获取网卡ip地址Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BAE196B1DDEE2B00030972A /* ____ip__Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____ip__Tests.m"; sourceTree = "<group>"; };
+		1BAE196D1DDEE2B00030972A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BAE19721DDEE2B00030972A /* 获取网卡ip地址UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "获取网卡ip地址UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BAE19761DDEE2B00030972A /* ____ip__UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____ip__UITests.m"; sourceTree = "<group>"; };
+		1BAE19781DDEE2B00030972A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BAE19851DDEE7590030972A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1BAE19871DDEF0A90030972A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BAE19481DDEE2B00030972A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE19881DDEF0A90030972A /* NetworkExtension.framework in Frameworks */,
+				1BAE19861DDEE7590030972A /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BAE19641DDEE2B00030972A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BAE196F1DDEE2B00030972A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BAE19421DDEE2B00030972A = {
+			isa = PBXGroup;
+			children = (
+				1BAE194D1DDEE2B00030972A /* 获取网卡ip地址 */,
+				1BAE196A1DDEE2B00030972A /* 获取网卡ip地址Tests */,
+				1BAE19751DDEE2B00030972A /* 获取网卡ip地址UITests */,
+				1BAE194C1DDEE2B00030972A /* Products */,
+				1BAE19841DDEE7590030972A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1BAE194C1DDEE2B00030972A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE194B1DDEE2B00030972A /* 获取网卡ip地址.app */,
+				1BAE19671DDEE2B00030972A /* 获取网卡ip地址Tests.xctest */,
+				1BAE19721DDEE2B00030972A /* 获取网卡ip地址UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BAE194D1DDEE2B00030972A /* 获取网卡ip地址 */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE19511DDEE2B00030972A /* AppDelegate.h */,
+				1BAE19521DDEE2B00030972A /* AppDelegate.m */,
+				1BAE19541DDEE2B00030972A /* ViewController.h */,
+				1BAE19551DDEE2B00030972A /* ViewController.m */,
+				1BAE19571DDEE2B00030972A /* Main.storyboard */,
+				1BAE195D1DDEE2B00030972A /* Assets.xcassets */,
+				1BAE195F1DDEE2B00030972A /* LaunchScreen.storyboard */,
+				1BAE19621DDEE2B00030972A /* Info.plist */,
+				1BAE195A1DDEE2B00030972A /* ____ip__.xcdatamodeld */,
+				1BAE194E1DDEE2B00030972A /* Supporting Files */,
+			);
+			path = "获取网卡ip地址";
+			sourceTree = "<group>";
+		};
+		1BAE194E1DDEE2B00030972A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE194F1DDEE2B00030972A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BAE196A1DDEE2B00030972A /* 获取网卡ip地址Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE196B1DDEE2B00030972A /* ____ip__Tests.m */,
+				1BAE196D1DDEE2B00030972A /* Info.plist */,
+			);
+			path = "获取网卡ip地址Tests";
+			sourceTree = "<group>";
+		};
+		1BAE19751DDEE2B00030972A /* 获取网卡ip地址UITests */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE19761DDEE2B00030972A /* ____ip__UITests.m */,
+				1BAE19781DDEE2B00030972A /* Info.plist */,
+			);
+			path = "获取网卡ip地址UITests";
+			sourceTree = "<group>";
+		};
+		1BAE19841DDEE7590030972A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE19871DDEF0A90030972A /* NetworkExtension.framework */,
+				1BAE19851DDEE7590030972A /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BAE194A1DDEE2B00030972A /* 获取网卡ip地址 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BAE197B1DDEE2B00030972A /* Build configuration list for PBXNativeTarget "获取网卡ip地址" */;
+			buildPhases = (
+				1BAE19471DDEE2B00030972A /* Sources */,
+				1BAE19481DDEE2B00030972A /* Frameworks */,
+				1BAE19491DDEE2B00030972A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "获取网卡ip地址";
+			productName = "获取网卡ip地址";
+			productReference = 1BAE194B1DDEE2B00030972A /* 获取网卡ip地址.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1BAE19661DDEE2B00030972A /* 获取网卡ip地址Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BAE197E1DDEE2B00030972A /* Build configuration list for PBXNativeTarget "获取网卡ip地址Tests" */;
+			buildPhases = (
+				1BAE19631DDEE2B00030972A /* Sources */,
+				1BAE19641DDEE2B00030972A /* Frameworks */,
+				1BAE19651DDEE2B00030972A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BAE19691DDEE2B00030972A /* PBXTargetDependency */,
+			);
+			name = "获取网卡ip地址Tests";
+			productName = "获取网卡ip地址Tests";
+			productReference = 1BAE19671DDEE2B00030972A /* 获取网卡ip地址Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1BAE19711DDEE2B00030972A /* 获取网卡ip地址UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BAE19811DDEE2B00030972A /* Build configuration list for PBXNativeTarget "获取网卡ip地址UITests" */;
+			buildPhases = (
+				1BAE196E1DDEE2B00030972A /* Sources */,
+				1BAE196F1DDEE2B00030972A /* Frameworks */,
+				1BAE19701DDEE2B00030972A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BAE19741DDEE2B00030972A /* PBXTargetDependency */,
+			);
+			name = "获取网卡ip地址UITests";
+			productName = "获取网卡ip地址UITests";
+			productReference = 1BAE19721DDEE2B00030972A /* 获取网卡ip地址UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BAE19431DDEE2B00030972A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = yosemite;
+				TargetAttributes = {
+					1BAE194A1DDEE2B00030972A = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+					};
+					1BAE19661DDEE2B00030972A = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1BAE194A1DDEE2B00030972A;
+					};
+					1BAE19711DDEE2B00030972A = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1BAE194A1DDEE2B00030972A;
+					};
+				};
+			};
+			buildConfigurationList = 1BAE19461DDEE2B00030972A /* Build configuration list for PBXProject "获取网卡ip地址" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1BAE19421DDEE2B00030972A;
+			productRefGroup = 1BAE194C1DDEE2B00030972A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BAE194A1DDEE2B00030972A /* 获取网卡ip地址 */,
+				1BAE19661DDEE2B00030972A /* 获取网卡ip地址Tests */,
+				1BAE19711DDEE2B00030972A /* 获取网卡ip地址UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BAE19491DDEE2B00030972A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE19611DDEE2B00030972A /* LaunchScreen.storyboard in Resources */,
+				1BAE195E1DDEE2B00030972A /* Assets.xcassets in Resources */,
+				1BAE19591DDEE2B00030972A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BAE19651DDEE2B00030972A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BAE19701DDEE2B00030972A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BAE19471DDEE2B00030972A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE195C1DDEE2B00030972A /* ____ip__.xcdatamodeld in Sources */,
+				1BAE19561DDEE2B00030972A /* ViewController.m in Sources */,
+				1BAE19531DDEE2B00030972A /* AppDelegate.m in Sources */,
+				1BAE19501DDEE2B00030972A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BAE19631DDEE2B00030972A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE196C1DDEE2B00030972A /* ____ip__Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BAE196E1DDEE2B00030972A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BAE19771DDEE2B00030972A /* ____ip__UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BAE19691DDEE2B00030972A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BAE194A1DDEE2B00030972A /* 获取网卡ip地址 */;
+			targetProxy = 1BAE19681DDEE2B00030972A /* PBXContainerItemProxy */;
+		};
+		1BAE19741DDEE2B00030972A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BAE194A1DDEE2B00030972A /* 获取网卡ip地址 */;
+			targetProxy = 1BAE19731DDEE2B00030972A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1BAE19571DDEE2B00030972A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BAE19581DDEE2B00030972A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1BAE195F1DDEE2B00030972A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BAE19601DDEE2B00030972A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BAE19791DDEE2B00030972A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1BAE197A1DDEE2B00030972A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1BAE197C1DDEE2B00030972A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取网卡ip地址/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.----ip--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1BAE197D1DDEE2B00030972A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取网卡ip地址/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.----ip--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1BAE197F1DDEE2B00030972A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取网卡ip地址Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.----ip--Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/获取网卡ip地址.app/获取网卡ip地址";
+			};
+			name = Debug;
+		};
+		1BAE19801DDEE2B00030972A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取网卡ip地址Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.----ip--Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/获取网卡ip地址.app/获取网卡ip地址";
+			};
+			name = Release;
+		};
+		1BAE19821DDEE2B00030972A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取网卡ip地址UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.----ip--UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "获取网卡ip地址";
+			};
+			name = Debug;
+		};
+		1BAE19831DDEE2B00030972A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取网卡ip地址UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.----ip--UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "获取网卡ip地址";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BAE19461DDEE2B00030972A /* Build configuration list for PBXProject "获取网卡ip地址" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BAE19791DDEE2B00030972A /* Debug */,
+				1BAE197A1DDEE2B00030972A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BAE197B1DDEE2B00030972A /* Build configuration list for PBXNativeTarget "获取网卡ip地址" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BAE197C1DDEE2B00030972A /* Debug */,
+				1BAE197D1DDEE2B00030972A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BAE197E1DDEE2B00030972A /* Build configuration list for PBXNativeTarget "获取网卡ip地址Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BAE197F1DDEE2B00030972A /* Debug */,
+				1BAE19801DDEE2B00030972A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BAE19811DDEE2B00030972A /* Build configuration list for PBXNativeTarget "获取网卡ip地址UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BAE19821DDEE2B00030972A /* Debug */,
+				1BAE19831DDEE2B00030972A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1BAE195A1DDEE2B00030972A /* ____ip__.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1BAE195B1DDEE2B00030972A /* ____ip__.xcdatamodel */,
+			);
+			currentVersion = 1BAE195B1DDEE2B00030972A /* ____ip__.xcdatamodel */;
+			path = "____ip__.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1BAE19431DDEE2B00030972A /* Project object */;
+}

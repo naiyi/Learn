@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/p/d02a5c5570e3 -->
+<html><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<script type="text/javascript" src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/1255494d3a"></script><script src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/nr-1026.min.js"></script><script src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/push.js"></script><script async="" src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/analytics.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"1255494d3a","applicationID":"15702971","transactionName":"e1daR0JWVV9RER9ZWkxdRxxDUVZE","queueTime":4,"applicationTime":47,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="description" content="使用方法： 1，Block回调 2，自动改变对应属性 一、介绍 本篇文章是介绍的是一种KVO是使用Block方式进行回调的一种实现方式。使用这种方式可以：更方便的使用KVO，可以利用到很多场景，进行更简单响应编程，可以进行视图和Model的一种绑定关系。 调用方式举例： 演示： 二、核心原理 1，给NSOBject增加分类。2，封装observeValueForKeyPath:(nullab...">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=http://www.jianshu.com/p/d02a5c5570e3">
+
+  <!-- Apple -->
+  <meta name="apple-mobile-web-app-title" content="简书">
+
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/8401438">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content="iOS开发 - KVO监听, Block方式的实现" property="twitter:title">
+  <meta content="使用方法： 1，Block回调 2，自动改变对应属性 一、介绍 本篇文章是介绍的是一种KVO是使用Block方式进行回调的一种实现方式。使用这种方式可以：更方便的使用KVO，可以利用到很多场景，进行更简单响应编程，可以进行视图和Model的一种绑定关系。 调用方式举例： 演示： 二、核心原理 1，给NSOBject增加分类。2，封装observeValueForKeyPath:(nullable NSString *)keyPath ofObject:(nullable id)object change:(nullable NSDictionary&lt;NSKeyValueChangeKey..." property="twitter:description">
+  <meta content="http://www.jianshu.com/p/d02a5c5570e3" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content="iOS开发 - KVO监听, Block方式的实现">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.jianshu.com/p/d02a5c5570e3">
+  <meta property="og:description" content="使用方法： 1，Block回调 2，自动改变对应属性 一、介绍 本篇文章是介绍的是一种KVO是使用Block方式进行回调的一种实现方式。使用这种方式可以：更方便的使用KVO，可以利用到很多场景，...">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/8401438">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/8401438">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+
+    <title>iOS开发 - KVO监听, Block方式的实现 - 简书</title>
+
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="hfEivYZAfKUZKXmD8fC678KLQN9p3xYsKH105GPdmJDxOLcD9VWv/UHrqFL2V2T4N8Qsdi0iyLSo1F2yE4Sp3Q==">
+
+  <link rel="stylesheet" media="all" href="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/web-885d7fd7ff4f7bc4f6e0.css">
+  
+  <link rel="stylesheet" media="all" href="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/entry-885d7fd7ff4f7bc4f6e0.css">
+
+  <link href="http://cdn-qn0.jianshu.io/assets/favicons/favicon-ea87c042cbed82f63ec4cb18d1e1bc8b.ico" rel="icon">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/57-ce5a88a3e30a8f1f353e7b7e08710b47.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/72-d8f7a49ed070ff78bc7657785924d097.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/76-be915e70264c65090f03afff88e0f50c.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/114-fa410f47eef755b2aa43b94d63357102.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/120-50638ce65b8729b7761a4e68fe25724f.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/152-13b452db96e234a630d6d7bcbedbcd22.png" sizes="152x152">
+</head>
+
+  <body lang="zh-CN" class="reader-black-font">
+    <!-- 全局顶部导航栏 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="width-limit">
+    <!-- 左上方 Logo -->
+    <a class="logo" href="http://www.jianshu.com/"><img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/logo-58fd04f6f0de908401aa561cda6a0688.png" alt="Logo"></a>
+
+    <!-- 右上角 -->
+      <!-- 未登录显示登录/注册/写文章 -->
+      <a class="btn write-btn" target="_blank" href="http://www.jianshu.com/writer#/">
+        <i class="iconfont ic-write"></i>写文章
+</a>      <a class="btn sign-up" href="http://www.jianshu.com/sign_up">注册</a>
+      <a class="btn log-in" href="http://www.jianshu.com/sign_in">登录</a>
+
+    <!-- 如果用户登录，显示下拉菜单 -->
+
+    <div class="style-mode"><a class="style-mode-btn"><i class="iconfont ic-navigation-mode"></i></a> <div class="popover-modal" style="left: 0px; display: none;"><div class="meta"><i class="iconfont ic-navigation-night"></i><span>夜间模式</span></div> <div class="switch day-night-group"><a class="switch-btn">开</a> <a class="switch-btn active">关</a></div> <hr> <div class="switch font-family-group"><a class="switch-btn font-song">宋体</a> <a class="switch-btn font-hei active">黑体</a></div> <div class="switch"><a class="switch-btn active">简</a> <a class="switch-btn">繁</a></div></div></div>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav">
+            <li class="">
+              <a href="http://www.jianshu.com/">
+                <span class="menu-text">首页</span><i class="iconfont ic-navigation-discover menu-icon"></i>
+</a>            </li>
+            <li class="">
+              <a class="app-download-btn" href="http://www.jianshu.com/apps"><span class="menu-text">下载App</span><i class="iconfont ic-navigation-download menu-icon"></i></a>
+            </li>
+          <li class="search">
+            <form target="_blank" action="http://www.jianshu.com/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+              <input type="text" name="q" id="q" value="" placeholder="搜索" class="search-input">
+              <a class="search-btn" href="javascript:void(null)"><i class="iconfont ic-search"></i></a>
+              <!-- <div id="navbar-trending-search"></div> -->
+</form>          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+<div class="note">
+  <div class="post">
+    <div class="article">
+        <h1 class="title">iOS开发 - KVO监听, Block方式的实现</h1>
+
+        <!-- 作者区域 -->
+        <div class="author">
+          <a class="avatar" href="http://www.jianshu.com/u/cf43c392a6c8">
+            <img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/e8632541a6ff.png" alt="144">
+</a>          <div class="info">
+            <span class="tag">作者</span>
+            <span class="name"><a href="http://www.jianshu.com/u/cf43c392a6c8">_品味生活_</a></span>
+            <!-- 关注用户按钮 -->
+            <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+            <!-- 文章数据信息 -->
+            <div class="meta">
+              <!-- 如果文章更新时间大于发布时间，那么使用 tooltip 显示更新时间 -->
+                <span class="publish-time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="最后编辑于 2017.01.13 09:14">2017.01.12 16:43*</span>
+              <span class="wordage">字数 1626</span>
+            <span class="views-count">阅读 264</span><span class="comments-count">评论 2</span><span class="likes-count">喜欢 15</span></div>
+          </div>
+          <!-- 如果是当前作者，加入编辑按钮 -->
+        </div>
+        <!-- -->
+
+        <!-- 文章内容 -->
+        <div class="show-content">
+          <div class="image-package">
+<img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/790890-6c385d0d8c7f4312.png" data-original-src="http://upload-images.jianshu.io/upload_images/790890-6c385d0d8c7f4312.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption"></div>
+</div>
+<h3>使用方法：</h3>
+<p>1，Block回调</p>
+<pre class="hljs pf"><code class="pf">    [<span class="hljs-literal">self</span>.data bindingWithKeyPath:@<span class="hljs-string">"number"</span> WithBlock:^(id newValue, id oldValue) {
+        <span class="hljs-literal">self</span>.<span class="hljs-keyword">label</span>.text = [<span class="hljs-literal">self</span>.<span class="hljs-keyword">label</span>.text <span class="hljs-built_in">set</span>Str:newValue];
+    }];</code></pre>
+<p>2，自动改变对应属性</p>
+<pre class="hljs groovy"><code class="groovy">    [self.data <span class="hljs-string">bindingWithKeyPath:</span>@<span class="hljs-string">"number"</span> <span class="hljs-string">controlObjc:</span>self.label <span class="hljs-string">objcKey:</span>@<span class="hljs-string">"text"</span> <span class="hljs-string">sync:</span>NO];</code></pre>
+<h4>一、介绍</h4>
+<p>本篇文章是介绍的是一种KVO是使用Block方式进行回调的一种实现方式。<br>使用这种方式可以：更方便的使用KVO，可以利用到很多场景，进行更简单响应编程，可以进行视图和Model的一种绑定关系。</p>
+<h5>调用方式举例：</h5>
+<pre class="hljs dockerfile"><code class="dockerfile">    UILabel *<span class="hljs-keyword">label</span><span class="bash"> = [[UILabel alloc]init];
+</span>    [<span class="hljs-keyword">label</span><span class="bash"> bindingWithKeyPath:@<span class="hljs-string">"text"</span> WithBlock:^(id newValue, id oldValue) {
+</span>        NSLog(@<span class="hljs-string">"%@"</span>,newValue);
+    }];</code></pre>
+<p>演示：<br></p><div class="image-package">
+<img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/790890-a2d92101df94b691.gif" data-original-src="http://upload-images.jianshu.io/upload_images/790890-a2d92101df94b691.gif?imageMogr2/auto-orient/strip" style="cursor: zoom-in;"><br><div class="image-caption"></div>
+</div>
+<h4>二、核心原理</h4>
+<p>1，给NSOBject增加分类。<br>2，封装<code>observeValueForKeyPath:(nullable NSString *)keyPath ofObject:(nullable id)object change:(nullable NSDictionary&lt;NSKeyValueChangeKey, id&gt; *)change context:(nullable void *)context</code>相关逻辑。<br>3，在内部进行实现KVO监听，利用属性进行存储相应的Key值、Block对象，通过对象的内存地址和监听的key值，进行拼接，生成唯一标识符，通过标识符，标识对应各自的Key、Block。<br>4，接收到监听后，通过自己的唯一标识符，取出来自己的Block，进行执行后回调。</p>
+<h4>三、代码实现</h4>
+<h5>NSObject+DSSimpleKVO.h</h5>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span>
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">void</span> (^ObserveBlock)(<span class="hljs-keyword">id</span> newValue,<span class="hljs-keyword">id</span> oldValue);
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">NSObject</span> (<span class="hljs-title">DSSimpleKVO</span>)</span>
+<span class="hljs-comment">/**
+ 模式 1 ：绑定对象，监听属性变化，进行回调。
+
+ @param key 需要监听的模型中的属性名
+ @param block 变化回调
+ */</span>
+- (<span class="hljs-keyword">void</span>)bindingWithKeyPath:(<span class="hljs-built_in">NSString</span> *)key WithBlock:(ObserveBlock)block;
+<span class="hljs-comment">/**
+ 模式 2 ：绑定对象，监听属性变化，修改对应属性
+
+ @param key 需要监听的模型中的属性名
+ @param controlObjc 需要修改的对象
+ @param objcKey 需要修改的对象的属性名
+ @param sync 如果是字符串，是否进行同步修改，或只修改数字。 YES 是完全同步修改， NO 是自动替换数字
+ */</span>
+- (<span class="hljs-keyword">void</span>)bindingWithKeyPath:(<span class="hljs-built_in">NSString</span>*)key controlObjc:(<span class="hljs-keyword">id</span>)controlObjc objcKey:(<span class="hljs-built_in">NSString</span> *)objcKey  sync:(<span class="hljs-built_in">BOOL</span>)sync;
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">NSString</span> (<span class="hljs-title">StringAdd</span>)</span>
+
+- (<span class="hljs-built_in">NSString</span> *)setStr:(<span class="hljs-built_in">NSString</span> *)str;
+
+<span class="hljs-keyword">@end</span></code></pre>
+<h5>NSObject+DSSimpleKVO.m</h5>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;objc/runtime.h&gt;</span></span>
+<span class="hljs-meta">#import <span class="hljs-meta-string">"NSObject+DSSimpleKVO.h"</span></span>
+<span class="hljs-meta">#import <span class="hljs-meta-string">"AppDelegate.h"</span></span>
+
+<span class="hljs-meta">#pragma clang diagnostic push</span>
+<span class="hljs-meta">#pragma clang diagnostic ignored <span class="hljs-meta-string">"-Wobjc-protocol-method-implementation"</span></span>
+<span class="hljs-meta">#pragma clang diagnostic ignored <span class="hljs-meta-string">"-Wenum-conversion"</span></span>
+
+<span class="hljs-meta">#define DSFormat(format,objc) [NSString stringWithFormat:format,objc]</span>
+
+<span class="hljs-meta">#define setAssignAssociated_MuDict if (!getAssociated()) {setValueAssociated(@{}.mutableCopy,Policy_Retain);}\</span>
+<span class="hljs-keyword">return</span> getAssociated();
+
+<span class="hljs-comment">// 获取关联对象</span>
+<span class="hljs-meta">#define getAssociated() objc_getAssociatedObject(self,_cmd)</span>
+<span class="hljs-comment">// 设置assign类型的关联</span>
+<span class="hljs-meta">#define setAssignAssociated(value,value2,policy) objc_setAssociatedObject(self,@selector(value2),value,policy)</span>
+<span class="hljs-comment">// 设置关联的对象</span>
+<span class="hljs-meta">#define setValueAssociated(objc,policy) objc_setAssociatedObject(self,_cmd,objc,((objc_AssociationPolicy)(policy)))</span>
+<span class="hljs-comment">// 设置关联</span>
+<span class="hljs-meta">#define setAssociated(value,policy) objc_setAssociatedObject(self,@selector(value), value,((objc_AssociationPolicy)(policy)))</span>
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_OPTIONS</span>(<span class="hljs-built_in">NSUInteger</span>, DSBindingType) {
+    DSBindingKeyPath       = <span class="hljs-number">0</span>,
+    DSBindingControl       = <span class="hljs-number">1</span>,
+};
+
+<span class="hljs-keyword">typedef</span> OBJC_ENUM(uintptr_t, objc_Policy) {
+    Policy_Assign = <span class="hljs-number">0</span>,              <span class="hljs-comment">/**&lt; Specifies a weak reference to the associated object. */</span>
+    Policy_Retain = <span class="hljs-number">1</span>,              <span class="hljs-comment">/**&lt; Specifies a strong reference to the associated object.*/</span>
+    Policy_Copy   = <span class="hljs-number">3</span>               <span class="hljs-comment">/**&lt; Specifies that the associated object is copied. */</span>
+};
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">NSObject</span> ()</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">assign</span>) <span class="hljs-built_in">BOOL</span>                 sync;            <span class="hljs-comment">// 是否同步进行修改对应对象属性</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">assign</span>) DSBindingType        type;            <span class="hljs-comment">// 当前类型</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSString</span>             *currentId;      <span class="hljs-comment">// 唯一标识符</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableDictionary</span>  *blockDict;      <span class="hljs-comment">// 存储Block字典</span>
+
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableDictionary</span>  *controlDict;    <span class="hljs-comment">// 控件对象字典(用于存储--控件)</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableDictionary</span>  *propertyDict;   <span class="hljs-comment">// 对象属性字典(用于存储--控件要修改的属性名)</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableDictionary</span>  *identifierDict; <span class="hljs-comment">// 唯一标示字典(用于存储对象相应的唯一标识符)</span>
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">NSObject</span> (<span class="hljs-title">DSSimpleKVO</span>)</span>
+
+<span class="hljs-comment">/// 模式 1</span>
+- (<span class="hljs-keyword">void</span>)bindingWithKeyPath:(<span class="hljs-built_in">NSString</span>*)key WithBlock:(ObserveBlock)block
+{
+    <span class="hljs-built_in">NSAssert</span>(block &amp;&amp; key, <span class="hljs-string">@"参数不能为空"</span>);
+
+    <span class="hljs-comment">// 生成唯一标识符，进行赋值</span>
+    <span class="hljs-keyword">self</span>.currentId = [<span class="hljs-keyword">self</span> convertIdentifier:key];
+
+    <span class="hljs-comment">// 根据唯一标识符，和Block，进行对应关系存储</span>
+    [<span class="hljs-keyword">self</span>.blockDict setValue:block forKey:<span class="hljs-keyword">self</span>.currentId];
+
+    [<span class="hljs-keyword">self</span> setInitWithType:DSBindingKeyPath key:key];
+}
+
+<span class="hljs-comment">/// 模式 2</span>
+- (<span class="hljs-keyword">void</span>)bindingWithKeyPath:(<span class="hljs-built_in">NSString</span>*)key controlObjc:(<span class="hljs-keyword">id</span>)controlObjc objcKey:(<span class="hljs-built_in">NSString</span> *)objcKey sync:(<span class="hljs-built_in">BOOL</span>)sync
+{
+    <span class="hljs-built_in">NSAssert</span>(controlObjc &amp;&amp; objcKey, <span class="hljs-string">@"参数不能为空"</span>);
+
+    <span class="hljs-keyword">self</span>.currentId  = [<span class="hljs-keyword">self</span> convertIdentifier:key];
+    <span class="hljs-keyword">self</span>.sync       = sync;
+
+    [<span class="hljs-keyword">self</span>.controlDict  setValue:controlObjc forKey:<span class="hljs-keyword">self</span>.currentId];
+    [<span class="hljs-keyword">self</span>.propertyDict setValue:objcKey     forKey:<span class="hljs-keyword">self</span>.currentId];
+
+    [<span class="hljs-keyword">self</span> setInitWithType:DSBindingControl key:key];
+}
+
+- (<span class="hljs-keyword">void</span>)setInitWithType:(DSBindingType)type key:(<span class="hljs-built_in">NSString</span> *)key{
+    <span class="hljs-keyword">self</span>.type = type;
+    <span class="hljs-keyword">if</span> (![<span class="hljs-keyword">self</span> checkInput:key]) {
+        <span class="hljs-keyword">return</span>;
+    }
+    [<span class="hljs-keyword">self</span> registPropertyObserver:key];
+}
+
+<span class="hljs-meta">#pragma mark - 核心处理</span>
+
+<span class="hljs-comment">/// 添加Observer监听</span>
+- (<span class="hljs-keyword">void</span>)registPropertyObserver:(<span class="hljs-built_in">NSString</span>*)key{
+
+    <span class="hljs-comment">// 判断是否监听过</span>
+    <span class="hljs-keyword">if</span> ([<span class="hljs-keyword">self</span>.identifierDict valueForKey:<span class="hljs-keyword">self</span>.currentId]) {
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-comment">// 添加监听</span>
+    [<span class="hljs-keyword">self</span> addObserver:<span class="hljs-keyword">self</span> forKeyPath:key options:<span class="hljs-built_in">NSKeyValueObservingOptionNew</span> | <span class="hljs-built_in">NSKeyValueObservingOptionOld</span>
+              context:(__bridge <span class="hljs-keyword">void</span> * _Nullable)(<span class="hljs-keyword">self</span>.currentId)];
+    [<span class="hljs-keyword">self</span>.identifierDict setValue:<span class="hljs-keyword">self</span>.currentId forKey:<span class="hljs-keyword">self</span>.currentId];
+}
+
+<span class="hljs-meta">#pragma mark - 事件处理</span>
+- (<span class="hljs-keyword">void</span>)observeValueForKeyPath:(<span class="hljs-built_in">NSString</span> *)keyPath ofObject:(<span class="hljs-keyword">id</span>)object change:(<span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">NSKeyValueChangeKey</span>,<span class="hljs-keyword">id</span>&gt; *)change context:(<span class="hljs-keyword">void</span> *)context
+{
+    <span class="hljs-keyword">self</span>.currentId = (__bridge <span class="hljs-built_in">NSString</span> *)(context);
+    [<span class="hljs-keyword">self</span> processObserver:keyPath change:change];
+}
+
+- (<span class="hljs-keyword">void</span>)processObserver:(<span class="hljs-built_in">NSString</span> *)keyPath change:(<span class="hljs-built_in">NSDictionary</span> *)change{
+
+    <span class="hljs-keyword">id</span> newValue = change[<span class="hljs-built_in">NSKeyValueChangeNewKey</span>];
+    <span class="hljs-keyword">id</span> oldValue = change[<span class="hljs-built_in">NSKeyValueChangeOldKey</span>];
+    <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">self</span>.type) {
+        <span class="hljs-keyword">case</span> DSBindingKeyPath:
+        {
+            ObserveBlock block = <span class="hljs-keyword">self</span>.blockDict[<span class="hljs-keyword">self</span>.currentId];
+            block(newValue,oldValue);
+        }
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> DSBindingControl:
+        {
+            <span class="hljs-comment">// 根据唯一标识符取出来对象</span>
+            <span class="hljs-keyword">id</span> objc     = <span class="hljs-keyword">self</span>.controlDict[<span class="hljs-keyword">self</span>.currentId];
+            <span class="hljs-comment">// 根据唯一标识符取出来对象对应的属性</span>
+            <span class="hljs-keyword">id</span> property = <span class="hljs-keyword">self</span>.propertyDict[<span class="hljs-keyword">self</span>.currentId];
+            <span class="hljs-comment">// 通过kvc 给控件进行赋值</span>
+            [objc setValue:[<span class="hljs-keyword">self</span> checkString:newValue] forKey:property];
+        }
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">break</span>;
+    }
+}
+
+<span class="hljs-comment">/// 自动效验检测中文，插入数据增加</span>
+- (<span class="hljs-built_in">NSString</span> *)checkString:(<span class="hljs-built_in">NSString</span> *)newValue{
+
+    <span class="hljs-keyword">id</span> objc       = <span class="hljs-keyword">self</span>.controlDict[<span class="hljs-keyword">self</span>.currentId];
+    <span class="hljs-keyword">id</span> property   = <span class="hljs-keyword">self</span>.propertyDict[<span class="hljs-keyword">self</span>.currentId];
+    <span class="hljs-built_in">NSString</span> *str = [objc valueForKey:property];
+
+    <span class="hljs-comment">// 进行替换原字符的数字</span>
+    <span class="hljs-built_in">NSString</span> *tempStr = [<span class="hljs-keyword">self</span> repleaceStrWithOldStr:str newStr:newValue];
+
+    <span class="hljs-keyword">return</span> tempStr;
+}
+
+- (<span class="hljs-built_in">NSString</span> *)repleaceStrWithOldStr:(<span class="hljs-built_in">NSString</span> *)str newStr:(<span class="hljs-built_in">NSString</span> *)newStr{
+
+    <span class="hljs-built_in">NSString</span> *oldReplaceStr = [<span class="hljs-keyword">self</span> getNumberOfStrWithStr:str];
+    <span class="hljs-comment">// 进行替换原字符的数字</span>
+    <span class="hljs-built_in">NSString</span> *tempStr = [str stringByReplacingOccurrencesOfString:oldReplaceStr withString:newStr];
+
+    <span class="hljs-keyword">if</span> (![newStr isKindOfClass:[<span class="hljs-built_in">NSString</span> <span class="hljs-keyword">class</span>]]) {
+        <span class="hljs-keyword">return</span> newStr;
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">self</span>.sync || ![<span class="hljs-keyword">self</span> isPureNumandCharacters:newStr]) {
+        <span class="hljs-keyword">return</span> newStr;
+    }
+
+    <span class="hljs-keyword">return</span> tempStr;
+}
+
+- (<span class="hljs-built_in">NSString</span> *)getNumberOfStrWithStr:(<span class="hljs-built_in">NSString</span> *)str{
+    <span class="hljs-comment">// 设置set过滤所有字符，只获取数字</span>
+    <span class="hljs-built_in">NSCharacterSet</span>* nonDigits = [[<span class="hljs-built_in">NSCharacterSet</span> decimalDigitCharacterSet] invertedSet];
+    <span class="hljs-built_in">NSString</span> *oldReplaceStr   = [str stringByTrimmingCharactersInSet:nonDigits];
+    <span class="hljs-keyword">return</span> oldReplaceStr;
+}
+
+- (<span class="hljs-built_in">BOOL</span>)isPureNumandCharacters:(<span class="hljs-built_in">NSString</span> *)string
+{
+    <span class="hljs-built_in">NSScanner</span>* scan = [<span class="hljs-built_in">NSScanner</span> scannerWithString:string];
+    <span class="hljs-keyword">float</span> val;
+    <span class="hljs-keyword">int</span>   val2;
+    <span class="hljs-built_in">BOOL</span> ffloat = [scan scanFloat:&amp;val] &amp;&amp; [scan isAtEnd];
+    <span class="hljs-built_in">BOOL</span> iint   = [scan scanInt:&amp;val2]  &amp;&amp; [scan isAtEnd];
+
+    <span class="hljs-keyword">return</span> ffloat || iint;
+}
+
+<span class="hljs-comment">/// 删除所有监听</span>
+- (<span class="hljs-keyword">void</span>)removeAllObserver{
+    <span class="hljs-comment">// 如果没有初始化好，那么就不往下执行，防止引起崩溃。</span>
+    <span class="hljs-keyword">if</span> (![<span class="hljs-built_in">UIApplication</span> sharedApplication].delegate) {
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">self</span>.identifierDict.allKeys.count) {
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-built_in">NSArray</span> *array = [<span class="hljs-keyword">self</span> observers];
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">NSString</span> *key <span class="hljs-keyword">in</span> array) {
+        [<span class="hljs-keyword">self</span> removeObserver:<span class="hljs-keyword">self</span> forKeyPath:key];
+    }
+}
+
+<span class="hljs-comment">/// 获取所有监听对象</span>
+- (<span class="hljs-built_in">NSArray</span> *)observers
+{
+    <span class="hljs-built_in">NSArray</span> *allKey = <span class="hljs-keyword">self</span>.identifierDict.allKeys;
+    <span class="hljs-built_in">NSMutableArray</span> *tempArray = @[].mutableCopy;
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">NSString</span> *keys <span class="hljs-keyword">in</span> allKey) {
+       <span class="hljs-built_in">NSString</span> *key = [keys componentsSeparatedByString:<span class="hljs-string">@"@@@"</span>].lastObject;
+       [tempArray addObject:key];
+    }
+    <span class="hljs-keyword">return</span> tempArray;
+}
+
+<span class="hljs-comment">/// 校验用户输入 和 防止多次添加</span>
+- (<span class="hljs-built_in">BOOL</span>)checkInput:(<span class="hljs-keyword">id</span>)key
+{
+    <span class="hljs-comment">// 判断是否存在该属性</span>
+    <span class="hljs-keyword">@try</span> {
+        [<span class="hljs-keyword">self</span> valueForKey:key];
+    } <span class="hljs-keyword">@catch</span> (<span class="hljs-built_in">NSException</span> *exception) {
+        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@"警告！对象没有此属性"</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">NO</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">YES</span>;
+}
+
+<span class="hljs-comment">/// -----  根据《对象内存地址》和《key值》进行生成唯一标识符 -----</span>
+- (<span class="hljs-built_in">NSString</span> *)convertIdentifier:(<span class="hljs-built_in">NSString</span> *)key
+{
+    <span class="hljs-built_in">NSMutableString</span> *objcAddress = DSFormat(<span class="hljs-string">@"%p@@@"</span>, <span class="hljs-keyword">self</span>).mutableCopy;
+    [objcAddress appendString:key];
+    <span class="hljs-keyword">return</span> objcAddress;
+}
+
+<span class="hljs-meta">#pragma mark - Get 方法</span>
+- (<span class="hljs-built_in">BOOL</span>)sync            {<span class="hljs-keyword">return</span> [getAssociated() intValue];}
+- (<span class="hljs-built_in">NSString</span> *)currentId {<span class="hljs-keyword">return</span> getAssociated();}
+- (DSBindingType)type   {<span class="hljs-keyword">return</span> (DSBindingType)[getAssociated() intValue];}
+
+- (<span class="hljs-built_in">NSMutableDictionary</span> *)blockDict{setAssignAssociated_MuDict}
+- (<span class="hljs-built_in">NSMutableDictionary</span> *)controlDict{setAssignAssociated_MuDict}
+- (<span class="hljs-built_in">NSMutableDictionary</span> *)propertyDict{setAssignAssociated_MuDict}
+- (<span class="hljs-built_in">NSMutableDictionary</span> *)identifierDict{setAssignAssociated_MuDict}
+
+<span class="hljs-meta">#pragma mark - Set 方法</span>
+
+- (<span class="hljs-keyword">void</span>)setSync:(<span class="hljs-built_in">BOOL</span>)sync{
+    setAssignAssociated(@(sync), sync, Policy_Retain);
+}
+- (<span class="hljs-keyword">void</span>)setType:(DSBindingType)type{
+    setAssignAssociated(@(type), type, Policy_Retain);
+}
+
+- (<span class="hljs-keyword">void</span>)setCurrentId:(<span class="hljs-built_in">NSString</span> *)currentId{
+    setAssociated(currentId, Policy_Retain);
+}
+- (<span class="hljs-keyword">void</span>)setBlockDict:(<span class="hljs-built_in">NSMutableDictionary</span> *)blockDict{
+    setAssociated(blockDict, Policy_Retain);
+}
+- (<span class="hljs-keyword">void</span>)setControlDict:(<span class="hljs-built_in">NSMutableDictionary</span> *)controlDict
+{
+    setAssociated(controlDict, Policy_Retain);
+}
+- (<span class="hljs-keyword">void</span>)setPropertyDict:(<span class="hljs-built_in">NSMutableDictionary</span> *)propertyDict
+{
+    setAssociated(propertyDict, Policy_Retain);
+}
+- (<span class="hljs-keyword">void</span>)setIdentifierDict:(<span class="hljs-built_in">NSMutableDictionary</span> *)identifierDict
+{
+    setAssociated(identifierDict, Policy_Retain);
+}
+<span class="hljs-meta">#pragma mark - 销毁处理</span>
+- (<span class="hljs-keyword">void</span>)dealloc{
+    [<span class="hljs-keyword">self</span> removeAllObserver];
+}
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">NSString</span> (<span class="hljs-title">StringAdd</span>)</span>
+
+- (<span class="hljs-built_in">NSString</span> *)setStr:(<span class="hljs-built_in">NSString</span> *)str{
+    <span class="hljs-keyword">return</span> [<span class="hljs-keyword">self</span> repleaceStrWithOldStr:<span class="hljs-keyword">self</span> newStr:str];
+}
+<span class="hljs-keyword">@end</span></code></pre>
+<h4>三、代码解析</h4>
+<p>1，使用Runtime 给分类动态增加属性，在这里为了更方便使用，就用宏定义封装了一下runtime的关联，和宏定义自定义了一下，就不多说介绍了。</p>
+<p>2，相关属性</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">assign</span>) <span class="hljs-built_in">BOOL</span>                 sync;            <span class="hljs-comment">// 是否同步进行修改对应对象属性</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">assign</span>) DSBindingType        type;            <span class="hljs-comment">// 当前类型</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableDictionary</span>  *blockDict;
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSString</span>             *currentId;      <span class="hljs-comment">// 唯一标识符</span>
+
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableDictionary</span>  *controlDict;    <span class="hljs-comment">// 控件对象字典(用于存储--控件</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableDictionary</span>  *propertyDict;   <span class="hljs-comment">// 对象属性字典(用于存储--控件要修改的属性名</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableDictionary</span>  *identifierDict; <span class="hljs-comment">// 用于存储对象相应的唯一标识符</span></code></pre>
+<p>（1）sync 和 type： 可以先忽略，后面会说到。<br>（2）blockDict 可变字典   ： 用于存储绑定keypath的时候传递进来的KVO。<br>（3）currentId （唯一标识符）     ：<br>思考一下，如果注册多个KVO，那么Block回调的时候，到底是执行哪个Block呢 ？<br>这个时候currentId的作用就出来了，它的作用是，当使用者注册多个kvo的时候，用于存储block的时候，把currentid 当做一个key值，做一个对应关系，一个currentId 对应一个 block 。如：</p>
+<pre class="hljs pf"><code class="pf">[<span class="hljs-literal">self</span>.<span class="hljs-built_in">block</span>Dict <span class="hljs-built_in">set</span>Value:<span class="hljs-built_in">block</span> <span class="hljs-keyword">for</span>Key:<span class="hljs-literal">self</span>.currentId];</code></pre>
+<p>然后执行在addObserver的时候进行传递的一个参数<code>context:(void *)context</code>，把currentId传递进去，当属性发生变化，observeValueForKeyPath 被调用的时候，根据传递进来的context参数，也就是currentID）当做key值，取出对应Block，然后执行。如：</p>
+<pre class="hljs pf"><code class="pf">ObserveBlock <span class="hljs-built_in">block</span> = <span class="hljs-literal">self</span>.<span class="hljs-built_in">block</span>Dict[<span class="hljs-literal">self</span>.currentId];
+<span class="hljs-built_in">block</span>(newValue,oldValue);</code></pre>
+<p>（4）identifierDict ：作用是防止多次重复执行addObserver 进行监听，最明显的是当使用UITableViewCell的时候，Cell会进行复用，这样如果不做处理，默认会走很多次set方法，如果在里面添加了KVO，不做处理的话，那么就会导致添加了很多监听，就会出问题。identifierDict的作用就是为了解决这种情况，只要添加到一次监听，那么identifierDict 就会把 currentId 当做唯一标识符进行存储，如果下次，添加KVO之前，会从identifierDict 里判断是否已经存在过当前currentId，如果存在那么久不做任何操作。</p>
+<pre class="hljs objectivec"><code class="objectivec"> <span class="hljs-comment">// 判断是否监听过</span>
+    <span class="hljs-keyword">if</span> ([<span class="hljs-keyword">self</span>.identifierDict valueForKey:<span class="hljs-keyword">self</span>.currentId]) {
+        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@"已经监听过了,防止重复监听"</span>);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-comment">// 添加监听</span>
+    [<span class="hljs-keyword">self</span> addObserver:<span class="hljs-keyword">self</span> forKeyPath:key options:<span class="hljs-built_in">NSKeyValueObservingOptionNew</span> | <span class="hljs-built_in">NSKeyValueObservingOptionOld</span>
+              context:(__bridge <span class="hljs-keyword">void</span> * _Nullable)(<span class="hljs-keyword">self</span>.currentId)];
+
+    [<span class="hljs-keyword">self</span>.identifierDict setValue:<span class="hljs-keyword">self</span>.currentId forKey:<span class="hljs-keyword">self</span>.currentId];</code></pre>
+<p>（5）controlDict 、 propertyDict 和 blockDict 的作用差不多，只不过是存储对象 和 属性名的，后面会说到。</p>
+<p>3，调用方法</p>
+<pre class="hljs dockerfile"><code class="dockerfile">UILabel *<span class="hljs-keyword">label</span><span class="bash"> = [[UILabel alloc]init];
+</span>[<span class="hljs-keyword">label</span><span class="bash"> bindingWithKeyPath:@<span class="hljs-string">"text"</span> WithBlock:^(id newValue, id oldValue) {
+</span>     NSLog(@<span class="hljs-string">"%@"</span>,newValue);
+}];</code></pre>
+<p>只需要传递进来一个属性，和block即可。</p>
+<p>4，调用内部实现<br>bindingWithKeyPath 这个主要是存储唯一标识符，然后存储Block后，继续下面的逻辑</p>
+<pre class="hljs pf"><code class="pf">- (void)bindingWithKeyPath:(NSString*)key WithBlock:(ObserveBlock)<span class="hljs-built_in">block</span>
+{
+    NSAssert(<span class="hljs-built_in">block</span> &amp;&amp; key, @<span class="hljs-string">"参数不能为空"</span>);
+
+    // 生成唯一标识符，进行赋值
+    <span class="hljs-literal">self</span>.currentId = [<span class="hljs-literal">self</span> convertIdentifier:key];
+
+   // 根据唯一标识符，和Block，进行对应关系存储
+    [<span class="hljs-literal">self</span>.<span class="hljs-built_in">block</span>Dict <span class="hljs-built_in">set</span>Value:<span class="hljs-built_in">block</span> <span class="hljs-keyword">for</span>Key:<span class="hljs-literal">self</span>.currentId];
+
+    [<span class="hljs-literal">self</span> <span class="hljs-built_in">set</span>InitWithType:DSBindingKeyPath key:key];
+}</code></pre>
+<p>唯一标识符，本来是需要用户手动传入的，为了做到不让用户手动传入唯一标识符，在这里做了自动生成唯一标识符：</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">/// -----  根据《对象内存地址》和《key值》进行生成唯一标识符 -----</span>
+- (<span class="hljs-built_in">NSString</span> *)convertIdentifier:(<span class="hljs-built_in">NSString</span> *)key
+{
+    <span class="hljs-built_in">NSMutableString</span> *objcAddress = DSFormat(<span class="hljs-string">@"%p@@@"</span>, <span class="hljs-keyword">self</span>).mutableCopy;
+    [objcAddress appendString:key];
+    <span class="hljs-keyword">return</span> objcAddress;
+}</code></pre>
+<p>setInitWithType 主要是校验 对象有没有此属性，里面使用try catch 方法。</p>
+<pre class="hljs rust"><code class="rust">- (void)setInitWithType:(DSBindingType)<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">key</span></span>:(NSString *)key{
+    <span class="hljs-keyword">self</span>.<span class="hljs-keyword">type</span> = <span class="hljs-class"><span class="hljs-keyword">type</span>;</span>
+    <span class="hljs-keyword">if</span> (![<span class="hljs-keyword">self</span> checkInput:key]) {
+        <span class="hljs-keyword">return</span>;
+    }
+    [<span class="hljs-keyword">self</span> registPropertyObserver:key];
+}</code></pre>
+<p>registPropertyObserver 主要就是核心添加kvo的方法，和添加后进行存储currentId唯一标识符。</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">/// 添加Observer监听</span>
+- (<span class="hljs-keyword">void</span>)registPropertyObserver:(<span class="hljs-built_in">NSString</span>*)key{
+
+    <span class="hljs-comment">// 判断是否监听过</span>
+    <span class="hljs-keyword">if</span> ([<span class="hljs-keyword">self</span>.identifierDict valueForKey:<span class="hljs-keyword">self</span>.currentId]) {
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-comment">// 添加监听</span>
+    [<span class="hljs-keyword">self</span> addObserver:<span class="hljs-keyword">self</span> forKeyPath:key options:<span class="hljs-built_in">NSKeyValueObservingOptionNew</span> | <span class="hljs-built_in">NSKeyValueObservingOptionOld</span>
+              context:(__bridge <span class="hljs-keyword">void</span> * _Nullable)(<span class="hljs-keyword">self</span>.currentId)];
+    [<span class="hljs-keyword">self</span>.identifierDict setValue:<span class="hljs-keyword">self</span>.currentId forKey:<span class="hljs-keyword">self</span>.currentId];
+}</code></pre>
+<p>observeValueForKeyPath 和 processObserver 就是回调之后的操作</p>
+<pre class="hljs objectivec"><code class="objectivec">- (<span class="hljs-keyword">void</span>)observeValueForKeyPath:(<span class="hljs-built_in">NSString</span> *)keyPath ofObject:(<span class="hljs-keyword">id</span>)object change:(<span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">NSKeyValueChangeKey</span>,<span class="hljs-keyword">id</span>&gt; *)change context:(<span class="hljs-keyword">void</span> *)context
+{
+    <span class="hljs-keyword">self</span>.currentId = (__bridge <span class="hljs-built_in">NSString</span> *)(context);
+    [<span class="hljs-keyword">self</span> processObserver:keyPath change:change];
+}
+
+- (<span class="hljs-keyword">void</span>)processObserver:(<span class="hljs-built_in">NSString</span> *)keyPath change:(<span class="hljs-built_in">NSDictionary</span> *)change{
+    <span class="hljs-keyword">id</span> newValue = change[<span class="hljs-built_in">NSKeyValueChangeNewKey</span>];
+    <span class="hljs-keyword">id</span> oldValue = change[<span class="hljs-built_in">NSKeyValueChangeOldKey</span>];
+    <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">self</span>.type) {
+        <span class="hljs-keyword">case</span> DSBindingKeyPath:
+        {
+            ObserveBlock block = <span class="hljs-keyword">self</span>.blockDict[<span class="hljs-keyword">self</span>.currentId];
+            block(newValue,oldValue);
+        }
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> DSBindingControl:
+        {
+            <span class="hljs-comment">// 根据唯一标识符取出来对象</span>
+            <span class="hljs-keyword">id</span> objc     = <span class="hljs-keyword">self</span>.controlDict[<span class="hljs-keyword">self</span>.currentId];
+            <span class="hljs-comment">// 根据唯一标识符取出来对象对应的属性</span>
+            <span class="hljs-keyword">id</span> property = <span class="hljs-keyword">self</span>.propertyDict[<span class="hljs-keyword">self</span>.currentId];
+            <span class="hljs-comment">// 通过kvc 给控件进行赋值</span>
+            [objc setValue:[<span class="hljs-keyword">self</span> checkString:newValue] forKey:property];
+        }
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">break</span>;
+    }
+}</code></pre>
+<p>自动删除监听的逻辑<br>在dealloc中，进行遍历identifierDict，取出当前监听的key，进行remove。</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">/// 删除所有监听</span>
+- (<span class="hljs-keyword">void</span>)removeAllObserver{
+    <span class="hljs-comment">// 如果没有初始化好，那么就不往下执行，防止引起崩溃。</span>
+    <span class="hljs-keyword">if</span> (![<span class="hljs-built_in">UIApplication</span> sharedApplication].delegate) {
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">self</span>.identifierDict.allKeys.count) {
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-built_in">NSArray</span> *array = [<span class="hljs-keyword">self</span> observers];
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">NSString</span> *key <span class="hljs-keyword">in</span> array) {
+        [<span class="hljs-keyword">self</span> removeObserver:<span class="hljs-keyword">self</span> forKeyPath:key];
+    }
+}</code></pre>
+<p>到这里基本的核心功能就说完了，大概就这些。<br>三、 模式2 功能<br>从最初就提到了 模式2  和 controlDict 、 propertyDict 这些东西，现在，在这里说明一下模式2 。</p>
+<p>1，模式2 的作用<br>模式2 的作用主要是相对于某些场景，更方便的一种解决方法，使用模式2，可以做到，监听某对象属性后，变化后，可指定对应对象的属性，也进行同步进行变化，也可以是如果是需要这种情况的下，就相对于第一种模式，不用写block，而是直接自动修改。比如下图例子：<br></p><div class="image-package">
+<img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/790890-2d9bb08e17308b17.gif" data-original-src="http://upload-images.jianshu.io/upload_images/790890-2d9bb08e17308b17.gif?imageMogr2/auto-orient/strip" style="cursor: zoom-in;"><br><div class="image-caption"></div>
+</div>
+<p>sync 属性的作用是，如果设置为YES，那么在监听发生变化的时候，会把newValue 进行完全赋值给另一个对象的属性，如果设置为NO，那么就会只替换数字的那一部分。 方便于某些场景的使用。</p>
+<p>2，调用例子<br></p><div class="image-package">
+<img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/790890-6e5f65fa3f12a23d.gif" data-original-src="http://upload-images.jianshu.io/upload_images/790890-6e5f65fa3f12a23d.gif?imageMogr2/auto-orient/strip" style="cursor: zoom-in;"><br><div class="image-caption"></div>
+</div>
+<pre class="hljs pf"><code class="pf">// 监听 《<span class="hljs-literal">self</span>.data》对象 的 《number》属性， number 属性变化后，自动 修改 《<span class="hljs-literal">self</span>.<span class="hljs-keyword">label</span>》对象的《text》属性
+[<span class="hljs-literal">self</span>.data bindingWithKeyPath:@<span class="hljs-string">"number"</span> controlObjc:<span class="hljs-literal">self</span>.<span class="hljs-keyword">label</span> objcKey:@<span class="hljs-string">"text"</span> sync:NO];</code></pre>
+<p>3，实现<br>在分类中增加了另一个方法<code>bindingWithKeyPath:(NSString*)key controlObjc:(id)controlObjc objcKey:(NSString *)objcKey  sync:(BOOL)sync;</code><br>key ：是需要监听的key<br>controlObjc：是监听后变化通知的对象<br>objcKey ：变化通知对象需要修改的属性<br>sync： 就是如上面所说的，是否进行完全复制。</p>
+<p>和模式1现在区别主要是多了存储通知修改的对象，和对象的属性，和sync属性，在调用方法后，分别使用controlDict 存储对象，和propertyDict 存储对象的属性。type 用于区分，是模式一还是模式二。</p>
+<pre class="hljs pf"><code class="pf">    [<span class="hljs-literal">self</span>.controlDict  <span class="hljs-built_in">set</span>Value:controlObjc <span class="hljs-keyword">for</span>Key:<span class="hljs-literal">self</span>.currentId];
+    [<span class="hljs-literal">self</span>.propertyDict <span class="hljs-built_in">set</span>Value:objcKey     <span class="hljs-keyword">for</span>Key:<span class="hljs-literal">self</span>.currentId];</code></pre>
+<p>在接受到变化的时候，进行分别取出对应的对象和属性，进行赋值：</p>
+<pre class="hljs objectivec"><code class="objectivec">  <span class="hljs-keyword">case</span> DSBindingControl:
+        {
+            <span class="hljs-comment">// 根据唯一标识符取出来对象</span>
+            <span class="hljs-keyword">id</span> objc     = <span class="hljs-keyword">self</span>.controlDict[<span class="hljs-keyword">self</span>.currentId];
+            <span class="hljs-comment">// 根据唯一标识符取出来对象对应的属性</span>
+            <span class="hljs-keyword">id</span> property = <span class="hljs-keyword">self</span>.propertyDict[<span class="hljs-keyword">self</span>.currentId];
+            <span class="hljs-comment">// 通过kvc 给控件进行赋值</span>
+            [objc setValue:[<span class="hljs-keyword">self</span> checkString:newValue] forKey:property];
+        }</code></pre>
+<p>关于sync属性，设置自动替换数字的原理，主要是检测字符串，获取字符串中的数字，然后通过stringByReplacingOccurrencesOfString 进行只把新值和数字进行替换。如果新值不是数字，那么也进行完全替换。</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">/// 自动效验检测中文，插入数据增加</span>
+- (<span class="hljs-built_in">NSString</span> *)checkString:(<span class="hljs-built_in">NSString</span> *)newValue{
+
+    <span class="hljs-keyword">id</span> objc       = <span class="hljs-keyword">self</span>.controlDict[<span class="hljs-keyword">self</span>.currentId];
+    <span class="hljs-keyword">id</span> property   = <span class="hljs-keyword">self</span>.propertyDict[<span class="hljs-keyword">self</span>.currentId];
+    <span class="hljs-built_in">NSString</span> *str = [objc valueForKey:property];
+
+    <span class="hljs-comment">// 进行替换原字符的数字</span>
+    <span class="hljs-built_in">NSString</span> *tempStr = [<span class="hljs-keyword">self</span> repleaceStrWithOldStr:str newStr:newValue];
+
+    <span class="hljs-keyword">return</span> tempStr;
+}
+
+- (<span class="hljs-built_in">NSString</span> *)repleaceStrWithOldStr:(<span class="hljs-built_in">NSString</span> *)str newStr:(<span class="hljs-built_in">NSString</span> *)newStr{
+
+    <span class="hljs-built_in">NSString</span> *oldReplaceStr = [<span class="hljs-keyword">self</span> getNumberOfStrWithStr:str];
+    <span class="hljs-comment">// 进行替换原字符的数字</span>
+    <span class="hljs-built_in">NSString</span> *tempStr = [str stringByReplacingOccurrencesOfString:oldReplaceStr withString:newStr];
+
+    <span class="hljs-keyword">if</span> (![newStr isKindOfClass:[<span class="hljs-built_in">NSString</span> <span class="hljs-keyword">class</span>]]) {
+        <span class="hljs-keyword">return</span> newStr;
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">self</span>.sync || ![<span class="hljs-keyword">self</span> isPureNumandCharacters:newStr]) {
+        <span class="hljs-keyword">return</span> newStr;
+    }
+
+    <span class="hljs-keyword">return</span> tempStr;
+}
+
+- (<span class="hljs-built_in">NSString</span> *)getNumberOfStrWithStr:(<span class="hljs-built_in">NSString</span> *)str{
+    <span class="hljs-comment">// 设置set过滤所有字符，只获取数字</span>
+    <span class="hljs-built_in">NSCharacterSet</span>* nonDigits = [[<span class="hljs-built_in">NSCharacterSet</span> decimalDigitCharacterSet] invertedSet];
+    <span class="hljs-built_in">NSString</span> *oldReplaceStr   = [str stringByTrimmingCharactersInSet:nonDigits];
+    <span class="hljs-keyword">return</span> oldReplaceStr;
+}</code></pre>
+<p>isPureNumandCharacters 是判断是否是数字的函数</p>
+<pre class="hljs mipsasm"><code class="mipsasm">- (<span class="hljs-keyword">BOOL)isPureNumandCharacters:(NSString </span>*)string
+{
+    NSScanner* <span class="hljs-keyword">scan </span>= [NSScanner <span class="hljs-keyword">scannerWithString:string];
+</span>    float val<span class="hljs-comment">;</span>
+    int   val2<span class="hljs-comment">;</span>
+    <span class="hljs-keyword">BOOL </span>ffloat = [<span class="hljs-keyword">scan </span><span class="hljs-keyword">scanFloat:&amp;val] </span>&amp;&amp; [<span class="hljs-keyword">scan </span>isAtEnd]<span class="hljs-comment">;</span>
+    <span class="hljs-keyword">BOOL </span>iint   = [<span class="hljs-keyword">scan </span><span class="hljs-keyword">scanInt:&amp;val2] </span> &amp;&amp; [<span class="hljs-keyword">scan </span>isAtEnd]<span class="hljs-comment">;</span>
+
+    return ffloat <span class="hljs-title">||</span> iint<span class="hljs-comment">;</span>
+}</code></pre>
+<h3>四、最后</h3>
+<blockquote><p>GitHub链接地址: <a href="https://github.com/SenWinter/DSSimpleKVO" target="_blank">https://github.com/SenWinter/DSSimpleKVO</a><br>思路和实现就是这样，主要核心思想很简单，目前没有大量测试，不知道有没有BUG。</p></blockquote>
+
+        </div>
+        <!--  -->
+
+        <div class="show-foot">
+          <a class="notebook" href="http://www.jianshu.com/nb/4264711">
+            <i class="iconfont ic-search-notebook"></i> <span>iOS知识</span>
+</a>          <div class="copyright" data-toggle="tooltip" data-html="true" data-original-title="转载请联系作者获得授权，并标注“简书作者”。">
+            © 著作权归作者所有
+          </div>
+          <div class="modal-wrap" data-report-note="">
+            <a id="report-modal">举报文章</a>
+          </div>
+        </div>
+    </div>
+
+    <!-- 文章底部作者信息 -->
+      <div class="follow-detail">
+        <div class="info">
+          <a class="avatar" href="http://www.jianshu.com/u/cf43c392a6c8">
+            <img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/e8632541a6ff.png" alt="144">
+</a>          <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+          <a class="title" href="http://www.jianshu.com/u/cf43c392a6c8">_品味生活_</a>
+        <p>写了 39673 字，被 623 人关注，获得了 770 个喜欢</p></div>
+          <div class="signature">
+            <span>上善若水</span>
+          </div>
+      </div>
+
+
+    <div class="meta-bottom">
+      <div class="like"><div class="btn like-group"><div class="btn-like"><a href="http://www.jianshu.com/sign_in"><i class="iconfont ic-like"></i>喜欢</a></div> <div class="modal-wrap"><a>15</a></div></div> <!----></div>
+      <div class="share-group">
+        <a class="share-circle" data-action="weixin-share" data-toggle="tooltip" data-original-title="分享到微信">
+          <i class="iconfont ic-wechat"></i>
+        </a>
+        <a class="share-circle" data-toggle="tooltip" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/8401438/weibo/image_ee16157b706b.jpg&#39;, &#39;推荐 _品味生活_ 的文章《iOS开发 - KVO监听, Block方式的实现》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));" data-original-title="分享到微博">
+          <i class="iconfont ic-weibo"></i>
+        </a>
+          <a class="share-circle" data-toggle="tooltip" href="http://cwb.assets.jianshu.io/notes/images/8401438/weibo/image_ee16157b706b.jpg" target="_blank" data-original-title="下载长微博图片">
+            <i class="iconfont ic-picture"></i>
+          </a>
+        <a class="share-circle more-share" tabindex="0" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="
+          &lt;ul class=&quot;share-list&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 _品味生活_ 的文章《iOS开发 - KVO监听, Block方式的实现》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-zone&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 _品味生活_ 的文章《iOS开发 - KVO监听, Block方式的实现》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-twitter&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-facebook&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-google&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;iOS开发 - KVO监听, Block方式的实现&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-douban&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        " data-original-title="" title="">更多分享</a>
+      </div>
+    </div>
+    <div><div id="comment-list" class="comment-list"><div><form class="new-comment"><a class="avatar"><img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/avatar_default-78d4d1f68984cd6d4379508dd94b4210.png"></a> <div class="sign-container"><a href="http://www.jianshu.com/sign_in" class="btn btn-sign">登录</a> <span>后发表评论</span></div></form></div> <div id="normal-comment-list" class="normal-comment-list"><div><div><div class="top"><span>2条评论</span> <a class="author-only">只看作者</a> <a class="close-btn" style="display: none;">关闭评论</a> <div class="pull-right"><a class="active">按喜欢排序</a><a class="">按时间正序</a><a class="">按时间倒序</a></div></div></div> <!----> <!----> <div id="comment-7175756" class="comment"><div><div class="author"><a href="http://www.jianshu.com/u/5a1bc6cf5fdf" target="_blank" class="avatar"><img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/3a254cba753b.png"></a> <div class="info"><a href="http://www.jianshu.com/u/5a1bc6cf5fdf" target="_blank" class="name">fruitymoon</a> <!----> <div class="meta"><span>2楼 · 2017.01.13 19:46</span></div></div></div> <div class="comment-wrap"><p>吊</p> <div class="tool-group"><a><i class="iconfont ic-zan"></i> <span>1人赞</span></a> <a><i class="iconfont ic-comment"></i> <span>回复</span></a> <!----> <!----></div></div></div> <div class="sub-comment-list"><div id="comment-7175915" class="sub-comment"><p><a href="http://www.jianshu.com/u/cf43c392a6c8" target="_blank">_品味生活_</a>：
+          <span><a href="http://www.jianshu.com/users/5a1bc6cf5fdf" class="maleskine-author" target="_blank" data-user-slug="5a1bc6cf5fdf">@fruitymoon</a> 感谢支持</span></p> <div class="sub-tool-group"><span>2017.01.13 19:51</span> <a><i class="iconfont ic-comment"></i> <span>回复</span></a> <!----> <!----></div></div> <div class="sub-comment more-comment"><a class="add-comment-btn"><i class="iconfont ic-subcomment"></i> <span>添加新评论</span></a> <!----> <!----> <!----></div> <!----></div></div> <div class="comments-placeholder" style="display: none;"><div class="author"><div class="avatar"></div> <div class="info"><div class="name"></div> <div class="meta"></div></div></div> <div class="text"></div> <div class="text animation-delay"></div> <div class="tool-group"><i class="iconfont ic-zan-active"></i><div class="zan"></div> <i class="iconfont ic-list-comments"></i><div class="zan"></div></div></div></div></div> <!----> <!----></div></div>
+  </div>
+
+  <div class="side-tool"><ul><li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="回到顶部"><a href="http://www.jianshu.com/p/d02a5c5570e3#" class="function-button"><i class="iconfont ic-backtop"></i></a></li> <!----> <!----> <li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="分享文章"><a tabindex="0" role="button" data-toggle="popover" data-placement="left" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="&lt;ul class=&#39;share-list&#39;&gt;
+                &lt;li&gt;&lt;a class=&quot;weixin-share&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-weixin&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到微信&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/8401438/weibo/image_ee16157b706b.jpg&#39;, &#39;推荐 _品味生活_ 的文章《iOS开发 - KVO监听, Block方式的实现》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-weibo&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到微博&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://cwb.assets.jianshu.io/notes/images/8401438/weibo/image_ee16157b706b.jpg&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-picture&quot;&gt;&lt;/i&gt;&lt;span&gt;下载长微博图片&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 _品味生活_ 的文章《iOS开发 - KVO监听, Block方式的实现》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-zone&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 _品味生活_ 的文章《iOS开发 - KVO监听, Block方式的实现》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-twitter&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-facebook&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-google&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/d02a5c5570e3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;iOS开发 - KVO监听, Block方式的实现&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-douban&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;" data-original-title="" title="" class="function-button"><i class="iconfont ic-share"></i></a> <!----></li></ul></div>
+</div>
+<div class="note-bottom"><div class="main"><div class="title">被以下专题收入，发现更多相似内容</div> <!----> <div class="include-collection"><!----> <a href="http://www.jianshu.com/c/bDHhpK?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/首页投稿.png"><div class="name">首页投稿</div></a><a href="http://www.jianshu.com/c/3233d1a249ca?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/162902612251cbd95971b82.png"><div class="name">iOS Dev...</div></a><a href="http://www.jianshu.com/c/99ebd9af1766?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/1467891719.jpg"><div class="name">iOS OC ...</div></a><a href="http://www.jianshu.com/c/cf108b903cbe?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/1482824336.jpg"><div class="name">iOS高级实用技术</div></a><a href="http://www.jianshu.com/c/1332c736fe39?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/think_different.jpg"><div class="name">iOS学习</div></a><a href="http://www.jianshu.com/c/25c852bebecd?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/1473403171.jpg"><div class="name">arc mrc...</div></a><a href="http://www.jianshu.com/c/a6544276131f?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/apple-03.png"><div class="name">iOS模块详解</div></a></div> <!----></div> <!----> <!----></div>
+
+    <script type="application/json" data-name="page-data">{"user_signed_in":false,"locale":"zh-CN","os":"mac","read_mode":"day","read_font":"font2","note_show":{"is_author":false,"is_following_author":false,"is_liked_note":false,"uuid":"8426182a-ddad-4665-8980-3fb8019f802d"},"note":{"id":8401438,"slug":"d02a5c5570e3","user_id":790890,"notebook_id":4264711,"commentable":true,"likes_count":15,"views_count":264,"public_wordage":1626,"comments_count":2,"author":{"total_wordage":39673,"followers_count":623,"total_likes_count":770}}}</script>
+    
+    <script src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/babel-polyfill-885d7fd7ff4f7bc4f6e0.js"></script>
+    <script src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/web-base-885d7fd7ff4f7bc4f6e0.js"></script>
+<script src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/web-885d7fd7ff4f7bc4f6e0.js"></script>
+    
+    <script src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/entry-885d7fd7ff4f7bc4f6e0.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35169517-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<div style="display:none">
+  <script src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/z_stat.php" language="JavaScript"></script><script src="./iOS开发 - KVO监听, Block方式的实现 - 简书_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1258679142" target="_blank" title="站长统计">站长统计</a>
+</div>
+
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+  
+
+<!----><!----></body></html>

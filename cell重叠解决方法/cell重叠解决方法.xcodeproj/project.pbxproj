@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A70DE34C1D93E12C00E95E1B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A70DE34B1D93E12C00E95E1B /* main.m */; };
+		A70DE34F1D93E12C00E95E1B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A70DE34E1D93E12C00E95E1B /* AppDelegate.m */; };
+		A70DE3521D93E12C00E95E1B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70DE3511D93E12C00E95E1B /* ViewController.m */; };
+		A70DE3551D93E12C00E95E1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A70DE3531D93E12C00E95E1B /* Main.storyboard */; };
+		A70DE3581D93E12C00E95E1B /* cell______.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A70DE3561D93E12C00E95E1B /* cell______.xcdatamodeld */; };
+		A70DE35A1D93E12C00E95E1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A70DE3591D93E12C00E95E1B /* Assets.xcassets */; };
+		A70DE35D1D93E12C00E95E1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A70DE35B1D93E12C00E95E1B /* LaunchScreen.storyboard */; };
+		A70DE3681D93E12C00E95E1B /* cell______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A70DE3671D93E12C00E95E1B /* cell______Tests.m */; };
+		A70DE3731D93E12C00E95E1B /* cell______UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A70DE3721D93E12C00E95E1B /* cell______UITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A70DE3641D93E12C00E95E1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A70DE33F1D93E12C00E95E1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A70DE3461D93E12C00E95E1B;
+			remoteInfo = "cell重叠解决方法";
+		};
+		A70DE36F1D93E12C00E95E1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A70DE33F1D93E12C00E95E1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A70DE3461D93E12C00E95E1B;
+			remoteInfo = "cell重叠解决方法";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A70DE3471D93E12C00E95E1B /* cell重叠解决方法.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cell重叠解决方法.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70DE34B1D93E12C00E95E1B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A70DE34D1D93E12C00E95E1B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A70DE34E1D93E12C00E95E1B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A70DE3501D93E12C00E95E1B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A70DE3511D93E12C00E95E1B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A70DE3541D93E12C00E95E1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A70DE3571D93E12C00E95E1B /* cell______.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "cell______.xcdatamodel"; sourceTree = "<group>"; };
+		A70DE3591D93E12C00E95E1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A70DE35C1D93E12C00E95E1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A70DE35E1D93E12C00E95E1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A70DE3631D93E12C00E95E1B /* cell重叠解决方法Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cell重叠解决方法Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70DE3671D93E12C00E95E1B /* cell______Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "cell______Tests.m"; sourceTree = "<group>"; };
+		A70DE3691D93E12C00E95E1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A70DE36E1D93E12C00E95E1B /* cell重叠解决方法UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cell重叠解决方法UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70DE3721D93E12C00E95E1B /* cell______UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "cell______UITests.m"; sourceTree = "<group>"; };
+		A70DE3741D93E12C00E95E1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A70DE3441D93E12C00E95E1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70DE3601D93E12C00E95E1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70DE36B1D93E12C00E95E1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A70DE33E1D93E12C00E95E1B = {
+			isa = PBXGroup;
+			children = (
+				A70DE3491D93E12C00E95E1B /* cell重叠解决方法 */,
+				A70DE3661D93E12C00E95E1B /* cell重叠解决方法Tests */,
+				A70DE3711D93E12C00E95E1B /* cell重叠解决方法UITests */,
+				A70DE3481D93E12C00E95E1B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A70DE3481D93E12C00E95E1B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A70DE3471D93E12C00E95E1B /* cell重叠解决方法.app */,
+				A70DE3631D93E12C00E95E1B /* cell重叠解决方法Tests.xctest */,
+				A70DE36E1D93E12C00E95E1B /* cell重叠解决方法UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A70DE3491D93E12C00E95E1B /* cell重叠解决方法 */ = {
+			isa = PBXGroup;
+			children = (
+				A70DE34D1D93E12C00E95E1B /* AppDelegate.h */,
+				A70DE34E1D93E12C00E95E1B /* AppDelegate.m */,
+				A70DE3501D93E12C00E95E1B /* ViewController.h */,
+				A70DE3511D93E12C00E95E1B /* ViewController.m */,
+				A70DE3531D93E12C00E95E1B /* Main.storyboard */,
+				A70DE3591D93E12C00E95E1B /* Assets.xcassets */,
+				A70DE35B1D93E12C00E95E1B /* LaunchScreen.storyboard */,
+				A70DE35E1D93E12C00E95E1B /* Info.plist */,
+				A70DE3561D93E12C00E95E1B /* cell______.xcdatamodeld */,
+				A70DE34A1D93E12C00E95E1B /* Supporting Files */,
+			);
+			path = "cell重叠解决方法";
+			sourceTree = "<group>";
+		};
+		A70DE34A1D93E12C00E95E1B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A70DE34B1D93E12C00E95E1B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A70DE3661D93E12C00E95E1B /* cell重叠解决方法Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A70DE3671D93E12C00E95E1B /* cell______Tests.m */,
+				A70DE3691D93E12C00E95E1B /* Info.plist */,
+			);
+			path = "cell重叠解决方法Tests";
+			sourceTree = "<group>";
+		};
+		A70DE3711D93E12C00E95E1B /* cell重叠解决方法UITests */ = {
+			isa = PBXGroup;
+			children = (
+				A70DE3721D93E12C00E95E1B /* cell______UITests.m */,
+				A70DE3741D93E12C00E95E1B /* Info.plist */,
+			);
+			path = "cell重叠解决方法UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A70DE3461D93E12C00E95E1B /* cell重叠解决方法 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70DE3771D93E12C00E95E1B /* Build configuration list for PBXNativeTarget "cell重叠解决方法" */;
+			buildPhases = (
+				A70DE3431D93E12C00E95E1B /* Sources */,
+				A70DE3441D93E12C00E95E1B /* Frameworks */,
+				A70DE3451D93E12C00E95E1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "cell重叠解决方法";
+			productName = "cell重叠解决方法";
+			productReference = A70DE3471D93E12C00E95E1B /* cell重叠解决方法.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A70DE3621D93E12C00E95E1B /* cell重叠解决方法Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70DE37A1D93E12C00E95E1B /* Build configuration list for PBXNativeTarget "cell重叠解决方法Tests" */;
+			buildPhases = (
+				A70DE35F1D93E12C00E95E1B /* Sources */,
+				A70DE3601D93E12C00E95E1B /* Frameworks */,
+				A70DE3611D93E12C00E95E1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A70DE3651D93E12C00E95E1B /* PBXTargetDependency */,
+			);
+			name = "cell重叠解决方法Tests";
+			productName = "cell重叠解决方法Tests";
+			productReference = A70DE3631D93E12C00E95E1B /* cell重叠解决方法Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A70DE36D1D93E12C00E95E1B /* cell重叠解决方法UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70DE37D1D93E12C00E95E1B /* Build configuration list for PBXNativeTarget "cell重叠解决方法UITests" */;
+			buildPhases = (
+				A70DE36A1D93E12C00E95E1B /* Sources */,
+				A70DE36B1D93E12C00E95E1B /* Frameworks */,
+				A70DE36C1D93E12C00E95E1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A70DE3701D93E12C00E95E1B /* PBXTargetDependency */,
+			);
+			name = "cell重叠解决方法UITests";
+			productName = "cell重叠解决方法UITests";
+			productReference = A70DE36E1D93E12C00E95E1B /* cell重叠解决方法UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A70DE33F1D93E12C00E95E1B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = yosemite;
+				TargetAttributes = {
+					A70DE3461D93E12C00E95E1B = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = F67AG5JPQE;
+						ProvisioningStyle = Automatic;
+					};
+					A70DE3621D93E12C00E95E1B = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = F67AG5JPQE;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A70DE3461D93E12C00E95E1B;
+					};
+					A70DE36D1D93E12C00E95E1B = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = F67AG5JPQE;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A70DE3461D93E12C00E95E1B;
+					};
+				};
+			};
+			buildConfigurationList = A70DE3421D93E12C00E95E1B /* Build configuration list for PBXProject "cell重叠解决方法" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A70DE33E1D93E12C00E95E1B;
+			productRefGroup = A70DE3481D93E12C00E95E1B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A70DE3461D93E12C00E95E1B /* cell重叠解决方法 */,
+				A70DE3621D93E12C00E95E1B /* cell重叠解决方法Tests */,
+				A70DE36D1D93E12C00E95E1B /* cell重叠解决方法UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A70DE3451D93E12C00E95E1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70DE35D1D93E12C00E95E1B /* LaunchScreen.storyboard in Resources */,
+				A70DE35A1D93E12C00E95E1B /* Assets.xcassets in Resources */,
+				A70DE3551D93E12C00E95E1B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70DE3611D93E12C00E95E1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70DE36C1D93E12C00E95E1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A70DE3431D93E12C00E95E1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70DE3521D93E12C00E95E1B /* ViewController.m in Sources */,
+				A70DE3581D93E12C00E95E1B /* cell______.xcdatamodeld in Sources */,
+				A70DE34F1D93E12C00E95E1B /* AppDelegate.m in Sources */,
+				A70DE34C1D93E12C00E95E1B /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70DE35F1D93E12C00E95E1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70DE3681D93E12C00E95E1B /* cell______Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70DE36A1D93E12C00E95E1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70DE3731D93E12C00E95E1B /* cell______UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A70DE3651D93E12C00E95E1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A70DE3461D93E12C00E95E1B /* cell重叠解决方法 */;
+			targetProxy = A70DE3641D93E12C00E95E1B /* PBXContainerItemProxy */;
+		};
+		A70DE3701D93E12C00E95E1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A70DE3461D93E12C00E95E1B /* cell重叠解决方法 */;
+			targetProxy = A70DE36F1D93E12C00E95E1B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A70DE3531D93E12C00E95E1B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A70DE3541D93E12C00E95E1B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A70DE35B1D93E12C00E95E1B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A70DE35C1D93E12C00E95E1B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A70DE3751D93E12C00E95E1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A70DE3761D93E12C00E95E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A70DE3781D93E12C00E95E1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F67AG5JPQE;
+				INFOPLIST_FILE = "cell重叠解决方法/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.cell------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A70DE3791D93E12C00E95E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F67AG5JPQE;
+				INFOPLIST_FILE = "cell重叠解决方法/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.cell------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A70DE37B1D93E12C00E95E1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = F67AG5JPQE;
+				INFOPLIST_FILE = "cell重叠解决方法Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.cell------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cell重叠解决方法.app/cell重叠解决方法";
+			};
+			name = Debug;
+		};
+		A70DE37C1D93E12C00E95E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = F67AG5JPQE;
+				INFOPLIST_FILE = "cell重叠解决方法Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.cell------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cell重叠解决方法.app/cell重叠解决方法";
+			};
+			name = Release;
+		};
+		A70DE37E1D93E12C00E95E1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = F67AG5JPQE;
+				INFOPLIST_FILE = "cell重叠解决方法UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.cell------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "cell重叠解决方法";
+			};
+			name = Debug;
+		};
+		A70DE37F1D93E12C00E95E1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = F67AG5JPQE;
+				INFOPLIST_FILE = "cell重叠解决方法UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.cell------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "cell重叠解决方法";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A70DE3421D93E12C00E95E1B /* Build configuration list for PBXProject "cell重叠解决方法" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70DE3751D93E12C00E95E1B /* Debug */,
+				A70DE3761D93E12C00E95E1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A70DE3771D93E12C00E95E1B /* Build configuration list for PBXNativeTarget "cell重叠解决方法" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70DE3781D93E12C00E95E1B /* Debug */,
+				A70DE3791D93E12C00E95E1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A70DE37A1D93E12C00E95E1B /* Build configuration list for PBXNativeTarget "cell重叠解决方法Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70DE37B1D93E12C00E95E1B /* Debug */,
+				A70DE37C1D93E12C00E95E1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A70DE37D1D93E12C00E95E1B /* Build configuration list for PBXNativeTarget "cell重叠解决方法UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70DE37E1D93E12C00E95E1B /* Debug */,
+				A70DE37F1D93E12C00E95E1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A70DE3561D93E12C00E95E1B /* cell______.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A70DE3571D93E12C00E95E1B /* cell______.xcdatamodel */,
+			);
+			currentVersion = A70DE3571D93E12C00E95E1B /* cell______.xcdatamodel */;
+			path = "cell______.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A70DE33F1D93E12C00E95E1B /* Project object */;
+}

@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A7AE52891DAA4969004E0D89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE52881DAA4969004E0D89 /* main.m */; };
+		A7AE528C1DAA4969004E0D89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE528B1DAA4969004E0D89 /* AppDelegate.m */; };
+		A7AE528F1DAA4969004E0D89 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE528E1DAA4969004E0D89 /* ViewController.m */; };
+		A7AE52921DAA4969004E0D89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7AE52901DAA4969004E0D89 /* Main.storyboard */; };
+		A7AE52951DAA4969004E0D89 /* ___CMMotionManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7AE52931DAA4969004E0D89 /* ___CMMotionManager.xcdatamodeld */; };
+		A7AE52971DAA4969004E0D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7AE52961DAA4969004E0D89 /* Assets.xcassets */; };
+		A7AE529A1DAA4969004E0D89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7AE52981DAA4969004E0D89 /* LaunchScreen.storyboard */; };
+		A7AE52A51DAA4969004E0D89 /* ___CMMotionManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE52A41DAA4969004E0D89 /* ___CMMotionManagerTests.m */; };
+		A7AE52B01DAA4969004E0D89 /* ___CMMotionManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE52AF1DAA4969004E0D89 /* ___CMMotionManagerUITests.m */; };
+		A7AE52BF1DAA49AC004E0D89 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AE52BE1DAA49AC004E0D89 /* CoreMotion.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A7AE52A11DAA4969004E0D89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7AE527C1DAA4969004E0D89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7AE52831DAA4969004E0D89;
+			remoteInfo = "加速计CMMotionManager";
+		};
+		A7AE52AC1DAA4969004E0D89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7AE527C1DAA4969004E0D89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7AE52831DAA4969004E0D89;
+			remoteInfo = "加速计CMMotionManager";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A7AE52841DAA4969004E0D89 /* 加速计CMMotionManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "加速计CMMotionManager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7AE52881DAA4969004E0D89 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A7AE528A1DAA4969004E0D89 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A7AE528B1DAA4969004E0D89 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A7AE528D1DAA4969004E0D89 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A7AE528E1DAA4969004E0D89 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A7AE52911DAA4969004E0D89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A7AE52941DAA4969004E0D89 /* ___CMMotionManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "___CMMotionManager.xcdatamodel"; sourceTree = "<group>"; };
+		A7AE52961DAA4969004E0D89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A7AE52991DAA4969004E0D89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A7AE529B1DAA4969004E0D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7AE52A01DAA4969004E0D89 /* 加速计CMMotionManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "加速计CMMotionManagerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7AE52A41DAA4969004E0D89 /* ___CMMotionManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___CMMotionManagerTests.m"; sourceTree = "<group>"; };
+		A7AE52A61DAA4969004E0D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7AE52AB1DAA4969004E0D89 /* 加速计CMMotionManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "加速计CMMotionManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7AE52AF1DAA4969004E0D89 /* ___CMMotionManagerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___CMMotionManagerUITests.m"; sourceTree = "<group>"; };
+		A7AE52B11DAA4969004E0D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7AE52BE1DAA49AC004E0D89 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A7AE52811DAA4969004E0D89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7AE52BF1DAA49AC004E0D89 /* CoreMotion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7AE529D1DAA4969004E0D89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7AE52A81DAA4969004E0D89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A7AE527B1DAA4969004E0D89 = {
+			isa = PBXGroup;
+			children = (
+				A7AE52861DAA4969004E0D89 /* 加速计CMMotionManager */,
+				A7AE52A31DAA4969004E0D89 /* 加速计CMMotionManagerTests */,
+				A7AE52AE1DAA4969004E0D89 /* 加速计CMMotionManagerUITests */,
+				A7AE52851DAA4969004E0D89 /* Products */,
+				A7AE52BD1DAA49AC004E0D89 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A7AE52851DAA4969004E0D89 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE52841DAA4969004E0D89 /* 加速计CMMotionManager.app */,
+				A7AE52A01DAA4969004E0D89 /* 加速计CMMotionManagerTests.xctest */,
+				A7AE52AB1DAA4969004E0D89 /* 加速计CMMotionManagerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7AE52861DAA4969004E0D89 /* 加速计CMMotionManager */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE528A1DAA4969004E0D89 /* AppDelegate.h */,
+				A7AE528B1DAA4969004E0D89 /* AppDelegate.m */,
+				A7AE528D1DAA4969004E0D89 /* ViewController.h */,
+				A7AE528E1DAA4969004E0D89 /* ViewController.m */,
+				A7AE52901DAA4969004E0D89 /* Main.storyboard */,
+				A7AE52961DAA4969004E0D89 /* Assets.xcassets */,
+				A7AE52981DAA4969004E0D89 /* LaunchScreen.storyboard */,
+				A7AE529B1DAA4969004E0D89 /* Info.plist */,
+				A7AE52931DAA4969004E0D89 /* ___CMMotionManager.xcdatamodeld */,
+				A7AE52871DAA4969004E0D89 /* Supporting Files */,
+			);
+			path = "加速计CMMotionManager";
+			sourceTree = "<group>";
+		};
+		A7AE52871DAA4969004E0D89 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE52881DAA4969004E0D89 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A7AE52A31DAA4969004E0D89 /* 加速计CMMotionManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE52A41DAA4969004E0D89 /* ___CMMotionManagerTests.m */,
+				A7AE52A61DAA4969004E0D89 /* Info.plist */,
+			);
+			path = "加速计CMMotionManagerTests";
+			sourceTree = "<group>";
+		};
+		A7AE52AE1DAA4969004E0D89 /* 加速计CMMotionManagerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE52AF1DAA4969004E0D89 /* ___CMMotionManagerUITests.m */,
+				A7AE52B11DAA4969004E0D89 /* Info.plist */,
+			);
+			path = "加速计CMMotionManagerUITests";
+			sourceTree = "<group>";
+		};
+		A7AE52BD1DAA49AC004E0D89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE52BE1DAA49AC004E0D89 /* CoreMotion.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A7AE52831DAA4969004E0D89 /* 加速计CMMotionManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7AE52B41DAA4969004E0D89 /* Build configuration list for PBXNativeTarget "加速计CMMotionManager" */;
+			buildPhases = (
+				A7AE52801DAA4969004E0D89 /* Sources */,
+				A7AE52811DAA4969004E0D89 /* Frameworks */,
+				A7AE52821DAA4969004E0D89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "加速计CMMotionManager";
+			productName = "加速计CMMotionManager";
+			productReference = A7AE52841DAA4969004E0D89 /* 加速计CMMotionManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A7AE529F1DAA4969004E0D89 /* 加速计CMMotionManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7AE52B71DAA4969004E0D89 /* Build configuration list for PBXNativeTarget "加速计CMMotionManagerTests" */;
+			buildPhases = (
+				A7AE529C1DAA4969004E0D89 /* Sources */,
+				A7AE529D1DAA4969004E0D89 /* Frameworks */,
+				A7AE529E1DAA4969004E0D89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7AE52A21DAA4969004E0D89 /* PBXTargetDependency */,
+			);
+			name = "加速计CMMotionManagerTests";
+			productName = "加速计CMMotionManagerTests";
+			productReference = A7AE52A01DAA4969004E0D89 /* 加速计CMMotionManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A7AE52AA1DAA4969004E0D89 /* 加速计CMMotionManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7AE52BA1DAA4969004E0D89 /* Build configuration list for PBXNativeTarget "加速计CMMotionManagerUITests" */;
+			buildPhases = (
+				A7AE52A71DAA4969004E0D89 /* Sources */,
+				A7AE52A81DAA4969004E0D89 /* Frameworks */,
+				A7AE52A91DAA4969004E0D89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7AE52AD1DAA4969004E0D89 /* PBXTargetDependency */,
+			);
+			name = "加速计CMMotionManagerUITests";
+			productName = "加速计CMMotionManagerUITests";
+			productReference = A7AE52AB1DAA4969004E0D89 /* 加速计CMMotionManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A7AE527C1DAA4969004E0D89 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = yosemite;
+				TargetAttributes = {
+					A7AE52831DAA4969004E0D89 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+					};
+					A7AE529F1DAA4969004E0D89 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A7AE52831DAA4969004E0D89;
+					};
+					A7AE52AA1DAA4969004E0D89 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A7AE52831DAA4969004E0D89;
+					};
+				};
+			};
+			buildConfigurationList = A7AE527F1DAA4969004E0D89 /* Build configuration list for PBXProject "加速计CMMotionManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A7AE527B1DAA4969004E0D89;
+			productRefGroup = A7AE52851DAA4969004E0D89 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A7AE52831DAA4969004E0D89 /* 加速计CMMotionManager */,
+				A7AE529F1DAA4969004E0D89 /* 加速计CMMotionManagerTests */,
+				A7AE52AA1DAA4969004E0D89 /* 加速计CMMotionManagerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A7AE52821DAA4969004E0D89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7AE529A1DAA4969004E0D89 /* LaunchScreen.storyboard in Resources */,
+				A7AE52971DAA4969004E0D89 /* Assets.xcassets in Resources */,
+				A7AE52921DAA4969004E0D89 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7AE529E1DAA4969004E0D89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7AE52A91DAA4969004E0D89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A7AE52801DAA4969004E0D89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7AE528F1DAA4969004E0D89 /* ViewController.m in Sources */,
+				A7AE52951DAA4969004E0D89 /* ___CMMotionManager.xcdatamodeld in Sources */,
+				A7AE528C1DAA4969004E0D89 /* AppDelegate.m in Sources */,
+				A7AE52891DAA4969004E0D89 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7AE529C1DAA4969004E0D89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7AE52A51DAA4969004E0D89 /* ___CMMotionManagerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7AE52A71DAA4969004E0D89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7AE52B01DAA4969004E0D89 /* ___CMMotionManagerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A7AE52A21DAA4969004E0D89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7AE52831DAA4969004E0D89 /* 加速计CMMotionManager */;
+			targetProxy = A7AE52A11DAA4969004E0D89 /* PBXContainerItemProxy */;
+		};
+		A7AE52AD1DAA4969004E0D89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7AE52831DAA4969004E0D89 /* 加速计CMMotionManager */;
+			targetProxy = A7AE52AC1DAA4969004E0D89 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A7AE52901DAA4969004E0D89 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7AE52911DAA4969004E0D89 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A7AE52981DAA4969004E0D89 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7AE52991DAA4969004E0D89 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A7AE52B21DAA4969004E0D89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A7AE52B31DAA4969004E0D89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A7AE52B51DAA4969004E0D89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "加速计CMMotionManager/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.---CMMotionManager";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A7AE52B61DAA4969004E0D89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "加速计CMMotionManager/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.---CMMotionManager";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A7AE52B81DAA4969004E0D89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "加速计CMMotionManagerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.---CMMotionManagerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/加速计CMMotionManager.app/加速计CMMotionManager";
+			};
+			name = Debug;
+		};
+		A7AE52B91DAA4969004E0D89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "加速计CMMotionManagerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.---CMMotionManagerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/加速计CMMotionManager.app/加速计CMMotionManager";
+			};
+			name = Release;
+		};
+		A7AE52BB1DAA4969004E0D89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "加速计CMMotionManagerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.---CMMotionManagerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "加速计CMMotionManager";
+			};
+			name = Debug;
+		};
+		A7AE52BC1DAA4969004E0D89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "加速计CMMotionManagerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.---CMMotionManagerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "加速计CMMotionManager";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A7AE527F1DAA4969004E0D89 /* Build configuration list for PBXProject "加速计CMMotionManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7AE52B21DAA4969004E0D89 /* Debug */,
+				A7AE52B31DAA4969004E0D89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7AE52B41DAA4969004E0D89 /* Build configuration list for PBXNativeTarget "加速计CMMotionManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7AE52B51DAA4969004E0D89 /* Debug */,
+				A7AE52B61DAA4969004E0D89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7AE52B71DAA4969004E0D89 /* Build configuration list for PBXNativeTarget "加速计CMMotionManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7AE52B81DAA4969004E0D89 /* Debug */,
+				A7AE52B91DAA4969004E0D89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7AE52BA1DAA4969004E0D89 /* Build configuration list for PBXNativeTarget "加速计CMMotionManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7AE52BB1DAA4969004E0D89 /* Debug */,
+				A7AE52BC1DAA4969004E0D89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A7AE52931DAA4969004E0D89 /* ___CMMotionManager.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A7AE52941DAA4969004E0D89 /* ___CMMotionManager.xcdatamodel */,
+			);
+			currentVersion = A7AE52941DAA4969004E0D89 /* ___CMMotionManager.xcdatamodel */;
+			path = "___CMMotionManager.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A7AE527C1DAA4969004E0D89 /* Project object */;
+}

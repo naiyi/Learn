@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NextViewController">
+            <connections>
+                <outlet property="textField" destination="oUu-dK-BDN" id="Z0W-pf-sZw"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oUu-dK-BDN">
+                    <rect key="frame" x="100" y="100" width="175" height="30"/>
+                    <color key="backgroundColor" red="0.97014581110922948" green="0.98105533064622885" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="MuE-Pr-k27"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nB-xr-jx5">
+                    <rect key="frame" x="136" y="268" width="122" height="42"/>
+                    <color key="backgroundColor" red="1" green="0.37757686800528156" blue="0.60342060959004218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="adD-LK-pLa"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="btn:" destination="-1" eventType="touchUpInside" id="9vc-Hi-0Va"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6nB-xr-jx5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="136" id="8lU-W6-1jJ"/>
+                <constraint firstAttribute="trailing" secondItem="oUu-dK-BDN" secondAttribute="trailing" constant="100" id="A2c-3A-hE8"/>
+                <constraint firstAttribute="trailing" secondItem="6nB-xr-jx5" secondAttribute="trailing" constant="117" id="RPn-pr-JMq"/>
+                <constraint firstItem="6nB-xr-jx5" firstAttribute="top" secondItem="oUu-dK-BDN" secondAttribute="bottom" constant="138" id="YLW-ae-AHT"/>
+                <constraint firstItem="oUu-dK-BDN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="bja-5L-8Hk"/>
+                <constraint firstItem="oUu-dK-BDN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="rOW-Yh-O0K"/>
+            </constraints>
+            <point key="canvasLocation" x="25.5" y="51.5"/>
+        </view>
+    </objects>
+</document>

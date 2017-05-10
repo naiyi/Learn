@@ -1,0 +1,6 @@
+framework module AeroIP_SDK {
+  umbrella header "AeroIP_SDK.h"
+
+  export *
+  module * { export * }
+}

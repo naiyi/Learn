@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BB1BB821DE2A903005165B5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB1BB811DE2A903005165B5 /* Security.framework */; };
+		1BDD20C31DCC593E0085B41A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD20C21DCC593E0085B41A /* main.m */; };
+		1BDD20C61DCC593E0085B41A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD20C51DCC593E0085B41A /* AppDelegate.m */; };
+		1BDD20C91DCC593E0085B41A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD20C81DCC593E0085B41A /* ViewController.m */; };
+		1BDD20CC1DCC593E0085B41A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BDD20CA1DCC593E0085B41A /* Main.storyboard */; };
+		1BDD20CF1DCC593E0085B41A /* _____ip__.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD20CD1DCC593E0085B41A /* _____ip__.xcdatamodeld */; };
+		1BDD20D11DCC593E0085B41A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BDD20D01DCC593E0085B41A /* Assets.xcassets */; };
+		1BDD20D41DCC593E0085B41A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BDD20D21DCC593E0085B41A /* LaunchScreen.storyboard */; };
+		1BDD20DF1DCC593F0085B41A /* _____ip__Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD20DE1DCC593F0085B41A /* _____ip__Tests.m */; };
+		1BDD20EA1DCC593F0085B41A /* _____ip__UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD20E91DCC593F0085B41A /* _____ip__UITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1BDD20DB1DCC593F0085B41A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BDD20B61DCC593E0085B41A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BDD20BD1DCC593E0085B41A;
+			remoteInfo = "获取设备的ip地址";
+		};
+		1BDD20E61DCC593F0085B41A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BDD20B61DCC593E0085B41A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BDD20BD1DCC593E0085B41A;
+			remoteInfo = "获取设备的ip地址";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1BB1BB811DE2A903005165B5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1BDD20BE1DCC593E0085B41A /* 获取设备的ip地址.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "获取设备的ip地址.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BDD20C21DCC593E0085B41A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1BDD20C41DCC593E0085B41A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1BDD20C51DCC593E0085B41A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1BDD20C71DCC593E0085B41A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1BDD20C81DCC593E0085B41A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1BDD20CB1DCC593E0085B41A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1BDD20CE1DCC593E0085B41A /* _____ip__.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_____ip__.xcdatamodel"; sourceTree = "<group>"; };
+		1BDD20D01DCC593E0085B41A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1BDD20D31DCC593E0085B41A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1BDD20D51DCC593E0085B41A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BDD20DA1DCC593F0085B41A /* 获取设备的ip地址Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "获取设备的ip地址Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BDD20DE1DCC593F0085B41A /* _____ip__Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_____ip__Tests.m"; sourceTree = "<group>"; };
+		1BDD20E01DCC593F0085B41A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BDD20E51DCC593F0085B41A /* 获取设备的ip地址UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "获取设备的ip地址UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BDD20E91DCC593F0085B41A /* _____ip__UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_____ip__UITests.m"; sourceTree = "<group>"; };
+		1BDD20EB1DCC593F0085B41A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BDD20BB1DCC593E0085B41A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BB1BB821DE2A903005165B5 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BDD20D71DCC593F0085B41A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BDD20E21DCC593F0085B41A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BB1BB801DE2A902005165B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1BB1BB811DE2A903005165B5 /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1BDD20B51DCC593E0085B41A = {
+			isa = PBXGroup;
+			children = (
+				1BDD20C01DCC593E0085B41A /* 获取设备的ip地址 */,
+				1BDD20DD1DCC593F0085B41A /* 获取设备的ip地址Tests */,
+				1BDD20E81DCC593F0085B41A /* 获取设备的ip地址UITests */,
+				1BDD20BF1DCC593E0085B41A /* Products */,
+				1BB1BB801DE2A902005165B5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1BDD20BF1DCC593E0085B41A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BDD20BE1DCC593E0085B41A /* 获取设备的ip地址.app */,
+				1BDD20DA1DCC593F0085B41A /* 获取设备的ip地址Tests.xctest */,
+				1BDD20E51DCC593F0085B41A /* 获取设备的ip地址UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BDD20C01DCC593E0085B41A /* 获取设备的ip地址 */ = {
+			isa = PBXGroup;
+			children = (
+				1BDD20C41DCC593E0085B41A /* AppDelegate.h */,
+				1BDD20C51DCC593E0085B41A /* AppDelegate.m */,
+				1BDD20C71DCC593E0085B41A /* ViewController.h */,
+				1BDD20C81DCC593E0085B41A /* ViewController.m */,
+				1BDD20CA1DCC593E0085B41A /* Main.storyboard */,
+				1BDD20D01DCC593E0085B41A /* Assets.xcassets */,
+				1BDD20D21DCC593E0085B41A /* LaunchScreen.storyboard */,
+				1BDD20D51DCC593E0085B41A /* Info.plist */,
+				1BDD20CD1DCC593E0085B41A /* _____ip__.xcdatamodeld */,
+				1BDD20C11DCC593E0085B41A /* Supporting Files */,
+			);
+			path = "获取设备的ip地址";
+			sourceTree = "<group>";
+		};
+		1BDD20C11DCC593E0085B41A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1BDD20C21DCC593E0085B41A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BDD20DD1DCC593F0085B41A /* 获取设备的ip地址Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1BDD20DE1DCC593F0085B41A /* _____ip__Tests.m */,
+				1BDD20E01DCC593F0085B41A /* Info.plist */,
+			);
+			path = "获取设备的ip地址Tests";
+			sourceTree = "<group>";
+		};
+		1BDD20E81DCC593F0085B41A /* 获取设备的ip地址UITests */ = {
+			isa = PBXGroup;
+			children = (
+				1BDD20E91DCC593F0085B41A /* _____ip__UITests.m */,
+				1BDD20EB1DCC593F0085B41A /* Info.plist */,
+			);
+			path = "获取设备的ip地址UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BDD20BD1DCC593E0085B41A /* 获取设备的ip地址 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BDD20EE1DCC593F0085B41A /* Build configuration list for PBXNativeTarget "获取设备的ip地址" */;
+			buildPhases = (
+				1BDD20BA1DCC593E0085B41A /* Sources */,
+				1BDD20BB1DCC593E0085B41A /* Frameworks */,
+				1BDD20BC1DCC593E0085B41A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "获取设备的ip地址";
+			productName = "获取设备的ip地址";
+			productReference = 1BDD20BE1DCC593E0085B41A /* 获取设备的ip地址.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1BDD20D91DCC593F0085B41A /* 获取设备的ip地址Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BDD20F11DCC593F0085B41A /* Build configuration list for PBXNativeTarget "获取设备的ip地址Tests" */;
+			buildPhases = (
+				1BDD20D61DCC593F0085B41A /* Sources */,
+				1BDD20D71DCC593F0085B41A /* Frameworks */,
+				1BDD20D81DCC593F0085B41A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BDD20DC1DCC593F0085B41A /* PBXTargetDependency */,
+			);
+			name = "获取设备的ip地址Tests";
+			productName = "获取设备的ip地址Tests";
+			productReference = 1BDD20DA1DCC593F0085B41A /* 获取设备的ip地址Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1BDD20E41DCC593F0085B41A /* 获取设备的ip地址UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BDD20F41DCC593F0085B41A /* Build configuration list for PBXNativeTarget "获取设备的ip地址UITests" */;
+			buildPhases = (
+				1BDD20E11DCC593F0085B41A /* Sources */,
+				1BDD20E21DCC593F0085B41A /* Frameworks */,
+				1BDD20E31DCC593F0085B41A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BDD20E71DCC593F0085B41A /* PBXTargetDependency */,
+			);
+			name = "获取设备的ip地址UITests";
+			productName = "获取设备的ip地址UITests";
+			productReference = 1BDD20E51DCC593F0085B41A /* 获取设备的ip地址UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BDD20B61DCC593E0085B41A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = yosemite;
+				TargetAttributes = {
+					1BDD20BD1DCC593E0085B41A = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+					};
+					1BDD20D91DCC593F0085B41A = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1BDD20BD1DCC593E0085B41A;
+					};
+					1BDD20E41DCC593F0085B41A = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1BDD20BD1DCC593E0085B41A;
+					};
+				};
+			};
+			buildConfigurationList = 1BDD20B91DCC593E0085B41A /* Build configuration list for PBXProject "获取设备的ip地址" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1BDD20B51DCC593E0085B41A;
+			productRefGroup = 1BDD20BF1DCC593E0085B41A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BDD20BD1DCC593E0085B41A /* 获取设备的ip地址 */,
+				1BDD20D91DCC593F0085B41A /* 获取设备的ip地址Tests */,
+				1BDD20E41DCC593F0085B41A /* 获取设备的ip地址UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BDD20BC1DCC593E0085B41A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BDD20D41DCC593E0085B41A /* LaunchScreen.storyboard in Resources */,
+				1BDD20D11DCC593E0085B41A /* Assets.xcassets in Resources */,
+				1BDD20CC1DCC593E0085B41A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BDD20D81DCC593F0085B41A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BDD20E31DCC593F0085B41A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BDD20BA1DCC593E0085B41A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BDD20CF1DCC593E0085B41A /* _____ip__.xcdatamodeld in Sources */,
+				1BDD20C91DCC593E0085B41A /* ViewController.m in Sources */,
+				1BDD20C61DCC593E0085B41A /* AppDelegate.m in Sources */,
+				1BDD20C31DCC593E0085B41A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BDD20D61DCC593F0085B41A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BDD20DF1DCC593F0085B41A /* _____ip__Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BDD20E11DCC593F0085B41A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BDD20EA1DCC593F0085B41A /* _____ip__UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BDD20DC1DCC593F0085B41A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BDD20BD1DCC593E0085B41A /* 获取设备的ip地址 */;
+			targetProxy = 1BDD20DB1DCC593F0085B41A /* PBXContainerItemProxy */;
+		};
+		1BDD20E71DCC593F0085B41A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BDD20BD1DCC593E0085B41A /* 获取设备的ip地址 */;
+			targetProxy = 1BDD20E61DCC593F0085B41A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1BDD20CA1DCC593E0085B41A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BDD20CB1DCC593E0085B41A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1BDD20D21DCC593E0085B41A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BDD20D31DCC593E0085B41A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BDD20EC1DCC593F0085B41A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1BDD20ED1DCC593F0085B41A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1BDD20EF1DCC593F0085B41A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取设备的ip地址/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/获取设备的ip地址",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.-----ip--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1BDD20F01DCC593F0085B41A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取设备的ip地址/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/获取设备的ip地址",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.-----ip--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1BDD20F21DCC593F0085B41A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取设备的ip地址Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.-----ip--Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/获取设备的ip地址.app/获取设备的ip地址";
+			};
+			name = Debug;
+		};
+		1BDD20F31DCC593F0085B41A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取设备的ip地址Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.-----ip--Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/获取设备的ip地址.app/获取设备的ip地址";
+			};
+			name = Release;
+		};
+		1BDD20F51DCC593F0085B41A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取设备的ip地址UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.-----ip--UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "获取设备的ip地址";
+			};
+			name = Debug;
+		};
+		1BDD20F61DCC593F0085B41A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "获取设备的ip地址UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.-----ip--UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "获取设备的ip地址";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BDD20B91DCC593E0085B41A /* Build configuration list for PBXProject "获取设备的ip地址" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BDD20EC1DCC593F0085B41A /* Debug */,
+				1BDD20ED1DCC593F0085B41A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BDD20EE1DCC593F0085B41A /* Build configuration list for PBXNativeTarget "获取设备的ip地址" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BDD20EF1DCC593F0085B41A /* Debug */,
+				1BDD20F01DCC593F0085B41A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BDD20F11DCC593F0085B41A /* Build configuration list for PBXNativeTarget "获取设备的ip地址Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BDD20F21DCC593F0085B41A /* Debug */,
+				1BDD20F31DCC593F0085B41A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BDD20F41DCC593F0085B41A /* Build configuration list for PBXNativeTarget "获取设备的ip地址UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BDD20F51DCC593F0085B41A /* Debug */,
+				1BDD20F61DCC593F0085B41A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1BDD20CD1DCC593E0085B41A /* _____ip__.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1BDD20CE1DCC593E0085B41A /* _____ip__.xcdatamodel */,
+			);
+			currentVersion = 1BDD20CE1DCC593E0085B41A /* _____ip__.xcdatamodel */;
+			path = "_____ip__.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1BDD20B61DCC593E0085B41A /* Project object */;
+}

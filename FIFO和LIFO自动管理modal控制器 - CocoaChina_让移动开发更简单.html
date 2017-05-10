@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://www.cocoachina.com/ios/20170417/19060.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <title>FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单</title>
+    <meta name="keywords" content="弹窗,Runtime,多线程iPhone开发,iOS开发,iPad开发,Mac开发,苹果开发中文站,iPhone开发中文站,CocoaChina首页, Mac OS开发, Cocoa介绍,移动互联网,触控科技,Cocoa,Apple,developer,iOS,iPhone,iPad,iMac,iPod Touch,iPhone5,iPhone4S,iPad3,招聘,iPhone程序员,Objective-c,iPhone应用外包,ios6,ios面试,Cocos2d-x,cocos2d,iTunes,App Store,苹果开发">
+    <meta name="description" content="CocoaChina前身是全球成立最早规模最大的苹果开发中文站，现致力为所有移动开发者提供资讯服务、问答服务、代码下载、工具库及人才招聘服务">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-tc-cerfication" content="3300a939a1098c27e94457b75a0bb8c1">
+    <script type="text/javascript" async="" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/ga.js"></script><script src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/hm.js"></script><script type="text/javascript" async="" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/ga.js"></script><script async="" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/analytics.js"></script><script type="text/javascript">
+        function gotoMobilePage() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var agent_iphone = /iphone/i;
+            var agent_android = /android/i;
+            //var agent_ipad = /ipad/i;
+            var agent_ipod = /ipod/i;
+            var agent_wphone = /windows phone/i;
+            if(agent_iphone.test(sUserAgent) || agent_android.test(sUserAgent) || agent_ipod.test(sUserAgent) || agent_wphone.test(sUserAgent)){
+                var re = /\/\w+\/\d+\/(\d+)\.html/, 
+                    result = re.exec(window.location.pathname);
+                if ( result )
+                {
+                    window.location.href = "http://www.cocoachina.com/cms/wap.php?action=article&id=" + result[1];
+                } else {
+                    window.location.href = "http://m.cocoachina.com/";
+                }
+            }
+        }
+        gotoMobilePage(); 
+    </script>
+    <link rel="stylesheet" href="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/global.css" media="all">
+    <link rel="stylesheet" href="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/index.css" media="all">
+    <link href="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/module.css" rel="stylesheet">
+    <link href="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/style.css" rel="stylesheet">
+    <link href="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/navheader.css" rel="stylesheet">
+    <script src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/navbar.js"></script>
+    <script type="text/javascript" src="http://s.csbew.com/k.js"></script>
+    
+<script src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/share.js"></script><link rel="stylesheet" href="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/share_style1_32.css"></head>
+<body>
+
+    <div class="nav-header">
+            <div class="nav-header-top">
+                <div class="nav-logo nav-fl"><a href="http://www.cocoachina.com/"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/logo.png"></a></div>
+                <div class="nav-list nav-fl">
+                    <ul>
+                        <li><a href="http://www.cocoachina.com/news/">资讯</a></li>
+                        <li><a href="http://www.cocoachina.com/bbs/">论坛</a></li>
+                        <li><a target="_blank" href="http://code.cocoachina.com/" title="CODE">代码</a></li>
+                        <li><a href="http://tools.cocoachina.com/" title="工具" target="_blank">工具</a></li>
+                        <li><a target="_blank" href="http://job.cocoachina.com/" title="JOB">招聘</a></li>
+                        <li><a target="_blank" href="http://cvp.cocos.com/" title="CVP">CVP</a></li>
+                        <li><a target="_blank" href="http://waikuai.cocoachina.com/" title="waikuai">外快</a></li>
+                        <li><a target="_blank" href="http://blog.cocoachina.com/" title="blog">博客</a><span class="new-item-flag">new</span></li>
+                    </ul>
+                </div>
+                <div class="nav-search nav-fl">
+                    <div class="nav-search-flag" style="display:block"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/search-icon.png"></div>
+                    <div class="nav-search-form" style="display:none">
+                        <form action="http://www.cocoachina.com/cms/plus/search.php" name="formsearch" method="post" target="_blank">
+                            <input type="hidden" name="kwtype" value="0">
+                            <input type="hidden" name="searchtype" value="titlekeyword">
+                            <input name="keyword" type="text" placeholder="站内搜索">
+                            <input type="button">
+                        </form>
+                    </div>
+                </div>
+                <div class="nav-user nav-fr">
+                    <!-- #region 未登录时显示此区域 -->
+                    <div class="nav-user-login" style="display:block">
+                        <a href="http://www.cocoachina.com/bbs/login.php">登录</a>|
+                        <a href="http://www.cocoachina.com/bbs/register.php">注册</a>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region 已登录时显示此区域 -->
+                    <div class="nav-user-name" style="display:none">
+                        <div><alert></alert><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/user.png">Guest</div>
+                        <ul>
+                            <li><a href="http://www.cocoachina.com/ios/20170417/19060.html#"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/i-man.png">我的主页</a></li>
+                            <li><alert></alert><a href="http://www.cocoachina.com/ios/20170417/19060.html#"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/i-mail.png">我的消息</a></li>
+                            <li><a href="http://www.cocoachina.com/ios/20170417/19060.html#"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/i-setting.png">账户设置</a></li>
+                            <li><a href="http://www.cocoachina.com/ios/20170417/index-offline.html"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/i-logout.png">退出</a></li>
+                        </ul>
+                    </div>
+                    <!-- #endregion -->
+                </div>
+                <div class="nav-clear"></div>
+            </div>
+        <div class="nav-header-bottom">
+            <ul>
+                <li><a id="ios" href="http://www.cocoachina.com/ios/" title="ios" class="light">iOS开发</a></li>
+                <li><a id="swift" href="http://www.cocoachina.com/swift/" title="swift">Swift</a></li>
+                <li><a id="app_store" href="http://www.cocoachina.com/appstore/" title="appstore">App Store研究</a></li>
+                <li><a id="design" href="http://www.cocoachina.com/design/" title="design">产品设计</a></li>
+                <li><a id="review" href="http://www.cocoachina.com/review/" title="review">应用</a></li>
+                <li><a id="review" href="http://www.cocoachina.com/vr/" title="review">VR</a></li>
+                <li><a id="game" href="http://www.cocoachina.com/game/" title="game">游戏开发</a></li>
+                <li><a id="apple" href="http://www.cocoachina.com/apple/" title="apple">苹果相关</a></li>
+                <!-- <li><a id="cocos" href="/cocos/" title="cocos">Cocos引擎</a></li>-->
+                <!--<li><a id="webapp" href="/webapp/" title="HTML5">HTML5</a></li>-->
+                <li><a id="android" href="http://www.cocoachina.com/android/" title="android">安卓相关</a></li>
+                <li><a id="market" href="http://www.cocoachina.com/market/" title="market">营销推广</a></li>
+                <li><a id="industry" href="http://www.cocoachina.com/industry/" title="industry">业界动态</a></li>
+                <li><a id="programmer" href="http://www.cocoachina.com/programmer/" title="programmer">程序人生</a></li>
+            </ul>
+        </div>
+    </div>
+
+<script language="javascript">
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPod");
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+        }
+        return flag;
+    }
+    if (!IsPC()){
+           window.location.href = "http://www.cocoachina.com/cms/wap.php?action=article&id=19060";
+    }
+
+</script>
+<!--middle-->
+<div class="middle clearfix">
+    <div class="m-wrap">
+        <div class="m-ad2" style="margin-top:12px;">
+            <div class="ad2-l">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC首页底部左侧72890 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="8012423965"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <div class="ad2-r">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC资讯页25090 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:250px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="9489157162"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        <!--left-->
+        <div class="detail-left float-l">
+            <p class="crumbs"><a href="http://www.cocoachina.com/" title="首页">首页</a> &gt;<a href="http://www.cocoachina.com/ios" title="iOS开发"><span id="type_name">iOS开发</span></a></p>
+            <div class="detail-main">
+                <h2>FIFO和LIFO自动管理modal控制器</h2>
+                <div class="p-ico clearfix">
+                    <div>
+                        <span class="ml0">2017-04-17 05:39</span>
+                        <span>编辑：
+                        <a href="http://www.cocoachina.com/ios/20170417/19060.html" id="field_author" target="_blank">suiling</a></span>
+                        <span>分类：<a href="http://www.cocoachina.com/ios/" target="_blank">iOS开发</a></span>
+                        <span id="source">来源：<a href="http://www.jianshu.com/p/166d2096cbe2" target="_blank">HJaycee投稿</a></span>
+
+                        <div class="float-r">
+                            <span id="artical_comment_cnt"><i></i>2</span>
+                            <span><i class="view"></i><script src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/count.php" language="javascript"></script>282</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="p-ico clearfix">
+                    <p class="related float-l"><a href="http://www.cocoachina.com/cms/tags.php?/%E5%BC%B9%E7%AA%97/" target="_blank">弹窗</a><a href="http://www.cocoachina.com/cms/tags.php?/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_blank">多线程</a><a href="http://www.cocoachina.com/cms/tags.php?/Runtime/" target="_blank">Runtime</a></p>
+                    <input type="hidden" id="article_id" value="19060">
+                </div>
+                <div class="adsbox clearfix">
+                    <div class="float-l">
+                        <div class="float-l"><b>招聘信息：</b></div>
+                        <ul class="float-l" id="invitelist" style="margin-top: 0px;"><li><a href="http://job.cocoachina.com/job/show?id=68363" target="_blank">技术合伙人-后端工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67931" target="_blank">高级iOS开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68061" target="_blank">资深软件研发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68429" target="_blank">搜狐视频】iOS开发实习生（1名）</a></li><li><a href="http://job.cocoachina.com/job/show?id=68369" target="_blank">产品经理</a></li><li><a href="http://job.cocoachina.com/job/show?id=68428" target="_blank">iOS开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68442" target="_blank">Cocos2d-x游戏客户端开发</a></li><li><a href="http://job.cocoachina.com/job/show?id=68415" target="_blank">Java工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68414" target="_blank">Cocos2d-x js高级开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68283" target="_blank">Mac开发</a></li><li><a href="http://job.cocoachina.com/job/show?id=68066" target="_blank">应用开发工程师(iOS)</a></li></ul>
+                    </div>
+                    <div class="float-r">
+                        <a href="javascript:void(0)" class="prev"></a>
+                        <a href="javascript:void(0)" class="next"></a>
+                    </div>
+                </div>
+                <div id="detailbody" class="field_body">
+                    <p><a href="http://www.jianshu.com/p/166d2096cbe2" target="_blank">原文</a></p><p>在一个App中，弹窗一直是一个使用频率较高的提示类控件。它看似简单，却有很多高深的东西值得我们学习。</p><p>众所周知，苹果对用户体验方面的重视程度有多高，在弹窗的处理上就能体现出这一点来。不知你是否留意过新安装的App上的弹窗显示顺序？通常是这样的，如果先出现的是通知权限弹窗然后是定位权限弹窗，前一个弹窗会暂时隐藏，等用户关掉后一个弹窗后才再次弹出来。显然苹果认为后面的弹窗更重要，所以应当优先被用户处理。苹果对弹窗的弹出顺序进行了LIFO（last in, first out）后进先出的管理。</p><p>本文后面会讲解如何使用Runtime和多线程实现LIFO和FIFO （first in, last out）先进先出。先看一下最终效果，这是一个自定义转场动画（TransitionAnimation）的UIViewController。</p><p style="text-align:center"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/1492134463397565.gif" title="1492134463397565.gif" alt="2742645-12168f2f4b919c9b.gif"></p><p style="text-align: center;">最终效果</p><p>UIAlertView支持自动后进先出管理。但是，它从iOS8开始就已经被废弃了，再次使用UIAlertView，代码中会出现黄色警告提示。以下是UIAlertView被废弃的说明，苹果让我们使用UIAlertController去替代前者。</p><div><div id="highlighter_565014" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">UIAlert&nbsp;View&nbsp;is&nbsp;deprecated&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">iOS&nbsp;8.&nbsp;(Note&nbsp;that&nbsp;UIAlert&nbsp;View&nbsp;Delegate&nbsp;is&nbsp;also&nbsp;deprecated.)&nbsp;To&nbsp;create&nbsp;and&nbsp;manage&nbsp;alerts&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">iOS&nbsp;8&nbsp;and&nbsp;later,&nbsp;instead&nbsp;use&nbsp;UIAlert&nbsp;Controller&nbsp;</code><code class="js keyword">with</code>&nbsp;<code class="js plain">a&nbsp;preferred&nbsp;Style&nbsp;of&nbsp;UIAlert&nbsp;Controller&nbsp;Style&nbsp;Alert.</code></div></div></td></tr></tbody></table></div></div><p>UIAlertController是继承于UIViewController并自定义了转场动画的控制器，和其它modal控制器一样调用presentViewController:animated:completion:方法弹出。但是，每个控制器只能拥有一个presentedController，也就是每次只能present一个别的控制器，强行present新的会出现以下提示：</p><div><div id="highlighter_166834" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">Warning:&nbsp;Attempt&nbsp;to&nbsp;present&nbsp;&nbsp;&nbsp;on&nbsp;&nbsp;which&nbsp;is&nbsp;already&nbsp;presenting</code></div></div></td></tr></tbody></table></div></div><p>很多情况下，异步请求结束后，我们需要根据服务器的返回信息进行弹窗提示。却无法保证当时的所在控制器是否已经present了别的UIAlertController，新的弹窗是弹不出来的。所以使用UIAlertController会给我们带来很大的困扰。</p><p>还有一种是把自定义的UIView盖到UIWindow的方式进行弹窗。首先这种方式不支持弹出顺序管理，其次同时弹出多个就是多次执行addSubview方法，很多半透明背景遮罩和view叠加在一起，显示效果不言而喻。更重要的是，很多系统控件也使用了window作为父控件，比如键盘的window是UITextEffectsWindow，频繁使用window可能会出现很多意想不到的问题。</p><p>总结一下上述3种弹窗方式：</p><p style="text-align:center"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/1492134645624813.png" title="1492134645624813.png" alt="QQ截图20170414095035.png"></p><p>现在开始讲解如何用FIFO和LIFO管理modal控制器</p><p>先讲相对简单的FIFO</p><p style="text-align: center;"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/1492134679234868.jpg" title="1492134679234868.jpg" alt="2742645-170464673fd7fe2a.jpg"></p><p style="text-align: center;"><span style="line-height: 1.8;">FIFO流程图</span><br></p><p>效果如下</p><p>ps: gif图中，弹窗2的点击事件中弹出弹窗4，观察在FIFO和LIFO中的区别</p><p style="text-align:center"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/1492139289591126.gif" title="1492139289591126.gif" alt="07.gif"></p><p style="text-align: center;">自定义UIViewController</p><p style="text-align: center;"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/1492139298960573.gif" title="1492139298960573.gif" alt="08.gif"></p><p style="text-align: center;">JCAlertController</p><p>首先，新建一个UIViewController的分类，设计成分类的目的是做到百分百解耦，供控制器调用，并支持对所有继承于UIViewController的控制器进行FIFO和LIFO的modal管理。</p><p>分类的头文件只有一个方法，用来替代系统的presentViewController:animated:completion:方法。该方法接收一个UIViewController参数，一个present完成的回调和dismiss完成的回调。</p><div><div id="highlighter_491802" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//&nbsp;枚举，要用哪种方式管理modal控制器</code></div><div class="line number2 index1 alt1"><code class="js plain">typedef&nbsp;NS_OPTIONS&nbsp;(NSUInteger,&nbsp;JCPresentType)&nbsp;{</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">JCPresentTypeLIFO&nbsp;=&nbsp;0,&nbsp;</code><code class="js comments">//&nbsp;last&nbsp;in,&nbsp;first&nbsp;out</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">JCPresentTypeFIFO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;first&nbsp;in,&nbsp;last&nbsp;out</code></div><div class="line number5 index4 alt2"><code class="js plain">};</code></div></div></td></tr></tbody></table></div></div><div><div id="highlighter_329503" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//&nbsp;新的present方法</code></div><div class="line number2 index1 alt1"><code class="js plain">-&nbsp;(void)jc_presentViewController:(UIViewController&nbsp;*)controller&nbsp;presentType:(JCPresentType)presentType&nbsp;presentCompletion:(void&nbsp;(^)(void))presentCompletion&nbsp;dismissCompletion:(void&nbsp;(^)(void))dismissCompletion;</code></div></div></td></tr></tbody></table></div></div><p>.m文件中，方法的实现是这样的</p><div><div id="highlighter_830031" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//&nbsp;判断JCPresentType枚举类型，跳转到具体方法</code></div><div class="line number2 index1 alt1"><code class="js plain">-&nbsp;(void)jc_presentViewController:(UIViewController&nbsp;*)controller&nbsp;presentType:(JCPresentType)presentType&nbsp;presentCompletion:(void&nbsp;(^)(void))presentCompletion&nbsp;dismissCompletion:(void&nbsp;(^)(void))dismissCompletion&nbsp;{</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(presentType&nbsp;==&nbsp;JCPresentTypeLIFO)&nbsp;{</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;lifoPresentViewController:controller&nbsp;presentCompletion:presentCompletion&nbsp;dismissCompletion:dismissCompletion];</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}&nbsp;</code><code class="js keyword">else</code>&nbsp;<code class="js plain">{</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;fifoPresentViewController:controller&nbsp;presentCompletion:presentCompletion&nbsp;dismissCompletion:dismissCompletion];</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number8 index7 alt1"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><div><div id="highlighter_535306" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//&nbsp;核心方法</code></div><div class="line number2 index1 alt1"><code class="js plain">-&nbsp;(void)fifoPresentViewController:(UIViewController&nbsp;*)controller&nbsp;presentCompletion:(void&nbsp;(^)(void))presentCompletion&nbsp;dismissCompletion:(void&nbsp;(^)(void))dismissCompletion&nbsp;{</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_semaphore_t&nbsp;semaphore&nbsp;=&nbsp;dispatch_semaphore_create(0);</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSBlockOperation&nbsp;*operation&nbsp;=&nbsp;[NSBlockOperation&nbsp;blockOperationWithBlock:^{</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[controller&nbsp;setDeallocCompletion:^{</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(dismissCompletion)&nbsp;{</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dismissCompletion();</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;got&nbsp;to&nbsp;next&nbsp;operation</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_semaphore_signal(semaphore);</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_async(dispatch_get_main_queue(),&nbsp;^{</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;presentViewController:controller&nbsp;animated:YES&nbsp;completion:presentCompletion];</code></div><div class="line number14 index13 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">});</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_semaphore_wait(semaphore,&nbsp;DISPATCH_TIME_FOREVER);</code></div><div class="line number16 index15 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number17 index16 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;put&nbsp;in&nbsp;queue</code></div><div class="line number18 index17 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">([self&nbsp;getOperationQueue].operations.lastObject)&nbsp;{</code></div><div class="line number19 index18 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[operation&nbsp;addDependency:[self&nbsp;getOperationQueue].operations.lastObject];</code></div><div class="line number20 index19 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number21 index20 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[[self&nbsp;getOperationQueue]&nbsp;addOperation:operation];</code></div><div class="line number22 index21 alt1"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><div><div id="highlighter_638707" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//&nbsp;NSOperationQueue单例，用于添加operation</code></div><div class="line number2 index1 alt1"><code class="js plain">-&nbsp;(NSOperationQueue&nbsp;*)getOperationQueue&nbsp;{</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">static&nbsp;NSOperationQueue&nbsp;*operationQueue&nbsp;=&nbsp;nil;</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">static&nbsp;dispatch_once_t&nbsp;onceToken;</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_once(&amp;onceToken,&nbsp;^{</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">operationQueue&nbsp;=&nbsp;[NSOperationQueue&nbsp;</code><code class="js keyword">new</code><code class="js plain">];</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">});</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">operationQueue;</code></div><div class="line number9 index8 alt2"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><div><div id="highlighter_611023" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//&nbsp;使用关联对象存取deallocCompletion这个block</code></div><div class="line number2 index1 alt1"><code class="js plain">-&nbsp;(void)setDeallocCompletion:(void&nbsp;(^)(void))completion&nbsp;{</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">objc_setAssociatedObject(self,&nbsp;@selector(getDeallocCompletion),&nbsp;completion,&nbsp;OBJC_ASSOCIATION_COPY_NONATOMIC);</code></div><div class="line number4 index3 alt1"><code class="js plain">}</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="js plain">-&nbsp;(void&nbsp;(^)(void))getDeallocCompletion&nbsp;{</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">objc_getAssociatedObject(self,&nbsp;_cmd);</code></div><div class="line number8 index7 alt1"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><div><div id="highlighter_737601" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//&nbsp;hook控制器的viewDidDisappear方法，在这个时候调deallocCompletion这个block</code></div><div class="line number2 index1 alt1"><code class="js plain">+&nbsp;(void)load&nbsp;{</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">SEL&nbsp;oldSel&nbsp;=&nbsp;@selector(viewDidDisappear:);</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">SEL&nbsp;newSel&nbsp;=&nbsp;@selector(jc_viewDidDisappear:);</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">Method&nbsp;oldMethod&nbsp;=&nbsp;class_getInstanceMethod([self&nbsp;class],&nbsp;oldSel);</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">Method&nbsp;newMethod&nbsp;=&nbsp;class_getInstanceMethod([self&nbsp;class],&nbsp;newSel);</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">BOOL&nbsp;didAddMethod&nbsp;=&nbsp;class_addMethod(self,&nbsp;oldSel,&nbsp;method_getImplementation(newMethod),&nbsp;method_getTypeEncoding(newMethod));</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(didAddMethod)&nbsp;{</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">class_replaceMethod(self,&nbsp;newSel,&nbsp;method_getImplementation(oldMethod),&nbsp;method_getTypeEncoding(oldMethod));</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}&nbsp;</code><code class="js keyword">else</code>&nbsp;<code class="js plain">{</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">method_exchangeImplementations(oldMethod,&nbsp;newMethod);</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number14 index13 alt1"><code class="js plain">}</code></div><div class="line number15 index14 alt2">&nbsp;</div><div class="line number16 index15 alt1"><code class="js plain">-&nbsp;(void)jc_viewDidDisappear:(BOOL)animated&nbsp;{</code></div><div class="line number17 index16 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;jc_viewDidDisappear:animated];</code></div><div class="line number18 index17 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number19 index18 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">([self&nbsp;getDeallocCompletion]&nbsp;&amp;&amp;&nbsp;![self&nbsp;isTemporarilyDismissed])&nbsp;{</code></div><div class="line number20 index19 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;getDeallocCompletion]();</code></div><div class="line number21 index20 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number22 index21 alt1"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><p>其中dispatch_semaphore_t是多线程中的信号量，dispatch_semaphore_signal函数使信号量加一，dispatch_semaphore_wait使信号量减一，并且在信号量小于0的时候暂停当前线程。</p><p>presentViewController是一个耗时操作，我把这个操作放在NSBlockOperation中，用dispatch_semaphore_t暂停线程直到present完成。并设置每个NSBlockOperation的前后依赖，最后加到NSOperationQueue中，组成一个串行的先进先出队列。</p><p><strong>下面开始讲LIFO</strong></p><p style="text-align: center;"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/1492139759187176.png" title="1492139759187176.png" alt="QQ截图20170414111553.png"></p><p style="text-align: center;"><span style="line-height: 1.8;">LIFO流程图</span><br></p><p>效果如下</p><p style="text-align:center"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/1492139815863256.gif" title="1492139815863256.gif" alt="09.gif"></p><p style="text-align: center;">自定义UIViewController</p><p style="text-align:center"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/1492139824939887.gif" title="1492139824939887.gif" alt="10.gif"></p><p style="text-align: center;">JCAlertController</p><p><span style="white-space: nowrap;"></span></p><div><div id="highlighter_423679" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div><div class="line number52 index51 alt1">52</div><div class="line number53 index52 alt2">53</div><div class="line number54 index53 alt1">54</div><div class="line number55 index54 alt2">55</div><div class="line number56 index55 alt1">56</div><div class="line number57 index56 alt2">57</div><div class="line number58 index57 alt1">58</div><div class="line number59 index58 alt2">59</div><div class="line number60 index59 alt1">60</div><div class="line number61 index60 alt2">61</div><div class="line number62 index61 alt1">62</div><div class="line number63 index62 alt2">63</div><div class="line number64 index63 alt1">64</div><div class="line number65 index64 alt2">65</div><div class="line number66 index65 alt1">66</div><div class="line number67 index66 alt2">67</div><div class="line number68 index67 alt1">68</div><div class="line number69 index68 alt2">69</div><div class="line number70 index69 alt1">70</div><div class="line number71 index70 alt2">71</div><div class="line number72 index71 alt1">72</div><div class="line number73 index72 alt2">73</div><div class="line number74 index73 alt1">74</div><div class="line number75 index74 alt2">75</div><div class="line number76 index75 alt1">76</div><div class="line number77 index76 alt2">77</div><div class="line number78 index77 alt1">78</div><div class="line number79 index78 alt2">79</div><div class="line number80 index79 alt1">80</div><div class="line number81 index80 alt2">81</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//&nbsp;核心方法</code></div><div class="line number2 index1 alt1"><code class="js plain">-&nbsp;(void)lifoPresentViewController:(UIViewController&nbsp;*)controller&nbsp;presentCompletion:(void&nbsp;(^)(void))presentCompletion&nbsp;dismissCompletion:(void&nbsp;(^)(void))dismissCompletion&nbsp;{</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_semaphore_t&nbsp;semaphore&nbsp;=&nbsp;dispatch_semaphore_create(0);</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;put&nbsp;in&nbsp;stack</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSMutableArray&nbsp;*stackControllers&nbsp;=&nbsp;[self&nbsp;getStackControllers];</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(![stackControllers&nbsp;containsObject:controller])&nbsp;{</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[stackControllers&nbsp;addObject:controller];</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSBlockOperation&nbsp;*operation&nbsp;=&nbsp;[NSBlockOperation&nbsp;blockOperationWithBlock:^{</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">__weak&nbsp;</code><code class="js keyword">typeof</code><code class="js plain">(controller)&nbsp;weakController&nbsp;=&nbsp;controller;</code></div><div class="line number14 index13 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[controller&nbsp;setPresentCompletion:presentCompletion];</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[controller&nbsp;setDismissCompletion:dismissCompletion];</code></div><div class="line number16 index15 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[controller&nbsp;setDeallocCompletion:^{</code></div><div class="line number17 index16 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(dismissCompletion)&nbsp;{</code></div><div class="line number18 index17 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dismissCompletion();</code></div><div class="line number19 index18 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number20 index19 alt1">&nbsp;</div><div class="line number21 index20 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;fetch&nbsp;new&nbsp;next&nbsp;controller&nbsp;if&nbsp;exists,&nbsp;because&nbsp;button&nbsp;action&nbsp;after&nbsp;dismiss&nbsp;completion</code></div><div class="line number22 index21 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[weakController&nbsp;setDismissing:YES];</code></div><div class="line number23 index22 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_after(dispatch_time(DISPATCH_TIME_NOW,&nbsp;(int64_t)(CGFLOAT_MIN&nbsp;*&nbsp;NSEC_PER_SEC)),&nbsp;dispatch_get_main_queue(),&nbsp;^{</code></div><div class="line number24 index23 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[weakController&nbsp;setDismissing:NO];</code></div><div class="line number25 index24 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;if&nbsp;the&nbsp;dismiss&nbsp;controller&nbsp;is&nbsp;the&nbsp;last&nbsp;one</code></div><div class="line number26 index25 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(stackControllers.lastObject&nbsp;==&nbsp;controller)&nbsp;{</code></div><div class="line number27 index26 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[stackControllers&nbsp;removeObject:weakController];</code></div><div class="line number28 index27 alt1">&nbsp;</div><div class="line number29 index28 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;is&nbsp;there&nbsp;any&nbsp;previous&nbsp;controllers</code></div><div class="line number30 index29 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(stackControllers.count&nbsp;&gt;&nbsp;0)&nbsp;{</code></div><div class="line number31 index30 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">UIViewController&nbsp;*preController&nbsp;=&nbsp;[stackControllers&nbsp;lastObject];</code></div><div class="line number32 index31 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;lifoPresentViewController:preController&nbsp;presentCompletion:[preController&nbsp;getPresentCompletion]&nbsp;dismissCompletion:[preController&nbsp;getDismissCompletion]];</code></div><div class="line number33 index32 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number34 index33 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}&nbsp;</code><code class="js keyword">else</code>&nbsp;<code class="js plain">{</code></div><div class="line number35 index34 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSUInteger&nbsp;index&nbsp;=&nbsp;[stackControllers&nbsp;indexOfObject:weakController];</code></div><div class="line number36 index35 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[stackControllers&nbsp;removeObject:weakController];</code></div><div class="line number37 index36 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;is&nbsp;there&nbsp;any&nbsp;next&nbsp;controllers</code></div><div class="line number38 index37 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSArray&nbsp;*nextControllers&nbsp;=&nbsp;[stackControllers&nbsp;objectsAtIndexes:[NSIndexSet&nbsp;indexSetWithIndexesInRange:NSMakeRange(index,&nbsp;stackControllers.count&nbsp;-&nbsp;index)]];</code></div><div class="line number39 index38 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">for</code>&nbsp;<code class="js plain">(UIViewController&nbsp;*nextController&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">nextControllers)&nbsp;{</code></div><div class="line number40 index39 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;lifoPresentViewController:nextController&nbsp;presentCompletion:[nextController&nbsp;getPresentCompletion]&nbsp;dismissCompletion:[nextController&nbsp;getDismissCompletion]];</code></div><div class="line number41 index40 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number42 index41 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number43 index42 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">});</code></div><div class="line number44 index43 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number45 index44 alt2">&nbsp;</div><div class="line number46 index45 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;if&nbsp;the&nbsp;previous&nbsp;controller&nbsp;is&nbsp;dismissing,&nbsp;wait&nbsp;it's&nbsp;completion</code></div><div class="line number47 index46 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(stackControllers.count&nbsp;&gt;&nbsp;1)&nbsp;{</code></div><div class="line number48 index47 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">for</code>&nbsp;<code class="js plain">(UIViewController&nbsp;*preController&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">stackControllers)&nbsp;{</code></div><div class="line number49 index48 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">([preController&nbsp;isDismissing])&nbsp;{</code></div><div class="line number50 index49 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">;</code></div><div class="line number51 index50 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number52 index51 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number53 index52 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number54 index53 alt1">&nbsp;</div><div class="line number55 index54 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;present&nbsp;a&nbsp;new&nbsp;controller&nbsp;before&nbsp;dismissing&nbsp;the&nbsp;presented&nbsp;controller&nbsp;if&nbsp;exists</code></div><div class="line number56 index55 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_async(dispatch_get_main_queue(),&nbsp;^{</code></div><div class="line number57 index56 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(self.presentedViewController)&nbsp;{</code></div><div class="line number58 index57 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self.presentedViewController&nbsp;temporarilyDismissViewControllerAnimated:YES&nbsp;completion:^{</code></div><div class="line number59 index58 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;presentViewController:controller&nbsp;animated:YES&nbsp;completion:^{</code></div><div class="line number60 index59 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_semaphore_signal(semaphore);</code></div><div class="line number61 index60 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number62 index61 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number63 index62 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}&nbsp;</code><code class="js keyword">else</code>&nbsp;<code class="js plain">{</code></div><div class="line number64 index63 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;presentViewController:controller&nbsp;animated:YES&nbsp;completion:^{</code></div><div class="line number65 index64 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_semaphore_signal(semaphore);</code></div><div class="line number66 index65 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(presentCompletion)&nbsp;{</code></div><div class="line number67 index66 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">presentCompletion();</code></div><div class="line number68 index67 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number69 index68 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number70 index69 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number71 index70 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">});</code></div><div class="line number72 index71 alt1">&nbsp;</div><div class="line number73 index72 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_semaphore_wait(semaphore,&nbsp;DISPATCH_TIME_FOREVER);</code></div><div class="line number74 index73 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number75 index74 alt2">&nbsp;</div><div class="line number76 index75 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;put&nbsp;in&nbsp;queue</code></div><div class="line number77 index76 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">([self&nbsp;getOperationQueue].operations.lastObject)&nbsp;{</code></div><div class="line number78 index77 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[operation&nbsp;addDependency:[self&nbsp;getOperationQueue].operations.lastObject];</code></div><div class="line number79 index78 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number80 index79 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[[self&nbsp;getOperationQueue]&nbsp;addOperation:operation];</code></div><div class="line number81 index80 alt2"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><div><div id="highlighter_132196" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div><div class="line number52 index51 alt1">52</div><div class="line number53 index52 alt2">53</div><div class="line number54 index53 alt1">54</div><div class="line number55 index54 alt2">55</div><div class="line number56 index55 alt1">56</div><div class="line number57 index56 alt2">57</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//&nbsp;使用关联对象存取dismissCompletion</code></div><div class="line number2 index1 alt1"><code class="js plain">-&nbsp;(void)setDismissCompletion:(void&nbsp;(^)(void))completion&nbsp;{</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">objc_setAssociatedObject(self,&nbsp;@selector(getDismissCompletion),&nbsp;completion,&nbsp;OBJC_ASSOCIATION_COPY_NONATOMIC);</code></div><div class="line number4 index3 alt1"><code class="js plain">}</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="js plain">-&nbsp;(void&nbsp;(^)(void))getDismissCompletion&nbsp;{</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">objc_getAssociatedObject(self,&nbsp;_cmd);</code></div><div class="line number8 index7 alt1"><code class="js plain">}</code></div><div class="line number9 index8 alt2"><code class="js comments">//&nbsp;使用关联对象存取presentCompletion</code></div><div class="line number10 index9 alt1"><code class="js plain">-&nbsp;(void)setPresentCompletion:(void&nbsp;(^)(void))completion&nbsp;{</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">objc_setAssociatedObject(self,&nbsp;@selector(getPresentCompletion),&nbsp;completion,&nbsp;OBJC_ASSOCIATION_COPY_NONATOMIC);</code></div><div class="line number12 index11 alt1"><code class="js plain">}</code></div><div class="line number13 index12 alt2">&nbsp;</div><div class="line number14 index13 alt1"><code class="js plain">-&nbsp;(void&nbsp;(^)(void))getPresentCompletion&nbsp;{</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">objc_getAssociatedObject(self,&nbsp;_cmd);</code></div><div class="line number16 index15 alt1"><code class="js plain">}</code></div><div class="line number17 index16 alt2">&nbsp;</div><div class="line number18 index17 alt1"><code class="js comments">//&nbsp;使用关联对象存取temporarilyDismissed，用于判断是临时隐藏还是用户关闭控制器</code></div><div class="line number19 index18 alt2"><code class="js plain">-&nbsp;(void)setTemporarilyDismissed:(BOOL)temporarilyDismissed&nbsp;{</code></div><div class="line number20 index19 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">objc_setAssociatedObject(self,&nbsp;@selector(isTemporarilyDismissed),&nbsp;@(temporarilyDismissed),&nbsp;OBJC_ASSOCIATION_RETAIN_NONATOMIC);</code></div><div class="line number21 index20 alt2"><code class="js plain">}</code></div><div class="line number22 index21 alt1">&nbsp;</div><div class="line number23 index22 alt2"><code class="js plain">-&nbsp;(BOOL)isTemporarilyDismissed&nbsp;{</code></div><div class="line number24 index23 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSNumber&nbsp;*num&nbsp;=&nbsp;objc_getAssociatedObject(self,&nbsp;_cmd);</code></div><div class="line number25 index24 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">[num&nbsp;boolValue];</code></div><div class="line number26 index25 alt1"><code class="js plain">}</code></div><div class="line number27 index26 alt2">&nbsp;</div><div class="line number28 index27 alt1"><code class="js comments">//&nbsp;使用关联对象存取dismissing</code></div><div class="line number29 index28 alt2"><code class="js plain">-&nbsp;(void)setDismissing:(BOOL)dismissing&nbsp;{</code></div><div class="line number30 index29 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">objc_setAssociatedObject(self,&nbsp;@selector(isDismissing),&nbsp;@(dismissing),&nbsp;OBJC_ASSOCIATION_RETAIN_NONATOMIC);</code></div><div class="line number31 index30 alt2"><code class="js plain">}</code></div><div class="line number32 index31 alt1">&nbsp;</div><div class="line number33 index32 alt2"><code class="js plain">-&nbsp;(BOOL)isDismissing&nbsp;{</code></div><div class="line number34 index33 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSNumber&nbsp;*num&nbsp;=&nbsp;objc_getAssociatedObject(self,&nbsp;_cmd);</code></div><div class="line number35 index34 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">[num&nbsp;boolValue];</code></div><div class="line number36 index35 alt1"><code class="js plain">}</code></div><div class="line number37 index36 alt2">&nbsp;</div><div class="line number38 index37 alt1"><code class="js comments">//&nbsp;数组栈，用于缓存所有传进来的控制器</code></div><div class="line number39 index38 alt2"><code class="js plain">-&nbsp;(NSMutableArray&nbsp;*)getStackControllers&nbsp;{</code></div><div class="line number40 index39 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">static&nbsp;NSMutableArray&nbsp;*stackControllers&nbsp;=&nbsp;nil;</code></div><div class="line number41 index40 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">static&nbsp;dispatch_once_t&nbsp;onceToken;</code></div><div class="line number42 index41 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">dispatch_once(&amp;onceToken,&nbsp;^{</code></div><div class="line number43 index42 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">stackControllers&nbsp;=&nbsp;[NSMutableArray&nbsp;array];</code></div><div class="line number44 index43 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">});</code></div><div class="line number45 index44 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">stackControllers;</code></div><div class="line number46 index45 alt1"><code class="js plain">}</code></div><div class="line number47 index46 alt2">&nbsp;</div><div class="line number48 index47 alt1"><code class="js comments">//&nbsp;临时dismiss方法</code></div><div class="line number49 index48 alt2"><code class="js plain">-&nbsp;(void)temporarilyDismissViewControllerAnimated:&nbsp;(BOOL)flag&nbsp;completion:&nbsp;(void&nbsp;(^&nbsp;__nullable)(void))completion&nbsp;{</code></div><div class="line number50 index49 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;setTemporarilyDismissed:YES];</code></div><div class="line number51 index50 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;dismissViewControllerAnimated:flag&nbsp;completion:^{</code></div><div class="line number52 index51 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;setTemporarilyDismissed:NO];</code></div><div class="line number53 index52 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(completion)&nbsp;{</code></div><div class="line number54 index53 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">completion();</code></div><div class="line number55 index54 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number56 index55 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number57 index56 alt2"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><p>和FIFO方法的区别是，LIFO方法中，每次进来会先判断前面是否已经有控制器了，如果有就先临时dismiss。并且，控制器在被用户关闭的时候，优先判断栈后面有没有还没有弹出来的控制器，然后才判断栈前面有没有控制器。</p><p>这样，一个具有FIFO和LIFO驱动的present分类方法就完成了，敢紧试试吧。</p><p>下载地址：<a href="https://github.com/HJaycee/JCAlertController/blob/master/JCAlertController/JCAlertController/Category/UIViewController+JCPresentQueue.h" target="_blank">UIViewController+JCPresentQueue.h</a></p><p>参考资料</p><ul class=" list-paddingleft-2" style="list-style-type: disc;"><li><p><a href="https://developer.apple.com/reference/dispatch?language=objc" target="_blank">Grand Central Dispatch (GCD) Reference</a></p></li><li><p><a href="https://developer.apple.com/reference/foundation/nsoperationqueue?language=objc" target="_blank">NSOperationQueue</a></p></li><li><p><a href="https://developer.apple.com/reference/foundation/nsoperation?language=objc" target="_blank">NSOperation</a></p></li></ul>
+                </div>
+                <div id="page" style="padding:0"></div>
+
+                <div class="wx_article">
+                    <div class="article_weixin">
+                        <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/article_weixin.jpg" width="131" height="131" alt="搜索CocoaChina微信公众号：CocoaChina">
+                        <div class="article_scan">微信扫一扫</div>
+                        <div class="article_txt"><span style="color:#999999">订阅每日移动开发及APP推广热点资讯<br>公众号：</span>CocoaChina</div>
+                    </div>
+                </div>
+
+               <div class="clearfix tgbox">
+                    <a href="http://www.cocoachina.com/deliver.php" class="tg float-l" target="_blank">我要投稿</a>&nbsp;&nbsp;
+                    <a style="margin-left:10px" href="javascript:void(0)" onclick="add_favors(19060,&#39;FIFO和LIFO自动管理modal控制器&#39;)" class="tg float-l">收藏文章</a>
+                    <div class="share float-r">分享到：
+                        <div class="bdsharebuttonbox" id="sharediv" data-bd-bind="1492401484635"><a href="http://www.cocoachina.com/ios/20170417/19060.html#" class="bds_more" data-cmd="more"></a> <a href="http://www.cocoachina.com/ios/20170417/19060.html#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="http://www.cocoachina.com/ios/20170417/19060.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a> <a href="http://www.cocoachina.com/ios/20170417/19060.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                    </div>
+                </div>
+
+
+                <a class="zanbox" href="javascript:void(0)" id="zanbox" onclick="postDigg(&#39;good&#39;,19060)" title="哎呦，不错噢，赞一个">
+                    <strong id="newdigg">
+                     <script src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/count(1).php" language="javascript"></script>0
+                    </strong>
+                </a>
+            </div>
+
+            <div class="article-prev">上一篇：<a href="http://www.cocoachina.com/ios/20170414/19059.html">iOS与H5的交互【WKWebView】</a> </div>
+            <div class="article-next">下一篇：<a href="http://www.cocoachina.com/ios/20170417/19069.html">Objective-C Method Swizzling</a> </div>
+
+            <!--相关资讯-->
+            <div class="part-wrap clearfix">
+                <h3>相关资讯</h3>
+                <ul class="info-list clearfix">
+                    <li>
+                        <a href="http://www.cocoachina.com/ios/20170412/19038.html" target="_blank" title="iOS提供了包括pthread_t在内的四种多线程方案，其中GCD作为苹果爸爸重视的多线程技术从诞生为止一直受到iOS开发者的热爱，其最大的缺点可能在于基于C语言编写的代码不那么的易于编写。
+早前，笔者">GCD封装</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170328/18962.html" target="_blank" title="很少有人知道weak表其实是一个hash（哈希）表，Key是所指对象的地址，Value是weak指针的地址数组。更多人的人只是知道weak是弱引用，所引用对象的计数器不会加一，并在引用对象被释放的时候自动被设">iOS 底层解析weak的实现原理（包含weak对象的初始化，引用，释放的分析）</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170322/18938.html" target="_blank" title="为什么分类不能自动创建get set方法。老实说，笔者从来没有去思考过这个问题。于是这次通过代码实践跟runtime源码来探究这个问题。">runtime-分类为什么不生成setter和getter</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170301/18804.html" target="_blank" title="本篇博客所聊的Runtime的内容大概有：动态获取类名、动态获取类的成员变量、动态获取类的属性列表、动态获取类的方法列表、动态获取类所遵循的协议列表、动态添加新的方法、类的实例方法实现的">iOS开发之Runtime常用示例总结</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170228/18798.html" target="_blank" title="介绍在实际开发中如何使用Runtime解决相应的问题">Runtime在实际开发中的应用</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170309/18779.html" target="_blank" title="Objective-C中有两个方法比较特殊，它们会在Runtime时根据情况自动调用，下面我们简单分析一下调用时机以及使用场景~">一道题理清Objective-C中的load和initialize</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170214/18679.html" target="_blank" title="分享一个简单点的小项目为下篇iOS-runtime通篇详解和下下篇iOS-第三方框架中看似牛逼的宏打基础.">OC快速开发工具集-TFEasyCoder</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20161230/18481.html" target="_blank" title="Xcode 8诞生有段时日了，不知道大家对其中的新Feature是否都学习过一遍了，今天给大家介绍下Xcode 8中一个很实用的特性，Thread Sanitizer，用来解决平时编写代码时难以调试的多线程问题，顺道梳理下一些">如何用Xcode8解决多线程问题</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20161215/18356.html" target="_blank" title="熟悉 Core Data 的开发者并不认为这个框架用起来很难。如果你遵循这个框架的规则，Core Data 不会让你感到困惑。但通常这也是个问题，开发者犯错往往是因为违反了某条他们并不知道的规则。所以，这">使用Core Data时需要避免的三个常犯错误</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20161206/18295.html" target="_blank" title="线程： 线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执">IOS多线程编程简介</a>
+                     </li>
+
+                </ul>
+            </div>
+            <div class="clearfix" style="margin-top:20px;">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC评论框 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:750px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="8242010366"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <!-- 评论模块start -->
+            
+            <div class="clearfix" id="commnet_list_holder" style="margin-bottom:50px;">
+                <div class="glab-comment-form">
+                    <div class="dcbt">我来说两句</div>
+                    <div class="user-head">
+                        <img id="user_face_url" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt="">
+                    </div>
+                    <div class="form-region">
+                        <textarea name="comment" id="main_comment_content" cols="30" rows="10" placeholder="你怎么看？快来评论一下吧！"></textarea>
+                        <a class="submitform" id="main_comment_bt">发表评论</a>
+                        <div class="unlogin-mask">
+                            <div>您还没有登录！请<a href="http://www.cocoachina.com/bbs/login.php">登录</a>或<a href="http://www.cocoachina.com/bbs/register.php">注册</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="glab-comment-callback-msg" class="glab-comment-info"></div>
+                <div class="glab-comment-title">所有评论（<span>2</span>）</div>
+                <div class="glab-commentlist" id="commentlist">
+                    <a id="refresh_comment_btn" href="javascript:;" onclick="$(&#39;#morecomment&#39;).trigger(&#39;click&#39;)" style="display: none;">刷新评论</a>
+                
+    <div class="glab-comment" rel-data-id="40972" rel-user-id="599810" rel-user-name="Clambers" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=599810" target="_blank"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=599810" target="_blank">Clambers</a><span class="puptime">2017-04-17 01:51:12</span></div>
+            <div class="comment-content">优先级呢，LIFO加上优先级才能实现多次弹框先显示更重要的吧</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+                <div class="glab-comment glab-sub-comment" rel-data-id="40974" rel-user-id="459474" rel-user-name="hjaycee" rel-layer="2">
+                    <div class="comment-left">
+                        <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=459474" target="_blank"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/4594741460528778.png" height="43" width="43" alt=""></a>
+                    </div>
+                    <div class="comment-right">
+                        <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=459474" target="_blank">hjaycee</a><span class="puptime">1小时前</span></div>
+                        <div class="comment-content"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=599810" target="_blank">回复：Clambers</a>越后面调用present方法的越优先，和系统的一样的</div>
+                        <div class="comment-buttons">
+                            <span class="ding">
+                                <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                                <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                                <span class="zancnt">0</span>
+                            </span>
+                            <span class="cai">
+                                <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                                <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                                <span class="zancnt">0</span>
+                            </span>
+                            <span class="replybt">回复</span>
+                        </div>          
+                    </div>
+                </div>
+    </div>  
+</div>
+                <div class="glab-comment-more" id="morecomment" style="display:none">
+                    更多评论
+                </div>
+            </div>
+            
+            <!-- 评论模块end -->
+
+
+        </div>
+        <!--./left-->
+        <!--侧边栏-->
+        <div class="clearfix newslist">
+            <div class="rightSide detail-right float-r">
+                <!--两周热门资讯推荐-->
+                <div>
+                    <div class="part-wrap clearfix">
+                        <h3>热门资讯</h3>
+                        <ul class="related-hot">
+                            <li class="clearfix"><a href="http://www.cocoachina.com/ios/20170407/19016.html" class="float-l pic" target="_blank" title="iOS 开发中，怎样用好 Notifications？"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/87f9d51d53b2cfa84e840ab68114a95d.png" style="max-height:60px" alt="iOS 开发中，怎样用好 Notifications？"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170407/19016.html" target="_blank" title="iOS 开发中，怎样用好 Notifications？">iOS 开发中，怎样用好 Notifications？</a></p><p class="hits">点击量<span>6875</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20170411/19035.html" class="float-l pic" target="_blank" title="TIOBE4月排行榜：Swift小幅跌出Top 10，Hack首次进入Top 50"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/95cf730692dcec568fdb189e153807ef.png" style="max-height:60px" alt="TIOBE4月排行榜：Swift小幅跌出Top 10，Hack首次进入Top 50"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20170411/19035.html" target="_blank" title="TIOBE4月排行榜：Swift小幅跌出Top 10，Hack首次进入Top 50">TIOBE4月排行榜：Swift小幅跌出Top 10，Hack首次进入Top 50</a></p><p class="hits">点击量<span>4386</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20170406/19005.html" class="float-l pic" target="_blank" title="你看那个人他像一条狗"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/d89813d044fe14d389972ff6cf5869ef.jpg" style="max-height:60px" alt="你看那个人他像一条狗"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20170406/19005.html" target="_blank" title="你看那个人他像一条狗">你看那个人他像一条狗</a></p><p class="hits">点击量<span>3162</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20170406/19001.html" class="float-l pic" target="_blank" title="Category VS Extension 原理详解"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/f75d0d5ac3c79207eca5d9a474d21e64.jpg" style="max-height:60px" alt="Category VS Extension 原理详解"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170406/19001.html" target="_blank" title="Category VS Extension 原理详解">Category VS Extension 原理详解</a></p><p class="hits">点击量<span>2913</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/industry/20170413/19044.html" class="float-l pic" target="_blank" title="“人间四月天，数据和工具帮你打造完美的App”4月15日CVP系列开发者沙龙开始报名啦！"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/89eb5b986c21afddb202c1e681476b07.jpg" style="max-height:60px" alt="“人间四月天，数据和工具帮你打造完美的App”4月15日CVP系列开发者沙龙开始报名啦！"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/industry/20170413/19044.html" target="_blank" title="“人间四月天，数据和工具帮你打造完美的App”4月15日CVP系列开发者沙龙开始报名啦！">“人间四月天，数据和工具帮你打造完美的App”4月15日CVP系列开发者沙龙开始报名啦！</a></p><p class="hits">点击量<span>2582</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20170413/19052.html" class="float-l pic" target="_blank" title="程序员带你一步步分析AI如何玩Flappy Bird"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/de520061c7e688b49772d9b2fedc8764.gif" style="max-height:60px" alt="程序员带你一步步分析AI如何玩Flappy Bird"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20170413/19052.html" target="_blank" title="程序员带你一步步分析AI如何玩Flappy Bird">程序员带你一步步分析AI如何玩Flappy Bird</a></p><p class="hits">点击量<span>2472</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20170407/18998.html" class="float-l pic" target="_blank" title="RunLoop 官方编程手册翻译"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/0bf1d9c4347547bf831fd812465e9311.jpg" style="max-height:60px" alt="RunLoop 官方编程手册翻译"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170407/18998.html" target="_blank" title="RunLoop 官方编程手册翻译">RunLoop 官方编程手册翻译</a></p><p class="hits">点击量<span>2355</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20170410/19027.html" class="float-l pic" target="_blank" title="在一个程序员的墓前"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/d64bd61005bea3b2c8fa91b7a8918a70.jpg" style="max-height:60px" alt="在一个程序员的墓前"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20170410/19027.html" target="_blank" title="在一个程序员的墓前">在一个程序员的墓前</a></p><p class="hits">点击量<span>2349</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20170406/19003.html" class="float-l pic" target="_blank" title="iOS监控-DNS劫持"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/e65113e76818a1f46fe923ae9eb56752.jpg" style="max-height:60px" alt="iOS监控-DNS劫持"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170406/19003.html" target="_blank" title="iOS监控-DNS劫持">iOS监控-DNS劫持</a></p><p class="hits">点击量<span>2278</span></p></div></li><li class="clearfix noborder-b"><a href="http://www.cocoachina.com/ios/20170407/19017.html" class="float-l pic" target="_blank" title="传苹果将推出高配无Touch Bar版15寸MacBook Pro"><img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/c3296941b9e74fb203aca16064229c3d.jpg" style="max-height:60px" alt="传苹果将推出高配无Touch Bar版15寸MacBook Pro"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170407/19017.html" target="_blank" title="传苹果将推出高配无Touch Bar版15寸MacBook Pro">传苹果将推出高配无Touch Bar版15寸MacBook Pro</a></p><p class="hits">点击量<span>2274</span></p></div></li>
+                        </ul>
+                    </div>
+               </div>
+               <!--./两周热门资讯推荐-->
+               <!--综合评论-->
+                <div class="part-wrap clearfix" style="margin-top: 15px;">
+                    <h3>综合评论</h3>
+                    <ul class="related-comment clearfix" id="all_comments_holder"><li class=""><span class="hide_comment">以上方法试过&nbsp;&nbsp;都不行&nbsp;<br>坐等苹果来电话沟通</span><br><p><span>long7hao</span><span>评论了</span><a target="_blank" title="APP违反PLA 1.2审核被拒问题以及解决方案" href="http://www.cocoachina.com/appstore/20170315/18887.html"><span>APP违反PLA 1.2审核被拒问题以及解决方案...</span></a></p></li><li class=""><span class="hide_comment">学习了，尤其喜欢注释和开发效率这2点。</span><br><p><span>Zroclee</span><span>评论了</span><a target="_blank" title="做开发十年，我总结出了这些开发经验" href="http://www.cocoachina.com/programmer/20170417/18954.html"><span>做开发十年，我总结出了这些开发经验...</span></a></p></li><li class=""><span class="hide_comment">头疼</span><br><p><span>xxroger</span><span>评论了</span><a target="_blank" title="程序员带你一步步分析AI如何玩Flappy Bird" href="http://www.cocoachina.com/programmer/20170413/19052.html"><span>程序员带你一步步分析AI如何玩Flappy Bir...</span></a></p></li><li class=""><span class="hide_comment">如果你做到财务自由，你就不会迷茫了~</span><br><p><span>马甲兄</span><span>评论了</span><a target="_blank" title="来谈谈程序员的迷茫年龄" href="http://www.cocoachina.com/programmer/20170417/19063.html"><span>来谈谈程序员的迷茫年龄...</span></a></p></li><li class=""><span class="hide_comment">优先级呢，LIFO加上优先级才能实现多次弹框先显示更重要的吧</span><br><p><span>Clambers</span><span>评论了</span><a target="_blank" title="FIFO和LIFO自动管理modal控制器" href="http://www.cocoachina.com/ios/20170417/19060.html"><span>FIFO和LIFO自动管理modal控制器...</span></a></p></li><li class=""><span class="hide_comment">很全面，基础细节都涉及到了</span><br><p><span>xjkf123</span><span>评论了</span><a target="_blank" title="iOS面试必看，最全梳理" href="http://www.cocoachina.com/ios/20160323/15770.html"><span>iOS面试必看，最全梳理...</span></a></p></li><li class=""><span class="hide_comment">我没见过更烂的流程图</span><br><p><span>王晨晓</span><span>评论了</span><a target="_blank" title="面试时如何优雅的谈论源码" href="http://www.cocoachina.com/ios/20170413/19048.html"><span>面试时如何优雅的谈论源码...</span></a></p></li><li class=""><span class="hide_comment">开坏医了</span><br><p><span>甘林梦</span><span>评论了</span><a target="_blank" title="以“程序员的名义”！ 站在程序员的角度上看剧中那些台词" href="http://www.cocoachina.com/programmer/20170414/19062.html"><span>以“程序员的名义”！ 站在程序员的角度上看剧中那些...</span></a></p></li><li class=""><span class="hide_comment">不认可，程序员思维未必不如产品，格局也是可以培养，并不是程序员都一根筋</span><br><p><span>gsw</span><span>评论了</span><a target="_blank" title="如何看待开发人员转型做产品经理？" href="http://www.cocoachina.com/programmer/20170414/19041.html"><span>如何看待开发人员转型做产品经理？...</span></a></p></li><li class="noborder-b"><span class="hide_comment">然而我在魔都</span><br><p><span>王尼玛</span><span>评论了</span><a target="_blank" title="“人间四月天，数据和工具帮你打造完美的App”4月15日CVP系列开发者沙龙开始报名啦！" href="http://www.cocoachina.com/industry/20170412/19044.html"><span>“人间四月天，数据和工具帮你打造完美的App”4月...</span></a></p></li></ul>
+                </div>
+                <!--./综合评论-->
+                <!--相关帖子-->
+                <div class="part-wrap clearfix" style="margin:15px 0 15px 0;">
+                    <h3>相关帖子</h3>
+                    <ul class="related-comment clearfix">
+                        <script charset="gb2312" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/new.php"></script><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718431" target="_blank">广东深圳代开增值税票服务系统，大家有没比较懂的？</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718430" target="_blank">把Masonry手动导入工程，确报如图错误，求解</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718429" target="_blank">可以打开cad看图的有哪些软件</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718428" target="_blank">Apple Mach-O Linker (ld) Error Group 错误试了各种方法不行</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718427" target="_blank">请教一个问题，怎么能显示分辨率很低的像素图片</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718426" target="_blank">ios 8 访问不了Https 自签证书</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718425" target="_blank">SocketIO连接https，报错</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718424" target="_blank">self-&gt;实例变量和直接访问实例变量，有区别吗？</a></li><li class="clearfix noborder-b"><a href="http://www.cocoachina.com/bbs/read.php?tid=1718423" target="_blank">Isograph Hazop+ v6.0可靠安全及风险分析软件</a></li>
+                    </ul>
+                </div>
+                <!--./相关帖子-->
+                <iframe width="230" height="550" class="share_self" frameborder="0" scrolling="no" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/index.html"></iframe>
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC列表页面230x230 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:230px;height:230px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="6765277166"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        <!--./侧边栏-->
+    </div>
+
+    <div id="coco-store" style="display:none">
+        <div class="storebox">
+            <h5>提示</h5>
+            <h3>已经收藏该篇文章</h3>
+            <p class="p1"><a href="http://www.cocoachina.com/bbs/u.php?action=favor&amp;tag=1" target="_blank">去我的收藏夹</a></p>
+            <p class="p2"><a href="http://www.cocoachina.com/bbs/login.php">请登录</a></p>
+        </div>
+    </div> <!--收藏提示-->
+</div>
+
+<script type="text/javascript">
+
+function postDigg(ftype,aid)
+{
+    var taget_obj = document.getElementById('newdigg');
+    var saveid = GetCookie('diggid');
+    if(saveid != null)
+    {
+        var saveids = saveid.split(',');
+        var hasid = false;
+        saveid = '';
+        j = 1;
+        for(i=saveids.length-1;i>=0;i--)
+        {
+            if(saveids[i]==aid && hasid) continue;
+            else {
+                if(saveids[i]==aid && !hasid) hasid = true;
+                saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+                j++;
+                if(j==20 && hasid) break;
+                if(j==19 && !hasid) break;
+            }
+        }
+        if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+        else saveid += ','+aid;
+        SetCookie('diggid',saveid,1);
+    }
+    else
+    {
+        SetCookie('diggid',aid,1);
+    }
+    myajax = new DedeAjax(taget_obj,false,false,'','','');
+    var url = "/cms/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+    myajax.SendGet2(url);
+    DedeXHTTP = null;
+    $('#zanbox').addClass('zanbox-selected');
+}
+function getDigg(aid)
+{
+    var taget_obj = document.getElementById('newdigg');
+    myajax = new DedeAjax(taget_obj,false,false,'','','');
+    myajax.SendGet2("/cms/plus/digg_ajax.php?id="+aid);
+    DedeXHTTP = null;
+}
+
+
+//显示对应的导航：
+$(function(){
+    var article_id = $('#article_id').val();
+    var saveid = GetCookie('diggid');
+
+    if(saveid != null)
+    {
+        var saveids = saveid.split(',');
+        var hasid = false;
+        saveid = '';
+        j = 1;
+        for(i=saveids.length-1;i>=0;i--)
+        {
+            if(saveids[i]==article_id && hasid) continue;
+            else {
+                if(saveids[i]==article_id && !hasid) hasid = true;
+                saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+                j++;
+                if(j==20 && hasid) break;
+                if(j==19 && !hasid) break;
+            }
+        }
+
+        if(hasid)
+        {
+            $('#zanbox').addClass('zanbox-selected');
+        }
+
+    }
+
+});
+
+window.onload = function() {
+
+    $('#sharediv').removeClass('bdshare-button-style1-32');
+    $('#sharediv').attr('class','bdsharebuttonbox');
+};
+</script>
+<script type="text/javascript" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/shCore.js"></script>
+    <script type="text/javascript" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/brush.js"></script>
+    <link type="text/css" rel="stylesheet" href="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/shCoreDefault.css">
+    <script type="text/javascript">
+    //SyntaxHighlighter.config.clipboardSwf = '/js/scripts/clipboard.swf';
+
+    SyntaxHighlighter.all();</script>
+
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"FIFO和LIFO自动管理modal控制器 - 来自CocoaChina苹果开发中文站@CocoaChina","bdMini":"2","bdMiniList":false,"bdPic":"http://api.cocoachina.com/uploads/170414/e191e8614531525322d72140206fe3d9.jpg","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api//js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!--./cont-->
+
+<!-- 回复评论框模板 -->
+<script type="text/javascript" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/comment.js"></script>
+<script type="text/javascript" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/mustache.min.js"></script>
+<!-- 回复评论框模板 -->
+<script id="reply_comment_template" type="x-tmpl-mustache">
+    <div id="sub-reply-comment" class="reply-comment">
+        <textarea name="subcomment" id="sub-reply-txt" cols="30" rows="10" placeholder="你怎么看？快来评论一下吧！"></textarea>
+        <input type="hidden" id="sub-reply-id" value="{{commentid}}" />
+        <input type="hidden" id="sub-reply-userid" value="{{parentuserid}}" />
+        <input type="hidden" id="sub-reply-username" value="{{parentusername}}" />
+        <a type="button" id="sub_comment_bt" class="submitbt">提交</a>
+        <div class="clearfloat"></div>
+        <div class="unlogin-mask">
+            <div>您还没有登录！请<a href="/bbs/login.php">登录</a>或<a href="/bbs/register.php">注册</a></div>
+        </div>
+    </div>
+</script>
+
+<!-- 评论模板 -->
+<script id="main_comment_template" type="x-tmpl-mustache">
+    <div class="glab-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="1">
+        <div class="comment-left">
+            <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+            <div class="comment-content">{{&content}}</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                    <span class="zancnt">{{support}}</span>
+                </span>
+                <span class="cai">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                    <span class="zancnt">{{report}}</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+            {{#sub}}
+                <div class="glab-comment glab-sub-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="2">
+                    <div class="comment-left">
+                        <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+                    </div>
+                    <div class="comment-right">
+                        <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+                        <div class="comment-content"><a href="/bbs/u.php?action=feed&uid={{parent_user_id}}" target="_blank">回复：{{parent}}</a>{{&content}}</div>
+                        <div class="comment-buttons">
+                            <span class="ding">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                                <span class="zancnt">{{support}}</span>
+                            </span>
+                            <span class="cai">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                                <span class="zancnt">{{report}}</span>
+                            </span>
+                            <span class="replybt">回复</span>
+                        </div>          
+                    </div>
+                </div>
+            {{/sub}}         
+    </div>  
+</script>
+
+
+<script id="sub_comment_template" type="x-tmpl-mustache">
+    <div class="glab-comment glab-sub-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="2">
+        <div class="comment-left">
+            <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+            <div class="comment-content"><a href="/bbs/u.php?action=feed&uid={{parent_user_id}}" target="_blank">回复：{{parent}}</a>{{&content}}</div>
+            <div class="comment-buttons">
+                <span class="ding">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                    <span class="zancnt">{{support}}</span>
+                </span>
+                <span class="cai">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                    <span class="zancnt">{{report}}</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>          
+        </div>
+    </div>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68948817-1', 'auto', {'name': 'newTracker'});
+  ga('newTracker.send', 'pageview');
+
+</script>
+    
+<!--右侧浮动-->
+    <div class="r-bar">
+        <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/coco_weixin.png" class="weixin">
+    	<a href="http://weibo.com/cocoachina" target="_blank" title="" class="weibo">sina</a>
+        <a href="javascript:void(0);" target="_blank" title="" class="feedback">weixin</a>
+        <a href="mailto:support@cocoachina.com" title="" class="kefu">mail</a>
+        <a href="javascript:;" title="回到顶部" class="returntop">回到顶部</a>
+    </div>
+
+<script language="javascript" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/bbsauth_plus2015.php" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+    if (typeof(_user_info_html) != 'undefined' && _user_info_html)
+    {
+        $('.nav-user-login').hide();
+        $('.nav-user-name').html(_user_info_html).show();
+    }
+
+	var type = $('#type_name').html();
+	if(type)
+	{	
+		switch( type )
+		{
+			case 'iOS开发':
+				$('#ios').addClass('light');
+				break;
+			case 'AppStore研究':
+				$('#app_store').addClass('light');
+				break;
+			case 'Mac开发':
+				$('#mac').addClass('light');
+				break;
+			case '产品设计':
+				$('#design').addClass('light');
+				break;
+			case 'Cocos引擎':
+				$('#cocos').addClass('light');
+				break;
+			case 'WebApp':
+				$('#webapp').addClass('light');
+				break;
+			case 'Swift':
+				$('#swift').addClass('light');
+				break;
+			case '游戏开发':
+				$('#game').addClass('light');
+				break;
+			case '苹果相关':
+				$('#apple').addClass('light');
+				break;
+			case '营销推广':
+				$('#market').addClass('light');
+				break;		
+			case '业界动态':
+				$('#industry').addClass('light');
+				break;	
+			case '程序人生':
+				$('#programmer').addClass('light');
+				break;																																
+				
+		}
+	}
+});
+</script>
+<!--./cont-->
+<script type="text/javascript" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/index.js"></script>
+<script src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/jquery.colorbox-min.js" type="text/javascript"></script>
+<script src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/script.js" type="text/javascript"></script>
+<script type="text/javascript">
+			jQuery(function()
+			{
+				//更改文章来源
+				var source = $('#source a').html();								
+				if( source == '未知' )
+					jQuery('#source a').html('CocoaChina');
+				if( jQuery('#source a').attr('href')=='')
+					jQuery('#source').html('来源：'+source);
+				
+				//获取用户登录的id
+//                var content = jQuery('.t-lid').attr("href");
+//                var uid = 0;
+//                if( content )
+//                {
+//                    content = content.split('=');
+//                    uid = content[1];
+//                }
+//                var timestamp = new Date().getTime();	
+//                var uid2 = parseInt(uid);
+//                if(uid2==uid && uid2!=0){
+//                    uid = uid<<2;			
+//                    uid = uid+''+timestamp;
+//                }else{
+//                    uid = "";
+//                }
+//                var oIframe=document.getElementById("comiframe");
+//                if(oIframe){
+//                    var oUrl=window.location.href;
+//                    oUrl = encodeURIComponent(oUrl);
+//
+//                    oIframe.src="/comment.php?url="+oUrl+"&uid="+uid;
+//                }
+
+				
+			});
+		</script>
+<!--footer-->
+<div class="footer clearfix">
+    <div class="footer-b">
+        <div>
+            <a href="http://www.cocoachina.com/aboutus/index.html" target="_blank">关于我们</a>
+            <a href="http://www.cocoachina.com/contactus/index.html" target="_blank">商务合作</a>
+            <a href="mailto:support@cocoachina.com" target="_blank">联系我们</a>
+            <a href="http://www.cocoachina.com/corps" target="_blank">合作伙伴</a>
+        </div>
+        <p class="footer-b-p">北京触控科技有限公司版权所有</p>
+        <p>
+            ©2016 Chukong Technologies,Inc.
+            <i>
+                <a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备 11006519号 　京ICP证 100954号</a> 京公网安备11010502020289 
+                <a href="http://182.131.21.137/ccnt-apply/admin/business/preview/business-preview!lookUrlRFID.action?main_id=A580B24B1AE846CE9DA949026D63939F" target="_blank">
+                    <img src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/jingwen.png" style="margin: -10px auto -14px -10px;">
+                    京网文[2012]0426-138号
+                </a>
+            </i>
+        </p>
+    </div>
+</div>
+<!--./footer-->
+<script language="javascript" type="text/javascript" src="./FIFO和LIFO自动管理modal控制器 - CocoaChina_让移动开发更简单_files/dedeajax2-min.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?88399e4c4cf744609c4fc8c3a8935691";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16940817-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+ 
+function search_check()
+{
+	var search_keyword = $('#search_keyword').val();
+
+	if( search_keyword.length < 2 )
+	{
+		alert("搜索关键字不能少于2个字节，请重新输入。");
+	}
+	else
+	{
+		$('#searchform').submit();
+	}
+}
+
+</script>
+<script type="text/javascript">
+_acK({aid:116313,format:0,mode:1,gid:1,serverbaseurl:"afp.csbew.com/"});
+</script>
+
+
+
+<div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>

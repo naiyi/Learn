@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "fb8a7435-fe75-1a42-862b-312dc519a416",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "fb8a7435-fe75-1a42-862b-312dc519a416" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "fb8a7435-fe75-1a42-862b-312dc519a416" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "96512754-53B3-411A-A765-44E59F2614CC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "fb8a7435-fe75-1a42-862b-312dc519a416" : "Products\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ScanQRCodeProject",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Demos\/原生扫码+二维码生成\/ScanQRCodeProject.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/211.102.210.19\/svn\/beyouApp",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "fb8a7435-fe75-1a42-862b-312dc519a416"
+    }
+  ]
+}

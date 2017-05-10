@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://www.cocoachina.com/ios/20170324/18955.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <title>iOS App的加固保护原理 - CocoaChina_让移动开发更简单</title>
+    <meta name="keywords" content="iOS APP安全, APP安全性iPhone开发,iOS开发,iPad开发,Mac开发,苹果开发中文站,iPhone开发中文站,CocoaChina首页, Mac OS开发, Cocoa介绍,移动互联网,触控科技,Cocoa,Apple,developer,iOS,iPhone,iPad,iMac,iPod Touch,iPhone5,iPhone4S,iPad3,招聘,iPhone程序员,Objective-c,iPhone应用外包,ios6,ios面试,Cocos2d-x,cocos2d,iTunes,App Store,苹果开发">
+    <meta name="description" content="CocoaChina前身是全球成立最早规模最大的苹果开发中文站，现致力为所有移动开发者提供资讯服务、问答服务、代码下载、工具库及人才招聘服务">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-tc-cerfication" content="3300a939a1098c27e94457b75a0bb8c1">
+    <script type="text/javascript" async="" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/ga.js"></script><script src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/hm.js"></script><script type="text/javascript" async="" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/ga.js"></script><script async="" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/analytics.js"></script><script type="text/javascript">
+        function gotoMobilePage() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var agent_iphone = /iphone/i;
+            var agent_android = /android/i;
+            //var agent_ipad = /ipad/i;
+            var agent_ipod = /ipod/i;
+            var agent_wphone = /windows phone/i;
+            if(agent_iphone.test(sUserAgent) || agent_android.test(sUserAgent) || agent_ipod.test(sUserAgent) || agent_wphone.test(sUserAgent)){
+                var re = /\/\w+\/\d+\/(\d+)\.html/, 
+                    result = re.exec(window.location.pathname);
+                if ( result )
+                {
+                    window.location.href = "http://www.cocoachina.com/cms/wap.php?action=article&id=" + result[1];
+                } else {
+                    window.location.href = "http://m.cocoachina.com/";
+                }
+            }
+        }
+        gotoMobilePage(); 
+    </script>
+    <link rel="stylesheet" href="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/global.css" media="all">
+    <link rel="stylesheet" href="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/index.css" media="all">
+    <link href="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/module.css" rel="stylesheet">
+    <link href="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/style.css" rel="stylesheet">
+    <link href="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/navheader.css" rel="stylesheet">
+    <script src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/navbar.js"></script>
+    <script type="text/javascript" src="http://s.csbew.com/k.js"></script>
+    
+<script src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/share.js"></script><link rel="stylesheet" href="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/share_style1_32.css"></head>
+<body>
+
+    <div class="nav-header">
+            <div class="nav-header-top">
+                <div class="nav-logo nav-fl"><a href="http://www.cocoachina.com/"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/logo.png"></a></div>
+                <div class="nav-list nav-fl">
+                    <ul>
+                        <li><a href="http://www.cocoachina.com/news/">资讯</a></li>
+                        <li><a href="http://www.cocoachina.com/bbs/">论坛</a></li>
+                        <li><a target="_blank" href="http://code.cocoachina.com/" title="CODE">代码</a></li>
+                        <li><a href="http://tools.cocoachina.com/" title="工具" target="_blank">工具</a></li>
+                        <li><a target="_blank" href="http://job.cocoachina.com/" title="JOB">招聘</a></li>
+                        <li><a target="_blank" href="http://cvp.cocos.com/" title="CVP">CVP</a></li>
+                        <li><a target="_blank" href="http://waikuai.cocoachina.com/" title="waikuai">外快</a></li>
+                        <li><a target="_blank" href="http://blog.cocoachina.com/" title="blog">博客</a><span class="new-item-flag">new</span></li>
+                    </ul>
+                </div>
+                <div class="nav-search nav-fl">
+                    <div class="nav-search-flag" style="display:block"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/search-icon.png"></div>
+                    <div class="nav-search-form" style="display:none">
+                        <form action="http://www.cocoachina.com/cms/plus/search.php" name="formsearch" method="post" target="_blank">
+                            <input type="hidden" name="kwtype" value="0">
+                            <input type="hidden" name="searchtype" value="titlekeyword">
+                            <input name="keyword" type="text" placeholder="站内搜索">
+                            <input type="button">
+                        </form>
+                    </div>
+                </div>
+                <div class="nav-user nav-fr">
+                    <!-- #region 未登录时显示此区域 -->
+                    <div class="nav-user-login" style="display:block">
+                        <a href="http://www.cocoachina.com/bbs/login.php">登录</a>|
+                        <a href="http://www.cocoachina.com/bbs/register.php">注册</a>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region 已登录时显示此区域 -->
+                    <div class="nav-user-name" style="display:none">
+                        <div><alert></alert><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/user.png">Guest</div>
+                        <ul>
+                            <li><a href="http://www.cocoachina.com/ios/20170324/18955.html#"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/i-man.png">我的主页</a></li>
+                            <li><alert></alert><a href="http://www.cocoachina.com/ios/20170324/18955.html#"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/i-mail.png">我的消息</a></li>
+                            <li><a href="http://www.cocoachina.com/ios/20170324/18955.html#"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/i-setting.png">账户设置</a></li>
+                            <li><a href="http://www.cocoachina.com/ios/20170324/index-offline.html"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/i-logout.png">退出</a></li>
+                        </ul>
+                    </div>
+                    <!-- #endregion -->
+                </div>
+                <div class="nav-clear"></div>
+            </div>
+        <div class="nav-header-bottom">
+            <ul>
+                <li><a id="ios" href="http://www.cocoachina.com/ios/" title="ios" class="light">iOS开发</a></li>
+                <li><a id="swift" href="http://www.cocoachina.com/swift/" title="swift">Swift</a></li>
+                <li><a id="app_store" href="http://www.cocoachina.com/appstore/" title="appstore">App Store研究</a></li>
+                <li><a id="design" href="http://www.cocoachina.com/design/" title="design">产品设计</a></li>
+                <li><a id="review" href="http://www.cocoachina.com/review/" title="review">应用</a></li>
+                <li><a id="review" href="http://www.cocoachina.com/vr/" title="review">VR</a></li>
+                <li><a id="game" href="http://www.cocoachina.com/game/" title="game">游戏开发</a></li>
+                <li><a id="apple" href="http://www.cocoachina.com/apple/" title="apple">苹果相关</a></li>
+                <!-- <li><a id="cocos" href="/cocos/" title="cocos">Cocos引擎</a></li>-->
+                <!--<li><a id="webapp" href="/webapp/" title="HTML5">HTML5</a></li>-->
+                <li><a id="android" href="http://www.cocoachina.com/android/" title="android">安卓相关</a></li>
+                <li><a id="market" href="http://www.cocoachina.com/market/" title="market">营销推广</a></li>
+                <li><a id="industry" href="http://www.cocoachina.com/industry/" title="industry">业界动态</a></li>
+                <li><a id="programmer" href="http://www.cocoachina.com/programmer/" title="programmer">程序人生</a></li>
+            </ul>
+        </div>
+    </div>
+
+<script language="javascript">
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPod");
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+        }
+        return flag;
+    }
+    if (!IsPC()){
+           window.location.href = "http://www.cocoachina.com/cms/wap.php?action=article&id=18955";
+    }
+
+</script>
+<!--middle-->
+<div class="middle clearfix">
+    <div class="m-wrap">
+        <div class="m-ad2" style="margin-top:12px;">
+            <div class="ad2-l">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC首页底部左侧72890 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="8012423965"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <div class="ad2-r">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC资讯页25090 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:250px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="9489157162"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        <!--left-->
+        <div class="detail-left float-l">
+            <p class="crumbs"><a href="http://www.cocoachina.com/" title="首页">首页</a> &gt;<a href="http://www.cocoachina.com/ios" title="iOS开发"><span id="type_name">iOS开发</span></a></p>
+            <div class="detail-main">
+                <h2>iOS App的加固保护原理</h2>
+                <div class="p-ico clearfix">
+                    <div>
+                        <span class="ml0">2017-03-24 10:43</span>
+                        <span>编辑：
+                        <a href="http://www.cocoachina.com/ios/20170324/18955.html" id="field_author" target="_blank">suiling</a></span>
+                        <span>分类：<a href="http://www.cocoachina.com/ios/" target="_blank">iOS开发</a></span>
+                        <span id="source">来源：<a href="http://www.freebuf.com/articles/terminal/129640.html" target="_blank">Freebuf.com</a></span>
+
+                        <div class="float-r">
+                            <span id="artical_comment_cnt"><i></i>0</span>
+                            <span><i class="view"></i><script src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/count.php" language="javascript"></script>503</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="p-ico clearfix">
+                    <p class="related float-l"><a href="http://www.cocoachina.com/cms/tags.php?/iOS+APP%E5%AE%89%E5%85%A8/" target="_blank">iOS APP安全</a><a href="http://www.cocoachina.com/cms/tags.php?/+APP%E5%AE%89%E5%85%A8%E6%80%A7/" target="_blank"> APP安全性</a></p>
+                    <input type="hidden" id="article_id" value="18955">
+                </div>
+                <div class="adsbox clearfix">
+                    <div class="float-l">
+                        <div class="float-l"><b>招聘信息：</b></div>
+                        <ul class="float-l" id="invitelist" style="margin-top: -1.769px;"><li><a href="http://job.cocoachina.com/job/show?id=68288" target="_blank">iOS Developer</a></li><li><a href="http://job.cocoachina.com/job/show?id=68348" target="_blank">微信书城开发</a></li><li><a href="http://job.cocoachina.com/job/show?id=68415" target="_blank">Java工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68414" target="_blank">Cocos2d-x js高级开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68283" target="_blank">Mac开发</a></li><li><a href="http://job.cocoachina.com/job/show?id=68066" target="_blank">应用开发工程师(iOS)</a></li><li><a href="http://job.cocoachina.com/job/show?id=68363" target="_blank">技术合伙人-后端工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67931" target="_blank">高级iOS开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68061" target="_blank">资深软件研发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67960" target="_blank">嵌入式软件工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68270" target="_blank">Unity3D手游客户端主程</a></li></ul>
+                    </div>
+                    <div class="float-r">
+                        <a href="javascript:void(0)" class="prev"></a>
+                        <a href="javascript:void(0)" class="next"></a>
+                    </div>
+                </div>
+                <div id="detailbody" class="field_body">
+                    <p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490324455435860.jpg" title="1490324455435860.jpg" alt="411.jpg"></p><p>苹果系统的封闭性导致iOS APP安全性比较高，但是实际上iOS应用本身被破解的难度并不高，一旦在越狱设备上，ipa被分析就会变得很容易，本文通过讲解iOS APP的破解分析过程来引出我们要如何的保护我们的应用。经过保护，iOS APP的安全性会获得很大的增强，大大提高了破解者破解的难度。对于iOS开发者来说，有必要了解这些措施，特别是针对一些金融、游戏类APP的开发。</p><p><strong>一、iOS的安全问题</strong></p><p>世所公认，iOS系统安全性非常高，很少出现漏洞，几乎不会中毒的情况。然而随着各种iOS安全隐患的频频出现，人们逐渐认识到，iOS跟Android一样也面临严重的安全问题。苹果宣称所有的iPhone都很安全，不会被恶意软件攻击，其实这只不过苹果封闭式的系统管理能够及时处理漏洞罢了，这也正是苹果不敢开放的原因。</p><p>我们已经习惯，每个新的iOS系统出来没多久，就会有大牛找到越狱的方法。比较有名的越狱团队如iH8Sn0w、Geohot、Comex等，以及国内的盘古团队。就像最新iOS 10.1.1版本，刚出来一个星期，安全研究员Luca Todesco就在推特上晒图自曝越狱成功，iH8Sn0w和盘古团队也取得了不错的进展。只要越狱了，iPhone手机就处于完全裸奔状态，很多平时不能做的事情就可以做了，比如破解分析APP、大范围泄露用户隐私数据等。</p><p>其中，跟我们iOS开发者息息相关的问题，主要就是被破解、分析。APP被破解分析进而刷单作弊，或者APP被山寨以次充好等。APP一直以来存在的“山寨”现象，引起越来越多开发者的不满，山寨泛滥的后果将是劣币驱逐良币，打击创新者的积极性，造成恶性循环。</p><p>下面举几个例子：</p><p>山寨APP</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323515760891.png" title="1490323515760891.png" alt="QQ截图20170324104448.png"></p><p>比如上面的《神庙逃亡》应用，左边是合法的，右边是山寨的，山寨的APP就把图标的背景色以及局部做了一些修改，看起来和正品是如此的相似。</p><p>微信多开</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323521931022.png" title="1490323521931022.png" alt="QQ截图20170324104458.png"></p><p>这类APP在淘宝上都有销售。正常情况，一个手机只能有一个微信账号在线，但是微信分身版让用户可以在同一个手机上同时登录多个微信号，这样可以满足一些用户的不同需求，比如进行公众号营销、用不同的微信号联系不同的人等。同时这些破解后的微信还有一键转发小视频、一键评论、一键点赞等强大的功能。</p><p>自动抢红包</p><p>下面是一款红包神器的运行页面：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323525740935.png" title="1490323525740935.png" alt="QQ截图20170324104506.png" width="385" height="507" style="width: 385px; height: 507px;"></p><p><span style="line-height: 1.8;">打开这款神器后再登录微信，如果微信群里有人发出红包，它就会第一时间帮你抢到红包了，从此“发家致富，迎娶白富美，走上人生巅峰”，哈哈！</span><br></p><p>那么，看起来如此高级的东东又是怎么实现的呢？下面我们做简要的介绍，只有在了解了它们的实现原理后，我们才能更好地保护我们的APP不被分析、破解。</p><p><span style="font-size: 16px;"><strong>二、iOS分析方法</strong></span></p><p>懂得如何攻击才会懂得如何防御，一切都是为了之后的防御作准备。这里总结一下为hack而做的准备工作。</p><p><strong>2.1常用的命令和工具</strong></p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323619472740.png" title="1490323619472740.png" alt="QQ截图20170324104605.png"></p><p>（1）otool可查看可执行程序都链接了哪些库。</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323633240950.png" title="1490323633240950.png" alt="QQ截图20170324104644.png"></p><p>（2）nm可以显示程序符号表。</p><div><div id="highlighter_405686" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">nm&nbsp;-g&nbsp;DeviceInfo</code></div></div></td></tr></tbody></table></div></div><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323648114731.png" title="1490323648114731.png" alt="QQ截图20170324104652.png"></p><p>（3）ldid:iPhoneOS.platform提供的签名工具。</p><p>我们自己编译的程序需要签上名才能跑在iPhone/iPad上。</p><p><strong>2.2 class-dump-z</strong></p><p>它通常是和Clutch一起使用的，因为APP Store上的APP都是加密过的，需要先解密。Clutch解密后，就可以得到APP的源码结构，包括资源文件、二进制文件等，下面以XX新闻APP为例：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323692334747.png" title="1490323692334747.png" alt="32.png"></p><p>“class-dump NewsBoard”，就可以得到应用的类信息，包括函数名，下面是该APP的一个登陆页面的头文件：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323717957671.png" title="1490323717957671.png" alt="10.png"></p><p><strong>2.3 IDA等静态分析工具</strong></p><p>静态分析iOS APP的工具除了IDA，还有一款强大的工具– Hopper Disassembler，在某些方面，它比IDA更强大。</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323734134137.png" title="1490323734134137.png" alt="111.png"></p><p>上图显示，从IDA工具就可以看到该APP使用的一些类名和方法名，进而就可以分析到方法里面的实现逻辑了。</p><p><strong>2.4实例</strong></p><p>我们在开发一款SDK的时候，想了解下公司外部竞品SDK的使用情况，到底有多少APP在集成他们的SDK。那么，这到底该怎么做呢？</p><p>去竞品那里打听？好像不太现实，唯一的办法就是“自动动手，丰衣足食”。我们从XX助手上获取一定数量的APP，一般是拉取榜单的数据，比较有意义，然后分析拉到的APP里包含了哪些SDK。当然这得基于概率统计学的原理，获取足够多的样本，比如一万、十万都是可以的。那么又如何从XX助手服务器拉取这些数据呢？</p><p>大家可能都会想到，那就是分析XX助手的网络协议，然后通过代码模拟网络协议，请求数据，获取APP，再分析APP的符号。分析网络协议，最简单的就是网络抓包，但是估计现在很难再有裸奔的网络包了，XX助手确实也没有明文的网络包，所以只有逆向分析了。值得庆幸的是，它的APP没有做加固、保护，分析起来就简单多了。、</p><p>2.4.1界面分析</p><p>我们首先从界面分析程序的大体逻辑结构。</p><p>来到XX助手的榜单页面，使用cycript打印界面布局：</p><div><div id="highlighter_719317" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">[[UIAppkeyWindow]recursiveDescription].toString()</code></div></div></td></tr></tbody></table></div></div><p>找到每一个下载控件，这里随便找一个：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323777693079.png" title="1490323777693079.png" alt="112.png"></p><p>通过UITableViewCellContentView这个控件，找它的包含关系。</p><p>使用[#0x15baf520nextResponder]往上找，可以得到：TRTableMultipleViewCell。</p><p>TRTableMultipleViewCell分为3列，每一列包含一个TRAppListSubCell，而每个TRAppListSubCell对应一个TRAppInfo对象，猜测这个TRAppInfo就是下载后的数据对象，Hook这个类的方法可以看到：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323822689086.png" title="1490323822689086.png" alt="113.png"></p><p>TRAppInfo对应一个App的相关信息，包括下载地址，为了得知这些信息是怎么初始化的。在-[TRAppInfosetAdsite:]下断点: b-[TRAppInfosetAdsite:]，然后查看调用堆栈：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323836193594.png" title="1490323836193594.png" alt="114.png"></p><p>其中的一个类TRApiServices很像是网络请求的接口。Hook该类的调用输出，点击榜单，并有了以下log输出：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323841635587.png" title="1490323841635587.png" alt="115.png"></p><p>至此，我们基本确定了我们需要的函数名了。</p><p>2.4.2逆向分析</p><p>接下来，就是逆向分析getChartsAppListForCountryId和parseGetChartsAppListData这两个函数了。</p><p>使用IDA工具打开XX助手APP，定位到getChartsAppListForCountryId这个函数：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323864608589.png" title="1490323864608589.png" alt="116.png"></p><p>再进一步去分析”writeBodyHeader”方法以及”getBody”等方法，就可以知道网络请求的发送格式了；要想知道网络数据返回的格式，还得去分析” parseGetChartsAppListData:error”这个方法，一切准备妥当后，就可以下载了。</p><p><span style="font-size: 16px;"><strong>三、iOS加固保护原理</strong></span></p><p>从上面的分析来看，我们可以从以下几个方面来保护我们的APP：</p><p>1.字符串混淆</p><p>对应用程序中使用到的字符串进行加密，保证源码被逆向后不能看出字符串的直观含义。</p><p>2.类名、方法名混淆</p><p>对应用程序的方法名和方法体进行混淆，保证源码被逆向后很难明白它的真正功能。</p><p>3.程序结构混淆加密</p><p>对应用程序逻辑结构进行打乱混排，保证源码可读性降到最低。</p><p>4.反调试、反注入等一些主动保护策略</p><p>这是一些主动保护策略，增大破解者调试、分析APP的门槛。</p><p><strong>3.1字符串加密</strong></p><p>字符串会暴露APP的很多关键信息，攻击者可以根据界面显示的字符串，快速找到相关逻辑的处理函数，从而进行分析破解。加密字符串可以增加攻击者阅读代码的难度以及根据字符串静态搜索的难度。</p><p>比如一个APP中有如下的一些字符串定义在代码文件中：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323919476043.png" title="1490323919476043.png" alt="36.png"></p><p>经过加密后，代码文件变成如下的形式：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323924505056.png" title="1490323924505056.png" alt="37.png"></p><p>里面已经没有明文的字符串了，全是用byte的形式保存的，打包生成APP后，他们也就无法直观的看出实际内容了,这对破解者会造成巨大的难度：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323931808075.png" title="1490323931808075.png" alt="38.png"></p><p><strong>3.2符号混淆</strong></p><p>符号混淆的中心思想是将类名、方法名、变量名替换为无意义符号，提高应用安全性；防止敏感符号被class-dump工具提取，防止IDA Pro等工具反编译后分析业务代码。</p><p>比如一款混淆后的APP,用IDA等工具打开，如下图所示:</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490323952171575.png" title="1490323952171575.png" alt="39.png"></p><p>“Labels”栏里，显示的这些符号，不管是类名还是方法名，谁也看不出来到底什么意思，这个函数到底是什么功能，就有点丈二和尚摸不着头脑的感觉，这就大大增加了破解者分析APP的难度。</p><p><strong>3.3代码逻辑混淆</strong></p><p>代码逻辑混淆有以下几个方面的含义：</p><p>对方法体进行混淆，保证源码被逆向后该部分的代码有很大的迷惑性，因为有一些垃圾代码的存在；</p><p>对应用程序逻辑结构进行打乱混排，保证源码可读性降到最低，这很容易把破解者带到沟里去；</p><p>它拥有和原始的代码一样的功能，这是最最关键的。</p><p>混淆前后的对比如下（左边是原始结构，右边是混淆后的结构）：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490324043304885.png" title="1490324043304885.png" alt="40.png"></p><p>下面以iOS APP中的main函数为例：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490324050466885.png" title="1490324050466885.png" alt="41.png"></p><p>它就只有一行有效代码，包含两个关键函数，已经算最简单的函数体了，混淆前的汇编代码如下：</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490324057428273.png" title="1490324057428273.png" alt="43.png"></p><p>这里主要包含两个API的符号: NSStringFromClass、UIApplicationMain。其余就是一些消息发送以及内存管理的相关符号，但如果进行一定的代码逻辑混淆后，这个结构就会变得大不一样了。</p><p style="text-align:center"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/1490324148668182.png" title="1490324148668182.png" alt="14897385287341.png"></p><p>&nbsp;<br></p><p>NSStringFromClass、UIApplicationMain这两个函数，逻辑结构已经变得非常复杂了，如果一个函数中，包含更多的代码的话，那这个结构将更加复杂，对破解者来说将是一个很耗时间、精力的过程，一般早早就会放弃分析了。</p><p><strong>3.4URL编码加密</strong></p><p>对程序中出现的URL进行编码加密，防止URL被静态分析。</p><p><strong>3.5网络传输数据加密</strong></p><p>对客户端传输数据提供加密方案，防止通过网络接口的拦截获取数据。</p><p><strong>3.6主动保护策略</strong></p><p>除了上面的一些被动保护方法，我们还可以加入一些主动的防护机制，比如反调试等。</p><p>iOS平台下的Anti-Debug方法一般有以下一些：</p><ul class=" list-paddingleft-2"><li><p>检查进程的状态是否为 P_TRACED。</p></li><li><p>调用ptrace请求来检查进程是否被调试。由于可能被攻击者绕过该方法的调用，在应用的多处增加ptrace函数会提高应用的安全性。</p></li><li><p>通过sysctl查看信息进程里的标记，判断自己是否正在被调试。sysctl是用以查询内核状态的接口，并允许具备相应权限的进程设置内核状态。</p></li></ul><p>iOS下的这些方法，相对于Linux下的方法要少很多，例如fork一个子进程，ptrace父进程进行检测方式不再奏效。而且，要完全防止程序被调试或者被逆向，理论上是不可能的，但可以增加破解者调试的难度。</p><p>总之，添加以上的一些保护措施后，iOS APP的安全性会获得很大的增强，大大提高了破解者破解的难度。对于iOS开发者来说，有必要了解这些措施，特别是针对一些金融、证券类APP的开发，保护方面的需求比较大，比如国内某知名移动支付工具就添加了一些调试检测以及反调试的功能。</p><p>作者：网易易盾加固</p>
+                </div>
+                <div id="page" style="padding:0"></div>
+
+                <div class="wx_article">
+                    <div class="article_weixin">
+                        <img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/article_weixin.jpg" width="131" height="131" alt="搜索CocoaChina微信公众号：CocoaChina">
+                        <div class="article_scan">微信扫一扫</div>
+                        <div class="article_txt"><span style="color:#999999">订阅每日移动开发及APP推广热点资讯<br>公众号：</span>CocoaChina</div>
+                    </div>
+                </div>
+
+               <div class="clearfix tgbox">
+                    <a href="http://www.cocoachina.com/deliver.php" class="tg float-l" target="_blank">我要投稿</a>&nbsp;&nbsp;
+                    <a style="margin-left:10px" href="javascript:void(0)" onclick="add_favors(18955,&#39;iOS App的加固保护原理&#39;)" class="tg float-l">收藏文章</a>
+                    <div class="share float-r">分享到：
+                        <div class="bdsharebuttonbox" id="sharediv" data-bd-bind="1490339481829"><a href="http://www.cocoachina.com/ios/20170324/18955.html#" class="bds_more" data-cmd="more"></a> <a href="http://www.cocoachina.com/ios/20170324/18955.html#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="http://www.cocoachina.com/ios/20170324/18955.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a> <a href="http://www.cocoachina.com/ios/20170324/18955.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                    </div>
+                </div>
+
+
+                <a class="zanbox" href="javascript:void(0)" id="zanbox" onclick="postDigg(&#39;good&#39;,18955)" title="哎呦，不错噢，赞一个">
+                    <strong id="newdigg">
+                     <script src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/count(1).php" language="javascript"></script>1
+                    </strong>
+                </a>
+            </div>
+
+            <div class="article-prev">上一篇：<a href="http://www.cocoachina.com/ios/20170324/18950.html">iOS中书写代码规范35条小建议</a> </div>
+            <div class="article-next"></div>
+
+            <!--相关资讯-->
+            <div class="part-wrap clearfix">
+                <h3>相关资讯</h3>
+                <ul class="info-list clearfix">
+                    
+                </ul>
+            </div>
+            <div class="clearfix" style="margin-top:20px;">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC评论框 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:750px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="8242010366"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <!-- 评论模块start -->
+            
+            <div class="clearfix" id="commnet_list_holder" style="margin-bottom:50px;">
+                <div class="glab-comment-form">
+                    <div class="dcbt">我来说两句</div>
+                    <div class="user-head">
+                        <img id="user_face_url" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt="">
+                    </div>
+                    <div class="form-region">
+                        <textarea name="comment" id="main_comment_content" cols="30" rows="10" placeholder="你怎么看？快来评论一下吧！"></textarea>
+                        <a class="submitform" id="main_comment_bt">发表评论</a>
+                        <div class="unlogin-mask">
+                            <div>您还没有登录！请<a href="http://www.cocoachina.com/bbs/login.php">登录</a>或<a href="http://www.cocoachina.com/bbs/register.php">注册</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="glab-comment-callback-msg" class="glab-comment-info"></div>
+                <div class="glab-comment-title">所有评论（<span>0</span>）</div>
+                <div class="glab-commentlist" id="commentlist">
+                    <a id="refresh_comment_btn" href="javascript:;" onclick="$(&#39;#morecomment&#39;).trigger(&#39;click&#39;)" style="display: none;">刷新评论</a>
+                </div>
+                <div class="glab-comment-more" id="morecomment" style="display:none">
+                    更多评论
+                </div>
+            </div>
+            
+            <!-- 评论模块end -->
+
+
+        </div>
+        <!--./left-->
+        <!--侧边栏-->
+        <div class="clearfix newslist">
+            <div class="rightSide detail-right float-r">
+                <!--两周热门资讯推荐-->
+                <div>
+                    <div class="part-wrap clearfix">
+                        <h3>热门资讯</h3>
+                        <ul class="related-hot">
+                            <li class="clearfix"><a href="http://www.cocoachina.com/ios/20170320/18922.html" class="float-l pic" target="_blank" title="面试了 20 个初/中级 iOS 工程师之后（上）"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/6f6a8aad1fab70cd79f60b372ba4e85b.jpg" style="max-height:60px" alt="面试了 20 个初/中级 iOS 工程师之后（上）"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170320/18922.html" target="_blank" title="面试了 20 个初/中级 iOS 工程师之后（上）">面试了 20 个初/中级 iOS 工程师之后（上）</a></p><p class="hits">点击量<span>9651</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20170313/18870.html" class="float-l pic" target="_blank" title="杂谈: MVC/MVP/MVVM"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/cfca15a3f586ee049dc153fcb6426b43.jpg" style="max-height:60px" alt="杂谈: MVC/MVP/MVVM"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170313/18870.html" target="_blank" title="杂谈: MVC/MVP/MVVM">杂谈: MVC/MVP/MVVM</a></p><p class="hits">点击量<span>9121</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20170317/18906.html" class="float-l pic" target="_blank" title="【收藏党】我的2017 iOS开发工具集"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/d58a6c4714c84ce42903a3d75a2d401a.jpg" style="max-height:60px" alt="【收藏党】我的2017 iOS开发工具集"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170317/18906.html" target="_blank" title="【收藏党】我的2017 iOS开发工具集">【收藏党】我的2017 iOS开发工具集</a></p><p class="hits">点击量<span>8878</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20170313/18879.html" class="float-l pic" target="_blank" title="终极炫富——2016年iOS开发者收入调查报告"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/c527cc5462f01ba9ed6d7ff868a36cfa.jpg" style="max-height:60px" alt="终极炫富——2016年iOS开发者收入调查报告"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20170313/18879.html" target="_blank" title="终极炫富——2016年iOS开发者收入调查报告">终极炫富——2016年iOS开发者收入调查报告</a></p><p class="hits">点击量<span>8262</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/swift/20170313/18873.html" class="float-l pic" target="_blank" title="Swift语言杀入TIOBE 3月编程语言排行榜Top 10"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/ac6b46d721a61e17b7b30efb346423ca.jpg" style="max-height:60px" alt="Swift语言杀入TIOBE 3月编程语言排行榜Top 10"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/swift/20170313/18873.html" target="_blank" title="Swift语言杀入TIOBE 3月编程语言排行榜Top 10">Swift语言杀入TIOBE 3月编程语言排行榜Top 10</a></p><p class="hits">点击量<span>5659</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20170316/18901.html" class="float-l pic" target="_blank" title="基于iOS 10、realm封装的下载器（支持存储读取、断点续传、后台下载、杀死APP重启后的断点续传等功能）"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/cc00d0fabb19a234f4d5d5f39b1df646.gif" style="max-height:60px" alt="基于iOS 10、realm封装的下载器（支持存储读取、断点续传、后台下载、杀死APP重启后的断点续传等功能）"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170316/18901.html" target="_blank" title="基于iOS 10、realm封装的下载器（支持存储读取、断点续传、后台下载、杀死APP重启后的断点续传等功能）">基于iOS 10、realm封装的下载器（支持存储读取、断点续传、后台下载、杀死APP重启后的断点续传等功能）</a></p><p class="hits">点击量<span>5322</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20170314/18871.html" class="float-l pic" target="_blank" title="iOS下的界面布局利器-MyLayout布局框架"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/6190ac567e8e10cab5f7732ec8fb6d88.jpg" style="max-height:60px" alt="iOS下的界面布局利器-MyLayout布局框架"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170314/18871.html" target="_blank" title="iOS下的界面布局利器-MyLayout布局框架">iOS下的界面布局利器-MyLayout布局框架</a></p><p class="hits">点击量<span>5103</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20170315/18890.html" class="float-l pic" target="_blank" title="iOS动画-从不会到熟练应用"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/3447d813b059298d5c6faef7502f7bab.jpg" style="max-height:60px" alt="iOS动画-从不会到熟练应用"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170315/18890.html" target="_blank" title="iOS动画-从不会到熟练应用">iOS动画-从不会到熟练应用</a></p><p class="hits">点击量<span>4444</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/design/20170316/18896.html" class="float-l pic" target="_blank" title="导航栏的平滑显示和隐藏 - 个人页的自我修养（1）"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/51fcdd9e4adb7ea402b40e9c274cbf04.gif" style="max-height:60px" alt="导航栏的平滑显示和隐藏 - 个人页的自我修养（1）"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/design/20170316/18896.html" target="_blank" title="导航栏的平滑显示和隐藏 - 个人页的自我修养（1）">导航栏的平滑显示和隐藏 - 个人页的自我修养（1）</a></p><p class="hits">点击量<span>4403</span></p></div></li><li class="clearfix noborder-b"><a href="http://www.cocoachina.com/design/20170320/18918.html" class="float-l pic" target="_blank" title="APP「登录注册模块」详解"><img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/4b9fb85cdcd245e9301bed3f9b6844c5.jpg" style="max-height:60px" alt="APP「登录注册模块」详解"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/design/20170320/18918.html" target="_blank" title="APP「登录注册模块」详解">APP「登录注册模块」详解</a></p><p class="hits">点击量<span>4133</span></p></div></li>
+                        </ul>
+                    </div>
+               </div>
+               <!--./两周热门资讯推荐-->
+               <!--综合评论-->
+                <div class="part-wrap clearfix" style="margin-top: 15px;">
+                    <h3>综合评论</h3>
+                    <ul class="related-comment clearfix" id="all_comments_holder"><li class=""><span class="hide_comment">为什么没有看到商品的id，我怎么跟服务器的订单号相关联啊</span><br><p><span>花生壳壳</span><span>评论了</span><a target="_blank" title="Apple Pay接入详细教程" href="http://www.cocoachina.com/ios/20160226/15443.html"><span>Apple Pay接入详细教程...</span></a></p></li><li class=""><span class="hide_comment">新的一年&nbsp;&nbsp;刚进到新公司&nbsp;&nbsp;薪资中规中距&nbsp;&nbsp;好好学新东西吧&nbsp;感觉it行业越来越不好混了&nbsp;&nbsp;加油！！</span><br><p><span>文大本事</span><span>评论了</span><a target="_blank" title="终极炫富——2016年iOS开发者收入调查报告" href="http://www.cocoachina.com/programmer/20170313/18879.html"><span>终极炫富——2016年iOS开发者收入调查报告...</span></a></p></li><li class=""><span class="hide_comment">小编是程序员还是培训机构？整天调查这些有意思？人家赚多少钱会分你？技术文章不出几个，天天八卦这些，是不是小编被开了工作很好找？？？？？？？？</span><br><p><span>ios260002610</span><span>评论了</span><a target="_blank" title="年收入130万以上，同行的你是怎么做到的？--2016年iOS个人开发者收入调查报告" href="http://www.cocoachina.com/programmer/20170323/18949.html"><span>年收入130万以上，同行的你是怎么做到的？--20...</span></a></p></li><li class=""><span class="hide_comment">有点....韩寒味儿.断章取义,排列组合后方可正常阅读</span><br><p><span>从初春到盛夏</span><span>评论了</span><a target="_blank" title="程序员的黄金时代" href="http://www.cocoachina.com/programmer/20170323/18947.html"><span>程序员的黄金时代</span></a></p></li><li class=""><span class="hide_comment">有参考性的&nbsp;data</span><br><p><span>houcheng</span><span>评论了</span><a target="_blank" title="Stack Overflow 2017 开发者调查报告发布！" href="http://www.cocoachina.com/programmer/20170324/18953.html"><span>Stack Overflow 2017 开发者调查...</span></a></p></li><li class=""><span class="hide_comment">http://www.jianshu.com/p/71fdd1ae714c&nbsp;原文链接</span><br><p><span>强sas</span><span>评论了</span><a target="_blank" title="iOS中书写代码规范35条小建议" href="http://www.cocoachina.com/ios/20170324/18950.html"><span>iOS中书写代码规范35条小建议...</span></a></p></li><li class=""><span class="hide_comment">看的我头都大了</span><br><p><span>低调的小宋</span><span>评论了</span><a target="_blank" title="iOS中书写代码规范35条小建议" href="http://www.cocoachina.com/ios/20170324/18950.html"><span>iOS中书写代码规范35条小建议...</span></a></p></li><li class=""><span class="hide_comment">不全就算了。。还这么多问号都没处理。。居然还能上头条</span><br><p><span>Angie___</span><span>评论了</span><a target="_blank" title="iOS中书写代码规范35条小建议" href="http://www.cocoachina.com/ios/20170324/18950.html"><span>iOS中书写代码规范35条小建议...</span></a></p></li><li class=""><span class="hide_comment">一看就设计粗糙简陋、细节不禁看的&nbsp;app，已经是僵尸状态、内容都疑似测试数据的项目，app&nbsp;store&nbsp;上更新记录少、评论寥寥，对应的工程师偶尔也有好的，但相对少得多<br><br>我不赞同&nbsp;设计粗糙简陋&nbsp;和僵尸状态&nbsp;&nbsp;这根程序员有啥关系,公司运营不当,产品经理不行,怪我咯</span><br><p><span>tinAcer</span><span>评论了</span><a target="_blank" title="面试了 20 个初/中级 iOS 工程师之后（上）" href="http://www.cocoachina.com/ios/20170320/18922.html"><span>面试了 20 个初/中级 iOS 工程师之后（上）...</span></a></p></li><li class="noborder-b"><span class="hide_comment">辣么多问号</span><br><p><span>javamylove</span><span>评论了</span><a target="_blank" title="iOS中书写代码规范35条小建议" href="http://www.cocoachina.com/ios/20170324/18950.html"><span>iOS中书写代码规范35条小建议...</span></a></p></li></ul>
+                </div>
+                <!--./综合评论-->
+                <!--相关帖子-->
+                <div class="part-wrap clearfix" style="margin:15px 0 15px 0;">
+                    <h3>相关帖子</h3>
+                    <ul class="related-comment clearfix">
+                        <script charset="gb2312" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/new.php"></script><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1716605" target="_blank">CocoaAsyncSocket 使用问题</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1716604" target="_blank">【求图灵demo】万能的cc，急求一份集成了图灵机器人的demo啊</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1716603" target="_blank">扫描的图片文件怎么转换成word格式</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1716602" target="_blank">用哪个软件编辑pdf文件好一点？</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1716601" target="_blank">房卡麻将开发 选择傲玩房卡游戏开发 房卡app开发 开发房卡游戏</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1716600" target="_blank">融云客服</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1716599" target="_blank">百度的移动内容分发是怎样的？</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1716598" target="_blank">9周年</a></li><li class="clearfix noborder-b"><a href="http://www.cocoachina.com/bbs/read.php?tid=1716597" target="_blank">奇葩公司</a></li>
+                    </ul>
+                </div>
+                <!--./相关帖子-->
+                <iframe width="230" height="550" class="share_self" frameborder="0" scrolling="no" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/index.html"></iframe>
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC列表页面230x230 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:230px;height:230px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="6765277166"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        <!--./侧边栏-->
+    </div>
+
+    <div id="coco-store" style="display:none">
+        <div class="storebox">
+            <h5>提示</h5>
+            <h3>已经收藏该篇文章</h3>
+            <p class="p1"><a href="http://www.cocoachina.com/bbs/u.php?action=favor&amp;tag=1" target="_blank">去我的收藏夹</a></p>
+            <p class="p2"><a href="http://www.cocoachina.com/bbs/login.php">请登录</a></p>
+        </div>
+    </div> <!--收藏提示-->
+</div>
+
+<script type="text/javascript">
+
+function postDigg(ftype,aid)
+{
+    var taget_obj = document.getElementById('newdigg');
+    var saveid = GetCookie('diggid');
+    if(saveid != null)
+    {
+        var saveids = saveid.split(',');
+        var hasid = false;
+        saveid = '';
+        j = 1;
+        for(i=saveids.length-1;i>=0;i--)
+        {
+            if(saveids[i]==aid && hasid) continue;
+            else {
+                if(saveids[i]==aid && !hasid) hasid = true;
+                saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+                j++;
+                if(j==20 && hasid) break;
+                if(j==19 && !hasid) break;
+            }
+        }
+        if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+        else saveid += ','+aid;
+        SetCookie('diggid',saveid,1);
+    }
+    else
+    {
+        SetCookie('diggid',aid,1);
+    }
+    myajax = new DedeAjax(taget_obj,false,false,'','','');
+    var url = "/cms/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+    myajax.SendGet2(url);
+    DedeXHTTP = null;
+    $('#zanbox').addClass('zanbox-selected');
+}
+function getDigg(aid)
+{
+    var taget_obj = document.getElementById('newdigg');
+    myajax = new DedeAjax(taget_obj,false,false,'','','');
+    myajax.SendGet2("/cms/plus/digg_ajax.php?id="+aid);
+    DedeXHTTP = null;
+}
+
+
+//显示对应的导航：
+$(function(){
+    var article_id = $('#article_id').val();
+    var saveid = GetCookie('diggid');
+
+    if(saveid != null)
+    {
+        var saveids = saveid.split(',');
+        var hasid = false;
+        saveid = '';
+        j = 1;
+        for(i=saveids.length-1;i>=0;i--)
+        {
+            if(saveids[i]==article_id && hasid) continue;
+            else {
+                if(saveids[i]==article_id && !hasid) hasid = true;
+                saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+                j++;
+                if(j==20 && hasid) break;
+                if(j==19 && !hasid) break;
+            }
+        }
+
+        if(hasid)
+        {
+            $('#zanbox').addClass('zanbox-selected');
+        }
+
+    }
+
+});
+
+window.onload = function() {
+
+    $('#sharediv').removeClass('bdshare-button-style1-32');
+    $('#sharediv').attr('class','bdsharebuttonbox');
+};
+</script>
+<script type="text/javascript" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/shCore.js"></script>
+    <script type="text/javascript" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/brush.js"></script>
+    <link type="text/css" rel="stylesheet" href="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/shCoreDefault.css">
+    <script type="text/javascript">
+    //SyntaxHighlighter.config.clipboardSwf = '/js/scripts/clipboard.swf';
+
+    SyntaxHighlighter.all();</script>
+
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"iOS App的加固保护原理 - 来自CocoaChina苹果开发中文站@CocoaChina","bdMini":"2","bdMiniList":false,"bdPic":"http://api.cocoachina.com/uploads/170324/f7de19fffceda3ee0bbe3515c193c095.jpg","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api//js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!--./cont-->
+
+<!-- 回复评论框模板 -->
+<script type="text/javascript" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/comment.js"></script>
+<script type="text/javascript" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/mustache.min.js"></script>
+<!-- 回复评论框模板 -->
+<script id="reply_comment_template" type="x-tmpl-mustache">
+    <div id="sub-reply-comment" class="reply-comment">
+        <textarea name="subcomment" id="sub-reply-txt" cols="30" rows="10" placeholder="你怎么看？快来评论一下吧！"></textarea>
+        <input type="hidden" id="sub-reply-id" value="{{commentid}}" />
+        <input type="hidden" id="sub-reply-userid" value="{{parentuserid}}" />
+        <input type="hidden" id="sub-reply-username" value="{{parentusername}}" />
+        <a type="button" id="sub_comment_bt" class="submitbt">提交</a>
+        <div class="clearfloat"></div>
+        <div class="unlogin-mask">
+            <div>您还没有登录！请<a href="/bbs/login.php">登录</a>或<a href="/bbs/register.php">注册</a></div>
+        </div>
+    </div>
+</script>
+
+<!-- 评论模板 -->
+<script id="main_comment_template" type="x-tmpl-mustache">
+    <div class="glab-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="1">
+        <div class="comment-left">
+            <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+            <div class="comment-content">{{&content}}</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                    <span class="zancnt">{{support}}</span>
+                </span>
+                <span class="cai">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                    <span class="zancnt">{{report}}</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+            {{#sub}}
+                <div class="glab-comment glab-sub-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="2">
+                    <div class="comment-left">
+                        <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+                    </div>
+                    <div class="comment-right">
+                        <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+                        <div class="comment-content"><a href="/bbs/u.php?action=feed&uid={{parent_user_id}}" target="_blank">回复：{{parent}}</a>{{&content}}</div>
+                        <div class="comment-buttons">
+                            <span class="ding">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                                <span class="zancnt">{{support}}</span>
+                            </span>
+                            <span class="cai">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                                <span class="zancnt">{{report}}</span>
+                            </span>
+                            <span class="replybt">回复</span>
+                        </div>          
+                    </div>
+                </div>
+            {{/sub}}         
+    </div>  
+</script>
+
+
+<script id="sub_comment_template" type="x-tmpl-mustache">
+    <div class="glab-comment glab-sub-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="2">
+        <div class="comment-left">
+            <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+            <div class="comment-content"><a href="/bbs/u.php?action=feed&uid={{parent_user_id}}" target="_blank">回复：{{parent}}</a>{{&content}}</div>
+            <div class="comment-buttons">
+                <span class="ding">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                    <span class="zancnt">{{support}}</span>
+                </span>
+                <span class="cai">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                    <span class="zancnt">{{report}}</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>          
+        </div>
+    </div>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68948817-1', 'auto', {'name': 'newTracker'});
+  ga('newTracker.send', 'pageview');
+
+</script>
+    
+<!--右侧浮动-->
+    <div class="r-bar" style="position: fixed; top: inherit; bottom: 10px;">
+        <img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/coco_weixin.png" class="weixin">
+    	<a href="http://weibo.com/cocoachina" target="_blank" title="" class="weibo">sina</a>
+        <a href="javascript:void(0);" target="_blank" title="" class="feedback">weixin</a>
+        <a href="mailto:support@cocoachina.com" title="" class="kefu">mail</a>
+        <a href="javascript:;" title="回到顶部" class="returntop" style="display: none;">回到顶部</a>
+    </div>
+
+<script language="javascript" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/bbsauth_plus2015.php" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+    if (typeof(_user_info_html) != 'undefined' && _user_info_html)
+    {
+        $('.nav-user-login').hide();
+        $('.nav-user-name').html(_user_info_html).show();
+    }
+
+	var type = $('#type_name').html();
+	if(type)
+	{	
+		switch( type )
+		{
+			case 'iOS开发':
+				$('#ios').addClass('light');
+				break;
+			case 'AppStore研究':
+				$('#app_store').addClass('light');
+				break;
+			case 'Mac开发':
+				$('#mac').addClass('light');
+				break;
+			case '产品设计':
+				$('#design').addClass('light');
+				break;
+			case 'Cocos引擎':
+				$('#cocos').addClass('light');
+				break;
+			case 'WebApp':
+				$('#webapp').addClass('light');
+				break;
+			case 'Swift':
+				$('#swift').addClass('light');
+				break;
+			case '游戏开发':
+				$('#game').addClass('light');
+				break;
+			case '苹果相关':
+				$('#apple').addClass('light');
+				break;
+			case '营销推广':
+				$('#market').addClass('light');
+				break;		
+			case '业界动态':
+				$('#industry').addClass('light');
+				break;	
+			case '程序人生':
+				$('#programmer').addClass('light');
+				break;																																
+				
+		}
+	}
+});
+</script>
+<!--./cont-->
+<script type="text/javascript" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/index.js"></script>
+<script src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/jquery.colorbox-min.js" type="text/javascript"></script>
+<script src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/script.js" type="text/javascript"></script>
+<script type="text/javascript">
+			jQuery(function()
+			{
+				//更改文章来源
+				var source = $('#source a').html();								
+				if( source == '未知' )
+					jQuery('#source a').html('CocoaChina');
+				if( jQuery('#source a').attr('href')=='')
+					jQuery('#source').html('来源：'+source);
+				
+				//获取用户登录的id
+//                var content = jQuery('.t-lid').attr("href");
+//                var uid = 0;
+//                if( content )
+//                {
+//                    content = content.split('=');
+//                    uid = content[1];
+//                }
+//                var timestamp = new Date().getTime();	
+//                var uid2 = parseInt(uid);
+//                if(uid2==uid && uid2!=0){
+//                    uid = uid<<2;			
+//                    uid = uid+''+timestamp;
+//                }else{
+//                    uid = "";
+//                }
+//                var oIframe=document.getElementById("comiframe");
+//                if(oIframe){
+//                    var oUrl=window.location.href;
+//                    oUrl = encodeURIComponent(oUrl);
+//
+//                    oIframe.src="/comment.php?url="+oUrl+"&uid="+uid;
+//                }
+
+				
+			});
+		</script>
+<!--footer-->
+<div class="footer clearfix">
+    <div class="footer-b">
+        <div>
+            <a href="http://www.cocoachina.com/aboutus/index.html" target="_blank">关于我们</a>
+            <a href="http://www.cocoachina.com/contactus/index.html" target="_blank">商务合作</a>
+            <a href="mailto:support@cocoachina.com" target="_blank">联系我们</a>
+            <a href="http://www.cocoachina.com/corps" target="_blank">合作伙伴</a>
+        </div>
+        <p class="footer-b-p">北京触控科技有限公司版权所有</p>
+        <p>
+            ©2016 Chukong Technologies,Inc.
+            <i>
+                <a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备 11006519号 　京ICP证 100954号</a> 京公网安备11010502020289 
+                <a href="http://182.131.21.137/ccnt-apply/admin/business/preview/business-preview!lookUrlRFID.action?main_id=A580B24B1AE846CE9DA949026D63939F" target="_blank">
+                    <img src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/jingwen.png" style="margin: -10px auto -14px -10px;">
+                    京网文[2012]0426-138号
+                </a>
+            </i>
+        </p>
+    </div>
+</div>
+<!--./footer-->
+<script language="javascript" type="text/javascript" src="./iOS App的加固保护原理 - CocoaChina_让移动开发更简单_files/dedeajax2-min.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?88399e4c4cf744609c4fc8c3a8935691";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16940817-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+ 
+function search_check()
+{
+	var search_keyword = $('#search_keyword').val();
+
+	if( search_keyword.length < 2 )
+	{
+		alert("搜索关键字不能少于2个字节，请重新输入。");
+	}
+	else
+	{
+		$('#searchform').submit();
+	}
+}
+
+</script>
+<script type="text/javascript">
+_acK({aid:116313,format:0,mode:1,gid:1,serverbaseurl:"afp.csbew.com/"});
+</script>
+
+
+
+<div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>

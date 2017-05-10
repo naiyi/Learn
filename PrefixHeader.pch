@@ -1,0 +1,27 @@
+//
+//  PrefixHeader.pch
+//  h5
+//
+//  Created by yosemite on 16/9/29.
+//  Copyright © 2016年 Mr.Chen. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+// 搜索prefix header       yes
+// 路径－－－－ 项目名/pch文件名
+#ifdef __OBJC__
+//头文件名
+#endif
+
+#define IMAGENAMED(NAME)        [UIImage imageNamed:NAME]
+#define Main_Screen_Width       [[UIScreen mainScreen] bounds].size.width
+#define Main_Screen_Height      [[UIScreen mainScreen] bounds].size.height
+#define IMAGE_X                arc4random()%(int)Main_Screen_Width
+#define IMAGE_ALPHA            ((float)(arc4random()%10))/10
+#define IMAGE_WIDTH            arc4random()%20 + 20
+#define PLUS_HEIGHT            Main_Screen_Height/25
+#endif /* PrefixHeader_pch */

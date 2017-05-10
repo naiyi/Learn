@@ -1,0 +1,4 @@
+platform :ios , '8.0'
+target 'NSLogger的使用' do
+pod 'NSLogger'
+end

@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A7B0F3421DAC8FF30011693D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F3411DAC8FF30011693D /* main.m */; };
+		A7B0F3451DAC8FF30011693D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F3441DAC8FF30011693D /* AppDelegate.m */; };
+		A7B0F3481DAC8FF30011693D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F3471DAC8FF30011693D /* ViewController.m */; };
+		A7B0F34B1DAC8FF30011693D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B0F3491DAC8FF30011693D /* Main.storyboard */; };
+		A7B0F34E1DAC8FF30011693D /* NSSet_NSMutableSet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F34C1DAC8FF30011693D /* NSSet_NSMutableSet.xcdatamodeld */; };
+		A7B0F3501DAC8FF30011693D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7B0F34F1DAC8FF30011693D /* Assets.xcassets */; };
+		A7B0F3531DAC8FF30011693D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B0F3511DAC8FF30011693D /* LaunchScreen.storyboard */; };
+		A7B0F35E1DAC8FF30011693D /* NSSet_NSMutableSetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F35D1DAC8FF30011693D /* NSSet_NSMutableSetTests.m */; };
+		A7B0F3691DAC8FF30011693D /* NSSet_NSMutableSetUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F3681DAC8FF30011693D /* NSSet_NSMutableSetUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A7B0F35A1DAC8FF30011693D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7B0F3351DAC8FF30011693D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7B0F33C1DAC8FF30011693D;
+			remoteInfo = "NSSet和NSMutableSet";
+		};
+		A7B0F3651DAC8FF30011693D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7B0F3351DAC8FF30011693D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7B0F33C1DAC8FF30011693D;
+			remoteInfo = "NSSet和NSMutableSet";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A7B0F33D1DAC8FF30011693D /* NSSet和NSMutableSet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NSSet和NSMutableSet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7B0F3411DAC8FF30011693D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A7B0F3431DAC8FF30011693D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A7B0F3441DAC8FF30011693D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A7B0F3461DAC8FF30011693D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A7B0F3471DAC8FF30011693D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A7B0F34A1DAC8FF30011693D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A7B0F34D1DAC8FF30011693D /* NSSet_NSMutableSet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NSSet_NSMutableSet.xcdatamodel; sourceTree = "<group>"; };
+		A7B0F34F1DAC8FF30011693D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A7B0F3521DAC8FF30011693D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A7B0F3541DAC8FF30011693D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7B0F3591DAC8FF30011693D /* NSSet和NSMutableSetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSSet和NSMutableSetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7B0F35D1DAC8FF30011693D /* NSSet_NSMutableSetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSSet_NSMutableSetTests.m; sourceTree = "<group>"; };
+		A7B0F35F1DAC8FF30011693D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7B0F3641DAC8FF30011693D /* NSSet和NSMutableSetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSSet和NSMutableSetUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7B0F3681DAC8FF30011693D /* NSSet_NSMutableSetUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSSet_NSMutableSetUITests.m; sourceTree = "<group>"; };
+		A7B0F36A1DAC8FF30011693D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A7B0F33A1DAC8FF30011693D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B0F3561DAC8FF30011693D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B0F3611DAC8FF30011693D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A7B0F3341DAC8FF30011693D = {
+			isa = PBXGroup;
+			children = (
+				A7B0F33F1DAC8FF30011693D /* NSSet和NSMutableSet */,
+				A7B0F35C1DAC8FF30011693D /* NSSet和NSMutableSetTests */,
+				A7B0F3671DAC8FF30011693D /* NSSet和NSMutableSetUITests */,
+				A7B0F33E1DAC8FF30011693D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A7B0F33E1DAC8FF30011693D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A7B0F33D1DAC8FF30011693D /* NSSet和NSMutableSet.app */,
+				A7B0F3591DAC8FF30011693D /* NSSet和NSMutableSetTests.xctest */,
+				A7B0F3641DAC8FF30011693D /* NSSet和NSMutableSetUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7B0F33F1DAC8FF30011693D /* NSSet和NSMutableSet */ = {
+			isa = PBXGroup;
+			children = (
+				A7B0F3431DAC8FF30011693D /* AppDelegate.h */,
+				A7B0F3441DAC8FF30011693D /* AppDelegate.m */,
+				A7B0F3461DAC8FF30011693D /* ViewController.h */,
+				A7B0F3471DAC8FF30011693D /* ViewController.m */,
+				A7B0F3491DAC8FF30011693D /* Main.storyboard */,
+				A7B0F34F1DAC8FF30011693D /* Assets.xcassets */,
+				A7B0F3511DAC8FF30011693D /* LaunchScreen.storyboard */,
+				A7B0F3541DAC8FF30011693D /* Info.plist */,
+				A7B0F34C1DAC8FF30011693D /* NSSet_NSMutableSet.xcdatamodeld */,
+				A7B0F3401DAC8FF30011693D /* Supporting Files */,
+			);
+			path = "NSSet和NSMutableSet";
+			sourceTree = "<group>";
+		};
+		A7B0F3401DAC8FF30011693D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A7B0F3411DAC8FF30011693D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A7B0F35C1DAC8FF30011693D /* NSSet和NSMutableSetTests */ = {
+			isa = PBXGroup;
+			children = (
+				A7B0F35D1DAC8FF30011693D /* NSSet_NSMutableSetTests.m */,
+				A7B0F35F1DAC8FF30011693D /* Info.plist */,
+			);
+			path = "NSSet和NSMutableSetTests";
+			sourceTree = "<group>";
+		};
+		A7B0F3671DAC8FF30011693D /* NSSet和NSMutableSetUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A7B0F3681DAC8FF30011693D /* NSSet_NSMutableSetUITests.m */,
+				A7B0F36A1DAC8FF30011693D /* Info.plist */,
+			);
+			path = "NSSet和NSMutableSetUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A7B0F33C1DAC8FF30011693D /* NSSet和NSMutableSet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7B0F36D1DAC8FF30011693D /* Build configuration list for PBXNativeTarget "NSSet和NSMutableSet" */;
+			buildPhases = (
+				A7B0F3391DAC8FF30011693D /* Sources */,
+				A7B0F33A1DAC8FF30011693D /* Frameworks */,
+				A7B0F33B1DAC8FF30011693D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NSSet和NSMutableSet";
+			productName = "NSSet和NSMutableSet";
+			productReference = A7B0F33D1DAC8FF30011693D /* NSSet和NSMutableSet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A7B0F3581DAC8FF30011693D /* NSSet和NSMutableSetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7B0F3701DAC8FF30011693D /* Build configuration list for PBXNativeTarget "NSSet和NSMutableSetTests" */;
+			buildPhases = (
+				A7B0F3551DAC8FF30011693D /* Sources */,
+				A7B0F3561DAC8FF30011693D /* Frameworks */,
+				A7B0F3571DAC8FF30011693D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7B0F35B1DAC8FF30011693D /* PBXTargetDependency */,
+			);
+			name = "NSSet和NSMutableSetTests";
+			productName = "NSSet和NSMutableSetTests";
+			productReference = A7B0F3591DAC8FF30011693D /* NSSet和NSMutableSetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A7B0F3631DAC8FF30011693D /* NSSet和NSMutableSetUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7B0F3731DAC8FF30011693D /* Build configuration list for PBXNativeTarget "NSSet和NSMutableSetUITests" */;
+			buildPhases = (
+				A7B0F3601DAC8FF30011693D /* Sources */,
+				A7B0F3611DAC8FF30011693D /* Frameworks */,
+				A7B0F3621DAC8FF30011693D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7B0F3661DAC8FF30011693D /* PBXTargetDependency */,
+			);
+			name = "NSSet和NSMutableSetUITests";
+			productName = "NSSet和NSMutableSetUITests";
+			productReference = A7B0F3641DAC8FF30011693D /* NSSet和NSMutableSetUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A7B0F3351DAC8FF30011693D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = yosemite;
+				TargetAttributes = {
+					A7B0F33C1DAC8FF30011693D = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+					};
+					A7B0F3581DAC8FF30011693D = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A7B0F33C1DAC8FF30011693D;
+					};
+					A7B0F3631DAC8FF30011693D = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A7B0F33C1DAC8FF30011693D;
+					};
+				};
+			};
+			buildConfigurationList = A7B0F3381DAC8FF30011693D /* Build configuration list for PBXProject "NSSet和NSMutableSet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A7B0F3341DAC8FF30011693D;
+			productRefGroup = A7B0F33E1DAC8FF30011693D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A7B0F33C1DAC8FF30011693D /* NSSet和NSMutableSet */,
+				A7B0F3581DAC8FF30011693D /* NSSet和NSMutableSetTests */,
+				A7B0F3631DAC8FF30011693D /* NSSet和NSMutableSetUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A7B0F33B1DAC8FF30011693D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7B0F3531DAC8FF30011693D /* LaunchScreen.storyboard in Resources */,
+				A7B0F3501DAC8FF30011693D /* Assets.xcassets in Resources */,
+				A7B0F34B1DAC8FF30011693D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B0F3571DAC8FF30011693D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B0F3621DAC8FF30011693D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A7B0F3391DAC8FF30011693D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7B0F3481DAC8FF30011693D /* ViewController.m in Sources */,
+				A7B0F3451DAC8FF30011693D /* AppDelegate.m in Sources */,
+				A7B0F34E1DAC8FF30011693D /* NSSet_NSMutableSet.xcdatamodeld in Sources */,
+				A7B0F3421DAC8FF30011693D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B0F3551DAC8FF30011693D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7B0F35E1DAC8FF30011693D /* NSSet_NSMutableSetTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B0F3601DAC8FF30011693D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7B0F3691DAC8FF30011693D /* NSSet_NSMutableSetUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A7B0F35B1DAC8FF30011693D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7B0F33C1DAC8FF30011693D /* NSSet和NSMutableSet */;
+			targetProxy = A7B0F35A1DAC8FF30011693D /* PBXContainerItemProxy */;
+		};
+		A7B0F3661DAC8FF30011693D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7B0F33C1DAC8FF30011693D /* NSSet和NSMutableSet */;
+			targetProxy = A7B0F3651DAC8FF30011693D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A7B0F3491DAC8FF30011693D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7B0F34A1DAC8FF30011693D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A7B0F3511DAC8FF30011693D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7B0F3521DAC8FF30011693D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A7B0F36B1DAC8FF30011693D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A7B0F36C1DAC8FF30011693D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A7B0F36E1DAC8FF30011693D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "NSSet和NSMutableSet/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.NSSet-NSMutableSet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A7B0F36F1DAC8FF30011693D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "NSSet和NSMutableSet/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.NSSet-NSMutableSet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A7B0F3711DAC8FF30011693D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "NSSet和NSMutableSetTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.NSSet-NSMutableSetTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSSet和NSMutableSet.app/NSSet和NSMutableSet";
+			};
+			name = Debug;
+		};
+		A7B0F3721DAC8FF30011693D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "NSSet和NSMutableSetTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.NSSet-NSMutableSetTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSSet和NSMutableSet.app/NSSet和NSMutableSet";
+			};
+			name = Release;
+		};
+		A7B0F3741DAC8FF30011693D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "NSSet和NSMutableSetUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.NSSet-NSMutableSetUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "NSSet和NSMutableSet";
+			};
+			name = Debug;
+		};
+		A7B0F3751DAC8FF30011693D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "NSSet和NSMutableSetUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.NSSet-NSMutableSetUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "NSSet和NSMutableSet";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A7B0F3381DAC8FF30011693D /* Build configuration list for PBXProject "NSSet和NSMutableSet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7B0F36B1DAC8FF30011693D /* Debug */,
+				A7B0F36C1DAC8FF30011693D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7B0F36D1DAC8FF30011693D /* Build configuration list for PBXNativeTarget "NSSet和NSMutableSet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7B0F36E1DAC8FF30011693D /* Debug */,
+				A7B0F36F1DAC8FF30011693D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A7B0F3701DAC8FF30011693D /* Build configuration list for PBXNativeTarget "NSSet和NSMutableSetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7B0F3711DAC8FF30011693D /* Debug */,
+				A7B0F3721DAC8FF30011693D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A7B0F3731DAC8FF30011693D /* Build configuration list for PBXNativeTarget "NSSet和NSMutableSetUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7B0F3741DAC8FF30011693D /* Debug */,
+				A7B0F3751DAC8FF30011693D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A7B0F34C1DAC8FF30011693D /* NSSet_NSMutableSet.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A7B0F34D1DAC8FF30011693D /* NSSet_NSMutableSet.xcdatamodel */,
+			);
+			currentVersion = A7B0F34D1DAC8FF30011693D /* NSSet_NSMutableSet.xcdatamodel */;
+			path = NSSet_NSMutableSet.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A7B0F3351DAC8FF30011693D /* Project object */;
+}

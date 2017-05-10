@@ -1,0 +1,324 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" type="text/css" href="markdown.css"></link></head><body>
+</body></html><h1>UShare SDK集成</h1>
+<h2>下载UShare SDK</h2>
+<p>通过iOS社会化组件<a href="http://dev.umeng.com/social/ios/sdk-download">下载页面</a>选择所需的社交平台后进行下载。</p>
+<h3>SDK目录介绍</h3>
+<pre><code>1. Document     - UShare SDK文档
+2. UMSocialDemo - UShare SDK Demo（如点选下载）
+3. UMSocial     - UShare SDK核心目录
+    UMSocialSDK       - UShare SDK核心framework
+    UMSocialUI        - UShare 分享UI资源、分享面板等
+    SocialLibraries   - 第三方平台库及UShare链接库
+</code></pre>
+
+<h2>加入UShare SDK</h2>
+<ul>
+<li>
+<p>将UShare SDK添加到工程 <br />
+<img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTYvMDkvMjIvMThfMjBfMzdfMjRfNDE0NzQ1MzkwOTJfLnBpY19oZC5qcGciXV0/41474539092_.pic_hd.jpg" width="550" height="330">  </p>
+</li>
+<li>
+<p>添加项目配置 <br />
+<img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTYvMDkvMjIvMThfMjBfNTBfNjQ0XzUxNDc0NTM5MjY5Xy5waWNfaGQuanBnIl1d/51474539269_.pic_hd.jpg" width="580" height="150">  </p>
+</li>
+<li>
+<p>添加平台相应的依赖库
+根据集成的不同平台加入相关的依赖库，未列出平台则不用添加
+添加方式：选中项目Target -&gt; Linked Frameworks and Libraries列表中添加</p>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>依赖系统库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>微信</td>
+<td>SystemConfiguration.framework <br> CoreTelephony.framework <br> libsqilte3.tbd <br> libc++.tbd <br> libz.tbd</td>
+</tr>
+<tr>
+<td>QQ</td>
+<td>SystemConfiguration.framework <br> libc++.tbd</td>
+</tr>
+<tr>
+<td>新浪微博</td>
+<td>SystemConfiguration.framework <br> CoreTelephony.framework <br> ImageIO.framework <br> libsqilte3.tbd <br> libz.tbd</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p>注：Twitter平台加入后需添加TwitterKit.framework/Resources/TwitterKitResources.bundle。</p>
+<h1>UShare SDK平台配置</h1>
+<p>从这一步骤就开始需要第三方appKey和appSecret等信息，可参考<a href="http://dev.umeng.com/social/ios/operation">第三方账号申请及绑定</a>申请所需的平台账号。</p>
+<h2>配置各平台URL Scheme</h2>
+<h3>添加URL Types</h3>
+<ul>
+<li>URL Scheme是通过系统找到并跳转对应app的一类设置，通过向项目中的info.plist文件中加入<code>URL types</code>可使用第三方平台所注册的appkey信息向系统注册你的app，当跳转到第三方应用授权或分享后，可直接跳转回你的app。</li>
+<li>添加URL Types有如下几处，都可进行设置<ol>
+<li>通过工程设置面板 <br />
+<img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTYvMDkvMjIvMThfMTlfNDJfOTY3XzExNDc0NTMzODUwXy5waWNfaGQuanBnIl1d/11474533850_.pic_hd.jpg" width="580" height="170"> </li>
+<li>通过info.plist文件编辑 <br />
+<img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTYvMDkvMjIvMThfMjBfMDlfNDExXzIxNDc0NTM0NDE0Xy5waWNfaGQuanBnIl1d/21474534414_.pic_hd.jpg" width="580" height="200"> </li>
+<li>直接编辑info.plist中XML代码 <br />
+<img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTYvMDkvMjIvMThfMjBfMjNfODk3XzMxNDc0NTM0NjY1Xy5waWNfaGQuanBnIl1d/31474534665_.pic_hd.jpg" width="580" height="220"> </li>
+</ol>
+</li>
+</ul>
+<h3>配置第三方平台URL Scheme</h3>
+<p>未列出则不需设置</p>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>格式</th>
+<th>举例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>微信</td>
+<td>微信appKey</td>
+<td>wxdc1e388c3822c80b</td>
+<td></td>
+</tr>
+<tr>
+<td>QQ/Qzone</td>
+<td>1、"tencent"+腾讯QQ互联应用appID <br> 2、“QQ”+腾讯QQ互联应用appID转换成十六进制（不足8位前面补0）</td>
+<td>appID：100424468<br> 1、tencent100424468 <br>2、QQ05fc5b14</td>
+<td>100424468转十六进制为5fc5b14，因不足8位向前补0，结果为05fc5b14，加"QQ"前缀QQ05fc5b14</td>
+</tr>
+<tr>
+<td>新浪微博</td>
+<td>“wb”+新浪appKey</td>
+<td>wb3921700954</td>
+<td></td>
+</tr>
+<tr>
+<td>支付宝</td>
+<td>“ap”+appID</td>
+<td>ap2015111700822536</td>
+<td>URL Type中的identifier填"alipayShare"</td>
+</tr>
+<tr>
+<td>易信</td>
+<td>易信appkey</td>
+<td>yx35664bdff4db42c2b7be1e29390c1a06</td>
+<td></td>
+</tr>
+<tr>
+<td>点点虫</td>
+<td>点点虫appID</td>
+<td>8112117817424282305</td>
+<td>URL Type中的identifier填"Laiwang"</td>
+</tr>
+</tbody>
+</table>
+<h2>适配iOS9/10系统</h2>
+<p>iOS9系统后Apple对HTTP请求及访问外部应用做了更加严格的要求，包括HTTP白名单、跳转第三方应用白名单等，具体设置第三方平台参数请参照<a href="http://dev.umeng.com/social/ios/ios9">适配iOS9/10系统</a>。</p>
+<h1>调用UShare SDK</h1>
+<h2>初始化设置</h2>
+<ul>
+<li>初始化UShare及第三方平台
+app启动后进行UShare和第三方平台的初始化工作
+以下代码将所有平台初始化示例放出，开发者根据平台需要选取相应代码，并替换为所属注册的appKey和appSecret。</li>
+</ul>
+<pre><code>#import &lt;UMSocialCore/UMSocialCore.h&gt;
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    //打开调试日志
+    [[UMSocialManager defaultManager] openLog:YES];
+
+    //设置友盟appkey
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@&quot;57b432afe0f55a9832001a0a&quot;];
+
+    // 获取友盟social版本号
+    //NSLog(@&quot;UMeng social version: %@&quot;, [UMSocialGlobal umSocialSDKVersion]);
+
+    //设置微信的appKey和appSecret
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@&quot;wxdc1e388c3822c80b&quot; appSecret:@&quot;3baf1193c85774b3fd9d18447d76cab0&quot; redirectURL:@&quot;http://mobile.umeng.com/social&quot;];
+
+
+    //设置分享到QQ互联的appKey和appSecret
+     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@&quot;100424468&quot;  appSecret:@&quot;a393c1527aaccb95f3a4c88d6d1455f6&quot; redirectURL:@&quot;http://mobile.umeng.com/social&quot;];
+
+    //设置新浪的appKey和appSecret
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@&quot;3921700954&quot;  appSecret:@&quot;04b48b094faeb16683c32669824ebdad&quot; redirectURL:@&quot;http://sns.whalecloud.com/sina2/callback&quot;];
+
+    //支付宝的appKey
+    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_AlipaySession appKey:@&quot;2015111700822536&quot; appSecret:nil redirectURL:@&quot;http://mobile.umeng.com/social&quot;];
+
+    //设置易信的appKey
+    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_YixinSession appKey:@&quot;yx35664bdff4db42c2b7be1e29390c1a06&quot; appSecret:nil redirectURL:@&quot;http://mobile.umeng.com/social&quot;];
+
+    //设置点点虫（原来往）的appKey和appSecret
+    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_LaiWangSession appKey:@&quot;8112117817424282305&quot; appSecret:@&quot;9996ed5039e641658de7b83345fee6c9&quot; redirectURL:@&quot;http://mobile.umeng.com/social&quot;];
+
+    //设置领英的appKey和appSecret
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Linkedin appKey:@&quot;81t5eiem37d2sc&quot;  appSecret:@&quot;7dgUXPLH8kA8WHMV&quot; redirectURL:@&quot;https://api.linkedin.com/v1/people&quot;];
+
+    //设置Twitter的appKey和appSecret
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Twitter appKey:@&quot;fB5tvRpna1CKK97xZUslbxiet&quot;  appSecret:@&quot;YcbSvseLIwZ4hZg9YmgJPP5uWzd4zr6BpBKGZhf07zzh3oj62K&quot; redirectURL:nil];
+    ...
+
+    return YES;
+}
+
+</code></pre>
+
+<ul>
+<li>设置系统回调 <br />
+使用</li>
+</ul>
+<pre><code>- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
+}
+</code></pre>
+
+<p>或</p>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
+}
+
+</code></pre>
+
+<h2>第三方平台授权</h2>
+<ul>
+<li>支持授权的平台 <br />
+微信、QQ、新浪微博、腾讯微博、人人网、豆瓣、Facebook、Twitter、领英</li>
+<li>向第三方平台获取授权</li>
+</ul>
+<pre><code>#import &lt;UMSocialCore/UMSocialCore.h&gt;
+
+-(void)authWithPlatform:(UMSocialPlatformType)platformType
+{
+    [[UMSocialManager defaultManager] authWithPlatform:platformType completion:^(id result, NSError *error) {
+        [self.tableView reloadData];
+        UMSocialAuthResponse *authresponse = result;
+        NSString *message = [NSString stringWithFormat:@&quot;result: %d\n uid: %@\n accessToken: %@\n&quot;,(int)error.code,authresponse.uid,authresponse.accessToken];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;Login&quot;
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@&quot;确定&quot;, nil)
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+
+}
+</code></pre>
+
+<ul>
+<li>获取用户信息</li>
+</ul>
+<pre><code>#import &lt;UMSocialCore/UMSocialCore.h&gt;
+- (void)getUserInfoForPlatform:(UMSocialPlatformType)platformType
+{
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:platformType completion:^(id result, NSError *error) {
+        UMSocialUserInfoResponse *userinfo =result;
+        NSString *message = [NSString stringWithFormat:@&quot;name: %@\n icon: %@\n gender: %@\n&quot;,userinfo.name,userinfo.iconurl,userinfo.gender];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;UserInfo&quot;
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@&quot;确定&quot;, nil)
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+}
+</code></pre>
+
+<h2>第三方平台分享</h2>
+<ul>
+<li>弹出分享面板</li>
+</ul>
+<pre><code>#import &quot;UMSocialUIManager.h&quot;
+//点击分享按钮
+- (IBAction)share:(id)sender {
+    __weak typeof(self) weakSelf = self;
+    //显示分享面板
+    [UMSocialUIManager showShareMenuViewInView:nil sharePlatformSelectionBlock:^(UMSocialShareSelectionView *shareSelectionView, NSIndexPath *indexPath, UMSocialPlatformType platformType) {
+        [weakSelf disMissShareMenuView];
+        [weakSelf shareDataWithPlatform:platformType];
+
+    }];
+}
+</code></pre>
+
+<ul>
+<li>设置分享内容</li>
+</ul>
+<p>以下为设置示例，开发者根据需要类型(以下列出了文本/图片/视频/音频类型)进行分享内容设置</p>
+<pre><code>#import &lt;UMSocialCore/UMSocialCore.h&gt;
+
+- (void)shareDataWithPlatform:(UMSocialPlatformType)platformType
+{
+    // 创建UMSocialMessageObject实例进行分享
+    // 分享数据对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+
+    NSString *title = @&quot;友盟social&quot;;
+    NSString *url = @&quot;http://ios9quan.9quan.com.cn/www/wine/show/70488/37961/9502&quot;;//@&quot;http://wsq.umeng.com&quot;;
+    NSString *text = @&quot;社会化组件UShare将各大社交平台接入您的应用，快速武装App。&quot;;
+    UIImage *image = [UIImage imageNamed:@&quot;logo&quot;];
+
+    /* 以下分享类型，开发者可根据需求调用 */
+    // 1、纯文本分享
+    messageObject.text = text;
+
+    // 2、 图片或图文分享
+    // 图片分享参数可设置URL、NSData类型
+    // 注意：由于iOS系统限制(iOS9+)，非HTTPS的URL图片可能会分享失败
+    UMShareImageObject *shareObject = [UMShareImageObject shareObjectWithTitle:title descr:text thumImage:image];
+    [shareObject setShareImage:image];
+
+    // 3、视频分享
+    UMShareVideoObject *shareObject = [UMShareVideoObject shareObjectWithTitle:title descr:text thumImage:[UIImage imageNamed:@&quot;icon&quot;]];
+    [shareObject setVideoUrl:@&quot;http://video.sina.com.cn/p/sports/cba/v/2013-10-22/144463050817.html&quot;];
+    messageObject.shareObject = shareObject;
+
+    // 4、 音乐分享
+    UMShareMusicObject *shareObject = [UMShareMusicObject shareObjectWithTitle:title descr:text thumImage:[UIImage imageNamed:@&quot;icon&quot;]];
+    [shareObject setMusicUrl:@&quot;http://music.huoxing.com/upload/20130330/1364651263157_1085.mp3&quot;];
+    messageObject.shareObject = shareObject;
+
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject completion:^(id data, NSError *error) {
+
+        NSString *message = nil;
+        if (!error) {
+           message = [NSString stringWithFormat:@&quot;分享成功&quot;];
+        } else {
+            message = [NSString stringWithFormat:@&quot;失败原因Code: %d\n&quot;,(int)error.code];
+
+        }
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;share&quot;
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@&quot;确定&quot;, nil)
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+}
+</code></pre>
+
+<h1>技术支持</h1>
+<p>点击访问：<a href="http://bbs.umeng.com/" style="text-decoration:none">友盟开发者社区</a>   </p>
+<p>请发邮件至social-support@umeng.com。为了能够尽快响应您的反馈，请提供您的appkey及log中的详细出错日志，您所提供的内容越详细越有助于我们帮您解决问题。</p>
+<p>开启友盟分享调试log方法：</p>
+<pre><code>#import &lt;UMSocialCore/UMSocialCore.h&gt;
+
+[[UMSocialManager defaultManager] openLog:YES];
+</code></pre>
+
+<p>在console中查看日志。</p>

@@ -1,0 +1,321 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B7EDAFE1EB9C1DB0042B4E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EDAFD1EB9C1DB0042B4E3 /* main.m */; };
+		1B7EDB011EB9C1DB0042B4E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EDB001EB9C1DB0042B4E3 /* AppDelegate.m */; };
+		1B7EDB041EB9C1DB0042B4E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7EDB031EB9C1DB0042B4E3 /* ViewController.m */; };
+		1B7EDB071EB9C1DB0042B4E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7EDB051EB9C1DB0042B4E3 /* Main.storyboard */; };
+		1B7EDB091EB9C1DB0042B4E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7EDB081EB9C1DB0042B4E3 /* Assets.xcassets */; };
+		1B7EDB0C1EB9C1DB0042B4E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7EDB0A1EB9C1DB0042B4E3 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B7EDAF91EB9C1DB0042B4E3 /* UIColor 获取 RGB 值.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIColor 获取 RGB 值.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B7EDAFD1EB9C1DB0042B4E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1B7EDAFF1EB9C1DB0042B4E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1B7EDB001EB9C1DB0042B4E3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1B7EDB021EB9C1DB0042B4E3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1B7EDB031EB9C1DB0042B4E3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1B7EDB061EB9C1DB0042B4E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B7EDB081EB9C1DB0042B4E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B7EDB0B1EB9C1DB0042B4E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1B7EDB0D1EB9C1DB0042B4E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B7EDAF61EB9C1DB0042B4E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B7EDAF01EB9C1DB0042B4E3 = {
+			isa = PBXGroup;
+			children = (
+				1B7EDAFB1EB9C1DB0042B4E3 /* UIColor 获取 RGB 值 */,
+				1B7EDAFA1EB9C1DB0042B4E3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B7EDAFA1EB9C1DB0042B4E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B7EDAF91EB9C1DB0042B4E3 /* UIColor 获取 RGB 值.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B7EDAFB1EB9C1DB0042B4E3 /* UIColor 获取 RGB 值 */ = {
+			isa = PBXGroup;
+			children = (
+				1B7EDAFF1EB9C1DB0042B4E3 /* AppDelegate.h */,
+				1B7EDB001EB9C1DB0042B4E3 /* AppDelegate.m */,
+				1B7EDB021EB9C1DB0042B4E3 /* ViewController.h */,
+				1B7EDB031EB9C1DB0042B4E3 /* ViewController.m */,
+				1B7EDB051EB9C1DB0042B4E3 /* Main.storyboard */,
+				1B7EDB081EB9C1DB0042B4E3 /* Assets.xcassets */,
+				1B7EDB0A1EB9C1DB0042B4E3 /* LaunchScreen.storyboard */,
+				1B7EDB0D1EB9C1DB0042B4E3 /* Info.plist */,
+				1B7EDAFC1EB9C1DB0042B4E3 /* Supporting Files */,
+			);
+			path = "UIColor 获取 RGB 值";
+			sourceTree = "<group>";
+		};
+		1B7EDAFC1EB9C1DB0042B4E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B7EDAFD1EB9C1DB0042B4E3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B7EDAF81EB9C1DB0042B4E3 /* UIColor 获取 RGB 值 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B7EDB101EB9C1DB0042B4E3 /* Build configuration list for PBXNativeTarget "UIColor 获取 RGB 值" */;
+			buildPhases = (
+				1B7EDAF51EB9C1DB0042B4E3 /* Sources */,
+				1B7EDAF61EB9C1DB0042B4E3 /* Frameworks */,
+				1B7EDAF71EB9C1DB0042B4E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UIColor 获取 RGB 值";
+			productName = "UIColor 获取 RGB 值";
+			productReference = 1B7EDAF91EB9C1DB0042B4E3 /* UIColor 获取 RGB 值.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B7EDAF11EB9C1DB0042B4E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = yosemite;
+				TargetAttributes = {
+					1B7EDAF81EB9C1DB0042B4E3 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1B7EDAF41EB9C1DB0042B4E3 /* Build configuration list for PBXProject "UIColor 获取 RGB 值" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B7EDAF01EB9C1DB0042B4E3;
+			productRefGroup = 1B7EDAFA1EB9C1DB0042B4E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B7EDAF81EB9C1DB0042B4E3 /* UIColor 获取 RGB 值 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B7EDAF71EB9C1DB0042B4E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7EDB0C1EB9C1DB0042B4E3 /* LaunchScreen.storyboard in Resources */,
+				1B7EDB091EB9C1DB0042B4E3 /* Assets.xcassets in Resources */,
+				1B7EDB071EB9C1DB0042B4E3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B7EDAF51EB9C1DB0042B4E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7EDB041EB9C1DB0042B4E3 /* ViewController.m in Sources */,
+				1B7EDB011EB9C1DB0042B4E3 /* AppDelegate.m in Sources */,
+				1B7EDAFE1EB9C1DB0042B4E3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1B7EDB051EB9C1DB0042B4E3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B7EDB061EB9C1DB0042B4E3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1B7EDB0A1EB9C1DB0042B4E3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B7EDB0B1EB9C1DB0042B4E3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B7EDB0E1EB9C1DB0042B4E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1B7EDB0F1EB9C1DB0042B4E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B7EDB111EB9C1DB0042B4E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "UIColor 获取 RGB 值/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.UIColor----RGB--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1B7EDB121EB9C1DB0042B4E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "UIColor 获取 RGB 值/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.UIColor----RGB--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B7EDAF41EB9C1DB0042B4E3 /* Build configuration list for PBXProject "UIColor 获取 RGB 值" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B7EDB0E1EB9C1DB0042B4E3 /* Debug */,
+				1B7EDB0F1EB9C1DB0042B4E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B7EDB101EB9C1DB0042B4E3 /* Build configuration list for PBXNativeTarget "UIColor 获取 RGB 值" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B7EDB111EB9C1DB0042B4E3 /* Debug */,
+				1B7EDB121EB9C1DB0042B4E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B7EDAF11EB9C1DB0042B4E3 /* Project object */;
+}

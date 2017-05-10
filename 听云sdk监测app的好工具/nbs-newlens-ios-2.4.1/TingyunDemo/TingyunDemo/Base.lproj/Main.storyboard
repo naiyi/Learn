@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOs-MY-R7g">
+                                <rect key="frame" x="244" y="129" width="113" height="30"/>
+                                <state key="normal" title="网络"/>
+                                <connections>
+                                    <action selector="sendRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hIK-zc-BFq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVf-eC-7jE">
+                                <rect key="frame" x="244" y="200" width="113" height="30"/>
+                                <state key="normal" title="崩溃"/>
+                                <connections>
+                                    <action selector="forceCrash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ykz-LK-zCV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgZ-oP-P62">
+                                <rect key="frame" x="244" y="275" width="113" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="113" id="75p-Xa-OE6"/>
+                                    <constraint firstAttribute="height" constant="30" id="xv2-XD-ElD"/>
+                                </constraints>
+                                <state key="normal" title="卡顿"/>
+                                <connections>
+                                    <action selector="blockMainThread:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tVo-x8-Kpv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MOs-MY-R7g" firstAttribute="width" secondItem="XVf-eC-7jE" secondAttribute="width" id="0zT-Ts-3ZR"/>
+                            <constraint firstItem="MOs-MY-R7g" firstAttribute="height" secondItem="XVf-eC-7jE" secondAttribute="height" id="F5r-FP-IXO"/>
+                            <constraint firstItem="ZgZ-oP-P62" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I0E-C8-YJe"/>
+                            <constraint firstItem="MOs-MY-R7g" firstAttribute="centerX" secondItem="XVf-eC-7jE" secondAttribute="centerX" id="IUd-V0-6oL"/>
+                            <constraint firstItem="ZgZ-oP-P62" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="255" id="QLS-Wo-97n"/>
+                            <constraint firstItem="ZgZ-oP-P62" firstAttribute="top" secondItem="XVf-eC-7jE" secondAttribute="bottom" constant="45" id="RRA-FG-d9k"/>
+                            <constraint firstItem="XVf-eC-7jE" firstAttribute="width" secondItem="ZgZ-oP-P62" secondAttribute="width" id="fdZ-Rr-16D"/>
+                            <constraint firstItem="XVf-eC-7jE" firstAttribute="height" secondItem="ZgZ-oP-P62" secondAttribute="height" id="fhu-rg-GXl"/>
+                            <constraint firstItem="XVf-eC-7jE" firstAttribute="centerX" secondItem="ZgZ-oP-P62" secondAttribute="centerX" id="ito-o6-fPx"/>
+                            <constraint firstItem="MOs-MY-R7g" firstAttribute="top" secondItem="XVf-eC-7jE" secondAttribute="top" constant="-71" id="uxF-Ln-npM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="390" y="277"/>
+        </scene>
+    </scenes>
+</document>

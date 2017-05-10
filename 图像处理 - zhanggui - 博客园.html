@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.cnblogs.com/zhanggui/p/4743128.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图像处理 - zhanggui - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./图像处理 - zhanggui - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./图像处理 - zhanggui - 博客园_files/bundle-coffee.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="./图像处理 - zhanggui - 博客园_files/bundle-coffee-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/zhanggui/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/zhanggui/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/zhanggui/wlwmanifest.xml">
+<script async="" src="./图像处理 - zhanggui - 博客园_files/analytics.js"></script><script type="text/javascript" src="./图像处理 - zhanggui - 博客园_files/encoder.js"></script><script src="./图像处理 - zhanggui - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'zhanggui', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./图像处理 - zhanggui - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/zhanggui/"><img id="blogLogo" src="./图像处理 - zhanggui - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/zhanggui/">张贵</a></h1>
+<h2>website:www.supermokey.com</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="navigator">
+			
+<ul id="navList">
+	<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+	<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/zhanggui/">首页</a></li>
+	<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+	<li><a id="blog_nav_contact" accesskey="9" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/zhanggui">联系</a></li>
+	<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+	<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/zhanggui/rss">订阅</a>
+	<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/zhanggui/rss"><img src="./图像处理 - zhanggui - 博客园_files/xml.gif" alt="订阅"></a></li>
+</ul>
+
+
+			<div class="blogStats">
+				
+				<div id="blog_stats">
+<!--done-->
+随笔- 175&nbsp;
+文章- 0&nbsp;
+评论- 65&nbsp;
+</div>
+				
+			</div><!--end: blogStats -->
+		</div><!--end: navigator 博客导航栏 -->
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/zhanggui/p/4743128.html">图像处理</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>你可能用过UIImage，用过CGImage。但是有没有用过CIImage呢？？？</p>
+<p>我也是第一次用这个CIImage，查看一下苹果的官方API可以看到：它是CoreImage中的一个类目。So，问题来了，什么是CoreImage呢？</p>
+<p>CoreImage苹果官方给的一句话是：</p>
+<p>Perform image processing and video image manipulation with the Core Image framework.</p>
+<p>就这没了？？也太简单了。不过说的言简意赅：用中文翻译一下就是：</p>
+<p><span style="color: #ff0000;">使用Core Image框架：执行图像加工和视频图像处理。</span></p>
+<p><span style="color: #000000;">------------------------开始啰嗦CoreImage了------------------------</span></p>
+<p>第一个类：CIColor。</p>
+<p>这个不多讲解，你可把它和UIColor做一个对比，内容几乎一样，所以如果你会用UIColor就会用CIColor。但是对类本身介绍一下把。</p>
+<p>CIColor包括了那些可用颜色值的颜色值和颜色空间。你会和其他Core Image框架中的其他类混合使用,例如CIFilter，CIContext和CIImage在操作图片是来创建滤镜。</p>
+<p>其他的类还有：<br>CIContext/CIDetector/CIFeature/CIFilter等几个。不多，有时间可以看看看。下面的内容中会涉及一些，到那个时候再解释解释把。</p>
+<p>------------------------就啰嗦到这里把------------------------</p>
+<p>下面开始讲解对图像的处理：具体包括拍照、读取图库内容、高斯模糊、旧色调，还有比较NB的人脸识别。</p>
+<p>1、拍照和读取图库内容</p>
+<p>这两个功能的核心就是UIImagePickerViewController。</p>
+<p>该类可以读取iOS设备中的图片以及视频。还可以拍照。接下来就讲解一下如何实现吧。</p>
+<p>首先我们需要在自定义的ViewController中设置代理</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">@interface</span> ViewController : UIViewController&lt;UIImagePickerControllerDelegate,UINavigationControllerDelegate&gt;</pre>
+</div>
+<p>也就是说我们如果想用这个类，首先我们需要添加UIImagePickerControllerDelegate和UINavigationControllerDelegate协议。这样才能使用</p>
+<p>然后看如何调取相机吧：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>- (IBAction)takePhotoAction:(<span style="color: #0000ff;">id</span><span style="color: #000000;">)sender {
+    </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        _imagePicker </span>=<span style="color: #000000;"> [[UIImagePickerController alloc] init];
+        _imagePicker.</span><span style="color: #0000ff;">delegate</span> =<span style="color: #000000;"> self;
+        _imagePicker.sourceType </span>=<span style="color: #000000;"> UIImagePickerControllerSourceTypeCamera;
+        
+        [self presentViewController:_imagePicker animated:YES completion:nil];
+    }</span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+        NSLog(</span><span style="color: #800000;">@"</span><span style="color: #800000;">相机不可用</span><span style="color: #800000;">"</span><span style="color: #000000;">);
+        
+    }
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>我通过点击一个按钮触发该事件，然后可以看一下怎么实现的。<span style="color: #ff0000;">这个不难，好好看看</span></p>
+<p><span style="color: #000000;">首先我们需要用UIImagePickerViewController的类方法isSourceTypeAvailable:方法去判断一下相机是否可用。</span></p>
+<p><span style="color: #000000;">其中的UIImagePickerControllerSourceTYpeCamera其实是一个枚举：里面定义了如下的内容：</span></p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;">typedef NS_ENUM(NSInteger, UIImagePickerControllerSourceType) {
+    UIImagePickerControllerSourceTypePhotoLibrary,
+    UIImagePickerControllerSourceTypeCamera,
+    UIImagePickerControllerSourceTypeSavedPhotosAlbum
+};</span></pre>
+</div>
+<p>这是苹果API中的东西。我可没有更改。可以看到里面有三个枚举类：</p>
+<p>第一个指的是图库，第二个指的是相机，第三个指的是保存相薄。</p>
+<p>下面的就不用说了。不对，还有一个更重要的呢。</p>
+<p><span style="color: #ff0000;">sourceType：你设置的这个souceType就是你调用的类型：包括相机，图库和相薄。</span></p>
+<p><span style="color: #000000;">既然都代理了，那把代理方法也写上去把。</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">#pragma</span> mark - UIImagePickerViewDelegate
+- (<span style="color: #0000ff;">void</span>)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *<span style="color: #000000;">)info {
+    UIImage </span>*<span style="color: #000000;">originImage;
+    </span><span style="color: #0000ff;">if</span> (picker.sourceType ==<span style="color: #000000;"> UIImagePickerControllerSourceTypeCamera) {
+        originImage </span>= (UIImage *<span style="color: #000000;">)[info objectForKey:UIImagePickerControllerOriginalImage];
+    }</span><span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span> (picker.sourceType==<span style="color: #000000;">UIImagePickerControllerSourceTypePhotoLibrary)
+    {
+        originImage </span>= (UIImage *<span style="color: #000000;">)[info objectForKey:UIImagePickerControllerEditedImage];
+
+    }
+    self.imageView.image </span>=<span style="color: #000000;"> originImage;
+    self.imageView.contentMode </span>=<span style="color: #000000;"> UIViewContentModeScaleAspectFit;
+    _imagePicker.</span><span style="color: #0000ff;">delegate</span> =<span style="color: #000000;"> nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+</span>- (<span style="color: #0000ff;">void</span>)imagePickerControllerDidCancel:(UIImagePickerController *<span style="color: #000000;">)picker {
+    _imagePicker.</span><span style="color: #0000ff;">delegate</span> =<span style="color: #000000;"> nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #0000ff;"><span style="color: #000000; font-family: verdana, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.5; background-color: #ffffff;">当我们点击相机的时候，我们进入一个拍照界面:（图片就不贴出来了）</span></span></p>
+<p>里面有一个Cancel按钮，也就是当我点击Cancel按钮时会触发代理方法</p>
+<div class="cnblogs_code">
+<pre>- (<span style="color: #0000ff;">void</span>)imagePickerControllerDidCancel:(UIImagePickerController *<span style="color: #000000;">)picker {
+    _imagePicker.</span><span style="color: #0000ff;">delegate</span> =<span style="color: #000000;"> nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}</span></pre>
+</div>
+<p>这里我们把代理置空，然后让该ImagePicketView消失。这样才能返回按钮页面。</p>
+<p>另一个代理方法就是用来当拍照后点击使用图片那个按钮触发的代理方法。里面有个info。这个东西太有用了，里面都是信息：什么UIImagePickerControllerMediaType、UIImagePickerControllerOriginalImage，还有UIImagePickerControllerMediaMetadata。他们都是键值，然后里面有好多东西，你可以自己试一下里面有啥。我这里通过</p>
+<p class="p1"><span class="s1">UIImagePickerControllerOriginalImage得到的拍的照片。拿到照片之后我们就可以对他进行处理了。这里还要记得让pickerView消失并且把代理置空。</span></p>
+<p class="p1">OK,这会拍照会用了吧。就这么简单。</p>
+<p class="p1">2、读取图库内容：直接看代码。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>- (IBAction)catPhotoFromLibraryAction:(<span style="color: #0000ff;">id</span><span style="color: #000000;">)sender {
+    </span><span style="color: #0000ff;">if</span>(_imagePicker==<span style="color: #000000;">nil) {
+        _imagePicker </span>=<span style="color: #000000;"> [[UIImagePickerController alloc] init];
+        _imagePicker.</span><span style="color: #0000ff;">delegate</span> =<span style="color: #000000;"> self;
+        _imagePicker.sourceType </span>= UIImagePickerControllerSourceTypePhotoLibrary;   <span style="color: #008000;">//</span><span style="color: #008000;">提供数据来源</span>
+        _imagePicker.allowsEditing = YES;   <span style="color: #008000;">//</span><span style="color: #008000;">允许编辑</span>
+<span style="color: #000000;">        [self presentViewController:_imagePicker animated:YES completion:nil];
+    }
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>这里就是读取图库内容。我们可以发现。只是sourceType改了一下。</p>
+<p>（其中的allowsEditing设置为yes就意味着你选取的图片可以编辑，默认是No。）</p>
+<p>这个方法也不用多说了，应该都能看懂。</p>
+<p>--------------------------------------------------高端的旧色调和高斯模糊来啦--------------------------------------------------</p>
+<p>3、旧色调</p>
+<p>什么是旧色调，旧色调就是把一个图片的颜色变旧。暂时这样理解把。一会出来效果可以对比一下。</p>
+<p>在这里我们就用到了CIContext、CIImage、CIFilter了。这几个都是CoreImage框架中的类。其中起关键作用的还是CIFilter，他是滤镜。它的简单介绍如下：</p>
+<p>他是生产CIImage对象的，典型的就是，你可以通过它进行加工图片。让我们看一下操作旧色调的方法把。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">//</span><span style="color: #008000;">操作旧色调的方法</span>
+- (<span style="color: #0000ff;">void</span><span style="color: #000000;">)filterSepicTone {
+    CIContext </span>*context = [CIContext contextWithOptions:nil];   <span style="color: #008000;">//</span><span style="color: #008000;">创建CIContext对象，它规定了各种选项，包括颜色格式以及内容是否运行在CPU或是GPU上。</span>
+    CIImage *cImage =<span style="color: #000000;"> [CIImage imageWithCGImage:_imageView.image.CGImage];
+    CIImage </span>*<span style="color: #000000;">result;
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">创建旧色滤镜</span>
+    sepiaTone= [CIFilter filterWithName:<span style="color: #800000;">@"</span><span style="color: #800000;">CISepiaTone</span><span style="color: #800000;">"</span><span style="color: #000000;">];
+    
+    [sepiaTone setValue:cImage forKey:</span><span style="color: #800000;">@"</span><span style="color: #800000;">inputImage</span><span style="color: #800000;">"</span><span style="color: #000000;">];
+    
+    </span><span style="color: #0000ff;">double</span> value = [_mySlider value];    <span style="color: #008000;">//</span><span style="color: #008000;">获取滑块的值。</span>
+<span style="color: #000000;">    
+    NSString </span>*text = [[NSString alloc] initWithFormat:<span style="color: #800000;">@"</span><span style="color: #800000;">旧色调：%.2f</span><span style="color: #800000;">"</span><span style="color: #000000;">,value];
+    _myLabel.text </span>=<span style="color: #000000;">text;
+    
+    [sepiaTone setValue:[NSNumber numberWithFloat:value] forKey:</span><span style="color: #800000;">@"</span><span style="color: #800000;">inputIntensity</span><span style="color: #800000;">"</span>]; <span style="color: #008000;">//</span><span style="color: #008000;">设置旧色滤镜色调强度</span>
+<span style="color: #000000;">
+    
+    result </span>= [sepiaTone valueForKey:<span style="color: #800000;">@"</span><span style="color: #800000;">outputImage</span><span style="color: #800000;">"</span>];   <span style="color: #008000;">//</span><span style="color: #008000;">取得滤镜之后的图像</span>
+<span style="color: #000000;">    
+    CGImageRef imageRef </span>= [context createCGImage:result fromRect:CGRectMake(<span style="color: #800080;">0</span>, <span style="color: #800080;">0</span><span style="color: #000000;">, self.imageView.image.size.width, self.imageView.image.size.height)];
+    
+    UIImage </span>*image = [[UIImage alloc] initWithCGImage:imageRef];   <span style="color: #008000;">//
+</span>    _imageView.image =<span style="color: #000000;"> image;
+    
+    CFRelease(imageRef);    </span><span style="color: #008000;">//</span><span style="color: #008000;">释放CGImageRef</span>
+    flag = <span style="color: #800080;">0</span><span style="color: #000000;">;
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>这里的_mySlider只是我的一个调值工具。先看看效果把。</p>
+<p><img src="./图像处理 - zhanggui - 博客园_files/191836164885384.png" alt="" width="290" height="515"><img src="./图像处理 - zhanggui - 博客园_files/191836347226255.png" alt="" width="289" height="514"></p>
+<p>左边是原图，右边是旧色调的图。（这是我最喜欢的一个女明星。可惜因为因为白血病与2015年去世了。伤心。你永远活在我的心里。）</p>
+<p>简单看一代码：里面有一句很重要：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008000;">//</span><span style="color: #008000;">创建旧色滤镜</span>
+    sepiaTone= [CIFilter filterWithName:<span style="color: #800000;">@"</span><span style="color: #800000;">CISepiaTone</span><span style="color: #800000;">"</span>];</pre>
+</div>
+<p>创建旧色滤镜。其中的CISepiaTone是不能改变的。还有下边用到的inputImage/outputImage。要问为什么？应该是那个类中定义的属性吧。不能通过方法调用，只能通过KVC调用了。（<span style="color: #ff0000;">不知道对不对，知道的大神请告诉我一下</span>）</p>
+<p>然后去设置滤镜的色调强度，然后通过outputImage将处理后的图片输出到result。再然后通过</p>
+<div class="cnblogs_code">
+<pre>    CGImageRef imageRef = [context createCGImage:result fromRect:CGRectMake(<span style="color: #800080;">0</span>, <span style="color: #800080;">0</span><span style="color: #000000;">, self.imageView.image.size.width, self.imageView.image.size.height)];
+    
+    UIImage </span>*image = [[UIImage alloc] initWithCGImage:imageRef];   <span style="color: #008000;">//</span></pre>
+</div>
+<p>获得了处理后的图片。</p>
+<p>--------------------------------------------------------说真的，具体我还不太理解，只能先记录了慢慢了解，因为刚刚接触CoreImage--------------------------------------------------------</p>
+<p>4、高斯模糊</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>- (<span style="color: #0000ff;">void</span><span style="color: #000000;">)gaosiMohu {
+    CIContext </span>*context =<span style="color: #000000;"> [CIContext contextWithOptions:nil];
+    CIImage </span>*cImage =<span style="color: #000000;"> [CIImage imageWithCGImage:_imageView.image.CGImage];
+    CIImage </span>*<span style="color: #000000;">result;
+    
+    gaussianBlur </span>= [CIFilter filterWithName:<span style="color: #800000;">@"</span><span style="color: #800000;">CIGaussianBlur</span><span style="color: #800000;">"</span><span style="color: #000000;">];
+    [gaussianBlur setValue:cImage forKey:</span><span style="color: #800000;">@"</span><span style="color: #800000;">inputImage</span><span style="color: #800000;">"</span><span style="color: #000000;">];
+    </span><span style="color: #0000ff;">double</span> value =<span style="color: #000000;"> [_mySlider value];
+    value </span>= value*<span style="color: #800080;">10</span><span style="color: #000000;">;
+    
+    NSString </span>*text = [[NSString alloc] initWithFormat:<span style="color: #800000;">@"</span><span style="color: #800000;">高斯模糊Radius:%.2f</span><span style="color: #800000;">"</span><span style="color: #000000;">,value];
+    _myLabel.text </span>=<span style="color: #000000;"> text;
+    
+    [gaussianBlur setValue:[NSNumber numberWithFloat:value] forKey:</span><span style="color: #800000;">@"</span><span style="color: #800000;">inputRadius</span><span style="color: #800000;">"</span><span style="color: #000000;">];
+    result </span>= [gaussianBlur valueForKey:<span style="color: #800000;">@"</span><span style="color: #800000;">outputImage</span><span style="color: #800000;">"</span><span style="color: #000000;">];
+</span><span style="color: #008000;">//</span><span style="color: #008000;">    result = [gaussianBlur outputImage]</span>
+    CGImageRef imagRef = [context createCGImage:result fromRect:CGRectMake(<span style="color: #800080;">0</span>, <span style="color: #800080;">0</span><span style="color: #000000;">, _imageView.image.size.width, _imageView.image.size.height)];
+
+    UIImage </span>*image =<span style="color: #000000;"> [[UIImage alloc] initWithCGImage:imagRef];
+    _imageView.image </span>=<span style="color: #000000;"> image;
+    CFRelease(imagRef);
+    flag </span>= <span style="color: #800080;">1</span><span style="color: #000000;">;
+   
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>其实它和上边的旧色调差不多，只不过换了一下滤镜而已。，让我们看一下效果图：</p>
+<p><img src="./图像处理 - zhanggui - 博客园_files/191836164885384.png" alt="" width="290" height="515"><img src="./图像处理 - zhanggui - 博客园_files/191847211282835.png" alt="" width="290" height="516"></p>
+<p>高斯模糊的结果如图所示。具体的实现我也不介绍了，等用到的时候在认真看看吧。</p>
+<p>&nbsp;</p>
+<p>5、接下来就是人脸识别了：</p>
+<p>人脸识别需要三个步骤：</p>
+<p class="p1"><span class="s1">&nbsp;1<span class="s2">、首先建立人脸的面纹数据库</span></span></p>
+<p class="p1"><span class="s1">&nbsp;2<span class="s2">、获取当前人脸面像图片</span></span></p>
+<p class="p1"><span class="s1">&nbsp;3<span class="s2">、用当前的面纹编码与数据库中的面纹编码进行比对。</span></span></p>
+<p class="p1"><span class="s1">&nbsp;CIDetector<span class="s2">是<span class="s1">CoreImage<span class="s2">中的一个特征识别滤镜。它可以找到图片中的人脸，但是是谁无法判断，需要数据库。要想识别可以看<span class="s1">OpenCV<span class="s2">和<span class="s1">Face.com。</span></span></span></span></span></span></span></p>
+<p class="p1"><span class="s1"><span class="s2"><span class="s1"><span class="s2"><span class="s1"><span class="s2"><span class="s1">我们看一下实现代码：（据utide讲解我也没太深入，就不介绍了）</span></span></span></span></span></span></span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>- (IBAction)faceAction:(<span style="color: #0000ff;">id</span><span style="color: #000000;">)sender {
+    CIContext </span>*context =<span style="color: #000000;"> [CIContext contextWithOptions:nil];
+    UIImage </span>*imageInput =<span style="color: #000000;"> _inputImageView.image;
+    CIImage </span>*image =<span style="color: #000000;"> [CIImage imageWithCGImage:imageInput.CGImage];
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">设置识别参数; Accuracy代表的是经度。</span>
+    NSDictionary *parm = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];   <span style="color: #008000;">//</span><span style="color: #008000;">设置识别率高点
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">声明一个CIDetector，并设定识别器类型</span>
+    CIDetector *faceDetector =<span style="color: #000000;"> [CIDetector detectorOfType:CIDetectorTypeFace context:context options:parm];
+    
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">取得识别结果</span>
+    NSArray *detectResult =<span style="color: #000000;"> [faceDetector featuresInImage:image];
+    
+    UIView </span>*resulteView =<span style="color: #000000;"> [[UIView alloc] initWithFrame:_inputImageView.frame];
+</span><span style="color: #008000;">//</span><span style="color: #008000;">    resulteView.backgroundColor = [UIColor redColor];</span>
+<span style="color: #000000;">    [self.view addSubview:resulteView];
+    </span><span style="color: #0000ff;">for</span> (CIFaceFeature *faceFeature <span style="color: #0000ff;">in</span><span style="color: #000000;"> detectResult) {
+        </span><span style="color: #008000;">//</span><span style="color: #008000;">脸部</span>
+        UIView *faceView =<span style="color: #000000;"> [[UIView alloc] initWithFrame:faceFeature.bounds];
+        faceView.layer.borderWidth </span>= <span style="color: #800080;">1</span><span style="color: #000000;">;
+        faceView.layer.borderColor </span>=<span style="color: #000000;"> [UIColor orangeColor].CGColor;
+        [resulteView addSubview:faceView];
+        </span><span style="color: #008000;">//</span><span style="color: #008000;">左眼</span>
+        <span style="color: #0000ff;">if</span><span style="color: #000000;"> (faceFeature.hasLeftEyePosition) {
+            UIView </span>*leftEyeView = [[UIView alloc] initWithFrame:CGRectMake(<span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">5</span>, <span style="color: #800080;">5</span><span style="color: #000000;">)];
+            [leftEyeView setCenter:faceFeature.leftEyePosition];
+            leftEyeView.layer.borderWidth </span>= <span style="color: #800080;">1</span><span style="color: #000000;">;
+            leftEyeView.layer.borderColor </span>=<span style="color: #000000;"> [UIColor redColor].CGColor;
+            [resulteView addSubview:leftEyeView];
+        }
+        
+        </span><span style="color: #008000;">//</span><span style="color: #008000;">右眼</span>
+            <span style="color: #0000ff;">if</span><span style="color: #000000;"> (faceFeature.hasRightEyePosition) {
+                UIView </span>*rightEyeView = [[UIView alloc] initWithFrame:CGRectMake(<span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">5</span>, <span style="color: #800080;">5</span><span style="color: #000000;">)];
+                [rightEyeView setCenter:faceFeature.rightEyePosition];
+                rightEyeView.layer.borderWidth </span>= <span style="color: #800080;">1</span><span style="color: #000000;">;
+                rightEyeView.layer.borderColor </span>=<span style="color: #000000;"> [UIColor redColor].CGColor;
+                [resulteView addSubview:rightEyeView];
+            }
+            </span><span style="color: #008000;">//</span><span style="color: #008000;">嘴巴</span>
+            <span style="color: #0000ff;">if</span><span style="color: #000000;"> (faceFeature.hasMouthPosition) {
+                UIView </span>*mouseView = [[UIView alloc] initWithFrame:CGRectMake(<span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">5</span>, <span style="color: #800080;">5</span><span style="color: #000000;">)];
+                [mouseView setCenter:faceFeature.mouthPosition];
+                mouseView.layer.borderWidth </span>= <span style="color: #800080;">1</span><span style="color: #000000;">;
+                mouseView.layer.borderColor </span>=<span style="color: #000000;"> [UIColor redColor].CGColor;
+                [resulteView addSubview:mouseView];
+            }
+        
+    }
+    [resulteView setTransform:CGAffineTransformMakeScale(</span><span style="color: #800080;">1</span>, -<span style="color: #800080;">1</span><span style="color: #000000;">)];
+    
+    </span><span style="color: #0000ff;">if</span> ([detectResult count]&gt;<span style="color: #800080;">0</span><span style="color: #000000;">) {
+        CIImage </span>*faceImage = [image imageByCroppingToRect:[[detectResult objectAtIndex:<span style="color: #800080;">0</span><span style="color: #000000;">] bounds]];
+        
+        UIImage </span>*face =<span style="color: #000000;"> [UIImage imageWithCGImage:[context createCGImage:faceImage fromRect:faceImage.extent]];
+        
+        self.faceImageView.image </span>=<span style="color: #000000;"> face;
+        
+        [self.faceButton setTitle:[NSString stringWithFormat:</span><span style="color: #800000;">@"</span><span style="color: #800000;">识别人脸数：%lu</span><span style="color: #800000;">"</span>,(unsigned <span style="color: #0000ff;">long</span><span style="color: #000000;">)[detectResult count]] forState:UIControlStateNormal];
+    }
+</span><span style="color: #008000;">//</span><span style="color: #008000;">    resulteView.backgroundColor = [UIColor redColor];</span>
+}</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./图像处理 - zhanggui - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>当我点击按钮时可以识别出人脸的位置，然后标记出脸，嘴和眼睛的位置。</p>
+<p><img src="./图像处理 - zhanggui - 博客园_files/191851071755760.png" alt="" width="214" height="380"></p>
+<p>我这边没有处理好原图的标记，其实处理好的话可以刚好比对五官。</p>
+<p>&nbsp;</p>
+<p>--------------------------------------------------图像处理就讲这么多吧--------------------------------------------------</p>
+<p>说实话上面的东西平时用到的有的不是太多，所以我只是了解了一下，如果有用到的时候再深入学习一下。希望可以让大家对图像处理有所了解。</p>
+<p>--------------------------------------------------结束了--------------------------------------------------</p>
+<p class="p1">&nbsp;等一下，还有源码下载地址呢：<a href="http://pan.baidu.com/s/1eQg1qLG" target="_blank">http://pan.baidu.com/s/1eQg1qLG</a></p>
+<p class="p1">&nbsp;</p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/zhanggui/category/595927.html" target="_blank">iOS</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/zhanggui/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>, <a href="http://www.cnblogs.com/zhanggui/tag/CoreImage/">CoreImage</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4743128,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;550ec13d-a7ba-e211-b39b-90b11c0b1faa&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./图像处理 - zhanggui - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./图像处理 - zhanggui - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/zhanggui/" target="_blank"><img src="./图像处理 - zhanggui - 博客园_files/20150809233912.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/zhanggui/">zhanggui</a><br>
+            <a href="http://home.cnblogs.com/u/zhanggui/followees">关注 - 21</a><br>
+            <a href="http://home.cnblogs.com/u/zhanggui/followers">粉丝 - 82</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;550ec13d-a7ba-e211-b39b-90b11c0b1faa&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(4743128,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(4743128,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/zhanggui/p/4741964.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/zhanggui/p/4741964.html" title="发布于2015-08-19 13:30">Quartz 2d绘图</a><br><a href="http://www.cnblogs.com/zhanggui/p/4744742.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/zhanggui/p/4744742.html" title="发布于2015-08-20 12:00">动画技术</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2015-08-19 18:58</span> <a href="http://www.cnblogs.com/zhanggui/">zhanggui</a> 阅读(<span id="post_view_count">537</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=4743128" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/zhanggui/p/4743128.html#" onclick="AddToWz(4743128);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=191738,cb_entryId=4743128,cb_blogApp=currentBlogApp,cb_blogUserGuid='550ec13d-a7ba-e211-b39b-90b11c0b1faa',cb_entryCreatedDate='2015/8/19 18:58:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/zhanggui/p/4743128.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/zhanggui/p/4743128.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://cloud.qy.com.cn/68?a=cnblog" target="_blank">【推荐】群英云服务器性价王，2核4G5M BGP带宽 68元首月！</a><br><a href="https://group.cnblogs.com/topic/76725.html" target="_blank">【福利】阿里云免费套餐升级，更多产品，更久时长</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/spreadjs/?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank"><img width="300" height="250" src="./图像处理 - zhanggui - 博客园_files/24442-20170331214703992-1877351007.gif" alt="SpreadJS"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/567821/" target="_blank">马斯克去年缴纳6亿美元所得税 净资产129亿美元</a><br> ·  <a href="http://news.cnblogs.com/n/567800/" target="_blank">深夜换脸啦，神秘的程序员们头像包第三发</a><br> ·  <a href="http://news.cnblogs.com/n/567820/" target="_blank">NASA打造“太空农场”：未来火星上或将花果飘香</a><br> ·  <a href="http://news.cnblogs.com/n/567818/" target="_blank">HUAWEI WATCH 2测评：独立通话 运动更自由</a><br> ·  <a href="http://news.cnblogs.com/n/567817/" target="_blank">资本赏味下的网红美食如何避免昙花一现</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/15483/" target="_blank"><img width="468" height="60" src="./图像处理 - zhanggui - 博客园_files/24442-20170331150421570-489464769.jpg" alt="阿里云C2"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/565901/" target="_blank">唱吧DevOps的落地，微服务CI/CD的范本技术解读</a><br> ·  <a href="http://kb.cnblogs.com/page/566523/" target="_blank">程序员，如何从平庸走向理想？</a><br> ·  <a href="http://kb.cnblogs.com/page/566318/" target="_blank">我为什么鼓励工程师写blog</a><br> ·  <a href="http://kb.cnblogs.com/page/566528/" target="_blank">怎么轻松学习JavaScript</a><br> ·  <a href="http://kb.cnblogs.com/page/509431/" target="_blank">如何打好前端游击战</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"><b>历史上的今天:</b><br>2014-08-19 <a href="http://www.cnblogs.com/zhanggui/p/3923022.html">ios 百度地图使用</a><br></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><p>邮箱：scottzg@126.com</p>
+<p>iOS技术交流群：206613455</p>
+<p>微信公共号：cxykakarotto</p>
+<p>我的站点：www.supermokey.com</p><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/zhanggui/">zhanggui</a><br>园龄：<a href="http://home.cnblogs.com/u/zhanggui/" title="入园时间：2013-05-12">3年11个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/zhanggui/followers/">82</a><br>关注：<a href="http://home.cnblogs.com/u/zhanggui/followees/">21</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;550ec13d-a7ba-e211-b39b-90b11c0b1faa&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar"><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2017/03/01&#39;);return false;">&lt;</a></td><td align="center">2017年4月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2017/05/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td class="CalWeekendDay" align="center">1</td></tr><tr><td class="CalWeekendDay" align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center"><a href="http://www.cnblogs.com/zhanggui/archive/2017/04/06.html"><u>6</u></a></td><td align="center">7</td><td class="CalWeekendDay" align="center">8</td></tr><tr><td class="CalWeekendDay" align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td class="CalWeekendDay" align="center">15</td></tr><tr><td class="CalWeekendDay" align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center"><a href="http://www.cnblogs.com/zhanggui/archive/2017/04/21.html"><u>21</u></a></td><td class="CalWeekendDay" align="center">22</td></tr><tr><td class="CalWeekendDay" align="center">23</td><td class="CalTodayDay" align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td class="CalWeekendDay" align="center">29</td></tr><tr><td class="CalWeekendDay" align="center">30</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block"></div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/zhanggui/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/zhanggui/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/zhanggui/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/zhanggui/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/zhanggui/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass(&#39;itemListLink&#39;, &#39;itemListLin_con&#39;);return false;" href="http://www.cnblogs.com/zhanggui/p/4743128.html#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/zhanggui/tag/IOS/">IOS</a>(27)</li><li><a href="http://www.cnblogs.com/zhanggui/tag/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>(7)</li><li><a href="http://www.cnblogs.com/zhanggui/tag/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>(6)</li><li><a href="http://www.cnblogs.com/zhanggui/tag/%E6%8E%92%E5%BA%8F/">排序</a>(5)</li><li><a href="http://www.cnblogs.com/zhanggui/tag/%E7%BA%BF%E6%80%A7%E8%A1%A8/">线性表</a>(4)</li><li><a href="http://www.cnblogs.com/zhanggui/tag/%E6%A0%88/">栈</a>(4)</li><li><a href="http://www.cnblogs.com/zhanggui/tag/%E4%BB%A3%E7%90%86%E7%B1%BB/">代理类</a>(3)</li><li><a href="http://www.cnblogs.com/zhanggui/tag/NSTimer/">NSTimer</a>(3)</li><li><a href="http://www.cnblogs.com/zhanggui/tag/AppDelegate/">AppDelegate</a>(3)</li><li><a href="http://www.cnblogs.com/zhanggui/tag/swift/">swift</a>(3)</li><li><a href="http://www.cnblogs.com/zhanggui/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/zhanggui/category/716103.html">52个提高iOS和OS X代码的有效方法(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/zhanggui/category/643715.html">Android</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/zhanggui/category/690607.html">Apple-API(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/zhanggui/category/643718.html">C++</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/zhanggui/category/643719.html">CSS</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/zhanggui/category/643717.html">C语言(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/zhanggui/category/595928.html">HTML(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/zhanggui/category/595927.html">iOS(83)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/zhanggui/category/720140.html">iOS设计模式(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/zhanggui/category/665740.html">Java (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/zhanggui/category/643720.html">JS</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/zhanggui/category/595929.html">OC</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/zhanggui/category/604915.html">phoneGap(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/zhanggui/category/643713.html">PHP</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/zhanggui/category/894952.html">React(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/zhanggui/category/896194.html">React Native(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/zhanggui/category/595931.html">Swift(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/zhanggui/category/721312.html">操作系统(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/zhanggui/category/748596.html">程序人生(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/zhanggui/category/643712.html">感想随笔(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/zhanggui/category/960948.html">汇编(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/zhanggui/category/721959.html">计算机网络(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/zhanggui/category/713674.html">面试题(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/zhanggui/category/711276.html">数据结构(23)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/zhanggui/archive/2017/04.html">2017年4月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/zhanggui/archive/2017/03.html">2017年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/zhanggui/archive/2017/02.html">2017年2月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/zhanggui/archive/2016/12.html">2016年12月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/zhanggui/archive/2016/11.html">2016年11月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/zhanggui/archive/2016/10.html">2016年10月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/zhanggui/archive/2016/09.html">2016年9月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/zhanggui/archive/2016/08.html">2016年8月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/zhanggui/archive/2016/07.html">2016年7月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/zhanggui/archive/2016/06.html">2016年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/zhanggui/archive/2016/04.html">2016年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/zhanggui/archive/2016/01.html">2016年1月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/zhanggui/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/zhanggui/archive/2015/11.html">2015年11月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/zhanggui/archive/2015/10.html">2015年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/zhanggui/archive/2015/09.html">2015年9月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/zhanggui/archive/2015/08.html">2015年8月 (56)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/zhanggui/archive/2015/07.html">2015年7月 (32)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/zhanggui/archive/2015/05.html">2015年5月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/zhanggui/archive/2015/04.html">2015年4月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/zhanggui/archive/2015/03.html">2015年3月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/zhanggui/archive/2015/02.html">2015年2月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/zhanggui/archive/2015/01.html">2015年1月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/zhanggui/archive/2014/08.html">2014年8月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/zhanggui/archive/2014/07.html">2014年7月 (4)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhanggui/p/6744941.html#3673884">1. Re:记录参加QCon2017北京站的心得</a></li>
+        <li class="recent_comment_body">支持支持</li>
+        <li class="recent_comment_author">--牛腩</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhanggui/p/6674858.html#3660877">2. Re:改变iOS app的icon(iOS10.3)</a></li>
+        <li class="recent_comment_body">支持支持</li>
+        <li class="recent_comment_author">--牛腩</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhanggui/p/6517135.html#3634623">3. Re:一起来编写汇编语言</a></li>
+        <li class="recent_comment_body">真正的高手</li>
+        <li class="recent_comment_author">--toEverybody</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhanggui/p/6517135.html#3634431">4. Re:一起来编写汇编语言</a></li>
+        <li class="recent_comment_body">@johnsonshu多学了解一些东西...</li>
+        <li class="recent_comment_author">--zhanggui</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhanggui/p/6517135.html#3634375">5. Re:一起来编写汇编语言</a></li>
+        <li class="recent_comment_body">其实没有必要这么学习吧。 动手才是最好的老师</li>
+        <li class="recent_comment_author">--johnsonshu</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/zhanggui/p/5719509.html">1. iOS开发和localStorage/sessionStorage(2574)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/5699432.html">2. 100个0.1相加等于多少？(2362)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/4911780.html">3. iOS常用第三方库之Masonry(2144)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/5962037.html">4. React开发入门(1354)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/4458134.html">5. Mac下配置apache(1312)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/zhanggui/p/5699432.html">1. 100个0.1相加等于多少？(13)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/4911780.html">2. iOS常用第三方库之Masonry(9)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/5097487.html">3. 程序员之路--回顾2015，展望2016(7)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/6517135.html">4. 一起来编写汇编语言(4)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/4308079.html">5. iOS网络篇(2)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/zhanggui/p/5962037.html">1. React开发入门(8)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/6003481.html">2. 把自己Github上的代码添加Cocoapods支持(5)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/6744941.html">3. 记录参加QCon2017北京站的心得(3)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/4998739.html">4. 得到设备是何种iPhone设备 + 怎么获得启动页面图片(3)</a></li><li><a href="http://www.cnblogs.com/zhanggui/p/4744742.html">5. 动画技术(3)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2017 zhanggui
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

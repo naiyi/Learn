@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://www.cocoachina.com/ios/20160219/15301.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <title>iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单</title>
+    <meta name="keywords" content="蓝牙开发,蓝牙技术iPhone开发,iOS开发,iPad开发,Mac开发,苹果开发中文站,iPhone开发中文站,CocoaChina首页, Mac OS开发, Cocoa介绍,移动互联网,触控科技,Cocoa,Apple,developer,iOS,iPhone,iPad,iMac,iPod Touch,iPhone5,iPhone4S,iPad3,招聘,iPhone程序员,Objective-c,iPhone应用外包,ios6,ios面试,Cocos2d-x,cocos2d,iTunes,App Store,苹果开发">
+    <meta name="description" content="CocoaChina前身是全球成立最早规模最大的苹果开发中文站，现致力为所有移动开发者提供资讯服务、问答服务、代码下载、工具库及人才招聘服务">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-tc-cerfication" content="3300a939a1098c27e94457b75a0bb8c1">
+    <script type="text/javascript" async="" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/ga.js"></script><script type="text/javascript" async="" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/ga.js"></script><script async="" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/analytics.js"></script><script type="text/javascript">
+        function gotoMobilePage() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var agent_iphone = /iphone/i;
+            var agent_android = /android/i;
+            //var agent_ipad = /ipad/i;
+            var agent_ipod = /ipod/i;
+            var agent_wphone = /windows phone/i;
+            if(agent_iphone.test(sUserAgent) || agent_android.test(sUserAgent) || agent_ipod.test(sUserAgent) || agent_wphone.test(sUserAgent)){
+                var re = /\/\w+\/\d+\/(\d+)\.html/, 
+                    result = re.exec(window.location.pathname);
+                if ( result )
+                {
+                    window.location.href = "http://www.cocoachina.com/cms/wap.php?action=article&id=" + result[1];
+                } else {
+                    window.location.href = "http://m.cocoachina.com/";
+                }
+            }
+        }
+        gotoMobilePage(); 
+    </script>
+    <link rel="stylesheet" href="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/global.css" media="all">
+    <link rel="stylesheet" href="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/index.css" media="all">
+    <link href="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/module.css" rel="stylesheet">
+    <link href="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/style.css" rel="stylesheet">
+    <link href="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/navheader.css" rel="stylesheet">
+    <script src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/navbar.js"></script>
+    <script type="text/javascript" src="http://js.adm.cnzz.net/js/abase.js"></script>
+    <script type="text/javascript" src="http://s.csbew.com/k.js"></script>
+    
+<script src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/share.js"></script><link rel="stylesheet" href="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/share_style1_32.css"></head>
+<body>
+
+    <div class="nav-header">
+            <div class="nav-header-top">
+                <div class="nav-logo nav-fl"><a href="http://www.cocoachina.com/"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/logo.png"></a></div>
+                <div class="nav-list nav-fl">
+                    <ul>
+                        <li><a href="http://www.cocoachina.com/news/">资讯</a></li>
+                        <li><a href="http://www.cocoachina.com/bbs/">论坛</a></li>
+                        <li><a target="_blank" href="http://code.cocoachina.com/" title="CODE">代码</a></li>
+                        <li><a href="http://tools.cocoachina.com/" title="工具" target="_blank">工具</a></li>
+                        <li><a target="_blank" href="http://job.cocoachina.com/" title="JOB">招聘</a></li>
+                        <li><a target="_blank" href="http://cvp.cocos.com/" title="CVP">CVP</a></li>
+                        <li><a target="_blank" href="http://waikuai.cocoachina.com/" title="waikuai">外快</a><span class="new-item-flag">new</span></li>
+                    </ul>
+                </div>
+                <div class="nav-search nav-fl">
+                    <div class="nav-search-flag" style="display:block"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/search-icon.png"></div>
+                    <div class="nav-search-form" style="display:none">
+                        <form action="http://www.cocoachina.com/cms/plus/search.php" name="formsearch" method="post" target="_blank">
+                            <input type="hidden" name="kwtype" value="0">
+                            <input type="hidden" name="searchtype" value="titlekeyword">
+                            <input name="keyword" type="text" placeholder="站内搜索">
+                            <input type="button">
+                        </form>
+                    </div>
+                </div>
+                <div class="nav-user nav-fr">
+                    <!-- #region 未登录时显示此区域 -->
+                    <div class="nav-user-login" style="display:block">
+                        <a href="http://www.cocoachina.com/bbs/login.php">登录</a>|
+                        <a href="http://www.cocoachina.com/bbs/register.php">注册</a>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region 已登录时显示此区域 -->
+                    <div class="nav-user-name" style="display:none">
+                        <div><alert></alert><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/user.png">Guest</div>
+                        <ul>
+                            <li><a href="http://www.cocoachina.com/ios/20160219/15301.html#"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/i-man.png">我的主页</a></li>
+                            <li><alert></alert><a href="http://www.cocoachina.com/ios/20160219/15301.html#"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/i-mail.png">我的消息</a></li>
+                            <li><a href="http://www.cocoachina.com/ios/20160219/15301.html#"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/i-setting.png">账户设置</a></li>
+                            <li><a href="http://www.cocoachina.com/ios/20160219/index-offline.html"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/i-logout.png">退出</a></li>
+                        </ul>
+                    </div>
+                    <!-- #endregion -->
+                </div>
+                <div class="nav-clear"></div>
+            </div>
+        <div class="nav-header-bottom">
+            <ul>
+                <li><a id="ios" href="http://www.cocoachina.com/ios/" title="ios" class="light">iOS开发</a></li>
+                <li><a id="swift" href="http://www.cocoachina.com/swift/" title="swift">Swift</a></li>
+                <li><a id="app_store" href="http://www.cocoachina.com/appstore/" title="appstore">App Store研究</a></li>
+                <li><a id="design" href="http://www.cocoachina.com/design/" title="design">产品设计</a></li>
+                <li><a id="review" href="http://www.cocoachina.com/review/" title="review">应用评测</a></li>
+                <li><a id="game" href="http://www.cocoachina.com/game/" title="game">游戏开发</a></li>
+                <li><a id="apple" href="http://www.cocoachina.com/apple/" title="apple">苹果相关</a></li>
+                <!-- <li><a id="cocos" href="/cocos/" title="cocos">Cocos引擎</a></li>-->
+                <li><a id="webapp" href="http://www.cocoachina.com/webapp/" title="HTML5">HTML5</a></li>
+                <li><a id="android" href="http://www.cocoachina.com/android/" title="android">安卓相关</a></li>
+                <li><a id="market" href="http://www.cocoachina.com/market/" title="market">营销推广</a></li>
+                <li><a id="industry" href="http://www.cocoachina.com/industry/" title="industry">业界动态</a></li>
+                <li><a id="programmer" href="http://www.cocoachina.com/programmer/" title="programmer">程序人生</a></li>
+            </ul>
+        </div>
+    </div>
+<script language="javascript">
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPod");
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+        }
+        return flag;
+    }
+    if (!IsPC()){
+           window.location.href = "http://www.cocoachina.com/cms/wap.php?action=article&id=15301";
+    }
+
+</script>
+<!--middle-->
+<div class="middle clearfix">
+    <div class="m-wrap">
+        <div class="m-ad2" style="margin-top:12px;">
+            <div class="ad2-l">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC首页底部左侧72890 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="8012423965"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <div class="ad2-r">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC资讯页25090 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:250px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="9489157162"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        <!--left-->
+        <div class="detail-left float-l">
+            <p class="crumbs"><a href="http://www.cocoachina.com/" title="首页">首页</a> &gt;<a href="http://www.cocoachina.com/ios" title="iOS开发"><span id="type_name">iOS开发</span></a></p>
+            <div class="detail-main">
+                <h2>iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍</h2>
+                <div class="p-ico clearfix">
+                    <div>
+                        <span class="ml0">2016-02-19 06:18</span>
+                        <span>编辑：
+                        <a href="http://www.cocoachina.com/ios/20160219/15301.html" id="field_author" target="_blank">suiling</a></span>
+                        <span>分类：<a href="http://www.cocoachina.com/ios/" target="_blank">iOS开发</a></span>
+                        <span id="source">来源：<a href="http://liuyanwei.jumppo.com/2015/09/11/ios-BLE-4.html" target="_blank">刘彦玮的博客</a></span>
+
+                        <div class="float-r">
+                            <span id="artical_comment_cnt"><i></i>2</span>
+                            <span><i class="view"></i><script src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/count.php" language="javascript"></script>5780</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="p-ico clearfix">
+                    <p class="related float-l"><a href="http://www.cocoachina.com/cms/tags.php?/%E8%93%9D%E7%89%99%E5%BC%80%E5%8F%91/" target="_blank">蓝牙开发</a><a href="http://www.cocoachina.com/cms/tags.php?/%E8%93%9D%E7%89%99%E6%8A%80%E6%9C%AF/" target="_blank">蓝牙技术</a></p>
+                    <input type="hidden" id="article_id" value="15301">
+                </div>
+                <div class="adsbox clearfix">
+                    <div class="float-l">
+                        <div class="float-l"><b>招聘信息：</b></div>
+                        <ul class="float-l" id="invitelist" style="margin-top: -12.1837px;"><li><a href="http://job.cocoachina.com/job/show?id=67639" target="_blank">iOS工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67356" target="_blank">iOS工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=66967" target="_blank">手游JAVA 服务器端主程</a></li><li><a href="http://job.cocoachina.com/job/show?id=66966" target="_blank">cocos2dx手游客户端主程</a></li><li><a href="http://job.cocoachina.com/job/show?id=67497" target="_blank">iOS研发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67159" target="_blank">资深iOS开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=65827" target="_blank">Mac开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67498" target="_blank">java高级软件工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67499" target="_blank">iOS软件工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67500" target="_blank">Web后端高级开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67089" target="_blank">移动端开发工程师</a></li></ul>
+                    </div>
+                    <div class="float-r">
+                        <a href="javascript:void(0)" class="prev"></a>
+                        <a href="javascript:void(0)" class="next"></a>
+                    </div>
+                </div>
+                <div id="detailbody" class="field_body">
+                    <p style="text-align:center"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/1455594276670646.jpg" title="1455594276670646.jpg" alt="1455590076466580.jpg"></p><p><a href="https://github.com/coolnameismy/BabyBluetooth" target="_blank">BabyBluetooth</a> 是一个最简单易用的蓝牙库，基于CoreBluetooth的封装，并兼容iOS和Mac osx。</p><p><strong>##特色：</strong></p><ul class=" list-paddingleft-2"><li><p>基于原生CoreBluetooth框架封装的轻量级的开源库，可以帮你更简单地使用CoreBluetooth API。</p></li><li><p>CoreBluetooth所有方法都是通过委托完成，代码冗余且顺序凌乱。BabyBluetooth使用block方法，可以重新按照功能和顺序组织代码，并提供许多方法减少蓝牙开发过程中的代码量。</p></li><li><p>链式方法体，代码更简洁、优雅。</p></li><li><p>通过channel切换区分委托调用，并方便切换。</p></li></ul><p><strong>##来源</strong></p><p>最近几个月都在做蓝牙项目，用CoreBluetooch感觉语句写的到处都是，不优雅。一整条链下来要近10几个委托方法，并且不断的在委托方法中调用方法再进入其他的委托，导致 代码很零散。因此我就想让coreBluetooth使用更简单，语法更优雅，所以开始写这个BabyBluetooch蓝牙库。</p><p>更新于：20150916,现在BabyBluetooth 已经有了96个star</p><p>更新于：20160129,现在BabyBluetooth 已经有了880个star</p><p><strong>##期待</strong></p><ul class=" list-paddingleft-2"><li><p>蓝牙库写起来很辛苦，希望大家可以多多支持，多多star。BabyBluetooth主页</p></li><li><p>如果在使用过程中遇到BUG，或发现功能不够用，希望你能Issues我，谢谢</p></li><li><p>期待大家也能一起为BabyBluetooth输出代码，这里我只是给BabyBluetooth开了个头，他可以增加和优化的地方还是非常多。也期待和大家在Pull Requests一起学习，交流，成长。</p></li></ul><p><strong>Quick Example</strong></p><p>//导入.h文件和系统蓝牙库的头文件</p><div><div id="highlighter_351234" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div><div class="line number52 index51 alt1">52</div><div class="line number53 index52 alt2">53</div><div class="line number54 index53 alt1">54</div><div class="line number55 index54 alt2">55</div><div class="line number56 index55 alt1">56</div><div class="line number57 index56 alt2">57</div><div class="line number58 index57 alt1">58</div><div class="line number59 index58 alt2">59</div><div class="line number60 index59 alt1">60</div><div class="line number61 index60 alt2">61</div><div class="line number62 index61 alt1">62</div><div class="line number63 index62 alt2">63</div><div class="line number64 index63 alt1">64</div><div class="line number65 index64 alt2">65</div><div class="line number66 index65 alt1">66</div><div class="line number67 index66 alt2">67</div><div class="line number68 index67 alt1">68</div><div class="line number69 index68 alt2">69</div><div class="line number70 index69 alt1">70</div><div class="line number71 index70 alt2">71</div><div class="line number72 index71 alt1">72</div><div class="line number73 index72 alt2">73</div><div class="line number74 index73 alt1">74</div><div class="line number75 index74 alt2">75</div><div class="line number76 index75 alt1">76</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js preprocessor">#import&nbsp;"BabyBluetooth.h"</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="js plain">-(void)viewDidLoad&nbsp;{</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[</code><code class="js keyword">super</code>&nbsp;<code class="js plain">viewDidLoad];</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js comments">//初始化BabyBluetooth&nbsp;蓝牙库</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">baby&nbsp;=&nbsp;[BabyBluetooth&nbsp;shareBabyBluetooth];</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置蓝牙委托</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[self&nbsp;babyDelegate];</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置委托后直接可以使用，无需等待CBCentralManagerStatePoweredOn状态</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">baby.scanForPeripherals().begin()</code></div><div class="line number12 index11 alt1"><code class="js plain">}</code></div><div class="line number13 index12 alt2">&nbsp;</div><div class="line number14 index13 alt1"><code class="js comments">//蓝牙网关初始化和委托方法设置</code></div><div class="line number15 index14 alt2"><code class="js plain">-(void)babyDelegate{</code></div><div class="line number16 index15 alt1">&nbsp;</div><div class="line number17 index16 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置扫描到设备的委托</code></div><div class="line number18 index17 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[baby&nbsp;setBlockOnDiscoverToPeripherals:^(CBCentralManager&nbsp;*central,&nbsp;CBPeripheral&nbsp;*peripheral,&nbsp;NSDictionary&nbsp;*advertisementData,&nbsp;NSNumber&nbsp;*RSSI)&nbsp;{</code></div><div class="line number19 index18 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSLog(@</code><code class="js string">"搜索到了设备:%@"</code><code class="js plain">,peripheral.name);</code></div><div class="line number20 index19 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number21 index20 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置设备连接成功的委托</code></div><div class="line number22 index21 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[baby&nbsp;setBlockOnConnected:^(CBCentralManager&nbsp;*central,&nbsp;CBPeripheral&nbsp;*peripheral)&nbsp;{</code></div><div class="line number23 index22 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSLog(@</code><code class="js string">"设备：%@--连接成功"</code><code class="js plain">,peripheral.name);</code></div><div class="line number24 index23 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number25 index24 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置发现设备的Services的委托</code></div><div class="line number26 index25 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[baby&nbsp;setBlockOnDiscoverServices:^(CBPeripheral&nbsp;*peripheral,&nbsp;NSError&nbsp;*error)&nbsp;{</code></div><div class="line number27 index26 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">for</code>&nbsp;<code class="js plain">(CBService&nbsp;*service&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">peripheral.services)&nbsp;{</code></div><div class="line number28 index27 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSLog(@</code><code class="js string">"搜索到服务:%@"</code><code class="js plain">,service.UUID.UUIDString);</code></div><div class="line number29 index28 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number30 index29 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number31 index30 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置发现设service的Characteristics的委托</code></div><div class="line number32 index31 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[baby&nbsp;setBlockOnDiscoverCharacteristics:^(CBPeripheral&nbsp;*peripheral,&nbsp;CBService&nbsp;*service,&nbsp;NSError&nbsp;*error)&nbsp;{</code></div><div class="line number33 index32 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSLog(@</code><code class="js string">"===service&nbsp;name:%@"</code><code class="js plain">,service.UUID);</code></div><div class="line number34 index33 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">for</code>&nbsp;<code class="js plain">(CBCharacteristic&nbsp;*c&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">service.characteristics)&nbsp;{</code></div><div class="line number35 index34 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSLog(@</code><code class="js string">"charateristic&nbsp;name&nbsp;is&nbsp;:%@"</code><code class="js plain">,c.UUID);</code></div><div class="line number36 index35 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number37 index36 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number38 index37 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置读取characteristics的委托</code></div><div class="line number39 index38 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[baby&nbsp;setBlockOnReadValueForCharacteristic:^(CBPeripheral&nbsp;*peripheral,&nbsp;CBCharacteristic&nbsp;*characteristics,&nbsp;NSError&nbsp;*error)&nbsp;{</code></div><div class="line number40 index39 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSLog(@</code><code class="js string">"characteristic&nbsp;name:%@&nbsp;value&nbsp;is:%@"</code><code class="js plain">,characteristics.UUID,characteristics.value);</code></div><div class="line number41 index40 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number42 index41 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置发现characteristics的descriptors的委托</code></div><div class="line number43 index42 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[baby&nbsp;setBlockOnDiscoverDescriptorsForCharacteristic:^(CBPeripheral&nbsp;*peripheral,&nbsp;CBCharacteristic&nbsp;*characteristic,&nbsp;NSError&nbsp;*error)&nbsp;{</code></div><div class="line number44 index43 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSLog(@</code><code class="js string">"===characteristic&nbsp;name:%@"</code><code class="js plain">,characteristic.service.UUID);</code></div><div class="line number45 index44 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">for</code>&nbsp;<code class="js plain">(CBDescriptor&nbsp;*d&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">characteristic.descriptors)&nbsp;{</code></div><div class="line number46 index45 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSLog(@</code><code class="js string">"CBDescriptor&nbsp;name&nbsp;is&nbsp;:%@"</code><code class="js plain">,d.UUID);</code></div><div class="line number47 index46 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number48 index47 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number49 index48 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置读取Descriptor的委托</code></div><div class="line number50 index49 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[baby&nbsp;setBlockOnReadValueForDescriptors:^(CBPeripheral&nbsp;*peripheral,&nbsp;CBDescriptor&nbsp;*descriptor,&nbsp;NSError&nbsp;*error)&nbsp;{</code></div><div class="line number51 index50 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSLog(@</code><code class="js string">"Descriptor&nbsp;name:%@&nbsp;value&nbsp;is:%@"</code><code class="js plain">,descriptor.characteristic.UUID,&nbsp;descriptor.value);</code></div><div class="line number52 index51 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number53 index52 alt2">&nbsp;</div><div class="line number54 index53 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//过滤器</code></div><div class="line number55 index54 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置查找设备的过滤器</code></div><div class="line number56 index55 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[baby&nbsp;setDiscoverPeripheralsFilter:^BOOL(NSString&nbsp;*peripheralsFilter)&nbsp;{</code></div><div class="line number57 index56 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置查找规则是名称大于1&nbsp;，&nbsp;the&nbsp;search&nbsp;rule&nbsp;is&nbsp;peripheral.name&nbsp;length&nbsp;&gt;&nbsp;1</code></div><div class="line number58 index57 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">(peripheralsFilter.length&nbsp;&gt;1)&nbsp;{</code></div><div class="line number59 index58 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">YES;</code></div><div class="line number60 index59 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number61 index60 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">NO;</code></div><div class="line number62 index61 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number63 index62 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number64 index63 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//设置连接的设备的过滤器</code></div><div class="line number65 index64 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">__block&nbsp;BOOL&nbsp;isFirst&nbsp;=&nbsp;YES;</code></div><div class="line number66 index65 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">[baby&nbsp;setFilterOnConnetToPeripherals:^BOOL(NSString&nbsp;*peripheralName)&nbsp;{</code></div><div class="line number67 index66 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//这里的规则是：连接第一个AAA打头的设备</code></div><div class="line number68 index67 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code><code class="js plain">(isFirst&nbsp;&amp;&amp;&nbsp;[peripheralName&nbsp;hasPrefix:@</code><code class="js string">"AAA"</code><code class="js plain">]){</code></div><div class="line number69 index68 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">isFirst&nbsp;=&nbsp;NO;</code></div><div class="line number70 index69 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">YES;</code></div><div class="line number71 index70 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number72 index71 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">return</code>&nbsp;<code class="js plain">NO;</code></div><div class="line number73 index72 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}];</code></div><div class="line number74 index73 alt1">&nbsp;</div><div class="line number75 index74 alt2">&nbsp;</div><div class="line number76 index75 alt1"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div><p><span style="line-height: 1.8;">CoreBluetooch中实现上扫描，连接，发现服务和characteristic以及它的值相关方法调用是很麻烦啰嗦凌乱的。如下： centralManager启动-&gt;状态委托-&gt;调用扫描方法-&gt;进入扫描到设备的委托-&gt;调用连接设备方法-&gt;进入连接到设备的委托-&gt;发现服务方法-&gt;发现服务委托-&gt; 发现characteristic方法-&gt;发现characteristic委托-&gt;读characteristic的value-&gt;读characteristic的value的委托-&gt;读description，读description的value-&gt; ….的委托</span></p><p>而BabyBluetooth只需要一句话就执行了上面的内容。</p><div><div id="highlighter_718890" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//扫描设备&nbsp;然后读取服务,然后读取characteristics名称和值和属性，获取characteristics对应的description的名称和值</code></div><div class="line number2 index1 alt1"><code class="js plain">baby.scanForPeripherals().connectToPeripheral().discoverServices()</code></div><div class="line number3 index2 alt2"><code class="js plain">.discoverCharacteristics().readValueForCharacteristic().discoverDescriptorsForCharacteristic()</code></div><div class="line number4 index3 alt1"><code class="js plain">.readValueForDescriptors().begin();</code></div></div></td></tr></tbody></table></div></div><p>另一方面，BabyBluetooth所有的委托方法都紧凑的聚在了一起。此外，快速示例中没有包括channel的使用，如果包括了channel，那么ios几个页面或者组件的蓝牙 调用模块都可以写在一起，看起来就觉得很方便。</p><p>关于更多BabyBluetooth的介绍和使用示例已经api，请移步到<a href="https://github.com/coolnameismy/BabyBluetooth" target="_blank">BabyBluetooth</a>主页查看</p><p><strong>相关阅读：</strong></p><ul class=" list-paddingleft-2"><li><p><a href="http://www.cocoachina.com/ios/20160218/15299.html" target="_blank">iOS蓝牙开发（三）：App作为外设被连接的实现</a></p></li><li><p><a href="http://www.cocoachina.com/ios/20160217/15294.html" target="_blank">iOS蓝牙开发（二）：iOS连接外设的代码实现</a></p></li><li><p><a href="http://www.cocoachina.com/ios/20150915/13454.html" target="_blank">iOS蓝牙开发（一）蓝牙相关基础知识</a></p></li></ul>
+                </div>
+                <div id="page" style="padding:0"></div>
+
+                <div class="wx_article">
+                    <div class="article_weixin">
+                        <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/article_weixin.jpg" width="131" height="131" alt="搜索CocoaChina微信公众号：CocoaChina">
+                        <div class="article_scan">微信扫一扫</div>
+                        <div class="article_txt"><span style="color:#999999">订阅每日移动开发及APP推广热点资讯<br>公众号：</span>CocoaChina</div>
+                    </div>
+                </div>
+
+               <div class="clearfix tgbox">
+                    <a href="http://www.cocoachina.com/deliver.php" class="tg float-l" target="_blank">我要投稿</a>&nbsp;&nbsp;
+                    <a style="margin-left:10px" href="javascript:void(0)" onclick="add_favors(15301,&#39;iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍&#39;)" class="tg float-l">收藏文章</a>
+                    <div class="share float-r">分享到：
+                        <div class="bdsharebuttonbox" id="sharediv" data-bd-bind="1491993711769"><a href="http://www.cocoachina.com/ios/20160219/15301.html#" class="bds_more" data-cmd="more"></a> <a href="http://www.cocoachina.com/ios/20160219/15301.html#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="http://www.cocoachina.com/ios/20160219/15301.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a> <a href="http://www.cocoachina.com/ios/20160219/15301.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                    </div>
+                </div>
+
+
+                <a class="zanbox" href="javascript:void(0)" id="zanbox" onclick="postDigg(&#39;good&#39;,15301)" title="哎呦，不错噢，赞一个">
+                    <strong id="newdigg">
+                     <script src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/count(1).php" language="javascript"></script>14
+                    </strong>
+                </a>
+            </div>
+
+            <div class="article-prev">上一篇：<a href="http://www.cocoachina.com/ios/20160216/15295.html">源码推荐(02.16B)：模仿简书、淘宝弹出效果动画，GIF文件生成和播放</a> </div>
+            <div class="article-next">下一篇：<a href="http://www.cocoachina.com/ios/20160217/15322.html">源码推荐(02.17B)：仿QQ界面，MVC简化控制器代码</a> </div>
+
+            <!--相关资讯-->
+            <div class="part-wrap clearfix">
+                <h3>相关资讯</h3>
+                <ul class="info-list clearfix">
+                    <li>
+                        <a href="http://www.cocoachina.com/ios/20160218/15307.html" target="_blank" title="很多炫酷的应用中都使用了低功耗蓝牙技术，它能够用于简单的数据交换、支付终端以及采用iBeacon技术的用途上。但如果我们想要创建一些有趣的事情呢？比如一些非实时的简单游戏。想象下你无需经">有趣的低功耗蓝牙</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20160218/15299.html" target="_blank" title="再上一节说了app作为central连接peripheral的情况，这一节介绍如何使用app发布一个peripheral，给其他的central连接">iOS蓝牙开发（三）：App作为外设被连接的实现</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20160217/15294.html" target="_blank" title="上一篇文章介绍了蓝牙的技术知识，这里我们具体说明一下中心模式的应用场景。主设备（手机去扫描连接外设，发现外设服务和属性，操作服务和属性的应用。一般来说，外设（蓝牙设备，比如智能">iOS蓝牙开发（二）：iOS连接外设的代码实现</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20151106/14072.html" target="_blank" title="BabyBluetooth 是一个最简单易用的蓝牙库，基于CoreBluetooth的封装，并兼容iOS和Mac OS X">iOS 蓝牙开发（四）BabyBluetooth蓝牙库介绍</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20151105/14071.html" target="_blank" title="这一节介绍如何使用app发布一个peripheral，给其他的central连接">iOS 蓝牙开发（三）app作为外设被连接的实现</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150917/13456.html" target="_blank" title="上一篇文章介绍了蓝牙的技术知识，这里我们具体说明一下中心模式的应用场景">【投稿】iOS 蓝牙开发（二）iOS 连接外设的代码实现</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20150915/13454.html" target="_blank" title="蓝牙相关基础知识，包括蓝牙常见名称和缩写、蓝牙中心模式流程、蓝牙外设模式流程、蓝牙设备状态等">【投稿】iOS蓝牙开发（一）蓝牙相关基础知识</a>
+                     </li>
+
+                </ul>
+            </div>
+            <div class="clearfix" style="margin-top:20px;">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC评论框 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:750px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="8242010366"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <!-- 评论模块start -->
+            
+            <div class="clearfix" id="commnet_list_holder" style="margin-bottom:50px;">
+                <div class="glab-comment-form">
+                    <div class="dcbt">我来说两句</div>
+                    <div class="user-head">
+                        <img id="user_face_url" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt="">
+                    </div>
+                    <div class="form-region">
+                        <textarea name="comment" id="main_comment_content" cols="30" rows="10" placeholder="你怎么看？快来评论一下吧！"></textarea>
+                        <a class="submitform" id="main_comment_bt">发表评论</a>
+                        <div class="unlogin-mask">
+                            <div>您还没有登录！请<a href="http://www.cocoachina.com/bbs/login.php">登录</a>或<a href="http://www.cocoachina.com/bbs/register.php">注册</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="glab-comment-callback-msg" class="glab-comment-info"></div>
+                <div class="glab-comment-title">所有评论（<span>2</span>）</div>
+                <div class="glab-commentlist" id="commentlist">
+                    <a id="refresh_comment_btn" href="javascript:;" onclick="$(&#39;#morecomment&#39;).trigger(&#39;click&#39;)" style="display: none;">刷新评论</a>
+                
+    <div class="glab-comment" rel-data-id="24014" rel-user-id="523106" rel-user-name="dongFu" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=523106" target="_blank"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=523106" target="_blank">dongFu</a><span class="puptime">2016-04-29 03:13:24</span></div>
+            <div class="comment-content">mark</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+
+    <div class="glab-comment" rel-data-id="19862" rel-user-id="504066" rel-user-name="zefa" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=504066" target="_blank"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=504066" target="_blank">zefa</a><span class="puptime">2016-02-19 05:55:09</span></div>
+            <div class="comment-content">请问蓝牙技术实际中在哪应用,用的比较少</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+</div>
+                <div class="glab-comment-more" id="morecomment" style="display:none">
+                    更多评论
+                </div>
+            </div>
+            
+            <!-- 评论模块end -->
+
+
+        </div>
+        <!--./left-->
+        <!--侧边栏-->
+        <div class="clearfix newslist">
+            <div class="rightSide detail-right float-r">
+                <!--两周热门资讯推荐-->
+                <div>
+                    <div class="part-wrap clearfix">
+                        <h3>热门资讯</h3>
+                        <ul class="related-hot">
+                            <li class="clearfix"><a href="http://www.cocoachina.com/ios/20160209/15239.html" class="float-l pic" target="_blank" title="iOS杂志类应用开发--NewsstandKit"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/e8acc7ea2514c2cc7cec8f8ec85a96fd.jpg" style="max-height:60px" alt="iOS杂志类应用开发--NewsstandKit"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20160209/15239.html" target="_blank" title="iOS杂志类应用开发--NewsstandKit">iOS杂志类应用开发--NewsstandKit</a></p><p class="hits">点击量<span>31953</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20160214/15251.html" class="float-l pic" target="_blank" title="放肆地使用UIBezierPath和CAShapeLayer画各种图形"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/7b1491b6583764924a54aae2dace11c5.gif" style="max-height:60px" alt="放肆地使用UIBezierPath和CAShapeLayer画各种图形"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20160214/15251.html" target="_blank" title="放肆地使用UIBezierPath和CAShapeLayer画各种图形">放肆地使用UIBezierPath和CAShapeLayer画各种图形</a></p><p class="hits">点击量<span>7109</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20160216/15264.html" class="float-l pic" target="_blank" title="给iOS开发者的Sketch入门教程"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/fd6e6482ab1f50b5a2fc92fe759c6cc0.jpg" style="max-height:60px" alt="给iOS开发者的Sketch入门教程"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20160216/15264.html" target="_blank" title="给iOS开发者的Sketch入门教程">给iOS开发者的Sketch入门教程</a></p><p class="hits">点击量<span>7102</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20160215/15262.html" class="float-l pic" target="_blank" title="iOS 开发之动画篇 - 从 UIView 动画说起"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/9a6c590921ed527f74c742e7d22282a8.jpg" style="max-height:60px" alt="iOS 开发之动画篇 - 从 UIView 动画说起"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20160215/15262.html" target="_blank" title="iOS 开发之动画篇 - 从 UIView 动画说起">iOS 开发之动画篇 - 从 UIView 动画说起</a></p><p class="hits">点击量<span>6479</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20160205/15233.html" class="float-l pic" target="_blank" title="聪明的iOS开发者的Xcode使用技巧"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/0f9e78e604d0106738d7c2d58c9656eb.jpg" style="max-height:60px" alt="聪明的iOS开发者的Xcode使用技巧"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20160205/15233.html" target="_blank" title="聪明的iOS开发者的Xcode使用技巧">聪明的iOS开发者的Xcode使用技巧</a></p><p class="hits">点击量<span>6179</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/review/20160204/15229.html" class="float-l pic" target="_blank" title="用 4 天时间欺骗全世界：一款虚构出来的约架 App 为何能红遍网络？"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/0ebfab534ceb2cc52f616808b77d4399.jpg" style="max-height:60px" alt="用 4 天时间欺骗全世界：一款虚构出来的约架 App 为何能红遍网络？"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/review/20160204/15229.html" target="_blank" title="用 4 天时间欺骗全世界：一款虚构出来的约架 App 为何能红遍网络？">用 4 天时间欺骗全世界：一款虚构出来的约架 App 为何能红遍网络？</a></p><p class="hits">点击量<span>5970</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20160210/14844.html" class="float-l pic" target="_blank" title="初当技术面试官：给面试者的忠告"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/b5f0f87ef0b31eefd7945f320f6479ee.jpg" style="max-height:60px" alt="初当技术面试官：给面试者的忠告"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20160210/14844.html" target="_blank" title="初当技术面试官：给面试者的忠告">初当技术面试官：给面试者的忠告</a></p><p class="hits">点击量<span>5879</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20160215/15278.html" class="float-l pic" target="_blank" title="如果恨一个程序员，忽悠他去做iOS开发"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/3fdf7d5ebc272ad27551585031b2c0c5.jpg" style="max-height:60px" alt="如果恨一个程序员，忽悠他去做iOS开发"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20160215/15278.html" target="_blank" title="如果恨一个程序员，忽悠他去做iOS开发">如果恨一个程序员，忽悠他去做iOS开发</a></p><p class="hits">点击量<span>5658</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20160205/15244.html" class="float-l pic" target="_blank" title="2月TIOBE编程语言排行榜出炉，OC和Swift依旧在Top 10之外徘徊"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/99485ab2118e32fe794f4fe20dd7b2e6.png" style="max-height:60px" alt="2月TIOBE编程语言排行榜出炉，OC和Swift依旧在Top 10之外徘徊"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20160205/15244.html" target="_blank" title="2月TIOBE编程语言排行榜出炉，OC和Swift依旧在Top 10之外徘徊">2月TIOBE编程语言排行榜出炉，OC和Swift依旧在Top 10之外徘徊</a></p><p class="hits">点击量<span>4766</span></p></div></li><li class="clearfix noborder-b"><a href="http://www.cocoachina.com/ios/20160215/15263.html" class="float-l pic" target="_blank" title="iOS自定义转场动画实战讲解"><img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/4d7ff39dcaf84e1df65b7eabafc91e5a.jpg" style="max-height:60px" alt="iOS自定义转场动画实战讲解"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20160215/15263.html" target="_blank" title="iOS自定义转场动画实战讲解">iOS自定义转场动画实战讲解</a></p><p class="hits">点击量<span>4678</span></p></div></li>
+                        </ul>
+                    </div>
+               </div>
+               <!--./两周热门资讯推荐-->
+               <!--综合评论-->
+                <div class="part-wrap clearfix" style="margin-top: 15px;">
+                    <h3>综合评论</h3>
+                    <ul class="related-comment clearfix" id="all_comments_holder"><li class=""><span class="hide_comment">2017中国SaaS产业大会&nbsp;<br>CHINA&nbsp;SAAS&nbsp;INDUSTRY&nbsp;CONFERENCE&nbsp;2017<br>&nbsp;<br>大会主题：“云时代&nbsp;新契机”<br>大会日程：2017年7月&nbsp;中国&nbsp;上海<br>&nbsp;<br>主办：中国云体系产业创新战略联盟<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海市信息服务业行业协会<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拓普会展（上海）有限公司<br>&nbsp;<br>大会介绍<br>&nbsp;&nbsp;&nbsp;&nbsp;步入2017年，中国企业级SaaS市场格局将更加明朗，随着用户向场景化需求转变，客制化时代的思维，将引领SaaS服务不断产品创新，提升用户体验。同时在资本和市场的推动下，迎来价值回归期。未来十年，将成为武装企业的核心，推动着生产和生活方式的变化!<br><br>&nbsp;&nbsp;&nbsp;&nbsp;恰逢行业新起点，拓普会展联合行业权威机构继举办“2016企业云服务大会”后，以“云时代&nbsp;新契机”为主题的“2017中国SaaS产业大会”&nbsp;将再次星耀沪上。本次大会将汇聚新锐企业代表、行业巨头、意见领袖等广泛参与，共同推进SaaS在企业中的应用。<br><br><br>大会亮点&nbsp;<br>回归企业服务的价值时代，SAAS的机遇与挑战&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>技术融合,构建SaaS服务新生态&nbsp;<br>迭变·破局，通用型SAAS的战略和战术&nbsp;<br>深挖精准需求&nbsp;撬动垂直领域万亿市场<br><br>2017中国SaaS产业大会组委会&nbsp;<br>施伟先生&nbsp;手机/微信：13564938855<br>电话：021-54651369&nbsp;&nbsp;&nbsp;&nbsp;<br>QQ:253389739<br>邮箱：shiwei@topexpo.cn<br>网址：www.topcsic.com</span><br><p><span>topexpo</span><span>评论了</span><a target="_blank" title=" MAIC 2015移动应用创新大会暨APP展览会于12月上海举行" href="http://mobile.cocoachina.com/industry/20151028/13946.html"><span> MAIC 2015移动应用创新大会暨APP展览会...</span></a></p></li><li class=""><span class="hide_comment">作者是够无聊的</span><br><p><span>FuckWorld</span><span>评论了</span><a target="_blank" title="如果古人们穿越到现在，会是怎样的程序员？" href="http://www.cocoachina.com/programmer/20170410/19023.html"><span>如果古人们穿越到现在，会是怎样的程序员？...</span></a></p></li><li class=""><span class="hide_comment">这图笑死了</span><br><p><span>太阳当空照花儿对我笑</span><span>评论了</span><a target="_blank" title="二十个令程序员泪流满面的瞬间……" href="http://www.cocoachina.com/programmer/20170123/18612.html"><span>二十个令程序员泪流满面的瞬间……...</span></a></p></li><li class=""><span class="hide_comment">等级不是这么分的&nbsp;尤其是高级程序员的等级界限是很模糊的<br>一般只分三种&nbsp;<br>还不能做事的或者只会弄一些demo的<br>基本能完成大部分开发的<br>水平不次的努力在一线挣扎的&nbsp;谁都有各自擅长的&nbsp;很难说谁比谁牛&nbsp;世界那么大&nbsp;再厉害也只是对自己处理过的那些块比较熟而已&nbsp;没有实际动手过都是夸夸其谈过家家&nbsp;而架构师我认为他只是一份职业&nbsp;通常由经验丰富,系统把控强的高级开发担任&nbsp;&nbsp;而非技术水平凌驾一线程序之上&nbsp;像国内至少很大一部分程序担任架构师之后技术都退化了不少&nbsp;<br>至于咨询师&nbsp;我能说我4年前一个做APP的到处被拉来拉去问这个那个PHP,Java,C++怎么实现，原理吗?</span><br><p><span>xiaoyishan</span><span>评论了</span><a target="_blank" title="开发者技能修炼的五个等级" href="http://www.cocoachina.com/programmer/20170411/19033.html"><span>开发者技能修炼的五个等级...</span></a></p></li><li class=""><span class="hide_comment">这篇文章有点水了</span><br><p><span>蛮荒星域</span><span>评论了</span><a target="_blank" title="为什么很多主流App没有『夜间模式』？" href="http://www.cocoachina.com/design/20170124/18611.html"><span>为什么很多主流App没有『夜间模式』？...</span></a></p></li><li class=""><span class="hide_comment">11条怎么写的？</span><br><p><span>蛮荒星域</span><span>评论了</span><a target="_blank" title="APP设计：那些打动人心的设计点" href="http://www.cocoachina.com/design/20170317/18908.html"><span>APP设计：那些打动人心的设计点...</span></a></p></li><li class=""><span class="hide_comment">coding这个技能不是谁都能点的</span><br><p><span>CandyDear</span><span>评论了</span><a target="_blank" title="如果古人们穿越到现在，会是怎样的程序员？" href="http://www.cocoachina.com/programmer/20170410/19023.html"><span>如果古人们穿越到现在，会是怎样的程序员？...</span></a></p></li><li class=""><span class="hide_comment">学习</span><br><p><span>Kikyo</span><span>评论了</span><a target="_blank" title="聪明的iOS开发者的Xcode使用技巧" href="http://www.cocoachina.com/ios/20160205/15233.html"><span>聪明的iOS开发者的Xcode使用技巧...</span></a></p></li><li class=""><span class="hide_comment">一年小白瑟瑟发抖！！！！</span><br><p><span>ljqjunzi</span><span>评论了</span><a target="_blank" title="开发者技能修炼的五个等级" href="http://www.cocoachina.com/programmer/20170411/19033.html"><span>开发者技能修炼的五个等级...</span></a></p></li><li class="noborder-b"><span class="hide_comment">图片挂掉了，真的很烦，越看越迷糊，要知道一张图顶千言万语</span><br><p><span>Flanker711</span><span>评论了</span><a target="_blank" title="基于面向协议MVP模式下的软件设计－iOS篇" href="http://www.cocoachina.com/ios/20151223/14768.html"><span>基于面向协议MVP模式下的软件设计－iOS篇...</span></a></p></li></ul>
+                </div>
+                <!--./综合评论-->
+                <!--相关帖子-->
+                <div class="part-wrap clearfix" style="margin:15px 0 15px 0;">
+                    <h3>相关帖子</h3>
+                    <ul class="related-comment clearfix">
+                        <script charset="gb2312" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/new.php"></script><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718149" target="_blank">如何将扫描后的图片怎么转换成可编辑的word文档</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718148" target="_blank">AF3.0请求网络时json会变成NSData类型</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718147" target="_blank">如何解决ios10首次安装App点击允许数据访问，加载不了数据？</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718146" target="_blank">有没有人做过类似小猪短租的房间日立的demo？</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718145" target="_blank">从外包公司出来后，想进产品公司这么难吗？</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718144" target="_blank">Linux的sdk库移植到ios中编译成静态库问题。</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718143" target="_blank">关于微信回掉的问题</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718142" target="_blank">社区生活APP软件开发解决方案</a></li><li class="clearfix noborder-b"><a href="http://www.cocoachina.com/bbs/read.php?tid=1718141" target="_blank">Tasty Bingo Review - www.topbingositesuk.co.uk</a></li>
+                    </ul>
+                </div>
+                <!--./相关帖子-->
+                <iframe width="230" height="550" class="share_self" frameborder="0" scrolling="no" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/index.html"></iframe>
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC列表页面230x230 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:230px;height:230px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="6765277166"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        <!--./侧边栏-->
+    </div>
+
+    <div id="coco-store" style="display:none">
+        <div class="storebox">
+            <h5>提示</h5>
+            <h3>已经收藏该篇文章</h3>
+            <p class="p1"><a href="http://www.cocoachina.com/bbs/u.php?action=favor&amp;tag=1" target="_blank">去我的收藏夹</a></p>
+            <p class="p2"><a href="http://www.cocoachina.com/bbs/login.php">请登录</a></p>
+        </div>
+    </div> <!--收藏提示-->
+</div>
+
+<script type="text/javascript">
+
+function postDigg(ftype,aid)
+{
+    var taget_obj = document.getElementById('newdigg');
+    var saveid = GetCookie('diggid');
+    if(saveid != null)
+    {
+        var saveids = saveid.split(',');
+        var hasid = false;
+        saveid = '';
+        j = 1;
+        for(i=saveids.length-1;i>=0;i--)
+        {
+            if(saveids[i]==aid && hasid) continue;
+            else {
+                if(saveids[i]==aid && !hasid) hasid = true;
+                saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+                j++;
+                if(j==20 && hasid) break;
+                if(j==19 && !hasid) break;
+            }
+        }
+        if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+        else saveid += ','+aid;
+        SetCookie('diggid',saveid,1);
+    }
+    else
+    {
+        SetCookie('diggid',aid,1);
+    }
+    myajax = new DedeAjax(taget_obj,false,false,'','','');
+    var url = "/cms/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+    myajax.SendGet2(url);
+    DedeXHTTP = null;
+    $('#zanbox').addClass('zanbox-selected');
+}
+function getDigg(aid)
+{
+    var taget_obj = document.getElementById('newdigg');
+    myajax = new DedeAjax(taget_obj,false,false,'','','');
+    myajax.SendGet2("/cms/plus/digg_ajax.php?id="+aid);
+    DedeXHTTP = null;
+}
+
+
+//显示对应的导航：
+$(function(){
+    var article_id = $('#article_id').val();
+    var saveid = GetCookie('diggid');
+
+    if(saveid != null)
+    {
+        var saveids = saveid.split(',');
+        var hasid = false;
+        saveid = '';
+        j = 1;
+        for(i=saveids.length-1;i>=0;i--)
+        {
+            if(saveids[i]==article_id && hasid) continue;
+            else {
+                if(saveids[i]==article_id && !hasid) hasid = true;
+                saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+                j++;
+                if(j==20 && hasid) break;
+                if(j==19 && !hasid) break;
+            }
+        }
+
+        if(hasid)
+        {
+            $('#zanbox').addClass('zanbox-selected');
+        }
+
+    }
+
+});
+
+window.onload = function() {
+
+    $('#sharediv').removeClass('bdshare-button-style1-32');
+    $('#sharediv').attr('class','bdsharebuttonbox');
+};
+</script>
+<script type="text/javascript" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/shCore.js"></script>
+    <script type="text/javascript" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/brush.js"></script>
+    <link type="text/css" rel="stylesheet" href="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/shCoreDefault.css">
+    <script type="text/javascript">
+    //SyntaxHighlighter.config.clipboardSwf = '/js/scripts/clipboard.swf';
+
+    SyntaxHighlighter.all();</script>
+
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - 来自CocoaChina苹果开发中文站@CocoaChina","bdMini":"2","bdMiniList":false,"bdPic":"http://api.cocoachina.com/uploads/160216/eb2ebe1060e080b01ef50b36626ac84c.jpg","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api//js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!--./cont-->
+
+<!-- 回复评论框模板 -->
+<script type="text/javascript" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/comment.js"></script>
+<script type="text/javascript" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/mustache.min.js"></script>
+<!-- 回复评论框模板 -->
+<script id="reply_comment_template" type="x-tmpl-mustache">
+    <div id="sub-reply-comment" class="reply-comment">
+        <textarea name="subcomment" id="sub-reply-txt" cols="30" rows="10" placeholder="你怎么看？快来评论一下吧！"></textarea>
+        <input type="hidden" id="sub-reply-id" value="{{commentid}}" />
+        <input type="hidden" id="sub-reply-userid" value="{{parentuserid}}" />
+        <input type="hidden" id="sub-reply-username" value="{{parentusername}}" />
+        <a type="button" id="sub_comment_bt" class="submitbt">提交</a>
+        <div class="clearfloat"></div>
+        <div class="unlogin-mask">
+            <div>您还没有登录！请<a href="/bbs/login.php">登录</a>或<a href="/bbs/register.php">注册</a></div>
+        </div>
+    </div>
+</script>
+
+<!-- 评论模板 -->
+<script id="main_comment_template" type="x-tmpl-mustache">
+    <div class="glab-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="1">
+        <div class="comment-left">
+            <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+            <div class="comment-content">{{&content}}</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                    <span class="zancnt">{{support}}</span>
+                </span>
+                <span class="cai">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                    <span class="zancnt">{{report}}</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+            {{#sub}}
+                <div class="glab-comment glab-sub-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="2">
+                    <div class="comment-left">
+                        <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+                    </div>
+                    <div class="comment-right">
+                        <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+                        <div class="comment-content"><a href="/bbs/u.php?action=feed&uid={{parent_user_id}}" target="_blank">回复：{{parent}}</a>{{&content}}</div>
+                        <div class="comment-buttons">
+                            <span class="ding">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                                <span class="zancnt">{{support}}</span>
+                            </span>
+                            <span class="cai">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                                <span class="zancnt">{{report}}</span>
+                            </span>
+                            <span class="replybt">回复</span>
+                        </div>          
+                    </div>
+                </div>
+            {{/sub}}         
+    </div>  
+</script>
+
+
+<script id="sub_comment_template" type="x-tmpl-mustache">
+    <div class="glab-comment glab-sub-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="2">
+        <div class="comment-left">
+            <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+            <div class="comment-content"><a href="/bbs/u.php?action=feed&uid={{parent_user_id}}" target="_blank">回复：{{parent}}</a>{{&content}}</div>
+            <div class="comment-buttons">
+                <span class="ding">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                    <span class="zancnt">{{support}}</span>
+                </span>
+                <span class="cai">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                    <span class="zancnt">{{report}}</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>          
+        </div>
+    </div>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68948817-1', 'auto', {'name': 'newTracker'});
+  ga('newTracker.send', 'pageview');
+
+</script>
+    
+<!--右侧浮动-->
+    <div class="r-bar" style="position: fixed; top: inherit; bottom: 10px;">
+        <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/coco_weixin.png" class="weixin">
+    	<a href="http://weibo.com/cocoachina" target="_blank" title="" class="weibo">sina</a>
+        <a href="javascript:void(0);" target="_blank" title="" class="feedback">weixin</a>
+        <a href="mailto:support@cocoachina.com" title="" class="kefu">mail</a>
+        <a href="javascript:;" title="回到顶部" class="returntop" style="display: inline;">回到顶部</a>
+    </div>
+
+<script language="javascript" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/bbsauth_plus2015.php" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+    if (typeof(_user_info_html) != 'undefined' && _user_info_html)
+    {
+        $('.nav-user-login').hide();
+        $('.nav-user-name').html(_user_info_html).show();
+    }
+
+	var type = $('#type_name').html();
+	if(type)
+	{	
+		switch( type )
+		{
+			case 'iOS开发':
+				$('#ios').addClass('light');
+				break;
+			case 'AppStore研究':
+				$('#app_store').addClass('light');
+				break;
+			case 'Mac开发':
+				$('#mac').addClass('light');
+				break;
+			case '产品设计':
+				$('#design').addClass('light');
+				break;
+			case 'Cocos引擎':
+				$('#cocos').addClass('light');
+				break;
+			case 'WebApp':
+				$('#webapp').addClass('light');
+				break;
+			case 'Swift':
+				$('#swift').addClass('light');
+				break;
+			case '游戏开发':
+				$('#game').addClass('light');
+				break;
+			case '苹果相关':
+				$('#apple').addClass('light');
+				break;
+			case '营销推广':
+				$('#market').addClass('light');
+				break;		
+			case '业界动态':
+				$('#industry').addClass('light');
+				break;	
+			case '程序人生':
+				$('#programmer').addClass('light');
+				break;																																
+				
+		}
+	}
+});
+</script>
+<!--./cont-->
+<script type="text/javascript" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/index.js"></script>
+<script src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/jquery.colorbox-min.js" type="text/javascript"></script>
+<script language="javascript" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/bbsauth_new2015.php" type="text/javascript"></script>
+<script src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/script.js" type="text/javascript"></script>
+<script type="text/javascript">
+			jQuery(function()
+			{
+				//更改文章来源
+				var source = $('#source a').html();								
+				if( source == '未知' )
+					jQuery('#source a').html('CocoaChina');
+				if( jQuery('#source a').attr('href')=='')
+					jQuery('#source').html('来源：'+source);
+				
+				//获取用户登录的id
+//                var content = jQuery('.t-lid').attr("href");
+//                var uid = 0;
+//                if( content )
+//                {
+//                    content = content.split('=');
+//                    uid = content[1];
+//                }
+//                var timestamp = new Date().getTime();	
+//                var uid2 = parseInt(uid);
+//                if(uid2==uid && uid2!=0){
+//                    uid = uid<<2;			
+//                    uid = uid+''+timestamp;
+//                }else{
+//                    uid = "";
+//                }
+//                var oIframe=document.getElementById("comiframe");
+//                if(oIframe){
+//                    var oUrl=window.location.href;
+//                    oUrl = encodeURIComponent(oUrl);
+//
+//                    oIframe.src="/comment.php?url="+oUrl+"&uid="+uid;
+//                }
+
+				
+			});
+		</script>
+<!--footer-->
+<div class="footer clearfix">
+    <div class="footer-b">
+        <div>
+            <a href="http://www.cocoachina.com/aboutus/index.html" target="_blank">关于我们</a>
+            <a href="http://www.cocoachina.com/contactus/index.html" target="_blank">商务合作</a>
+            <a href="mailto:support@cocoachina.com" target="_blank">联系我们</a>
+            <a href="http://www.cocoachina.com/corps" target="_blank">合作伙伴</a>
+        </div>
+        <p class="footer-b-p">北京触控科技有限公司版权所有</p>
+        <p>
+            ©2016 Chukong Technologies,Inc.
+            <i>
+                <a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备 11006519号 　京ICP证 100954号</a> 京公网安备11010502020289 
+                <a href="http://182.131.21.137/ccnt-apply/admin/business/preview/business-preview!lookUrlRFID.action?main_id=A580B24B1AE846CE9DA949026D63939F" target="_blank">
+                    <img src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/jingwen.png" style="margin: -10px auto -14px -10px;">
+                    京网文[2012]0426-138号
+                </a>
+            </i>
+        </p>
+    </div>
+</div>
+<!--./footer-->
+<script language="javascript" type="text/javascript" src="./iOS蓝牙开发（四）：BabyBluetooth蓝牙库介绍 - CocoaChina_让移动开发更简单_files/dedeajax2-min.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16940817-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+ 
+function search_check()
+{
+	var search_keyword = $('#search_keyword').val();
+
+	if( search_keyword.length < 2 )
+	{
+		alert("搜索关键字不能少于2个字节，请重新输入。");
+	}
+	else
+	{
+		$('#searchform').submit();
+	}
+}
+
+</script>
+<script type="text/javascript">
+_acK({aid:116313,format:0,mode:1,gid:1,serverbaseurl:"afp.csbew.com/"});
+</script>
+
+
+<div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>

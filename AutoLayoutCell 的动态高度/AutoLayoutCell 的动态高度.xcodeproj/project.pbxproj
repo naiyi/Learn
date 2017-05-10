@@ -1,0 +1,737 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B4889A11CEB553100473A07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889A01CEB553100473A07 /* main.m */; };
+		1B4889A41CEB553100473A07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889A31CEB553100473A07 /* AppDelegate.m */; };
+		1B4889A71CEB553100473A07 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889A61CEB553100473A07 /* ViewController.m */; };
+		1B4889AA1CEB553100473A07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4889A81CEB553100473A07 /* Main.storyboard */; };
+		1B4889AD1CEB553100473A07 /* AutoLayoutCell______.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889AB1CEB553100473A07 /* AutoLayoutCell______.xcdatamodeld */; };
+		1B4889AF1CEB553100473A07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B4889AE1CEB553100473A07 /* Assets.xcassets */; };
+		1B4889B21CEB553100473A07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4889B01CEB553100473A07 /* LaunchScreen.storyboard */; };
+		1B4889BD1CEB553100473A07 /* AutoLayoutCell______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889BC1CEB553100473A07 /* AutoLayoutCell______Tests.m */; };
+		1B4889C81CEB553100473A07 /* AutoLayoutCell______UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889C71CEB553100473A07 /* AutoLayoutCell______UITests.m */; };
+		1B4889D81CEB55B800473A07 /* BSHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889D71CEB55B800473A07 /* BSHttpRequest.m */; };
+		1B4889ED1CEB567300473A07 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889DB1CEB567300473A07 /* AFHTTPRequestOperation.m */; };
+		1B4889EE1CEB567300473A07 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889DD1CEB567300473A07 /* AFHTTPRequestOperationManager.m */; };
+		1B4889EF1CEB567300473A07 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889DF1CEB567300473A07 /* AFHTTPSessionManager.m */; };
+		1B4889F01CEB567300473A07 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889E21CEB567300473A07 /* AFNetworkReachabilityManager.m */; };
+		1B4889F11CEB567300473A07 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889E41CEB567300473A07 /* AFSecurityPolicy.m */; };
+		1B4889F21CEB567300473A07 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889E61CEB567300473A07 /* AFURLConnectionOperation.m */; };
+		1B4889F31CEB567300473A07 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889E81CEB567300473A07 /* AFURLRequestSerialization.m */; };
+		1B4889F41CEB567300473A07 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889EA1CEB567300473A07 /* AFURLResponseSerialization.m */; };
+		1B4889F51CEB567300473A07 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889EC1CEB567300473A07 /* AFURLSessionManager.m */; };
+		1B488A101CEB56D000473A07 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889F91CEB56D000473A07 /* JSONModel.m */; };
+		1B488A111CEB56D000473A07 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889FB1CEB56D000473A07 /* JSONModelArray.m */; };
+		1B488A121CEB56D000473A07 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889FD1CEB56D000473A07 /* JSONModelClassProperty.m */; };
+		1B488A131CEB56D000473A07 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4889FF1CEB56D000473A07 /* JSONModelError.m */; };
+		1B488A141CEB56D000473A07 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B488A021CEB56D000473A07 /* NSArray+JSONModel.m */; };
+		1B488A151CEB56D000473A07 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B488A061CEB56D000473A07 /* JSONAPI.m */; };
+		1B488A161CEB56D000473A07 /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B488A081CEB56D000473A07 /* JSONHTTPClient.m */; };
+		1B488A171CEB56D000473A07 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B488A0A1CEB56D000473A07 /* JSONModel+networking.m */; };
+		1B488A181CEB56D000473A07 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B488A0D1CEB56D000473A07 /* JSONKeyMapper.m */; };
+		1B488A191CEB56D000473A07 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B488A0F1CEB56D000473A07 /* JSONValueTransformer.m */; };
+		1B488A1C1CEB570D00473A07 /* ItemsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B488A1B1CEB570D00473A07 /* ItemsModel.m */; };
+		1BE8AA5D1CEF08D8002B5AD4 /* ItemsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8AA5B1CEF08D8002B5AD4 /* ItemsCell.m */; };
+		1BE8AA5E1CEF08D8002B5AD4 /* ItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE8AA5C1CEF08D8002B5AD4 /* ItemsCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1B4889B91CEB553100473A07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B4889941CEB553100473A07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B48899B1CEB553100473A07;
+			remoteInfo = "AutoLayoutCell 的动态高度";
+		};
+		1B4889C41CEB553100473A07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B4889941CEB553100473A07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B48899B1CEB553100473A07;
+			remoteInfo = "AutoLayoutCell 的动态高度";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1B48899C1CEB553100473A07 /* AutoLayoutCell 的动态高度.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AutoLayoutCell 的动态高度.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B4889A01CEB553100473A07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1B4889A21CEB553100473A07 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1B4889A31CEB553100473A07 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1B4889A51CEB553100473A07 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1B4889A61CEB553100473A07 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1B4889A91CEB553100473A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B4889AC1CEB553100473A07 /* AutoLayoutCell______.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "AutoLayoutCell______.xcdatamodel"; sourceTree = "<group>"; };
+		1B4889AE1CEB553100473A07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B4889B11CEB553100473A07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1B4889B31CEB553100473A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B4889B81CEB553100473A07 /* AutoLayoutCell 的动态高度Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutoLayoutCell 的动态高度Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B4889BC1CEB553100473A07 /* AutoLayoutCell______Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AutoLayoutCell______Tests.m"; sourceTree = "<group>"; };
+		1B4889BE1CEB553100473A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B4889C31CEB553100473A07 /* AutoLayoutCell 的动态高度UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutoLayoutCell 的动态高度UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B4889C71CEB553100473A07 /* AutoLayoutCell______UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AutoLayoutCell______UITests.m"; sourceTree = "<group>"; };
+		1B4889C91CEB553100473A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B4889D61CEB55B800473A07 /* BSHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSHttpRequest.h; sourceTree = "<group>"; };
+		1B4889D71CEB55B800473A07 /* BSHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSHttpRequest.m; sourceTree = "<group>"; };
+		1B4889DA1CEB567300473A07 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		1B4889DB1CEB567300473A07 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		1B4889DC1CEB567300473A07 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		1B4889DD1CEB567300473A07 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		1B4889DE1CEB567300473A07 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		1B4889DF1CEB567300473A07 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		1B4889E01CEB567300473A07 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		1B4889E11CEB567300473A07 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		1B4889E21CEB567300473A07 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		1B4889E31CEB567300473A07 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		1B4889E41CEB567300473A07 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		1B4889E51CEB567300473A07 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		1B4889E61CEB567300473A07 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		1B4889E71CEB567300473A07 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		1B4889E81CEB567300473A07 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		1B4889E91CEB567300473A07 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		1B4889EA1CEB567300473A07 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		1B4889EB1CEB567300473A07 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		1B4889EC1CEB567300473A07 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		1B4889F81CEB56D000473A07 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		1B4889F91CEB56D000473A07 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		1B4889FA1CEB56D000473A07 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
+		1B4889FB1CEB56D000473A07 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelArray.m; sourceTree = "<group>"; };
+		1B4889FC1CEB56D000473A07 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		1B4889FD1CEB56D000473A07 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
+		1B4889FE1CEB56D000473A07 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
+		1B4889FF1CEB56D000473A07 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
+		1B488A011CEB56D000473A07 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModel.h"; sourceTree = "<group>"; };
+		1B488A021CEB56D000473A07 /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModel.m"; sourceTree = "<group>"; };
+		1B488A031CEB56D000473A07 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
+		1B488A051CEB56D000473A07 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
+		1B488A061CEB56D000473A07 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
+		1B488A071CEB56D000473A07 /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
+		1B488A081CEB56D000473A07 /* JSONHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHTTPClient.m; sourceTree = "<group>"; };
+		1B488A091CEB56D000473A07 /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
+		1B488A0A1CEB56D000473A07 /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		1B488A0C1CEB56D000473A07 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		1B488A0D1CEB56D000473A07 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		1B488A0E1CEB56D000473A07 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		1B488A0F1CEB56D000473A07 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		1B488A1A1CEB570D00473A07 /* ItemsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsModel.h; sourceTree = "<group>"; };
+		1B488A1B1CEB570D00473A07 /* ItemsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsModel.m; sourceTree = "<group>"; };
+		1BE8AA5A1CEF08D8002B5AD4 /* ItemsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsCell.h; sourceTree = "<group>"; };
+		1BE8AA5B1CEF08D8002B5AD4 /* ItemsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsCell.m; sourceTree = "<group>"; };
+		1BE8AA5C1CEF08D8002B5AD4 /* ItemsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemsCell.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B4889991CEB553100473A07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B4889B51CEB553100473A07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B4889C01CEB553100473A07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B4889931CEB553100473A07 = {
+			isa = PBXGroup;
+			children = (
+				1BE8AA5A1CEF08D8002B5AD4 /* ItemsCell.h */,
+				1BE8AA5B1CEF08D8002B5AD4 /* ItemsCell.m */,
+				1BE8AA5C1CEF08D8002B5AD4 /* ItemsCell.xib */,
+				1B488A1A1CEB570D00473A07 /* ItemsModel.h */,
+				1B488A1B1CEB570D00473A07 /* ItemsModel.m */,
+				1B48899E1CEB553100473A07 /* AutoLayoutCell 的动态高度 */,
+				1B4889BB1CEB553100473A07 /* AutoLayoutCell 的动态高度Tests */,
+				1B4889C61CEB553100473A07 /* AutoLayoutCell 的动态高度UITests */,
+				1B48899D1CEB553100473A07 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B48899D1CEB553100473A07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B48899C1CEB553100473A07 /* AutoLayoutCell 的动态高度.app */,
+				1B4889B81CEB553100473A07 /* AutoLayoutCell 的动态高度Tests.xctest */,
+				1B4889C31CEB553100473A07 /* AutoLayoutCell 的动态高度UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B48899E1CEB553100473A07 /* AutoLayoutCell 的动态高度 */ = {
+			isa = PBXGroup;
+			children = (
+				1B4889F61CEB56D000473A07 /* JSONModel */,
+				1B4889D91CEB567300473A07 /* AFNetworking */,
+				1B4889D51CEB55B800473A07 /* HttpRequet */,
+				1B4889A21CEB553100473A07 /* AppDelegate.h */,
+				1B4889A31CEB553100473A07 /* AppDelegate.m */,
+				1B4889A51CEB553100473A07 /* ViewController.h */,
+				1B4889A61CEB553100473A07 /* ViewController.m */,
+				1B4889A81CEB553100473A07 /* Main.storyboard */,
+				1B4889AE1CEB553100473A07 /* Assets.xcassets */,
+				1B4889B01CEB553100473A07 /* LaunchScreen.storyboard */,
+				1B4889B31CEB553100473A07 /* Info.plist */,
+				1B4889AB1CEB553100473A07 /* AutoLayoutCell______.xcdatamodeld */,
+				1B48899F1CEB553100473A07 /* Supporting Files */,
+			);
+			path = "AutoLayoutCell 的动态高度";
+			sourceTree = "<group>";
+		};
+		1B48899F1CEB553100473A07 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B4889A01CEB553100473A07 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1B4889BB1CEB553100473A07 /* AutoLayoutCell 的动态高度Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1B4889BC1CEB553100473A07 /* AutoLayoutCell______Tests.m */,
+				1B4889BE1CEB553100473A07 /* Info.plist */,
+			);
+			path = "AutoLayoutCell 的动态高度Tests";
+			sourceTree = "<group>";
+		};
+		1B4889C61CEB553100473A07 /* AutoLayoutCell 的动态高度UITests */ = {
+			isa = PBXGroup;
+			children = (
+				1B4889C71CEB553100473A07 /* AutoLayoutCell______UITests.m */,
+				1B4889C91CEB553100473A07 /* Info.plist */,
+			);
+			path = "AutoLayoutCell 的动态高度UITests";
+			sourceTree = "<group>";
+		};
+		1B4889D51CEB55B800473A07 /* HttpRequet */ = {
+			isa = PBXGroup;
+			children = (
+				1B4889D61CEB55B800473A07 /* BSHttpRequest.h */,
+				1B4889D71CEB55B800473A07 /* BSHttpRequest.m */,
+			);
+			path = HttpRequet;
+			sourceTree = "<group>";
+		};
+		1B4889D91CEB567300473A07 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				1B4889DA1CEB567300473A07 /* AFHTTPRequestOperation.h */,
+				1B4889DB1CEB567300473A07 /* AFHTTPRequestOperation.m */,
+				1B4889DC1CEB567300473A07 /* AFHTTPRequestOperationManager.h */,
+				1B4889DD1CEB567300473A07 /* AFHTTPRequestOperationManager.m */,
+				1B4889DE1CEB567300473A07 /* AFHTTPSessionManager.h */,
+				1B4889DF1CEB567300473A07 /* AFHTTPSessionManager.m */,
+				1B4889E01CEB567300473A07 /* AFNetworking.h */,
+				1B4889E11CEB567300473A07 /* AFNetworkReachabilityManager.h */,
+				1B4889E21CEB567300473A07 /* AFNetworkReachabilityManager.m */,
+				1B4889E31CEB567300473A07 /* AFSecurityPolicy.h */,
+				1B4889E41CEB567300473A07 /* AFSecurityPolicy.m */,
+				1B4889E51CEB567300473A07 /* AFURLConnectionOperation.h */,
+				1B4889E61CEB567300473A07 /* AFURLConnectionOperation.m */,
+				1B4889E71CEB567300473A07 /* AFURLRequestSerialization.h */,
+				1B4889E81CEB567300473A07 /* AFURLRequestSerialization.m */,
+				1B4889E91CEB567300473A07 /* AFURLResponseSerialization.h */,
+				1B4889EA1CEB567300473A07 /* AFURLResponseSerialization.m */,
+				1B4889EB1CEB567300473A07 /* AFURLSessionManager.h */,
+				1B4889EC1CEB567300473A07 /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		1B4889F61CEB56D000473A07 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				1B4889F71CEB56D000473A07 /* JSONModel */,
+				1B488A001CEB56D000473A07 /* JSONModelCategories */,
+				1B488A031CEB56D000473A07 /* JSONModelLib.h */,
+				1B488A041CEB56D000473A07 /* JSONModelNetworking */,
+				1B488A0B1CEB56D000473A07 /* JSONModelTransformations */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		1B4889F71CEB56D000473A07 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				1B4889F81CEB56D000473A07 /* JSONModel.h */,
+				1B4889F91CEB56D000473A07 /* JSONModel.m */,
+				1B4889FA1CEB56D000473A07 /* JSONModelArray.h */,
+				1B4889FB1CEB56D000473A07 /* JSONModelArray.m */,
+				1B4889FC1CEB56D000473A07 /* JSONModelClassProperty.h */,
+				1B4889FD1CEB56D000473A07 /* JSONModelClassProperty.m */,
+				1B4889FE1CEB56D000473A07 /* JSONModelError.h */,
+				1B4889FF1CEB56D000473A07 /* JSONModelError.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		1B488A001CEB56D000473A07 /* JSONModelCategories */ = {
+			isa = PBXGroup;
+			children = (
+				1B488A011CEB56D000473A07 /* NSArray+JSONModel.h */,
+				1B488A021CEB56D000473A07 /* NSArray+JSONModel.m */,
+			);
+			path = JSONModelCategories;
+			sourceTree = "<group>";
+		};
+		1B488A041CEB56D000473A07 /* JSONModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				1B488A051CEB56D000473A07 /* JSONAPI.h */,
+				1B488A061CEB56D000473A07 /* JSONAPI.m */,
+				1B488A071CEB56D000473A07 /* JSONHTTPClient.h */,
+				1B488A081CEB56D000473A07 /* JSONHTTPClient.m */,
+				1B488A091CEB56D000473A07 /* JSONModel+networking.h */,
+				1B488A0A1CEB56D000473A07 /* JSONModel+networking.m */,
+			);
+			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
+		1B488A0B1CEB56D000473A07 /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				1B488A0C1CEB56D000473A07 /* JSONKeyMapper.h */,
+				1B488A0D1CEB56D000473A07 /* JSONKeyMapper.m */,
+				1B488A0E1CEB56D000473A07 /* JSONValueTransformer.h */,
+				1B488A0F1CEB56D000473A07 /* JSONValueTransformer.m */,
+			);
+			path = JSONModelTransformations;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B48899B1CEB553100473A07 /* AutoLayoutCell 的动态高度 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B4889CC1CEB553100473A07 /* Build configuration list for PBXNativeTarget "AutoLayoutCell 的动态高度" */;
+			buildPhases = (
+				1B4889981CEB553100473A07 /* Sources */,
+				1B4889991CEB553100473A07 /* Frameworks */,
+				1B48899A1CEB553100473A07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AutoLayoutCell 的动态高度";
+			productName = "AutoLayoutCell 的动态高度";
+			productReference = 1B48899C1CEB553100473A07 /* AutoLayoutCell 的动态高度.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1B4889B71CEB553100473A07 /* AutoLayoutCell 的动态高度Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B4889CF1CEB553100473A07 /* Build configuration list for PBXNativeTarget "AutoLayoutCell 的动态高度Tests" */;
+			buildPhases = (
+				1B4889B41CEB553100473A07 /* Sources */,
+				1B4889B51CEB553100473A07 /* Frameworks */,
+				1B4889B61CEB553100473A07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1B4889BA1CEB553100473A07 /* PBXTargetDependency */,
+			);
+			name = "AutoLayoutCell 的动态高度Tests";
+			productName = "AutoLayoutCell 的动态高度Tests";
+			productReference = 1B4889B81CEB553100473A07 /* AutoLayoutCell 的动态高度Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1B4889C21CEB553100473A07 /* AutoLayoutCell 的动态高度UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B4889D21CEB553100473A07 /* Build configuration list for PBXNativeTarget "AutoLayoutCell 的动态高度UITests" */;
+			buildPhases = (
+				1B4889BF1CEB553100473A07 /* Sources */,
+				1B4889C01CEB553100473A07 /* Frameworks */,
+				1B4889C11CEB553100473A07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1B4889C51CEB553100473A07 /* PBXTargetDependency */,
+			);
+			name = "AutoLayoutCell 的动态高度UITests";
+			productName = "AutoLayoutCell 的动态高度UITests";
+			productReference = 1B4889C31CEB553100473A07 /* AutoLayoutCell 的动态高度UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B4889941CEB553100473A07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = YY;
+				TargetAttributes = {
+					1B48899B1CEB553100473A07 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					1B4889B71CEB553100473A07 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 1B48899B1CEB553100473A07;
+					};
+					1B4889C21CEB553100473A07 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 1B48899B1CEB553100473A07;
+					};
+				};
+			};
+			buildConfigurationList = 1B4889971CEB553100473A07 /* Build configuration list for PBXProject "AutoLayoutCell 的动态高度" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B4889931CEB553100473A07;
+			productRefGroup = 1B48899D1CEB553100473A07 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B48899B1CEB553100473A07 /* AutoLayoutCell 的动态高度 */,
+				1B4889B71CEB553100473A07 /* AutoLayoutCell 的动态高度Tests */,
+				1B4889C21CEB553100473A07 /* AutoLayoutCell 的动态高度UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B48899A1CEB553100473A07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE8AA5E1CEF08D8002B5AD4 /* ItemsCell.xib in Resources */,
+				1B4889B21CEB553100473A07 /* LaunchScreen.storyboard in Resources */,
+				1B4889AF1CEB553100473A07 /* Assets.xcassets in Resources */,
+				1B4889AA1CEB553100473A07 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B4889B61CEB553100473A07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B4889C11CEB553100473A07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B4889981CEB553100473A07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B488A161CEB56D000473A07 /* JSONHTTPClient.m in Sources */,
+				1B4889F21CEB567300473A07 /* AFURLConnectionOperation.m in Sources */,
+				1B4889ED1CEB567300473A07 /* AFHTTPRequestOperation.m in Sources */,
+				1B488A141CEB56D000473A07 /* NSArray+JSONModel.m in Sources */,
+				1B488A181CEB56D000473A07 /* JSONKeyMapper.m in Sources */,
+				1B4889F01CEB567300473A07 /* AFNetworkReachabilityManager.m in Sources */,
+				1B4889F51CEB567300473A07 /* AFURLSessionManager.m in Sources */,
+				1B4889F31CEB567300473A07 /* AFURLRequestSerialization.m in Sources */,
+				1B488A111CEB56D000473A07 /* JSONModelArray.m in Sources */,
+				1B4889A71CEB553100473A07 /* ViewController.m in Sources */,
+				1BE8AA5D1CEF08D8002B5AD4 /* ItemsCell.m in Sources */,
+				1B488A151CEB56D000473A07 /* JSONAPI.m in Sources */,
+				1B488A191CEB56D000473A07 /* JSONValueTransformer.m in Sources */,
+				1B4889F41CEB567300473A07 /* AFURLResponseSerialization.m in Sources */,
+				1B4889A41CEB553100473A07 /* AppDelegate.m in Sources */,
+				1B488A121CEB56D000473A07 /* JSONModelClassProperty.m in Sources */,
+				1B4889AD1CEB553100473A07 /* AutoLayoutCell______.xcdatamodeld in Sources */,
+				1B488A101CEB56D000473A07 /* JSONModel.m in Sources */,
+				1B488A131CEB56D000473A07 /* JSONModelError.m in Sources */,
+				1B4889EE1CEB567300473A07 /* AFHTTPRequestOperationManager.m in Sources */,
+				1B488A171CEB56D000473A07 /* JSONModel+networking.m in Sources */,
+				1B488A1C1CEB570D00473A07 /* ItemsModel.m in Sources */,
+				1B4889F11CEB567300473A07 /* AFSecurityPolicy.m in Sources */,
+				1B4889D81CEB55B800473A07 /* BSHttpRequest.m in Sources */,
+				1B4889A11CEB553100473A07 /* main.m in Sources */,
+				1B4889EF1CEB567300473A07 /* AFHTTPSessionManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B4889B41CEB553100473A07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B4889BD1CEB553100473A07 /* AutoLayoutCell______Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B4889BF1CEB553100473A07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B4889C81CEB553100473A07 /* AutoLayoutCell______UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1B4889BA1CEB553100473A07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B48899B1CEB553100473A07 /* AutoLayoutCell 的动态高度 */;
+			targetProxy = 1B4889B91CEB553100473A07 /* PBXContainerItemProxy */;
+		};
+		1B4889C51CEB553100473A07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B48899B1CEB553100473A07 /* AutoLayoutCell 的动态高度 */;
+			targetProxy = 1B4889C41CEB553100473A07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1B4889A81CEB553100473A07 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B4889A91CEB553100473A07 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1B4889B01CEB553100473A07 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B4889B11CEB553100473A07 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B4889CA1CEB553100473A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1B4889CB1CEB553100473A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B4889CD1CEB553100473A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "AutoLayoutCell 的动态高度/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "z1.AutoLayoutCell------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1B4889CE1CEB553100473A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "AutoLayoutCell 的动态高度/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "z1.AutoLayoutCell------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1B4889D01CEB553100473A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "AutoLayoutCell 的动态高度Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "z1.AutoLayoutCell------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoLayoutCell 的动态高度.app/AutoLayoutCell 的动态高度";
+			};
+			name = Debug;
+		};
+		1B4889D11CEB553100473A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "AutoLayoutCell 的动态高度Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "z1.AutoLayoutCell------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoLayoutCell 的动态高度.app/AutoLayoutCell 的动态高度";
+			};
+			name = Release;
+		};
+		1B4889D31CEB553100473A07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "AutoLayoutCell 的动态高度UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "z1.AutoLayoutCell------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "AutoLayoutCell 的动态高度";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		1B4889D41CEB553100473A07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "AutoLayoutCell 的动态高度UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "z1.AutoLayoutCell------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "AutoLayoutCell 的动态高度";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B4889971CEB553100473A07 /* Build configuration list for PBXProject "AutoLayoutCell 的动态高度" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B4889CA1CEB553100473A07 /* Debug */,
+				1B4889CB1CEB553100473A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B4889CC1CEB553100473A07 /* Build configuration list for PBXNativeTarget "AutoLayoutCell 的动态高度" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B4889CD1CEB553100473A07 /* Debug */,
+				1B4889CE1CEB553100473A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B4889CF1CEB553100473A07 /* Build configuration list for PBXNativeTarget "AutoLayoutCell 的动态高度Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B4889D01CEB553100473A07 /* Debug */,
+				1B4889D11CEB553100473A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B4889D21CEB553100473A07 /* Build configuration list for PBXNativeTarget "AutoLayoutCell 的动态高度UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B4889D31CEB553100473A07 /* Debug */,
+				1B4889D41CEB553100473A07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1B4889AB1CEB553100473A07 /* AutoLayoutCell______.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1B4889AC1CEB553100473A07 /* AutoLayoutCell______.xcdatamodel */,
+			);
+			currentVersion = 1B4889AC1CEB553100473A07 /* AutoLayoutCell______.xcdatamodel */;
+			path = "AutoLayoutCell______.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1B4889941CEB553100473A07 /* Project object */;
+}

@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://www.cocoachina.com/ios/20150126/11021.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <title>浅谈LLDB调试器 - CocoaChina_让移动开发更简单</title>
+    <meta name="keywords" content="iOS开发,Xcode,调试,LLDBiPhone开发,iOS开发,iPad开发,Mac开发,苹果开发中文站,iPhone开发中文站,CocoaChina首页, Mac OS开发, Cocoa介绍,移动互联网,触控科技,Cocoa,Apple,developer,iOS,iPhone,iPad,iMac,iPod Touch,iPhone5,iPhone4S,iPad3,招聘,iPhone程序员,Objective-c,iPhone应用外包,ios6,ios面试,Cocos2d-x,cocos2d,iTunes,App Store,苹果开发">
+    <meta name="description" content="CocoaChina前身是全球成立最早规模最大的苹果开发中文站，现致力为所有移动开发者提供资讯服务、问答服务、代码下载、工具库及人才招聘服务">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-tc-cerfication" content="3300a939a1098c27e94457b75a0bb8c1">
+    <script type="text/javascript" async="" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/ga.js"></script><script src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/hm.js"></script><script type="text/javascript" async="" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/ga.js"></script><script async="" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/analytics.js"></script><script type="text/javascript">
+        function gotoMobilePage() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var agent_iphone = /iphone/i;
+            var agent_android = /android/i;
+            //var agent_ipad = /ipad/i;
+            var agent_ipod = /ipod/i;
+            var agent_wphone = /windows phone/i;
+            if(agent_iphone.test(sUserAgent) || agent_android.test(sUserAgent) || agent_ipod.test(sUserAgent) || agent_wphone.test(sUserAgent)){
+                var re = /\/\w+\/\d+\/(\d+)\.html/, 
+                    result = re.exec(window.location.pathname);
+                if ( result )
+                {
+                    window.location.href = "http://www.cocoachina.com/cms/wap.php?action=article&id=" + result[1];
+                } else {
+                    window.location.href = "http://m.cocoachina.com/";
+                }
+            }
+        }
+        gotoMobilePage(); 
+    </script>
+    <link rel="stylesheet" href="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/global.css" media="all">
+    <link rel="stylesheet" href="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/index.css" media="all">
+    <link href="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/module.css" rel="stylesheet">
+    <link href="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/style.css" rel="stylesheet">
+    <link href="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/navheader.css" rel="stylesheet">
+    <script src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/navbar.js"></script>
+    <script type="text/javascript" src="http://s.csbew.com/k.js"></script>
+    
+<script src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/share.js"></script><link rel="stylesheet" href="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/share_style1_32.css"></head>
+<body>
+
+    <div class="nav-header">
+            <div class="nav-header-top">
+                <div class="nav-logo nav-fl"><a href="http://www.cocoachina.com/"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/logo.png"></a></div>
+                <div class="nav-list nav-fl">
+                    <ul>
+                        <li><a href="http://www.cocoachina.com/news/">资讯</a></li>
+                        <li><a href="http://www.cocoachina.com/bbs/">论坛</a></li>
+                        <li><a target="_blank" href="http://code.cocoachina.com/" title="CODE">代码</a></li>
+                        <li><a href="http://tools.cocoachina.com/" title="工具" target="_blank">工具</a></li>
+                        <li><a target="_blank" href="http://job.cocoachina.com/" title="JOB">招聘</a></li>
+                        <li><a target="_blank" href="http://cvp.cocos.com/" title="CVP">CVP</a></li>
+                        <li><a target="_blank" href="http://waikuai.cocoachina.com/" title="waikuai">外快</a></li>
+                        <li><a target="_blank" href="http://blog.cocoachina.com/" title="blog">博客</a><span class="new-item-flag">new</span></li>
+                    </ul>
+                </div>
+                <div class="nav-search nav-fl">
+                    <div class="nav-search-flag" style="display:block"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/search-icon.png"></div>
+                    <div class="nav-search-form" style="display:none">
+                        <form action="http://www.cocoachina.com/cms/plus/search.php" name="formsearch" method="post" target="_blank">
+                            <input type="hidden" name="kwtype" value="0">
+                            <input type="hidden" name="searchtype" value="titlekeyword">
+                            <input name="keyword" type="text" placeholder="站内搜索">
+                            <input type="button">
+                        </form>
+                    </div>
+                </div>
+                <div class="nav-user nav-fr">
+                    <!-- #region 未登录时显示此区域 -->
+                    <div class="nav-user-login" style="display:block">
+                        <a href="http://www.cocoachina.com/bbs/login.php">登录</a>|
+                        <a href="http://www.cocoachina.com/bbs/register.php">注册</a>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region 已登录时显示此区域 -->
+                    <div class="nav-user-name" style="display:none">
+                        <div><alert></alert><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/user.png">Guest</div>
+                        <ul>
+                            <li><a href="http://www.cocoachina.com/ios/20150126/11021.html#"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/i-man.png">我的主页</a></li>
+                            <li><alert></alert><a href="http://www.cocoachina.com/ios/20150126/11021.html#"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/i-mail.png">我的消息</a></li>
+                            <li><a href="http://www.cocoachina.com/ios/20150126/11021.html#"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/i-setting.png">账户设置</a></li>
+                            <li><a href="http://www.cocoachina.com/ios/20150126/index-offline.html"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/i-logout.png">退出</a></li>
+                        </ul>
+                    </div>
+                    <!-- #endregion -->
+                </div>
+                <div class="nav-clear"></div>
+            </div>
+        <div class="nav-header-bottom">
+            <ul>
+                <li><a id="ios" href="http://www.cocoachina.com/ios/" title="ios" class="light">iOS开发</a></li>
+                <li><a id="swift" href="http://www.cocoachina.com/swift/" title="swift">Swift</a></li>
+                <li><a id="app_store" href="http://www.cocoachina.com/appstore/" title="appstore">App Store研究</a></li>
+                <li><a id="design" href="http://www.cocoachina.com/design/" title="design">产品设计</a></li>
+                <li><a id="review" href="http://www.cocoachina.com/review/" title="review">应用</a></li>
+                <li><a id="review" href="http://www.cocoachina.com/vr/" title="review">VR</a></li>
+                <li><a id="game" href="http://www.cocoachina.com/game/" title="game">游戏开发</a></li>
+                <li><a id="apple" href="http://www.cocoachina.com/apple/" title="apple">苹果相关</a></li>
+                <!-- <li><a id="cocos" href="/cocos/" title="cocos">Cocos引擎</a></li>-->
+                <!--<li><a id="webapp" href="/webapp/" title="HTML5">HTML5</a></li>-->
+                <li><a id="android" href="http://www.cocoachina.com/android/" title="android">安卓相关</a></li>
+                <li><a id="market" href="http://www.cocoachina.com/market/" title="market">营销推广</a></li>
+                <li><a id="industry" href="http://www.cocoachina.com/industry/" title="industry">业界动态</a></li>
+                <li><a id="programmer" href="http://www.cocoachina.com/programmer/" title="programmer">程序人生</a></li>
+            </ul>
+        </div>
+    </div>
+
+<script language="javascript">
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPod");
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+        }
+        return flag;
+    }
+    if (!IsPC()){
+           window.location.href = "http://www.cocoachina.com/cms/wap.php?action=article&id=11021";
+    }
+
+</script>
+<!--middle-->
+<div class="middle clearfix">
+    <div class="m-wrap">
+        <div class="m-ad2" style="margin-top:12px;">
+            <div class="ad2-l">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC首页底部左侧72890 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="8012423965"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <div class="ad2-r">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC资讯页25090 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:250px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="9489157162"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        <!--left-->
+        <div class="detail-left float-l">
+            <p class="crumbs"><a href="http://www.cocoachina.com/" title="首页">首页</a> &gt;<a href="http://www.cocoachina.com/ios" title="iOS开发"><span id="type_name">iOS开发</span></a></p>
+            <div class="detail-main">
+                <h2>浅谈LLDB调试器</h2>
+                <div class="p-ico clearfix">
+                    <div>
+                        <span class="ml0">2015-01-26 11:34</span>
+                        <span>编辑：
+                        <a href="http://www.cocoachina.com/ios/20150126/11021.html" id="field_author" target="_blank">z_zombie</a></span>
+                        <span>分类：<a href="http://www.cocoachina.com/ios/" target="_blank">iOS开发</a></span>
+                        <span id="source">来源：<a href="http://southpeak.github.io/blog/2015/01/25/gong-ju-pian-:lldbdiao-shi-qi/" target="_blank">南峰子的技术博客</a></span>
+
+                        <div class="float-r">
+                            <span id="artical_comment_cnt"><i></i>9</span>
+                            <span><i class="view"></i><script src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/count.php" language="javascript"></script>37507</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="p-ico clearfix">
+                    <p class="related float-l"><a href="http://www.cocoachina.com/cms/tags.php?/iOS%E5%BC%80%E5%8F%91/" target="_blank">iOS开发</a><a href="http://www.cocoachina.com/cms/tags.php?/XCode/" target="_blank">XCode</a><a href="http://www.cocoachina.com/cms/tags.php?/%E8%B0%83%E8%AF%95/" target="_blank">调试</a><a href="http://www.cocoachina.com/cms/tags.php?/LLDB/" target="_blank">LLDB</a></p>
+                    <input type="hidden" id="article_id" value="11021">
+                </div>
+                <div class="adsbox clearfix">
+                    <div class="float-l">
+                        <div class="float-l"><b>招聘信息：</b></div>
+                        <ul class="float-l" id="invitelist" style="margin-top: 0px;"><li><a href="http://job.cocoachina.com/job/show?id=68066" target="_blank">应用开发工程师(iOS)</a></li><li><a href="http://job.cocoachina.com/job/show?id=68363" target="_blank">技术合伙人-后端工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67931" target="_blank">高级iOS开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68061" target="_blank">资深软件研发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=67960" target="_blank">嵌入式软件工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68428" target="_blank">iOS开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68369" target="_blank">产品经理</a></li><li><a href="http://job.cocoachina.com/job/show?id=68442" target="_blank">Cocos2d-x游戏客户端开发</a></li><li><a href="http://job.cocoachina.com/job/show?id=68415" target="_blank">Java工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68414" target="_blank">Cocos2d-x js高级开发工程师</a></li><li><a href="http://job.cocoachina.com/job/show?id=68283" target="_blank">Mac开发</a></li></ul>
+                    </div>
+                    <div class="float-r">
+                        <a href="javascript:void(0)" class="prev"></a>
+                        <a href="javascript:void(0)" class="next"></a>
+                    </div>
+                </div>
+                <div id="detailbody" class="field_body">
+                    <p>随着Xcode 5的发布，LLDB调试器已经取代了GDB，成为了Xcode工程中默认的调试器。它与LLVM编译器一起，带给我们更丰富的流程控制和数据检测的调试功能。LLDB为Xcode提供了底层调试环境，其中包括内嵌在Xcode IDE中的位于调试区域的控制面板，在这里我们可以直接调用LLDB命令。如图1所示：</p><p>图1：位于Xcode调试区域的控制台</p><p style="text-align:center"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/1422244517581739.png" title="1422244517581739.png" alt="lldb_in_xc5_command_window_2x.png" style="width: 706px; height: 223px;"></p><p>在本文中，我们主要整理一下LLDB调试器提供给我们的调试命令，更详细的内容可以查看<a href="http://lldb.llvm.org/tutorial.html" target="_self">The LLDB Debugger</a>。</p><p><span style="color: rgb(0, 176, 80);"><strong>LLDB命令结构</strong></span></p><p>在使用LLDB前，我们需要了解一下LLDB的命令结构及语法，这样可以尽可能地挖掘LLDB的潜能，以帮助我们更充分地利用它。</p><p>LLDB命令的语法有其通用结构，通常是以下形式的：</p><div><div id="highlighter_800627" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">&lt;command&gt;&lt;/command&gt;&nbsp;[&lt;subcommand&gt;&nbsp;[&lt;subcommand&gt;...]]&nbsp;&lt;action&gt;&nbsp;[-options&nbsp;[option-value]]&nbsp;[argument&nbsp;[argument...]]&lt;/action&gt;&lt;/subcommand&gt;&lt;/subcommand&gt;</code></div></div></td></tr></tbody></table></div></div><p>其中：</p><p><strong><command></command></strong>(命令)和<strong><subcommand></subcommand></strong>(子命令)：LLDB调试命令的名称。命令和子命令按层级结构来排列：一个命令对象为跟随其的子命令对象创建一个上下文，子命令又为其子命令创建一个上下文，依此类推。</p><p><strong><action></action></strong>：我们想在前面的命令序列的上下文中执行的一些操作。</p><p><strong><options></options></strong>：行为修改器(action modifiers)。通常带有一些值。</p><p><strong><argument></argument></strong>：根据使用的命令的上下文来表示各种不同的东西。</p><p>LLBD命令行的解析操作在执行命令之前完成。上面的这些元素之间通过空格来分割，如果某一元素自身含有空格，则可以使用双引用。而如果元素中又包含双引号，则可以使用反斜杠；或者元素使用单引号。如下所示：</p><div><div id="highlighter_167707" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;command&nbsp;[subcommand]&nbsp;-option&nbsp;</code><code class="js string">"some&nbsp;\"quoted\"&nbsp;string"</code></div><div class="line number2 index1 alt1"><code class="js plain">(lldb)&nbsp;command&nbsp;[subcommand]&nbsp;-option&nbsp;</code><code class="js string">'some&nbsp;"quoted"&nbsp;string'</code></div></div></td></tr></tbody></table></div></div><p>这种命令解析设计规范了LLDB命令语法，并对所有命令做了个统一。</p><p><span style="color: rgb(0, 0, 0);"><strong>命令选项</strong></span></p><p>LLDB中的命令选项有规范形式和缩写形式两种格式。以设置断点的命令breakpoint set为例，以下列表了其部分选项的格式，其中括号中的是规范形式：</p><div><div id="highlighter_995809" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">breakpoint&nbsp;set</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">-M&nbsp;&lt;method&gt;&nbsp;(&nbsp;--method&nbsp;&lt;method&gt;&nbsp;)</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">-S&nbsp;&lt;selector&gt;&nbsp;(&nbsp;--selector&nbsp;&lt;selector&gt;&nbsp;)</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">-b&nbsp;&lt;</code><code class="js keyword">function</code><code class="js plain">-name&gt;&nbsp;(&nbsp;--basename&nbsp;&lt;</code><code class="js keyword">function</code><code class="js plain">-name&gt;&nbsp;)</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">-f&nbsp;&lt;filename&gt;&nbsp;(&nbsp;--file&nbsp;&lt;filename&gt;&nbsp;)</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">-l&nbsp;&lt;linenum&gt;&nbsp;(&nbsp;--line&nbsp;&lt;linenum&gt;&nbsp;)</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">-n&nbsp;&lt;</code><code class="js keyword">function</code><code class="js plain">-name&gt;&nbsp;(&nbsp;--name&nbsp;&lt;</code><code class="js keyword">function</code><code class="js plain">-name&gt;&nbsp;)</code></div><div class="line number8 index7 alt1"><code class="js plain">…&lt;/</code><code class="js keyword">function</code><code class="js plain">-name&gt;&lt;/</code><code class="js keyword">function</code><code class="js plain">-name&gt;&lt;/linenum&gt;&lt;/linenum&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/</code><code class="js keyword">function</code><code class="js plain">-name&gt;&lt;/</code><code class="js keyword">function</code><code class="js plain">-name&gt;&lt;/selector&gt;&lt;/selector&gt;&lt;/method&gt;&lt;/method&gt;</code></div></div></td></tr></tbody></table></div></div><p>各选项的顺序是任意的。如果后面的参数是以”–“开头的，则在选项后面添加”—“作为选项的终止信号，以告诉LLDB我们处理的选项的正确位置。如下命令所示：</p><div><div id="highlighter_664265" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;process&nbsp;launch&nbsp;--stop-at-entry&nbsp;--&nbsp;-program_arg_1&nbsp;value&nbsp;-program_arg_2&nbsp;value</code></div></div></td></tr></tbody></table></div></div><p>如上所示，命令的选项是—stop-at-entry，参数是-program_arg_1和-program_arg_2，我们使用”—“将选项与参数作一下区分。</p><p><strong>原始命令</strong></p><p>LLDB命令解析器支持”原始(raw)“命令，即没有命令选项，命令字符串的剩余部分未经解析就传递给命令。例如，expression就是一个原始命令。</p><p>不过原始命令也可以有选项，如果命令字符串中有虚线，则在命令名与命令字符串之间放置一个选项结束符(—)来表明没有命令标记。</p><p>我们可以通过help命令的输出来查看一个命令是否是原始命令。</p><p><strong>命令补全(Command Completion)</strong></p><p>LLDB支持源文件名，符号名，文件名，等等的命令补全(Commmand Completion)。终端窗口中的补全是通过在命令行中输入一个制表符来初始化的。Xcode控制台中的补全与在源码编辑器中的补全方式是一样的：补全会在第三个字符被键入时自动弹出，或者通过Esc键手动弹出。</p><p>一个命令中的私有选项可以有不同的完成者(completers)。如breakpoint中的—file 选项作为源文件的完成者，—shlib 选项作为当前加载的库的完成者，等等。这些行为是特定的，例如，如果指定—shlib ，且以—file 结尾，则LLDB只会列出由—shlib 指定的共享类库。</p><p><strong>Python脚本</strong></p><p>对于高级用户来说，LLDB有一个内置的Python解析器，可以通过脚本命令来访问。调试器中的所有特性在Python解析器中都可以作为类来访问。这样，我们就可以使用LLDB-Python库来写Python函数，并通过脚本将其加载到运行会话中，以执行一些更复杂的调试操作。</p><p><span style="color: rgb(0, 176, 80);"><strong>在命令行中调试程序</strong></span></p><p>通常我们都是在Xcode中直接使用LLDB调试器，Xcode会帮我们完成很多操作。当然，如果我们想让自己看着更Bigger，或者想了解下调试器具体的一些流程，就可以试试直接在终端使用LLDB命令来调试程序。在终端中使用LLDB调试器，我们需要了解以下内容：</p><p><strong>1.</strong>加载程序以备调试</p><p><strong>2.</strong>将一个运行的程序绑定到LLDB</p><p><strong>3.</strong>设置断点和观察点</p><p><strong>4.</strong>控制程序的执行</p><p><strong>5.</strong>在调试的程序中导航</p><p><strong>6.</strong>检查状态和值的变量</p><p><strong>7.</strong>执行替代代码</p><p>了解在终端中这些操作是如何进行的，可以帮助我们更深入的了解调试器在Xcode中是如何运作的。下面我们分步来介绍一下。</p><p><strong>指定需要调试的程序</strong></p><p>首先我们需要设置需要调试的程序。我们可以使用如下命令做到这一点：</p><div><div id="highlighter_642545" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$&nbsp;lldb&nbsp;/Projects/Sketch/build/Debug/Sketch.app&nbsp;</code></div><div class="line number2 index1 alt1"><code class="js plain">Current&nbsp;executable&nbsp;set&nbsp;to&nbsp;</code><code class="js string">'/Projects/Sketch/build/Debug/Sketch.app'</code>&nbsp;<code class="js plain">(x86_64).</code></div></div></td></tr></tbody></table></div></div><p>或者在运行lldb后，使用file命令来处理，如下所示：</p><div><div id="highlighter_347480" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$&nbsp;lldb&nbsp;</code></div><div class="line number2 index1 alt1"><code class="js plain">(lldb)&nbsp;file&nbsp;/Projects/Sketch/build/Debug/Sketch.app&nbsp;</code></div><div class="line number3 index2 alt2"><code class="js plain">Current&nbsp;executable&nbsp;set&nbsp;to&nbsp;</code><code class="js string">'/Projects/Sketch/build/Debug/Sketch.app'</code>&nbsp;<code class="js plain">(x86_64).</code></div></div></td></tr></tbody></table></div></div><p><strong>设置断点</strong></p><p>在设置完程序后，我们可能想设置一点断点来调试程序。此时我们可以使用breakpoint set命令来设置断点，这个命令简单、直观，且有智能补全，接下来我们看看它的具体操作。</p><p>如果想在某个文件中的某行设置一个断点，可使用以下命令：</p><div><div id="highlighter_465396" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;breakpoint&nbsp;set&nbsp;--file&nbsp;foo.c&nbsp;--line&nbsp;12</code></div></div></td></tr></tbody></table></div></div><p>如果想给某个函数设置断点，可使用以下命令：</p><div><div id="highlighter_883166" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;breakpoint&nbsp;set&nbsp;--name&nbsp;foo</code></div></div></td></tr></tbody></table></div></div><p>如果想给C++中所有命名为foo的方法设置断点，可以使用以下命令：</p><div><div id="highlighter_633278" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;breakpoint&nbsp;set&nbsp;--method&nbsp;foo</code></div></div></td></tr></tbody></table></div></div><p>如果想给Objective-C中所有命名为alignLeftEdges:的选择器设置断点，则可以使用以下命令：</p><div><div id="highlighter_679887" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;breakpoint&nbsp;set&nbsp;--selector&nbsp;alignLeftEdges:</code></div></div></td></tr></tbody></table></div></div><p>我们可以使用—shlib <path>来将断点限定在一个特定的可执行库中：</path></p><div><div id="highlighter_114185" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;breakpoint&nbsp;set&nbsp;--shlib&nbsp;foo.dylib&nbsp;--name&nbsp;foo</code></div></div></td></tr></tbody></table></div></div><p>看吧，断点设置命令还是很强大的。</p><p>如果我们想查看程序中所有的断点，则可以使用breakpoint list命令，如下所示：</p><div><div id="highlighter_509130" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;breakpoint&nbsp;list</code></div><div class="line number2 index1 alt1"><code class="js plain">Current&nbsp;breakpoints:</code></div><div class="line number3 index2 alt2"><code class="js plain">1:&nbsp;name&nbsp;=&nbsp;</code><code class="js string">'alignLeftEdges:'</code><code class="js plain">,&nbsp;locations&nbsp;=&nbsp;1,&nbsp;resolved&nbsp;=&nbsp;1</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">1.1:&nbsp;where&nbsp;=&nbsp;Sketch`-[SKTGraphicView&nbsp;alignLeftEdges:]&nbsp;+&nbsp;33&nbsp;at&nbsp;/Projects/Sketch/SKTGraphicView.m:1405,&nbsp;address&nbsp;=&nbsp;0x0000000100010d5b,&nbsp;resolved,&nbsp;hit&nbsp;count&nbsp;=&nbsp;0</code></div></div></td></tr></tbody></table></div></div><p>从上面的输出结果可以看出，一个断点一般有两部分：</p><p><strong>1.</strong>断点的逻辑规范，这一部分是用户提供给breakpoint set命令的。</p><p><strong>2.</strong>与规范匹配的断点的位置。</p><p>如上所示，通过”breakpoint set —selector alignLeftEdges:“设置的断点，其信息中会显示出所有alignLeftEdges:方法的位置。</p><p>breakpoint list命令输出列表显示每个逻辑断点都有一个整数标识，如上所示断点标识为1。而每个位置也会有一个标识，如上所示的1.1。</p><p>输出列表中另一个信息是断点位置是否是已解析的(resolved)。这个标识表示当与之相关的文件地址被加载到程序进行调试时，其位置是已解析的。例如，如果在共享库中设置的断点之后被卸载了，则断点的位置还会保留，但其不能再被解析。</p><p>不管是逻辑断点产生的所有位置，还是逻辑断点解析的任何特定位置，我们都可以使用断点触发命令来对其进行删除、禁用、设置条件或忽略计数操作。例如，如果我们想添加一个命令，以在LLDB命中断点1.1时打印跟踪栈，则可以执行以下命令</p><div><div id="highlighter_354344" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;breakpoint&nbsp;command&nbsp;add&nbsp;1.1</code></div><div class="line number2 index1 alt1"><code class="js plain">Enter&nbsp;your&nbsp;debugger&nbsp;command(s).&nbsp;Type&nbsp;</code><code class="js string">'DONE'</code>&nbsp;<code class="js plain">to&nbsp;end.</code></div><div class="line number3 index2 alt2"><code class="js plain">&gt;&nbsp;bt</code></div><div class="line number4 index3 alt1"><code class="js plain">&gt;&nbsp;DONE</code></div></div></td></tr></tbody></table></div></div><p>如果想更详细地了解”breakpoint command add”命令的使用，可以使用help帮助系统来查看。</p><p><strong>设置观察点</strong></p><p>作为断点的补充，LLDB支持观察点以在不中断程序运行的情况下监测一些变量。例如，我们可以使用以下命令来监测名为global的变量的写操作，并在(global==5)为真时停止监测：</p><div><div id="highlighter_259704" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;watch&nbsp;set&nbsp;</code><code class="js keyword">var</code>&nbsp;<code class="js plain">global</code></div><div class="line number2 index1 alt1"><code class="js plain">Watchpoint&nbsp;created:&nbsp;Watchpoint&nbsp;1:&nbsp;addr&nbsp;=&nbsp;0x100001018&nbsp;size&nbsp;=&nbsp;4&nbsp;state&nbsp;=&nbsp;enabled&nbsp;type&nbsp;=&nbsp;w</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">declare&nbsp;@&nbsp;</code><code class="js string">'/Volumes/data/lldb/svn/ToT/test/functionalities/watchpoint/watchpoint_commands/condition/main.cpp:12'</code></div><div class="line number4 index3 alt1"><code class="js plain">(lldb)&nbsp;watch&nbsp;modify&nbsp;-c&nbsp;</code><code class="js string">'(global==5)'</code></div><div class="line number5 index4 alt2"><code class="js plain">(lldb)&nbsp;watch&nbsp;list</code></div><div class="line number6 index5 alt1"><code class="js plain">Current&nbsp;watchpoints:</code></div><div class="line number7 index6 alt2"><code class="js plain">Watchpoint&nbsp;1:&nbsp;addr&nbsp;=&nbsp;0x100001018&nbsp;size&nbsp;=&nbsp;4&nbsp;state&nbsp;=&nbsp;enabled&nbsp;type&nbsp;=&nbsp;w</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">declare&nbsp;@&nbsp;</code><code class="js string">'/Volumes/data/lldb/svn/ToT/test/functionalities/watchpoint/watchpoint_commands/condition/main.cpp:12'</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">condition&nbsp;=&nbsp;</code><code class="js string">'(global==5)'</code></div><div class="line number10 index9 alt1"><code class="js plain">(lldb)&nbsp;c</code></div><div class="line number11 index10 alt2"><code class="js plain">Process&nbsp;15562&nbsp;resuming</code></div><div class="line number12 index11 alt1"><code class="js plain">(lldb)&nbsp;about&nbsp;to&nbsp;write&nbsp;to&nbsp;</code><code class="js string">'global'</code><code class="js plain">...</code></div><div class="line number13 index12 alt2"><code class="js plain">Process&nbsp;15562&nbsp;stopped&nbsp;and&nbsp;was&nbsp;programmatically&nbsp;restarted.</code></div><div class="line number14 index13 alt1"><code class="js plain">Process&nbsp;15562&nbsp;stopped&nbsp;and&nbsp;was&nbsp;programmatically&nbsp;restarted.</code></div><div class="line number15 index14 alt2"><code class="js plain">Process&nbsp;15562&nbsp;stopped&nbsp;and&nbsp;was&nbsp;programmatically&nbsp;restarted.</code></div><div class="line number16 index15 alt1"><code class="js plain">Process&nbsp;15562&nbsp;stopped&nbsp;and&nbsp;was&nbsp;programmatically&nbsp;restarted.</code></div><div class="line number17 index16 alt2"><code class="js plain">Process&nbsp;15562&nbsp;stopped</code></div><div class="line number18 index17 alt1"><code class="js plain">*&nbsp;thread&nbsp;</code><code class="js preprocessor">#1:&nbsp;tid&nbsp;=&nbsp;0x1c03,&nbsp;0x0000000100000ef5&nbsp;a.out`modify&nbsp;+&nbsp;21&nbsp;at&nbsp;main.cpp:16,&nbsp;stop&nbsp;reason&nbsp;=&nbsp;watchpoint&nbsp;1</code></div><div class="line number19 index18 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#0:&nbsp;0x0000000100000ef5&nbsp;a.out`modify&nbsp;+&nbsp;21&nbsp;at&nbsp;main.cpp:16</code></div><div class="line number20 index19 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">13</code></div><div class="line number21 index20 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;void&nbsp;modify(int32_t&nbsp;&amp;</code><code class="js keyword">var</code><code class="js plain">)&nbsp;{</code></div><div class="line number22 index21 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++</code><code class="js keyword">var</code><code class="js plain">;</code></div><div class="line number23 index22 alt2"><code class="js plain">-&gt;&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></div><div class="line number24 index23 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">17</code></div><div class="line number25 index24 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;main(int&nbsp;argc,&nbsp;char**&nbsp;argv)&nbsp;{</code></div><div class="line number26 index25 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;</code><code class="js plain">19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;local&nbsp;=&nbsp;0;</code></div><div class="line number27 index26 alt2"><code class="js plain">(lldb)&nbsp;bt</code></div><div class="line number28 index27 alt1"><code class="js plain">*&nbsp;thread&nbsp;</code><code class="js preprocessor">#1:&nbsp;tid&nbsp;=&nbsp;0x1c03,&nbsp;0x0000000100000ef5&nbsp;a.out`modify&nbsp;+&nbsp;21&nbsp;at&nbsp;main.cpp:16,&nbsp;stop&nbsp;reason&nbsp;=&nbsp;watchpoint&nbsp;1</code></div><div class="line number29 index28 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#0:&nbsp;0x0000000100000ef5&nbsp;a.out`modify&nbsp;+&nbsp;21&nbsp;at&nbsp;main.cpp:16</code></div><div class="line number30 index29 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#1:&nbsp;0x0000000100000eac&nbsp;a.out`main&nbsp;+&nbsp;108&nbsp;at&nbsp;main.cpp:25</code></div><div class="line number31 index30 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#2:&nbsp;0x00007fff8ac9c7e1&nbsp;libdyld.dylib`start&nbsp;+&nbsp;1</code></div><div class="line number32 index31 alt1"><code class="js plain">(lldb)&nbsp;frame&nbsp;</code><code class="js keyword">var</code>&nbsp;<code class="js plain">global</code></div><div class="line number33 index32 alt2"><code class="js plain">(int32_t)&nbsp;global&nbsp;=&nbsp;5</code></div><div class="line number34 index33 alt1"><code class="js plain">(lldb)&nbsp;watch&nbsp;list&nbsp;-v</code></div><div class="line number35 index34 alt2"><code class="js plain">Current&nbsp;watchpoints:</code></div><div class="line number36 index35 alt1"><code class="js plain">Watchpoint&nbsp;1:&nbsp;addr&nbsp;=&nbsp;0x100001018&nbsp;size&nbsp;=&nbsp;4&nbsp;state&nbsp;=&nbsp;enabled&nbsp;type&nbsp;=&nbsp;w</code></div><div class="line number37 index36 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">declare&nbsp;@&nbsp;</code><code class="js string">'/Volumes/data/lldb/svn/ToT/test/functionalities/watchpoint/watchpoint_commands/condition/main.cpp:12'</code></div><div class="line number38 index37 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">condition&nbsp;=&nbsp;</code><code class="js string">'(global==5)'</code></div><div class="line number39 index38 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">hw_index&nbsp;=&nbsp;0&nbsp;&nbsp;hit_count&nbsp;=&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ignore_count&nbsp;=&nbsp;0</code></div><div class="line number40 index39 alt1"><code class="js plain">(lldb)</code></div></div></td></tr></tbody></table></div></div><p>可以使用help watchpoint来查看该命令的使用。</p><p><strong>使用LLDB来启动程序</strong></p><p>一旦指定了调试哪个程序，并为其设置了一些断点后，就可以开始运行程序了。我们可以使用以下命令来启动程序：</p><div><div id="highlighter_518921" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;process&nbsp;launch</code></div><div class="line number2 index1 alt1"><code class="js plain">(lldb)&nbsp;run</code></div><div class="line number3 index2 alt2"><code class="js plain">(lldb)&nbsp;r</code></div></div></td></tr></tbody></table></div></div><p>我们同样可以使用进程ID或进程名来连接一个已经运行的程序。当使用名称来连接一个程序时，LLDB支持—waitfor选项。这个选项告诉LLDB等待下一个名称为指定名称的程序出现，然后连接它。例如，下面3个命令都是用于连接Sketch程序(假定其进程ID为123)：</p><div><div id="highlighter_929374" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;process&nbsp;attach&nbsp;--pid&nbsp;123</code></div><div class="line number2 index1 alt1"><code class="js plain">(lldb)&nbsp;process&nbsp;attach&nbsp;--name&nbsp;Sketch</code></div><div class="line number3 index2 alt2"><code class="js plain">(lldb)&nbsp;process&nbsp;attach&nbsp;--name&nbsp;Sketch&nbsp;--waitfor</code></div></div></td></tr></tbody></table></div></div><p>启动或连接程序后，进程可能由于某些原因而停止，如：</p><div><div id="highlighter_990331" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;process&nbsp;attach&nbsp;-p&nbsp;12345</code></div><div class="line number2 index1 alt1"><code class="js plain">Process&nbsp;46915&nbsp;Attaching</code></div><div class="line number3 index2 alt2"><code class="js plain">Process&nbsp;46915&nbsp;Stopped</code></div><div class="line number4 index3 alt1"><code class="js plain">1&nbsp;of&nbsp;3&nbsp;threads&nbsp;stopped&nbsp;</code><code class="js keyword">with</code>&nbsp;<code class="js plain">reasons:</code></div><div class="line number5 index4 alt2"><code class="js plain">*&nbsp;thread&nbsp;</code><code class="js preprocessor">#1:&nbsp;tid&nbsp;=&nbsp;0x2c03,&nbsp;0x00007fff85cac76a,&nbsp;where&nbsp;=&nbsp;libSystem.B.dylib`__getdirentries64&nbsp;+&nbsp;10,</code></div><div class="line number6 index5 alt1"><code class="js plain">stop&nbsp;reason&nbsp;=&nbsp;signal&nbsp;=&nbsp;SIGSTOP,&nbsp;queue&nbsp;=&nbsp;com.apple.main-thread</code></div></div></td></tr></tbody></table></div></div><p>注意“1 of 3 threads stopped with reasons:”及其下面一行。在多线程环境下，在内核实际返回控制权给调试器前，可能会有多个线程命中同一个断点。在这种情况下，我们可以在停止信息中看到所有因此而停止的线程。</p><p><strong>控制程序</strong></p><p>启动程序后，LLDB允许程序在到达断点前继续运行。LLDB中流程控制的命令都在thread命令层级中。如下所示：</p><div><div id="highlighter_242693" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;thread&nbsp;</code><code class="js keyword">continue</code></div><div class="line number2 index1 alt1"><code class="js plain">Resuming&nbsp;thread&nbsp;0x2c03&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">process&nbsp;46915</code></div><div class="line number3 index2 alt2"><code class="js plain">Resuming&nbsp;process&nbsp;46915</code></div></div></td></tr></tbody></table></div></div><p>另外，还有以下命令：</p><div><div id="highlighter_90658" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;thread&nbsp;step-</code><code class="js keyword">in</code>&nbsp;<code class="js comments">//&nbsp;The&nbsp;same&nbsp;as&nbsp;"step"&nbsp;or&nbsp;"s"&nbsp;in&nbsp;GDB.</code></div><div class="line number2 index1 alt1"><code class="js plain">(lldb)&nbsp;thread&nbsp;step-over&nbsp;</code><code class="js comments">//&nbsp;The&nbsp;same&nbsp;as&nbsp;"next"&nbsp;or&nbsp;"n"&nbsp;in&nbsp;GDB.</code></div><div class="line number3 index2 alt2"><code class="js plain">(lldb)&nbsp;thread&nbsp;step-out&nbsp;</code><code class="js comments">//&nbsp;The&nbsp;same&nbsp;as&nbsp;"finish"&nbsp;or&nbsp;"f"&nbsp;in&nbsp;GDB.</code></div><div class="line number4 index3 alt1"><code class="js plain">(lldb)&nbsp;thread&nbsp;step-inst&nbsp;</code><code class="js comments">//&nbsp;The&nbsp;same&nbsp;as&nbsp;"stepi"&nbsp;/&nbsp;"si"&nbsp;in&nbsp;GDB.</code></div><div class="line number5 index4 alt2"><code class="js plain">(lldb)&nbsp;thread&nbsp;step-over-inst&nbsp;</code><code class="js comments">//&nbsp;The&nbsp;same&nbsp;as&nbsp;"nexti"&nbsp;/&nbsp;"ni"&nbsp;in&nbsp;GDB.</code></div></div></td></tr></tbody></table></div></div><p>LLDB还提供了run until line按步调度模式，如：</p><div><div id="highlighter_260460" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">lldb)&nbsp;thread&nbsp;until&nbsp;100</code></div></div></td></tr></tbody></table></div></div><p>这条命令会运行线程，直到当前frame到达100行。如果代码在运行的过程中跳过了100行，则当frame被弹出栈后终止执行。</p><p><strong>查看线程状态</strong></p><p>在进程停止后，LLDB会选择一个当前线程和线程中当前帧(frame)。很多检测状态的命令可以用于这个线程或帧。</p><p>为了检测进程的当前状态，可以从以下命令开始：</p><div><div id="highlighter_275992" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;thread&nbsp;list</code></div><div class="line number2 index1 alt1"><code class="js plain">Process&nbsp;46915&nbsp;state&nbsp;is&nbsp;Stopped</code></div><div class="line number3 index2 alt2"><code class="js plain">*&nbsp;thread&nbsp;</code><code class="js preprocessor">#1:&nbsp;tid&nbsp;=&nbsp;0x2c03,&nbsp;0x00007fff85cac76a,&nbsp;where&nbsp;=&nbsp;libSystem.B.dylib`__getdirentries64&nbsp;+&nbsp;10,&nbsp;stop&nbsp;reason&nbsp;=&nbsp;signal&nbsp;=&nbsp;SIGSTOP,&nbsp;queue&nbsp;=&nbsp;com.apple.main-thread</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">thread&nbsp;</code><code class="js preprocessor">#2:&nbsp;tid&nbsp;=&nbsp;0x2e03,&nbsp;0x00007fff85cbb08a,&nbsp;where&nbsp;=&nbsp;libSystem.B.dylib`kevent&nbsp;+&nbsp;10,&nbsp;queue&nbsp;=&nbsp;com.apple.libdispatch-manager</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">thread&nbsp;</code><code class="js preprocessor">#3:&nbsp;tid&nbsp;=&nbsp;0x2f03,&nbsp;0x00007fff85cbbeaa,&nbsp;where&nbsp;=&nbsp;libSystem.B.dylib`__workq_kernreturn&nbsp;+&nbsp;10</code></div></div></td></tr></tbody></table></div></div><p>星号(*)表示thread #1为当前线程。为了获取线程的跟踪栈，可以使用以下命令：</p><div><div id="highlighter_744432" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;thread&nbsp;backtrace</code></div><div class="line number2 index1 alt1"><code class="js plain">thread&nbsp;</code><code class="js preprocessor">#1:&nbsp;tid&nbsp;=&nbsp;0x2c03,&nbsp;stop&nbsp;reason&nbsp;=&nbsp;breakpoint&nbsp;1.1,&nbsp;queue&nbsp;=&nbsp;com.apple.main-thread</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#0:&nbsp;0x0000000100010d5b,&nbsp;where&nbsp;=&nbsp;Sketch`-[SKTGraphicView&nbsp;alignLeftEdges:]&nbsp;+&nbsp;33&nbsp;at&nbsp;/Projects/Sketch/SKTGraphicView.m:1405</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#1:&nbsp;0x00007fff8602d152,&nbsp;where&nbsp;=&nbsp;AppKit`-[NSApplication&nbsp;sendAction:to:from:]&nbsp;+&nbsp;95</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#2:&nbsp;0x00007fff860516be,&nbsp;where&nbsp;=&nbsp;AppKit`-[NSMenuItem&nbsp;_corePerformAction]&nbsp;+&nbsp;365</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#3:&nbsp;0x00007fff86051428,&nbsp;where&nbsp;=&nbsp;AppKit`-[NSCarbonMenuImpl&nbsp;performActionWithHighlightingForItemAtIndex:]&nbsp;+&nbsp;121</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#4:&nbsp;0x00007fff860370c1,&nbsp;where&nbsp;=&nbsp;AppKit`-[NSMenu&nbsp;performKeyEquivalent:]&nbsp;+&nbsp;272</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#5:&nbsp;0x00007fff86035e69,&nbsp;where&nbsp;=&nbsp;AppKit`-[NSApplication&nbsp;_handleKeyEquivalent:]&nbsp;+&nbsp;559</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#6:&nbsp;0x00007fff85f06aa1,&nbsp;where&nbsp;=&nbsp;AppKit`-[NSApplication&nbsp;sendEvent:]&nbsp;+&nbsp;3630</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#7:&nbsp;0x00007fff85e9d922,&nbsp;where&nbsp;=&nbsp;AppKit`-[NSApplication&nbsp;run]&nbsp;+&nbsp;474</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#8:&nbsp;0x00007fff85e965f8,&nbsp;where&nbsp;=&nbsp;AppKit`NSApplicationMain&nbsp;+&nbsp;364</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#9:&nbsp;0x0000000100015ae3,&nbsp;where&nbsp;=&nbsp;Sketch`main&nbsp;+&nbsp;33&nbsp;at&nbsp;/Projects/Sketch/SKTMain.m:11</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;</code><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#10:&nbsp;0x0000000100000f20,&nbsp;where&nbsp;=&nbsp;Sketch`start&nbsp;+&nbsp;52</code></div></div></td></tr></tbody></table></div></div><p>如果想查看所有线程的调用栈，则可以使用以下命令：</p><div><div id="highlighter_522505" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;thread&nbsp;backtrace&nbsp;all</code></div></div></td></tr></tbody></table></div></div><p>查看调用栈状态</p><p>检查帧参数和本地变量的最简便的方式是使用frame variable命令：</p><div><div id="highlighter_827562" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;frame&nbsp;variable</code></div><div class="line number2 index1 alt1"><code class="js plain">self&nbsp;=&nbsp;(SKTGraphicView&nbsp;*)&nbsp;0x0000000100208b40</code></div><div class="line number3 index2 alt2"><code class="js plain">_cmd&nbsp;=&nbsp;(struct&nbsp;objc_selector&nbsp;*)&nbsp;0x000000010001bae1</code></div><div class="line number4 index3 alt1"><code class="js plain">sender&nbsp;=&nbsp;(id)&nbsp;0x00000001001264e0</code></div><div class="line number5 index4 alt2"><code class="js plain">selection&nbsp;=&nbsp;(NSArray&nbsp;*)&nbsp;0x00000001001264e0</code></div><div class="line number6 index5 alt1"><code class="js plain">i&nbsp;=&nbsp;(NSUInteger)&nbsp;0x00000001001264e0</code></div><div class="line number7 index6 alt2"><code class="js plain">c&nbsp;=&nbsp;(NSUInteger)&nbsp;0x00000001001253b0</code></div></div></td></tr></tbody></table></div></div><p>如果没有指定任何变量名，则会显示所有参数和本地变量。如果指定参数名或变量名，则只打印指定的值。如：</p><div><div id="highlighter_501050" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;frame&nbsp;variable&nbsp;self</code></div><div class="line number2 index1 alt1"><code class="js plain">(SKTGraphicView&nbsp;*)&nbsp;self&nbsp;=&nbsp;0x0000000100208b40</code></div></div></td></tr></tbody></table></div></div><p>frame variable命令不是一个完全的表达式解析器，但它支持一些简单的操作符，如&amp;,*,–&gt;,[]。这个数组括号可用于指针，以将指针作为数组处理。如下所示：</p><div><div id="highlighter_604887" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;frame&nbsp;variable&nbsp;*self</code></div><div class="line number2 index1 alt1"><code class="js plain">(SKTGraphicView&nbsp;*)&nbsp;self&nbsp;=&nbsp;0x0000000100208b40</code></div><div class="line number3 index2 alt2"><code class="js plain">(NSView)&nbsp;NSView&nbsp;=&nbsp;{</code></div><div class="line number4 index3 alt1"><code class="js plain">(NSResponder)&nbsp;NSResponder&nbsp;=&nbsp;{</code></div><div class="line number5 index4 alt2"><code class="js plain">...</code></div><div class="line number6 index5 alt1"><code class="js plain">(lldb)&nbsp;frame&nbsp;variable&nbsp;&amp;self</code></div><div class="line number7 index6 alt2"><code class="js plain">(SKTGraphicView&nbsp;**)&nbsp;&amp;self&nbsp;=&nbsp;0x0000000100304ab</code></div><div class="line number8 index7 alt1"><code class="js plain">(lldb)&nbsp;frame&nbsp;variable&nbsp;argv[0]</code></div><div class="line number9 index8 alt2"><code class="js plain">(char&nbsp;const&nbsp;*)&nbsp;argv[0]&nbsp;=&nbsp;0x00007fff5fbffaf8&nbsp;</code><code class="js string">"/Projects/Sketch/build/Debug/Sketch.app/Contents/MacOS/Sketch"</code></div></div></td></tr></tbody></table></div></div><p>frame variable命令会在变量上执行”对象打印”操作。目前，LLDB只支持Objective-C打印，使用的是对象的description方法。</p><p>如果想查看另外一帧，可以使用frame select命令，如下所示：</p><div><div id="highlighter_412896" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;frame&nbsp;select&nbsp;9</code></div><div class="line number2 index1 alt1"><code class="js plain">frame&nbsp;</code><code class="js preprocessor">#9:&nbsp;0x0000000100015ae3,&nbsp;where&nbsp;=&nbsp;Sketch`function1&nbsp;+&nbsp;33&nbsp;at&nbsp;/Projects/Sketch/SKTFunctions.m:11</code></div></div></td></tr></tbody></table></div></div><p><strong>小结</strong></p><p>以上所介绍的命令可以让我们在终端中直接调试程序。当然，很多命令也可以在Xcode中直接使用。这些命令可以让我们了解程序运行的状态，当然有些状态可以在Xcode中了解到。建议在调试过程中，可以多使用这些命令。</p><p>如果想了解这一过程中使用的各种命令，可以查看<a href="https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/lldb-command-examples.html#//apple_ref/doc/uid/TP40012917-CH3-SW5" target="_self">苹果的官方文档</a>。</p><p><span style="color: rgb(0, 176, 80);"><strong>在Xcode中调试程序</strong></span></p><p>对于我们日常的开发工作来说，更多的时候是在Xcode中进行调试工作。因此上面所描述的流程，其实Xcode已经帮我们完成了大部分的工作，而且很多东西也可以在Xcode里面看到。因此，我们可以把精力都集中在代码层面上。</p><p>在<a href="https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/lldb-command-examples.html#//apple_ref/doc/uid/TP40012917-CH3-SW5" target="_self">苹果的官方文档</a>中列出了我们在调试中能用到的一些命令，我们在这重点讲一些常用的命令。</p><p><strong>打印</strong></p><p>打印变量的值可以使用print命令，该命令如果打印的是简单类型，则会列出简单类型的类型和值。如果是对象，还会打印出对象指针地址，如下所示：</p><div><div id="highlighter_88606" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;print&nbsp;a</code></div><div class="line number2 index1 alt1"><code class="js plain">(NSInteger)&nbsp;$0&nbsp;=&nbsp;0</code></div><div class="line number3 index2 alt2"><code class="js plain">(lldb)&nbsp;print&nbsp;b</code></div><div class="line number4 index3 alt1"><code class="js plain">(NSInteger)&nbsp;$1&nbsp;=&nbsp;0</code></div><div class="line number5 index4 alt2"><code class="js plain">(lldb)&nbsp;print&nbsp;str</code></div><div class="line number6 index5 alt1"><code class="js plain">(NSString&nbsp;*)&nbsp;$2&nbsp;=&nbsp;0x0000000100001048&nbsp;@</code><code class="js string">"abc"</code></div><div class="line number7 index6 alt2"><code class="js plain">(lldb)&nbsp;print&nbsp;url</code></div><div class="line number8 index7 alt1"><code class="js plain">(NSURL&nbsp;*)&nbsp;$3&nbsp;=&nbsp;0x0000000100206cc0&nbsp;@</code><code class="js string">"abc"</code></div></div></td></tr></tbody></table></div></div><p>在输出结果中我们还能看到类似于$0,$1这样的符号，我们可以将其看作是指向对象的一个引用，我们在控制面板中可以直接使用这个符号来操作对应的对象，这些东西存在于LLDB的全名空间中，目的是为了辅助调试。如下所示：</p><div><div id="highlighter_643396" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;exp&nbsp;$0&nbsp;=&nbsp;100</code></div><div class="line number2 index1 alt1"><code class="js plain">(NSInteger)&nbsp;$9&nbsp;=&nbsp;100</code></div><div class="line number3 index2 alt2"><code class="js plain">(lldb)&nbsp;p&nbsp;a</code></div><div class="line number4 index3 alt1"><code class="js plain">(NSInteger)&nbsp;$10&nbsp;=&nbsp;100</code></div></div></td></tr></tbody></table></div></div><p>另外$后面的数值是递增的，每打印一个与对象相关的命令，这个值都会加1。</p><p>上面的print命令会打印出对象的很多信息，如果我们只想查看对象的值的信息，则可以使用po(print object的缩写)命令，如下所示：</p><div><div id="highlighter_850342" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;po&nbsp;str</code></div><div class="line number2 index1 alt1"><code class="js plain">abc</code></div></div></td></tr></tbody></table></div></div><p>当然，po命令是”exp -O —“命令的别名，使用”exp -O —”能达到同样的效果。</p><p>对于简单类型，我们还可以为其指定不同的打印格式，其命令格式是print/，如下所示：</p><div><div id="highlighter_347409" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;p/x&nbsp;a</code></div><div class="line number2 index1 alt1"><code class="js plain">(NSInteger)&nbsp;$13&nbsp;=&nbsp;0x0000000000000064</code></div></div></td></tr></tbody></table></div></div><p>格式的完整清单可以参考<a href="https://sourceware.org/gdb/onlinedocs/gdb/Output-Formats.html" target="_self">Output Formats</a>。</p><p><strong>expression</strong></p><p>在开发中，我们经常会遇到这样一种情况：我们设置一个视图的背景颜色，运行后发现颜色不好看。嗯，好吧，在代码里面修改一下，再编译运行一下，嗯，还是不好看，然后再修改吧～～这样无形中浪费了我们大把的时间。在这种情况下，expression命令强大的功能就能体现出来了，它不仅会改变调试器中的值，还改变了程序中的实际值。我们先来看看实际效果，如下所示：</p><div><div id="highlighter_454831" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;exp&nbsp;a&nbsp;=&nbsp;10</code></div><div class="line number2 index1 alt1"><code class="js plain">(NSInteger)&nbsp;$0&nbsp;=&nbsp;10</code></div><div class="line number3 index2 alt2"><code class="js plain">(lldb)&nbsp;exp&nbsp;b&nbsp;=&nbsp;100</code></div><div class="line number4 index3 alt1"><code class="js plain">(NSInteger)&nbsp;$1&nbsp;=&nbsp;100</code></div><div class="line number5 index4 alt2"><code class="js plain">2015-01-25&nbsp;14:00:41.313&nbsp;test[18064:71466]&nbsp;a&nbsp;+&nbsp;b&nbsp;=&nbsp;110,&nbsp;abc</code></div></div></td></tr></tbody></table></div></div><p>expression命令的功能不仅于此，正如上面的po命令，其实际也是”expression -O —“命令的别名。更详细使用可以参考<a href="https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/lldb-command-examples.html#//apple_ref/doc/uid/TP40012917-CH3-SW5" target="_self">Evaluating Expressions</a>。</p><p><strong>image</strong></p><p>image命令的用法也挺多，首先可以用它来查看工程中使用的库，如下所示：</p><div><div id="highlighter_973385" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;image&nbsp;list</code></div><div class="line number2 index1 alt1"><code class="js plain">[&nbsp;&nbsp;0]&nbsp;432A6EBF-B9D2-3850-BCB2-821B9E62B1E0&nbsp;0x0000000100000000&nbsp;/Users</code><code class="js comments">/**/</code><code class="js plain">Library/Developer/Xcode/DerivedData/test-byjqwkhxixddxudlnvqhrfughkra/Build/Products/Debug/test&nbsp;</code></div><div class="line number3 index2 alt2"><code class="js plain">[&nbsp;&nbsp;1]&nbsp;65DCCB06-339C-3E25-9702-600A28291D0E&nbsp;0x00007fff5fc00000&nbsp;/usr/lib/dyld&nbsp;</code></div><div class="line number4 index3 alt1"><code class="js plain">[&nbsp;&nbsp;2]&nbsp;E3746EDD-DFB1-3ECB-88ED-A91AC0EF3AAA&nbsp;0x00007fff8d324000&nbsp;/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation&nbsp;</code></div><div class="line number5 index4 alt2"><code class="js plain">[&nbsp;&nbsp;3]&nbsp;759E155D-BC42-3D4E-869B-6F57D477177C&nbsp;0x00007fff8869f000&nbsp;/usr/lib/libobjc.A.dylib&nbsp;</code></div><div class="line number6 index5 alt1"><code class="js plain">[&nbsp;&nbsp;4]&nbsp;5C161F1A-93BA-3221-A31D-F86222005B1B&nbsp;0x00007fff8c75c000&nbsp;/usr/lib/libSystem.B.dylib&nbsp;</code></div><div class="line number7 index6 alt2"><code class="js plain">[&nbsp;&nbsp;5]&nbsp;CBD1591C-405E-376E-87E9-B264610EBF49&nbsp;0x00007fff8df0d000&nbsp;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&nbsp;</code></div><div class="line number8 index7 alt1"><code class="js plain">[&nbsp;&nbsp;6]&nbsp;A260789B-D4D8-316A-9490-254767B8A5F1&nbsp;0x00007fff8de36000&nbsp;/usr/lib/libauto.dylib&nbsp;</code></div><div class="line number9 index8 alt2"><code class="js plain">......</code></div></div></td></tr></tbody></table></div></div><p>我们还可以用它来查找可执行文件或共享库的原始地址，这一点还是很有用的，当我们的程序崩溃时，我们可以使用这条命令来查找崩溃所在的具体位置，如下所示：</p><div><div id="highlighter_992403" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">NSArray&nbsp;*array&nbsp;=&nbsp;@[@1,&nbsp;@2];</code></div><div class="line number2 index1 alt1"><code class="js plain">NSLog(@</code><code class="js string">"item&nbsp;3:&nbsp;%@"</code><code class="js plain">,&nbsp;array[2]);</code></div></div></td></tr></tbody></table></div></div><p>这段代码在运行后会抛出如下异常：</p><div><div id="highlighter_563103" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">2015-01-25&nbsp;14:12:01.007&nbsp;test[18122:76474]&nbsp;***&nbsp;Terminating&nbsp;app&nbsp;due&nbsp;to&nbsp;uncaught&nbsp;exception&nbsp;</code><code class="js string">'NSRangeException'</code><code class="js plain">,&nbsp;reason:&nbsp;</code><code class="js string">'***&nbsp;-[__NSArrayI&nbsp;objectAtIndex:]:&nbsp;index&nbsp;2&nbsp;beyond&nbsp;bounds&nbsp;[0&nbsp;..&nbsp;1]'</code></div><div class="line number2 index1 alt1"><code class="js plain">***&nbsp;First&nbsp;</code><code class="js keyword">throw</code>&nbsp;<code class="js plain">call&nbsp;stack:</code></div><div class="line number3 index2 alt2"><code class="js plain">(</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">0&nbsp;&nbsp;&nbsp;CoreFoundation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x00007fff8e06f66c&nbsp;__exceptionPreprocess&nbsp;+&nbsp;172</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">1&nbsp;&nbsp;&nbsp;libobjc.A.dylib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x00007fff886ad76e&nbsp;objc_exception_throw&nbsp;+&nbsp;43</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">2&nbsp;&nbsp;&nbsp;CoreFoundation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x00007fff8df487de&nbsp;-[__NSArrayI&nbsp;objectAtIndex:]&nbsp;+&nbsp;190</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">3&nbsp;&nbsp;&nbsp;test&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x0000000100000de0&nbsp;main&nbsp;+&nbsp;384</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">4&nbsp;&nbsp;&nbsp;libdyld.dylib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x00007fff8f1b65c9&nbsp;start&nbsp;+&nbsp;1</code></div><div class="line number9 index8 alt2"><code class="js plain">)</code></div><div class="line number10 index9 alt1"><code class="js plain">libc++abi.dylib:&nbsp;terminating&nbsp;</code><code class="js keyword">with</code>&nbsp;<code class="js plain">uncaught&nbsp;exception&nbsp;of&nbsp;type&nbsp;NSException</code></div></div></td></tr></tbody></table></div></div><p>根据以上信息，我们可以判断崩溃位置是在main.m文件中，要想知道具体在哪一行，可以使用以下命令：</p><div><div id="highlighter_540941" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;image&nbsp;lookup&nbsp;--address&nbsp;0x0000000100000de0</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">Address:&nbsp;test[0x0000000100000de0]&nbsp;(test.__TEXT.__text&nbsp;+&nbsp;384)</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">Summary:&nbsp;test`main&nbsp;+&nbsp;384&nbsp;at&nbsp;main.m:23</code></div></div></td></tr></tbody></table></div></div><p>可以看到，最后定位到了main.m文件的第23行，正是我们代码所在的位置。</p><p>我们还可以使用image lookup命令来查看具体的类型，如下所示：</p><div><div id="highlighter_876502" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;image&nbsp;lookup&nbsp;--type&nbsp;NSURL</code></div><div class="line number2 index1 alt1"><code class="js plain">Best&nbsp;match&nbsp;found&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">/Users</code><code class="js comments">/**/</code><code class="js plain">Library/Developer/Xcode/DerivedData/test-byjqwkhxixddxudlnvqhrfughkra/Build/Products/Debug/test:</code></div><div class="line number3 index2 alt2"><code class="js plain">id&nbsp;=&nbsp;{0x100000157},&nbsp;name&nbsp;=&nbsp;</code><code class="js string">"NSURL"</code><code class="js plain">,&nbsp;byte-size&nbsp;=&nbsp;40,&nbsp;decl&nbsp;=&nbsp;NSURL.h:17,&nbsp;clang_type&nbsp;=&nbsp;"@interface&nbsp;NSURL&nbsp;:&nbsp;NSObject{</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSString&nbsp;*&nbsp;_urlString;</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">NSURL&nbsp;*&nbsp;_baseURL;</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">void&nbsp;*&nbsp;_clients;</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">void&nbsp;*&nbsp;_reserved;</code></div><div class="line number8 index7 alt1"><code class="js plain">}</code></div><div class="line number9 index8 alt2"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;absoluteString,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;absoluteString;</code></div><div class="line number10 index9 alt1"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;relativeString,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;relativeString;</code></div><div class="line number11 index10 alt2"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;baseURL,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSURL&nbsp;*&nbsp;baseURL;</code></div><div class="line number12 index11 alt1"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;absoluteURL,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSURL&nbsp;*&nbsp;absoluteURL;</code></div><div class="line number13 index12 alt2"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;scheme,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;scheme;</code></div><div class="line number14 index13 alt1"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;resourceSpecifier,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;resourceSpecifier;</code></div><div class="line number15 index14 alt2"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;host,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;host;</code></div><div class="line number16 index15 alt1"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;port,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSNumber&nbsp;*&nbsp;port;</code></div><div class="line number17 index16 alt2"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;user,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;user;</code></div><div class="line number18 index17 alt1"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;password,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;password;</code></div><div class="line number19 index18 alt2"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;path,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;path;</code></div><div class="line number20 index19 alt1"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;fragment,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;fragment;</code></div><div class="line number21 index20 alt2"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;parameterString,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;parameterString;</code></div><div class="line number22 index21 alt1"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;query,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;query;</code></div><div class="line number23 index22 alt2"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;relativePath,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSString&nbsp;*&nbsp;relativePath;</code></div><div class="line number24 index23 alt1"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;fileSystemRepresentation,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&nbsp;)&nbsp;const&nbsp;char&nbsp;*&nbsp;fileSystemRepresentation;</code></div><div class="line number25 index24 alt2"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;isFileURL,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,readwrite&nbsp;)&nbsp;BOOL&nbsp;fileURL;</code></div><div class="line number26 index25 alt1"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;standardizedURL,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSURL&nbsp;*&nbsp;standardizedURL;</code></div><div class="line number27 index26 alt2"><code class="js plain">@property&nbsp;(&nbsp;readonly,getter&nbsp;=&nbsp;filePathURL,setter&nbsp;=&nbsp;&lt;</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;,nonatomic&nbsp;)&nbsp;NSURL&nbsp;*&nbsp;filePathURL;</code></div><div class="line number28 index27 alt1"><code class="js plain">@end"&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;&lt;/</code><code class="js keyword">null</code>&nbsp;<code class="js plain">selector&gt;</code></div></div></td></tr></tbody></table></div></div><p>可以看到，输出结果中列出了NSURL的一些成员变量及属性信息。</p><p>image命令还有许多其它功能，具体可以参考<a href="https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/lldb-command-examples.html#//apple_ref/doc/uid/TP40012917-CH3-SW5" target="_self">Executable and Shared Library Query Commands</a>。</p><p><strong>流程控制</strong></p><p>流程控制的命令实际上我们在上一小节已经讲过了，在Xcode的控制面板中同样可以使用这些命令，在此不在重复。</p><p><span style="color: rgb(0, 176, 80);"><strong>命令别名及帮助系统</strong></span></p><p>LLDB有两个非常有用的特性，即命令别名及帮助。</p><p><strong>命令别名</strong></p><p>我们可以使用LLDB的别名机制来为常用的命令创建一个别名，以方便我们的使用，如下命令：</p><div><div id="highlighter_159829" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;breakpoint&nbsp;set&nbsp;--file&nbsp;foo.c&nbsp;--line&nbsp;12</code></div></div></td></tr></tbody></table></div></div><p>如果在我们的调试中需要经常用到这条命令，则每次输入这么一长串的字符一定会很让人抓狂。此时，我们就可以为这条命令创建一个别名，如下所示：</p><div><div id="highlighter_139351" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;command&nbsp;alias&nbsp;bfl&nbsp;breakpoint&nbsp;set&nbsp;-f&nbsp;%1&nbsp;-l&nbsp;%2</code></div></div></td></tr></tbody></table></div></div><p>这样，我们只需要按如下方式来使用它即可：</p><div><div id="highlighter_272349" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;bfl&nbsp;foo.c&nbsp;12</code></div></div></td></tr></tbody></table></div></div><p>是不是简单多了？</p><p>我们可以自由地创建LLDB命令的别名集合。LLDB在启动时会读取~/.lldbinit文件。这个文件中存储了command alias命令创建的别名。LLDB帮助系统会读取这个初始化文件并会列出这些别名，以让我们了解自己所设置的别名。我们可以使用”help -a”命令并在输出的后面来查看这边别名，其以下面这行开始：</p><div><div id="highlighter_770752" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">...</code></div><div class="line number2 index1 alt1"><code class="js plain">The&nbsp;following&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;your&nbsp;current&nbsp;command&nbsp;abbreviations&nbsp;(see&nbsp;</code><code class="js string">'help&nbsp;command&nbsp;alias'</code>&nbsp;<code class="js keyword">for</code>&nbsp;<code class="js plain">more&nbsp;info):&nbsp;...</code></div></div></td></tr></tbody></table></div></div><p>如果我们不喜欢已有命令的别名，则可以使用以下命令来取消这个别名：</p><div><div id="highlighter_628856" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;command&nbsp;unalias&nbsp;b</code></div></div></td></tr></tbody></table></div></div><p><strong>帮助系统</strong></p><p>LLDB帮助系统让我们可以了解LLDB提供了哪些功能，并可以查看LLDB命令结构的详细信息。熟悉帮助系统可以让我们访问帮助系统中中命令文档。</p><p>我们可以简单地调用help命令来列出LLDB所有的顶层命令。如下所示：</p><div><div id="highlighter_444378" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;help</code></div><div class="line number2 index1 alt1"><code class="js plain">The&nbsp;following&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;built-</code><code class="js keyword">in</code><code class="js plain">,&nbsp;permanent&nbsp;debugger&nbsp;commands:</code></div><div class="line number3 index2 alt2"><code class="js plain">_regexp-attach&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Attach&nbsp;to&nbsp;a&nbsp;process&nbsp;id&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js keyword">in</code>&nbsp;<code class="js plain">decimal,&nbsp;otherwise&nbsp;treat&nbsp;the</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">argument&nbsp;as&nbsp;a&nbsp;process&nbsp;name&nbsp;to&nbsp;attach&nbsp;to.</code></div><div class="line number5 index4 alt2"><code class="js plain">_regexp-</code><code class="js keyword">break</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="js plain">--&nbsp;Set&nbsp;a&nbsp;breakpoint&nbsp;using&nbsp;a&nbsp;regular&nbsp;expression&nbsp;to&nbsp;specify&nbsp;the</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">location,&nbsp;where&nbsp;&lt;linenum&gt;&nbsp;is&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">decimal&nbsp;and&nbsp;&lt;address&gt;&nbsp;is</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">hex.</code></div><div class="line number8 index7 alt1"><code class="js plain">_regexp-bt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Show&nbsp;a&nbsp;backtrace.&nbsp;&nbsp;An&nbsp;optional&nbsp;argument&nbsp;is&nbsp;accepted;&nbsp;</code><code class="js keyword">if</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">that&nbsp;argument&nbsp;is&nbsp;a&nbsp;number,&nbsp;it&nbsp;specifies&nbsp;the&nbsp;number&nbsp;of</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">frames&nbsp;to&nbsp;display.&nbsp;&nbsp;If&nbsp;that&nbsp;argument&nbsp;is&nbsp;</code><code class="js string">'all'</code><code class="js plain">,&nbsp;full</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">backtraces&nbsp;of&nbsp;all&nbsp;threads&nbsp;are&nbsp;displayed.</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;</code><code class="js plain">…&nbsp;and&nbsp;so&nbsp;forth&nbsp;…&lt;/address&gt;&lt;/linenum&gt;</code></div></div></td></tr></tbody></table></div></div><p>如果help后面跟着某个特定的命令，则会列出该命令相关的所有信息，我们以breakpoint set为例，输出信息如下：</p><div><div id="highlighter_734173" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;help&nbsp;breakpoint&nbsp;set</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">Sets&nbsp;a&nbsp;breakpoint&nbsp;or&nbsp;set&nbsp;of&nbsp;breakpoints&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">the&nbsp;executable.</code></div><div class="line number3 index2 alt2"><code class="js plain">Syntax:&nbsp;breakpoint&nbsp;set&nbsp;&lt;cmd-options&gt;</code></div><div class="line number4 index3 alt1"><code class="js plain">Command&nbsp;Options&nbsp;Usage:</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">breakpoint&nbsp;set&nbsp;[-Ho]&nbsp;-l&nbsp;&lt;linenum&gt;&nbsp;[-s&nbsp;&lt;shlib-name&gt;]&nbsp;[-i&nbsp;&lt;count&gt;]&nbsp;[-c&nbsp;&lt;expr&gt;]&nbsp;[-x&nbsp;&lt;thread-index&gt;]&nbsp;[-t&nbsp;&lt;thread-id&gt;]&nbsp;[-T&nbsp;&lt;thread-name&gt;]&nbsp;[-q&nbsp;&lt;queue-name&gt;]&nbsp;[-f&nbsp;&lt;filename&gt;]&nbsp;[-K&nbsp;&lt;boolean&gt;]</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">breakpoint&nbsp;set&nbsp;[-Ho]&nbsp;-a&nbsp;&lt;address-expression&gt;&nbsp;[-s&nbsp;&lt;shlib-name&gt;]&nbsp;[-i&nbsp;&lt;count&gt;]&nbsp;[-c&nbsp;&lt;expr&gt;]&nbsp;[-x&nbsp;&lt;thread-index&gt;]&nbsp;[-t&nbsp;&lt;thread-id&gt;]&nbsp;[-T&nbsp;&lt;thread-name&gt;]&nbsp;[-q&nbsp;&lt;queue-name&gt;]</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">breakpoint&nbsp;set&nbsp;[-Ho]&nbsp;-n&nbsp;&lt;</code><code class="js keyword">function</code><code class="js plain">-name&gt;&nbsp;[-s&nbsp;&lt;shlib-name&gt;]&nbsp;[-i&nbsp;&lt;count&gt;]&nbsp;[-c&nbsp;&lt;expr&gt;]&nbsp;[-x&nbsp;&lt;thread-index&gt;]&nbsp;[-t&nbsp;&lt;thread-id&gt;]&nbsp;[-T&nbsp;&lt;thread-name&gt;]&nbsp;[-q&nbsp;&lt;queue-name&gt;]&nbsp;[-f&nbsp;&lt;filename&gt;]&nbsp;[-K&nbsp;&lt;boolean&gt;]&nbsp;[-L&nbsp;&lt;language&gt;]</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">breakpoint&nbsp;set&nbsp;[-Ho]&nbsp;-F&nbsp;&lt;fullname&gt;&nbsp;[-s&nbsp;&lt;shlib-name&gt;]&nbsp;[-i&nbsp;&lt;count&gt;]&nbsp;[-c&nbsp;&lt;expr&gt;]&nbsp;[-x&nbsp;&lt;thread-index&gt;]&nbsp;[-t&nbsp;&lt;thread-id&gt;]&nbsp;[-T&nbsp;&lt;thread-name&gt;]&nbsp;[-q&nbsp;&lt;queue-name&gt;]&nbsp;[-f&nbsp;&lt;filename&gt;]&nbsp;[-K&nbsp;&lt;boolean&gt;]</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;</code><code class="js plain">…&nbsp;and&nbsp;so&nbsp;forth&nbsp;…&lt;/boolean&gt;&lt;/filename&gt;&lt;/queue-name&gt;&lt;/thread-name&gt;&lt;/thread-id&gt;&lt;/thread-index&gt;&lt;/expr&gt;&lt;/count&gt;&lt;/shlib-name&gt;&lt;/fullname&gt;&lt;/language&gt;&lt;/boolean&gt;&lt;/filename&gt;&lt;/queue-name&gt;&lt;/thread-name&gt;&lt;/thread-id&gt;&lt;/thread-index&gt;&lt;/expr&gt;&lt;/count&gt;&lt;/shlib-name&gt;&lt;/</code><code class="js keyword">function</code><code class="js plain">-name&gt;&lt;/queue-name&gt;&lt;/thread-name&gt;&lt;/thread-id&gt;&lt;/thread-index&gt;&lt;/expr&gt;&lt;/count&gt;&lt;/shlib-name&gt;&lt;/address-expression&gt;&lt;/boolean&gt;&lt;/filename&gt;&lt;/queue-name&gt;&lt;/thread-name&gt;&lt;/thread-id&gt;&lt;/thread-index&gt;&lt;/expr&gt;&lt;/count&gt;&lt;/shlib-name&gt;&lt;/linenum&gt;&lt;/cmd-options&gt;</code></div></div></td></tr></tbody></table></div></div><p>还有一种更直接的方式来查看LLDB有哪些功能，即使用apropos命令：它会根据关键字来搜索LLDB帮助文档，并为每个命令选取一个帮助字符串，我们以apropos file为例，其输出如下：</p><div><div id="highlighter_624709" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;apropos&nbsp;file</code></div><div class="line number2 index1 alt1"><code class="js plain">The&nbsp;following&nbsp;commands&nbsp;may&nbsp;relate&nbsp;to&nbsp;</code><code class="js string">'file'</code><code class="js plain">:</code></div><div class="line number3 index2 alt2"><code class="js plain">…</code></div><div class="line number4 index3 alt1"><code class="js plain">log&nbsp;enable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Enable&nbsp;logging&nbsp;</code><code class="js keyword">for</code>&nbsp;<code class="js plain">a&nbsp;single&nbsp;log&nbsp;channel.</code></div><div class="line number5 index4 alt2"><code class="js plain">memory&nbsp;read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Read&nbsp;from&nbsp;the&nbsp;memory&nbsp;of&nbsp;the&nbsp;process&nbsp;being</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">debugged.</code></div><div class="line number7 index6 alt2"><code class="js plain">memory&nbsp;write&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Write&nbsp;to&nbsp;the&nbsp;memory&nbsp;of&nbsp;the&nbsp;process&nbsp;being</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">debugged.</code></div><div class="line number9 index8 alt2"><code class="js plain">platform&nbsp;process&nbsp;launch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Launch&nbsp;a&nbsp;</code><code class="js keyword">new</code>&nbsp;<code class="js plain">process&nbsp;on&nbsp;a&nbsp;remote&nbsp;platform.</code></div><div class="line number10 index9 alt1"><code class="js plain">platform&nbsp;select&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Create&nbsp;a&nbsp;platform&nbsp;</code><code class="js keyword">if</code>&nbsp;<code class="js plain">needed&nbsp;and&nbsp;select&nbsp;it&nbsp;as</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">the&nbsp;current&nbsp;platform.</code></div><div class="line number12 index11 alt1"><code class="js plain">plugin&nbsp;load&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Import&nbsp;a&nbsp;dylib&nbsp;that&nbsp;implements&nbsp;an&nbsp;LLDB</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">plugin.</code></div><div class="line number14 index13 alt1"><code class="js plain">process&nbsp;launch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Launch&nbsp;the&nbsp;executable&nbsp;</code><code class="js keyword">in</code>&nbsp;<code class="js plain">the&nbsp;debugger.</code></div><div class="line number15 index14 alt2"><code class="js plain">process&nbsp;load&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Load&nbsp;a&nbsp;shared&nbsp;library&nbsp;into&nbsp;the&nbsp;current</code></div><div class="line number16 index15 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">process.</code></div><div class="line number17 index16 alt2"><code class="js plain">source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;A&nbsp;set&nbsp;of&nbsp;commands&nbsp;</code><code class="js keyword">for</code>&nbsp;<code class="js plain">accessing&nbsp;source&nbsp;file</code></div><div class="line number18 index17 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">information</code></div><div class="line number19 index18 alt2"><code class="js plain">…&nbsp;and&nbsp;so&nbsp;forth&nbsp;…</code></div></div></td></tr></tbody></table></div></div><p>我们还可以使用help来了解一个命令别名的构成。如：</p><div><div id="highlighter_642061" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;help&nbsp;b</code></div><div class="line number2 index1 alt1"><code class="js plain">…</code></div><div class="line number3 index2 alt2"><code class="js string">'b'</code>&nbsp;<code class="js plain">is&nbsp;an&nbsp;abbreviation&nbsp;</code><code class="js keyword">for</code>&nbsp;<code class="js string">'_regexp-break'</code></div></div></td></tr></tbody></table></div></div><p>help命令的另一个特性是可以查看某个具体参数的使用，我们以”break command add”命令为例：</p><div><div id="highlighter_230531" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;help&nbsp;</code><code class="js keyword">break</code>&nbsp;<code class="js plain">command&nbsp;add</code></div><div class="line number2 index1 alt1"><code class="js plain">Add&nbsp;a&nbsp;set&nbsp;of&nbsp;commands&nbsp;to&nbsp;a&nbsp;breakpoint,&nbsp;to&nbsp;be&nbsp;executed&nbsp;whenever&nbsp;the&nbsp;breakpoint&nbsp;is&nbsp;hit.</code></div><div class="line number3 index2 alt2"><code class="js plain">Syntax:&nbsp;breakpoint&nbsp;command&nbsp;add&nbsp;&lt;cmd-options&gt;&nbsp;&lt;breakpt-id&gt;</code></div><div class="line number4 index3 alt1"><code class="js plain">etc...&lt;/breakpt-id&gt;&lt;/cmd-options&gt;</code></div></div></td></tr></tbody></table></div></div><p>如果想了解以上输出的参数<breakpt-id>的作用，我们可以在help后面直接指定这个参数(将其放在尖括号内)来查询它的详细信息，如下所示：</breakpt-id></p><div><div id="highlighter_672079" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">(lldb)&nbsp;help&nbsp;&lt;breakpt-id&gt;</code></div><div class="line number2 index1 alt1"><code class="js plain">&lt;breakpt-id&gt;&nbsp;--&nbsp;Breakpoint&nbsp;IDs&nbsp;consist&nbsp;major&nbsp;and&nbsp;minor&nbsp;numbers;&nbsp;the&nbsp;major</code></div><div class="line number3 index2 alt2"><code class="js plain">etc...&lt;/breakpt-id&gt;&lt;/breakpt-id&gt;</code></div></div></td></tr></tbody></table></div></div><p>帮助系统能让我们快速地了解一个LLDB命令的使用方法。经常使用它，可以让我们更快地熟悉LLDB的各项功能，所以建议多使用它。</p><p><span style="color: rgb(0, 176, 80);"><strong>总结</strong></span></p><p>LLDB带给我们强大的调试功能，在调试过程中充分地利用它可以帮助我们极大地提高调试效率。我们可以不用写那么多的NSLog来打印一大堆的日志。所以建议在日常工作中多去使用它。当然，上面的命令只是LLDB的冰山一角，更多的使用还需要大家自己去发掘，在此只是抛砖引玉，做了一些整理。</p><p><span style="color: rgb(0, 176, 80);"><strong>参考</strong></span></p><p><a href="http://lldb.llvm.org/tutorial.html" target="_self">The LLDB Debugger</a></p><p><a href="https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/Introduction.html" target="_self">LLDB Quick Start Guide</a></p><p><a href="http://www.cocoachina.com/ios/20141219/10709.html" target="_self">与调试器共舞 – LLDB 的华尔兹</a></p><p><a href="http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/" target="_self">LLDB调试命令初探</a></p><p><a href="http://www.cocoachina.com/ios/20140530/8619.html" target="_self">NSLog效率低下的原因及尝试lldb断点打印Log</a></p>
+                </div>
+                <div id="page" style="padding:0"></div>
+
+                <div class="wx_article">
+                    <div class="article_weixin">
+                        <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/article_weixin.jpg" width="131" height="131" alt="搜索CocoaChina微信公众号：CocoaChina">
+                        <div class="article_scan">微信扫一扫</div>
+                        <div class="article_txt"><span style="color:#999999">订阅每日移动开发及APP推广热点资讯<br>公众号：</span>CocoaChina</div>
+                    </div>
+                </div>
+
+               <div class="clearfix tgbox">
+                    <a href="http://www.cocoachina.com/deliver.php" class="tg float-l" target="_blank">我要投稿</a>&nbsp;&nbsp;
+                    <a style="margin-left:10px" href="javascript:void(0)" onclick="add_favors(11021,&#39;浅谈LLDB调试器&#39;)" class="tg float-l">收藏文章</a>
+                    <div class="share float-r">分享到：
+                        <div class="bdsharebuttonbox" id="sharediv" data-bd-bind="1492765234897"><a href="http://www.cocoachina.com/ios/20150126/11021.html#" class="bds_more" data-cmd="more"></a> <a href="http://www.cocoachina.com/ios/20150126/11021.html#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="http://www.cocoachina.com/ios/20150126/11021.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a> <a href="http://www.cocoachina.com/ios/20150126/11021.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                    </div>
+                </div>
+
+
+                <a class="zanbox" href="javascript:void(0)" id="zanbox" onclick="postDigg(&#39;good&#39;,11021)" title="哎呦，不错噢，赞一个">
+                    <strong id="newdigg">
+                     <script src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/count(1).php" language="javascript"></script>41
+                    </strong>
+                </a>
+            </div>
+
+            <div class="article-prev">上一篇：<a href="http://www.cocoachina.com/ios/20150126/11019.html">Apple Pay编程指南</a> </div>
+            <div class="article-next">下一篇：<a href="http://www.cocoachina.com/ios/20150127/11022.html">iOS开发——创建你自己的Framework</a> </div>
+
+            <!--相关资讯-->
+            <div class="part-wrap clearfix">
+                <h3>相关资讯</h3>
+                <ul class="info-list clearfix">
+                    <li>
+                        <a href="http://www.cocoachina.com/ios/20170421/19096.html" target="_blank" title="本文并不是CoreData从入门到精通之类的教程, 并不会涉及到过多的原理概念描述, 而是介绍如何让CoreData的使用变得更加简单明了, 方便亲民. 全文约六千字, 预计花费阅读时间15分钟.">让CoreData更简单些</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170420/19093.html" target="_blank" title="一个解决iOS10在发布环境下无法查看调试log的小工具">iOS10 Log调试小工具</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170420/19088.html" target="_blank" title="根据iOS开发中遇到的各种各样的实际需求配置各种各样的缓存策略，合理的设计代码，以最小的改动应对新增的需求">iOS开发封装通用网络请求方法</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170419/19087.html" target="_blank" title="有时候公司会要求一定的代码规范，例如控制器中需要用#pragma mark -来分割各个方法们">Xcode自定义模板</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170418/19076.html" target="_blank" title="最近为项目的功能需求准备着，有一个很简单点击展开与收缩的功能需求，以前Swift中写过一个类似的功能，但是个人觉得不是特别好，当时就因为cell的复用导致了bug,并且这个需求是一直OC维护的项目">UITableview 优雅的展开与收回</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170414/19054.html" target="_blank" title="介绍一下剩下的几种权限的访问方法和一些使用上的注意事项，希望能给大家的开发过程带来一丝便利。">iOS开发中权限再度梳理</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170407/19011.html" target="_blank" title="大家都知道 http url 里面传入参数时，需要经过 url encode，其原因就是由于 http 是基于文本的协议，在解析 url 中的 query string 时，是以一些特殊的文本符号来做切割的，比如 ?，=，&amp; 等。如果不把内容做">如何设计一个通讯协议</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170329/18978.html" target="_blank" title="对于一个带有视频播放功能的app产品来说，视频全屏是一个基本且重要的需求。虽然这个需求看起来很简单，但是在实现上，我们前后迭代了三套技术方案。这篇文章将介绍这三种实现方案中的利弊和">iOS端一次视频全屏需求的实现</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170327/18968.html" target="_blank" title="单元测试在实际工作无法推进的原因，无外乎以下两点：缺乏实施动力和缺少实战经验。">走出 iOS 单元测试的困境</a>
+                     </li>
+<li>
+                        <a href="http://www.cocoachina.com/ios/20170322/18939.html" target="_blank" title="UIScrollViewj尽管继承于UIView，但它是一个相对比较特殊的视图，特别是当它遇到了AutoLayout之后。在UIScrollView中使用AutoLayout的目的除了使用相对约束确定子控件的位置和大小外，更重要的是如何自动计算">iOS开发tips-UIScrollView的Autlayout布局</a>
+                     </li>
+
+                </ul>
+            </div>
+            <div class="clearfix" style="margin-top:20px;">
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC评论框 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:750px;height:90px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="8242010366"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <!-- 评论模块start -->
+            
+            <div class="clearfix" id="commnet_list_holder" style="margin-bottom:50px;">
+                <div class="glab-comment-form">
+                    <div class="dcbt">我来说两句</div>
+                    <div class="user-head">
+                        <img id="user_face_url" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt="">
+                    </div>
+                    <div class="form-region">
+                        <textarea name="comment" id="main_comment_content" cols="30" rows="10" placeholder="你怎么看？快来评论一下吧！"></textarea>
+                        <a class="submitform" id="main_comment_bt">发表评论</a>
+                        <div class="unlogin-mask">
+                            <div>您还没有登录！请<a href="http://www.cocoachina.com/bbs/login.php">登录</a>或<a href="http://www.cocoachina.com/bbs/register.php">注册</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="glab-comment-callback-msg" class="glab-comment-info"></div>
+                <div class="glab-comment-title">所有评论（<span>9</span>）</div>
+                <div class="glab-commentlist" id="commentlist">
+                    <a id="refresh_comment_btn" href="javascript:;" onclick="$(&#39;#morecomment&#39;).trigger(&#39;click&#39;)" style="display: none;">刷新评论</a>
+                
+    <div class="glab-comment" rel-data-id="37852" rel-user-id="546847" rel-user-name="shu_tong" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=546847" target="_blank"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=546847" target="_blank">shu_tong</a><span class="puptime">2017-01-17 14:44:38</span></div>
+            <div class="comment-content">mark<br></div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+
+    <div class="glab-comment" rel-data-id="32153" rel-user-id="577014" rel-user-name="semonchan" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=577014" target="_blank"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=577014" target="_blank">semonchan</a><span class="puptime">2016-08-25 17:19:48</span></div>
+            <div class="comment-content">认真看了,&nbsp;也跟着做了test,&nbsp;做到image追踪定位bug的时候,&nbsp;发现如果是崩溃在main函数里,&nbsp;就直接追踪到面函数所在的释放池那一行了,&nbsp;而不是在真正的产生崩溃的地方,&nbsp;不知道这个该怎么追踪出来?&nbsp;望解答啊</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">1</span>
+                </span>
+                <span class="cai">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+
+    <div class="glab-comment" rel-data-id="31133" rel-user-id="212931" rel-user-name="小郭飘飘" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=212931" target="_blank"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=212931" target="_blank">小郭飘飘</a><span class="puptime">2016-08-04 17:06:17</span></div>
+            <div class="comment-content">深度好文章</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+
+    <div class="glab-comment" rel-data-id="30861" rel-user-id="575745" rel-user-name="一叠纸船" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=575745" target="_blank"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=575745" target="_blank">一叠纸船</a><span class="puptime">2016-07-31 18:07:29</span></div>
+            <div class="comment-content">译得不错</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+
+    <div class="glab-comment" rel-data-id="24986" rel-user-id="413469" rel-user-name="ioschenwei" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=413469" target="_blank"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=413469" target="_blank">ioschenwei</a><span class="puptime">2016-05-17 14:30:24</span></div>
+            <div class="comment-content">文章极好</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+
+    <div class="glab-comment" rel-data-id="22431" rel-user-id="496139" rel-user-name="kunpo" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=496139" target="_blank"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=496139" target="_blank">kunpo</a><span class="puptime">2016-03-29 03:19:43</span></div>
+            <div class="comment-content">mark</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+
+    <div class="glab-comment" rel-data-id="21648" rel-user-id="424615" rel-user-name="冬夜很凉" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=424615" target="_blank"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=424615" target="_blank">冬夜很凉</a><span class="puptime">2016-03-16 11:57:08</span></div>
+            <div class="comment-content">不错</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+
+    <div class="glab-comment" rel-data-id="19018" rel-user-id="475155" rel-user-name="joker_wu" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=475155" target="_blank"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=475155" target="_blank">joker_wu</a><span class="puptime">2016-01-29 02:22:10</span></div>
+            <div class="comment-content">mark</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+
+    <div class="glab-comment" rel-data-id="16985" rel-user-id="481524" rel-user-name="泼墨仙人" rel-layer="1">
+        <div class="comment-left">
+            <a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=481524" target="_blank"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/none.gif" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="http://www.cocoachina.com/bbs/u.php?action=feed&amp;uid=481524" target="_blank">泼墨仙人</a><span class="puptime">2015-12-28 00:54:18</span></div>
+            <div class="comment-content">很不错</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/zan-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="cai">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-default.png" height="14" width="14" alt="" class="default" style="">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/cai-active.png" height="14" width="14" alt="" class="actived" style=" display:none; ">
+                    <span class="zancnt">0</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+    </div>  
+</div>
+                <div class="glab-comment-more" id="morecomment" style="display:none">
+                    更多评论
+                </div>
+            </div>
+            
+            <!-- 评论模块end -->
+
+
+        </div>
+        <!--./left-->
+        <!--侧边栏-->
+        <div class="clearfix newslist">
+            <div class="rightSide detail-right float-r">
+                <!--两周热门资讯推荐-->
+                <div>
+                    <div class="part-wrap clearfix">
+                        <h3>热门资讯</h3>
+                        <ul class="related-hot">
+                            <li class="clearfix"><a href="http://www.cocoachina.com/ios/20170407/19016.html" class="float-l pic" target="_blank" title="iOS 开发中，怎样用好 Notifications？"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/87f9d51d53b2cfa84e840ab68114a95d.png" style="max-height:60px" alt="iOS 开发中，怎样用好 Notifications？"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170407/19016.html" target="_blank" title="iOS 开发中，怎样用好 Notifications？">iOS 开发中，怎样用好 Notifications？</a></p><p class="hits">点击量<span>8626</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20170411/19035.html" class="float-l pic" target="_blank" title="TIOBE4月排行榜：Swift小幅跌出Top 10，Hack首次进入Top 50"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/95cf730692dcec568fdb189e153807ef.png" style="max-height:60px" alt="TIOBE4月排行榜：Swift小幅跌出Top 10，Hack首次进入Top 50"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20170411/19035.html" target="_blank" title="TIOBE4月排行榜：Swift小幅跌出Top 10，Hack首次进入Top 50">TIOBE4月排行榜：Swift小幅跌出Top 10，Hack首次进入Top 50</a></p><p class="hits">点击量<span>6146</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20170413/19052.html" class="float-l pic" target="_blank" title="程序员带你一步步分析AI如何玩Flappy Bird"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/de520061c7e688b49772d9b2fedc8764.gif" style="max-height:60px" alt="程序员带你一步步分析AI如何玩Flappy Bird"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20170413/19052.html" target="_blank" title="程序员带你一步步分析AI如何玩Flappy Bird">程序员带你一步步分析AI如何玩Flappy Bird</a></p><p class="hits">点击量<span>4369</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/industry/20170413/19044.html" class="float-l pic" target="_blank" title="“人间四月天，数据和工具帮你打造完美的App”4月15日CVP系列开发者沙龙开始报名啦！"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/89eb5b986c21afddb202c1e681476b07.jpg" style="max-height:60px" alt="“人间四月天，数据和工具帮你打造完美的App”4月15日CVP系列开发者沙龙开始报名啦！"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/industry/20170413/19044.html" target="_blank" title="“人间四月天，数据和工具帮你打造完美的App”4月15日CVP系列开发者沙龙开始报名啦！">“人间四月天，数据和工具帮你打造完美的App”4月15日CVP系列开发者沙龙开始报名啦！</a></p><p class="hits">点击量<span>2936</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/programmer/20170410/19027.html" class="float-l pic" target="_blank" title="在一个程序员的墓前"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/d64bd61005bea3b2c8fa91b7a8918a70.jpg" style="max-height:60px" alt="在一个程序员的墓前"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/programmer/20170410/19027.html" target="_blank" title="在一个程序员的墓前">在一个程序员的墓前</a></p><p class="hits">点击量<span>2815</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20170414/19059.html" class="float-l pic" target="_blank" title="iOS与H5的交互【WKWebView】"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/7945d088afc0255879d2d991f6b65069.jpg" style="max-height:60px" alt="iOS与H5的交互【WKWebView】"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170414/19059.html" target="_blank" title="iOS与H5的交互【WKWebView】">iOS与H5的交互【WKWebView】</a></p><p class="hits">点击量<span>2724</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/apple/20170407/19017.html" class="float-l pic" target="_blank" title="传苹果将推出高配无Touch Bar版15寸MacBook Pro"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/c3296941b9e74fb203aca16064229c3d.jpg" style="max-height:60px" alt="传苹果将推出高配无Touch Bar版15寸MacBook Pro"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/apple/20170407/19017.html" target="_blank" title="传苹果将推出高配无Touch Bar版15寸MacBook Pro">传苹果将推出高配无Touch Bar版15寸MacBook Pro</a></p><p class="hits">点击量<span>2678</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/ios/20170413/19048.html" class="float-l pic" target="_blank" title="面试时如何优雅的谈论源码"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/1a6fe0cfcf0269619f5807bf44b0c5c9.jpg" style="max-height:60px" alt="面试时如何优雅的谈论源码"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/ios/20170413/19048.html" target="_blank" title="面试时如何优雅的谈论源码">面试时如何优雅的谈论源码</a></p><p class="hits">点击量<span>2661</span></p></div></li><li class="clearfix"><a href="http://www.cocoachina.com/game/20170411/19032.html" class="float-l pic" target="_blank" title="前鹅厂IEG员工谈《王者荣耀》成功的原因，简述精准营销的重要性"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/9c4969656e5670279385e2c132b90dea.jpg" style="max-height:60px" alt="前鹅厂IEG员工谈《王者荣耀》成功的原因，简述精准营销的重要性"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/game/20170411/19032.html" target="_blank" title="前鹅厂IEG员工谈《王者荣耀》成功的原因，简述精准营销的重要性">前鹅厂IEG员工谈《王者荣耀》成功的原因，简述精准营销的重要性</a></p><p class="hits">点击量<span>2472</span></p></div></li><li class="clearfix noborder-b"><a href="http://www.cocoachina.com/apple/20170413/19051.html" class="float-l pic" target="_blank" title="想不到导致iPhone 8延迟上市的罪魁祸首竟是它！"><img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/c6eb2dc6e600257c735bf11b7a6902a4.jpg" style="max-height:60px" alt="想不到导致iPhone 8延迟上市的罪魁祸首竟是它！"></a><div style="margin-left:86px"><p class="related-intro"><a href="http://www.cocoachina.com/apple/20170413/19051.html" target="_blank" title="想不到导致iPhone 8延迟上市的罪魁祸首竟是它！">想不到导致iPhone 8延迟上市的罪魁祸首竟是它！</a></p><p class="hits">点击量<span>2360</span></p></div></li>
+                        </ul>
+                    </div>
+               </div>
+               <!--./两周热门资讯推荐-->
+               <!--综合评论-->
+                <div class="part-wrap clearfix" style="margin-top: 15px;">
+                    <h3>综合评论</h3>
+                    <ul class="related-comment clearfix" id="all_comments_holder"><li class=""><span class="hide_comment">好文mark</span><br><p><span>xiaopin</span><span>评论了</span><a target="_blank" title="iPad分屏框架-SPStackedNav源码解读" href="http://www.cocoachina.com/ios/20170421/19101.html"><span>iPad分屏框架-SPStackedNav源码解读...</span></a></p></li><li class=""><span class="hide_comment">我能做的就是点个赞</span><br><p><span>ljqjunzi</span><span>评论了</span><a target="_blank" title="程序员带你一步步分析AI如何玩Flappy Bird" href="http://www.cocoachina.com/programmer/20170413/19052.html"><span>程序员带你一步步分析AI如何玩Flappy Bir...</span></a></p></li><li class=""><span class="hide_comment">多一点这种文章，cocoa也会越来越受欢迎吧</span><br><p><span>zkzkall</span><span>评论了</span><a target="_blank" title="让CoreData更简单些" href="http://www.cocoachina.com/ios/20170421/19096.html"><span>让CoreData更简单些</span></a></p></li><li class=""><span class="hide_comment">界面一下显示这么多LOG不会卡么？尤其是使用了几小时之后，非常多的LOG。</span><br><p><span>w6451601</span><span>评论了</span><a target="_blank" title="iOS10 Log调试小工具" href="http://www.cocoachina.com/ios/20170420/19093.html"><span>iOS10 Log调试小工具</span></a></p></li><li class=""><span class="hide_comment">我的天那。。。</span><br><p><span>catcherdream</span><span>评论了</span><a target="_blank" title="Objective-C Method Swizzling" href="http://www.cocoachina.com/ios/20170417/19069.html"><span>Objective-C Method Swizzl...</span></a></p></li><li class=""><span class="hide_comment">难道楼主不知道系统自带cell展开合上&nbsp;这种动画吗？<br></span><br><p><span>1ioser</span><span>评论了</span><a target="_blank" title="UITableview 优雅的展开与收回" href="http://www.cocoachina.com/ios/20170418/19076.html"><span>UITableview 优雅的展开与收回...</span></a></p></li><li class=""><span class="hide_comment">学习了！不过观察仔细一点，用手势右划返回&nbsp;从secondView&nbsp;到firstView时候，导航栏会闪一下，怎么解决？</span><br><p><span>LYJ0314</span><span>评论了</span><a target="_blank" title="iOS透明导航栏的平滑过渡（进阶版）" href="http://www.cocoachina.com/ios/20170331/18944.html"><span>iOS透明导航栏的平滑过渡（进阶版）...</span></a></p></li><li class=""><span class="hide_comment">服务器搭建不成功啊</span><br><p><span>511692751</span><span>评论了</span><a target="_blank" title="iOS下音视频通信的实现-基于WebRTC" href="http://www.cocoachina.com/ios/20170306/18837.html"><span>iOS下音视频通信的实现-基于WebRTC...</span></a></p></li><li class=""><span class="hide_comment">如何取消网络请求？缓存一定要使用数据库，会不会影响性能问题？用户数据过期的策略是什么？</span><br><p><span>zl520k</span><span>评论了</span><a target="_blank" title="iOS开发封装通用网络请求方法" href="http://www.cocoachina.com/ios/20170420/19088.html"><span>iOS开发封装通用网络请求方法...</span></a></p></li><li class="noborder-b"><span class="hide_comment">苹果想赚钱，但这东西又不是虚拟商品，我们希望自己打赏的每一分钱都给作者，而不是分给苹果一部分。</span><br><p><span>evolrof</span><span>评论了</span><a target="_blank" title="苹果禁止微信打赏功能 有自媒体称收入骤降" href="http://www.cocoachina.com/apple/20170421/19104.html"><span>苹果禁止微信打赏功能 有自媒体称收入骤降...</span></a></p></li></ul>
+                </div>
+                <!--./综合评论-->
+                <!--相关帖子-->
+                <div class="part-wrap clearfix" style="margin:15px 0 15px 0;">
+                    <h3>相关帖子</h3>
+                    <ul class="related-comment clearfix">
+                        <script charset="gb2312" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/new.php"></script><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718888" target="_blank">2017年你的收入涨了吗</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718887" target="_blank">觉得无聊,灌个水</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718886" target="_blank">可以将pdf转换成图片的软件有哪些</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718885" target="_blank">调用deleteRowsAtIndexPaths的时候如何控制是上面的cell下来还是底下的cell上来？</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718884" target="_blank">如何制作移动app测试方案及详细流程</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718883" target="_blank">AVPlayer播放器问题</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718882" target="_blank">关于watch横屏布局</a></li><li><a href="http://www.cocoachina.com/bbs/read.php?tid=1718881" target="_blank">AFNetWorking&nbsp;&nbsp;Post 上传json</a></li><li class="clearfix noborder-b"><a href="http://www.cocoachina.com/bbs/read.php?tid=1718880" target="_blank">jspatch去转化_model = model各种尝试就是不行</a></li>
+                    </ul>
+                </div>
+                <!--./相关帖子-->
+                <iframe width="230" height="550" class="share_self" frameborder="0" scrolling="no" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/index.html"></iframe>
+                <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- CC列表页面230x230 -->
+                <ins class="adsbygoogle" style="display:inline-block;width:230px;height:230px" data-ad-client="ca-pub-1180518835303646" data-ad-slot="6765277166"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        <!--./侧边栏-->
+    </div>
+
+    <div id="coco-store" style="display:none">
+        <div class="storebox">
+            <h5>提示</h5>
+            <h3>已经收藏该篇文章</h3>
+            <p class="p1"><a href="http://www.cocoachina.com/bbs/u.php?action=favor&amp;tag=1" target="_blank">去我的收藏夹</a></p>
+            <p class="p2"><a href="http://www.cocoachina.com/bbs/login.php">请登录</a></p>
+        </div>
+    </div> <!--收藏提示-->
+</div>
+
+<script type="text/javascript">
+
+function postDigg(ftype,aid)
+{
+    var taget_obj = document.getElementById('newdigg');
+    var saveid = GetCookie('diggid');
+    if(saveid != null)
+    {
+        var saveids = saveid.split(',');
+        var hasid = false;
+        saveid = '';
+        j = 1;
+        for(i=saveids.length-1;i>=0;i--)
+        {
+            if(saveids[i]==aid && hasid) continue;
+            else {
+                if(saveids[i]==aid && !hasid) hasid = true;
+                saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+                j++;
+                if(j==20 && hasid) break;
+                if(j==19 && !hasid) break;
+            }
+        }
+        if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+        else saveid += ','+aid;
+        SetCookie('diggid',saveid,1);
+    }
+    else
+    {
+        SetCookie('diggid',aid,1);
+    }
+    myajax = new DedeAjax(taget_obj,false,false,'','','');
+    var url = "/cms/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+    myajax.SendGet2(url);
+    DedeXHTTP = null;
+    $('#zanbox').addClass('zanbox-selected');
+}
+function getDigg(aid)
+{
+    var taget_obj = document.getElementById('newdigg');
+    myajax = new DedeAjax(taget_obj,false,false,'','','');
+    myajax.SendGet2("/cms/plus/digg_ajax.php?id="+aid);
+    DedeXHTTP = null;
+}
+
+
+//显示对应的导航：
+$(function(){
+    var article_id = $('#article_id').val();
+    var saveid = GetCookie('diggid');
+
+    if(saveid != null)
+    {
+        var saveids = saveid.split(',');
+        var hasid = false;
+        saveid = '';
+        j = 1;
+        for(i=saveids.length-1;i>=0;i--)
+        {
+            if(saveids[i]==article_id && hasid) continue;
+            else {
+                if(saveids[i]==article_id && !hasid) hasid = true;
+                saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+                j++;
+                if(j==20 && hasid) break;
+                if(j==19 && !hasid) break;
+            }
+        }
+
+        if(hasid)
+        {
+            $('#zanbox').addClass('zanbox-selected');
+        }
+
+    }
+
+});
+
+window.onload = function() {
+
+    $('#sharediv').removeClass('bdshare-button-style1-32');
+    $('#sharediv').attr('class','bdsharebuttonbox');
+};
+</script>
+<script type="text/javascript" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/shCore.js"></script>
+    <script type="text/javascript" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/brush.js"></script>
+    <link type="text/css" rel="stylesheet" href="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/shCoreDefault.css">
+    <script type="text/javascript">
+    //SyntaxHighlighter.config.clipboardSwf = '/js/scripts/clipboard.swf';
+
+    SyntaxHighlighter.all();</script>
+
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"浅谈LLDB调试器 - 来自CocoaChina苹果开发中文站@CocoaChina","bdMini":"2","bdMiniList":false,"bdPic":"http://api.cocoachina.com/uploads/150126/d6c77ba5752744170d8a5ecb220cfad1.jpg","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api//js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!--./cont-->
+
+<!-- 回复评论框模板 -->
+<script type="text/javascript" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/comment.js"></script>
+<script type="text/javascript" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/mustache.min.js"></script>
+<!-- 回复评论框模板 -->
+<script id="reply_comment_template" type="x-tmpl-mustache">
+    <div id="sub-reply-comment" class="reply-comment">
+        <textarea name="subcomment" id="sub-reply-txt" cols="30" rows="10" placeholder="你怎么看？快来评论一下吧！"></textarea>
+        <input type="hidden" id="sub-reply-id" value="{{commentid}}" />
+        <input type="hidden" id="sub-reply-userid" value="{{parentuserid}}" />
+        <input type="hidden" id="sub-reply-username" value="{{parentusername}}" />
+        <a type="button" id="sub_comment_bt" class="submitbt">提交</a>
+        <div class="clearfloat"></div>
+        <div class="unlogin-mask">
+            <div>您还没有登录！请<a href="/bbs/login.php">登录</a>或<a href="/bbs/register.php">注册</a></div>
+        </div>
+    </div>
+</script>
+
+<!-- 评论模板 -->
+<script id="main_comment_template" type="x-tmpl-mustache">
+    <div class="glab-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="1">
+        <div class="comment-left">
+            <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+            <div class="comment-content">{{&content}}</div>
+            <div class="comment-buttons">
+                <span class="ding">                    
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                    <span class="zancnt">{{support}}</span>
+                </span>
+                <span class="cai">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                    <span class="zancnt">{{report}}</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>
+        </div>
+            {{#sub}}
+                <div class="glab-comment glab-sub-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="2">
+                    <div class="comment-left">
+                        <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+                    </div>
+                    <div class="comment-right">
+                        <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+                        <div class="comment-content"><a href="/bbs/u.php?action=feed&uid={{parent_user_id}}" target="_blank">回复：{{parent}}</a>{{&content}}</div>
+                        <div class="comment-buttons">
+                            <span class="ding">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                                <span class="zancnt">{{support}}</span>
+                            </span>
+                            <span class="cai">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                                <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                                <span class="zancnt">{{report}}</span>
+                            </span>
+                            <span class="replybt">回复</span>
+                        </div>          
+                    </div>
+                </div>
+            {{/sub}}         
+    </div>  
+</script>
+
+
+<script id="sub_comment_template" type="x-tmpl-mustache">
+    <div class="glab-comment glab-sub-comment" rel-data-id="{{comment_id}}" rel-user-id="{{user_id}}" rel-user-name="{{user_name}}" rel-layer="2">
+        <div class="comment-left">
+            <a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank"><img src="{{user_icon_url}}" height="43" width="43" alt=""></a>
+        </div>
+        <div class="comment-right">
+            <div class="comment-author"><a href="/bbs/u.php?action=feed&uid={{user_id}}" target="_blank">{{user_name}}</a><span class="puptime">{{create_time}}</span></div>
+            <div class="comment-content"><a href="/bbs/u.php?action=feed&uid={{parent_user_id}}" target="_blank">回复：{{parent}}</a>{{&content}}</div>
+            <div class="comment-buttons">
+                <span class="ding">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-default.png" height="14" width="14" alt="" class="default" style="{{#has_supported}} display:none; {{/has_supported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/zan-active.png" height="14" width="14" alt="" class="actived" style="{{^has_supported}} display:none; {{/has_supported}}">
+                    <span class="zancnt">{{support}}</span>
+                </span>
+                <span class="cai">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-default.png" height="14" width="14" alt="" class="default" style="{{#has_reported}} display:none; {{/has_reported}}">
+                    <img src="http://cdn.cocimg.com/cms/templets/images/cai-active.png" height="14" width="14" alt="" class="actived" style="{{^has_reported}} display:none; {{/has_reported}}">
+                    <span class="zancnt">{{report}}</span>
+                </span>
+                <span class="replybt">回复</span>
+            </div>          
+        </div>
+    </div>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68948817-1', 'auto', {'name': 'newTracker'});
+  ga('newTracker.send', 'pageview');
+
+</script>
+    
+<!--右侧浮动-->
+    <div class="r-bar" style="position: fixed; top: inherit; bottom: 10px;">
+        <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/coco_weixin.png" class="weixin">
+    	<a href="http://weibo.com/cocoachina" target="_blank" title="" class="weibo">sina</a>
+        <a href="javascript:void(0);" target="_blank" title="" class="feedback">weixin</a>
+        <a href="mailto:support@cocoachina.com" title="" class="kefu">mail</a>
+        <a href="javascript:;" title="回到顶部" class="returntop" style="display: inline;">回到顶部</a>
+    </div>
+
+<script language="javascript" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/bbsauth_plus2015.php" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+    if (typeof(_user_info_html) != 'undefined' && _user_info_html)
+    {
+        $('.nav-user-login').hide();
+        $('.nav-user-name').html(_user_info_html).show();
+    }
+
+	var type = $('#type_name').html();
+	if(type)
+	{	
+		switch( type )
+		{
+			case 'iOS开发':
+				$('#ios').addClass('light');
+				break;
+			case 'AppStore研究':
+				$('#app_store').addClass('light');
+				break;
+			case 'Mac开发':
+				$('#mac').addClass('light');
+				break;
+			case '产品设计':
+				$('#design').addClass('light');
+				break;
+			case 'Cocos引擎':
+				$('#cocos').addClass('light');
+				break;
+			case 'WebApp':
+				$('#webapp').addClass('light');
+				break;
+			case 'Swift':
+				$('#swift').addClass('light');
+				break;
+			case '游戏开发':
+				$('#game').addClass('light');
+				break;
+			case '苹果相关':
+				$('#apple').addClass('light');
+				break;
+			case '营销推广':
+				$('#market').addClass('light');
+				break;		
+			case '业界动态':
+				$('#industry').addClass('light');
+				break;	
+			case '程序人生':
+				$('#programmer').addClass('light');
+				break;																																
+				
+		}
+	}
+});
+</script>
+<!--./cont-->
+<script type="text/javascript" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/index.js"></script>
+<script src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/jquery.colorbox-min.js" type="text/javascript"></script>
+<script src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/script.js" type="text/javascript"></script>
+<script type="text/javascript">
+			jQuery(function()
+			{
+				//更改文章来源
+				var source = $('#source a').html();								
+				if( source == '未知' )
+					jQuery('#source a').html('CocoaChina');
+				if( jQuery('#source a').attr('href')=='')
+					jQuery('#source').html('来源：'+source);
+				
+				//获取用户登录的id
+//                var content = jQuery('.t-lid').attr("href");
+//                var uid = 0;
+//                if( content )
+//                {
+//                    content = content.split('=');
+//                    uid = content[1];
+//                }
+//                var timestamp = new Date().getTime();	
+//                var uid2 = parseInt(uid);
+//                if(uid2==uid && uid2!=0){
+//                    uid = uid<<2;			
+//                    uid = uid+''+timestamp;
+//                }else{
+//                    uid = "";
+//                }
+//                var oIframe=document.getElementById("comiframe");
+//                if(oIframe){
+//                    var oUrl=window.location.href;
+//                    oUrl = encodeURIComponent(oUrl);
+//
+//                    oIframe.src="/comment.php?url="+oUrl+"&uid="+uid;
+//                }
+
+				
+			});
+		</script>
+<!--footer-->
+<div class="footer clearfix">
+    <div class="footer-b">
+        <div>
+            <a href="http://www.cocoachina.com/aboutus/index.html" target="_blank">关于我们</a>
+            <a href="http://www.cocoachina.com/contactus/index.html" target="_blank">商务合作</a>
+            <a href="mailto:support@cocoachina.com" target="_blank">联系我们</a>
+            <a href="http://www.cocoachina.com/corps" target="_blank">合作伙伴</a>
+        </div>
+        <p class="footer-b-p">北京触控科技有限公司版权所有</p>
+        <p>
+            ©2016 Chukong Technologies,Inc.
+            <i>
+                <a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备 11006519号 　京ICP证 100954号</a> 京公网安备11010502020289 
+                <a href="http://182.131.21.137/ccnt-apply/admin/business/preview/business-preview!lookUrlRFID.action?main_id=A580B24B1AE846CE9DA949026D63939F" target="_blank">
+                    <img src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/jingwen.png" style="margin: -10px auto -14px -10px;">
+                    京网文[2012]0426-138号
+                </a>
+            </i>
+        </p>
+    </div>
+</div>
+<!--./footer-->
+<script language="javascript" type="text/javascript" src="./浅谈LLDB调试器 - CocoaChina_让移动开发更简单_files/dedeajax2-min.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?88399e4c4cf744609c4fc8c3a8935691";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16940817-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+ 
+function search_check()
+{
+	var search_keyword = $('#search_keyword').val();
+
+	if( search_keyword.length < 2 )
+	{
+		alert("搜索关键字不能少于2个字节，请重新输入。");
+	}
+	else
+	{
+		$('#searchform').submit();
+	}
+}
+
+</script>
+<script type="text/javascript">
+_acK({aid:116313,format:0,mode:1,gid:1,serverbaseurl:"afp.csbew.com/"});
+</script>
+
+
+
+<div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>

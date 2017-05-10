@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HQSMainViewController">
+            <connections>
+                <outlet property="codeStringField" destination="6G6-Dl-fyl" id="sxF-It-oLL"/>
+                <outlet property="imageView" destination="roS-QC-CbN" id="CqA-AX-7hL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="二维码内容" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6G6-Dl-fyl">
+                    <rect key="frame" x="34" y="147" width="533" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYZ-AI-9Ua">
+                    <rect key="frame" x="34" y="97" width="533" height="30"/>
+                    <color key="backgroundColor" red="0.24409896019999999" green="0.56770833330000003" blue="0.13159984429999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="二维码生成">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="generateCode:" destination="-1" eventType="touchUpInside" id="NAi-Qp-cBk"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qv4-KD-sEQ">
+                    <rect key="frame" x="34" y="47" width="533" height="30"/>
+                    <color key="backgroundColor" red="0.24409896019999999" green="0.56770833330000003" blue="0.13159984429999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Wzz-j5-puN"/>
+                    </constraints>
+                    <state key="normal" title="扫码">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="scanAction:" destination="-1" eventType="touchUpInside" id="lLb-z8-JIm"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="roS-QC-CbN">
+                    <rect key="frame" x="200" y="197" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="1qp-jE-1u2"/>
+                        <constraint firstAttribute="height" constant="200" id="P1z-XC-JsL"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="mYZ-AI-9Ua" firstAttribute="height" secondItem="Qv4-KD-sEQ" secondAttribute="height" id="9f1-Ny-B7H"/>
+                <constraint firstItem="Qv4-KD-sEQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="34" id="I3V-N0-zK8"/>
+                <constraint firstItem="6G6-Dl-fyl" firstAttribute="height" secondItem="Qv4-KD-sEQ" secondAttribute="height" id="Kzv-Zb-v8z"/>
+                <constraint firstItem="6G6-Dl-fyl" firstAttribute="width" secondItem="Qv4-KD-sEQ" secondAttribute="width" id="LWq-ls-sFj"/>
+                <constraint firstItem="mYZ-AI-9Ua" firstAttribute="top" secondItem="Qv4-KD-sEQ" secondAttribute="bottom" constant="20" id="Nrp-yH-exP"/>
+                <constraint firstItem="roS-QC-CbN" firstAttribute="top" secondItem="6G6-Dl-fyl" secondAttribute="bottom" constant="20" id="TDf-O0-a7w"/>
+                <constraint firstItem="Qv4-KD-sEQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="47" id="THC-1g-pNp"/>
+                <constraint firstAttribute="trailing" secondItem="Qv4-KD-sEQ" secondAttribute="trailing" constant="33" id="dAb-OZ-h0B"/>
+                <constraint firstItem="6G6-Dl-fyl" firstAttribute="top" secondItem="mYZ-AI-9Ua" secondAttribute="bottom" constant="20" id="vfB-qv-4R5"/>
+                <constraint firstItem="roS-QC-CbN" firstAttribute="centerX" secondItem="Qv4-KD-sEQ" secondAttribute="centerX" id="wSx-Xk-frE"/>
+                <constraint firstItem="mYZ-AI-9Ua" firstAttribute="centerX" secondItem="Qv4-KD-sEQ" secondAttribute="centerX" id="xEd-9D-mAR"/>
+                <constraint firstItem="mYZ-AI-9Ua" firstAttribute="width" secondItem="Qv4-KD-sEQ" secondAttribute="width" id="xdM-Eg-fSF"/>
+                <constraint firstItem="6G6-Dl-fyl" firstAttribute="centerX" secondItem="Qv4-KD-sEQ" secondAttribute="centerX" id="zef-H4-lmm"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

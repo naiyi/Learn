@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B53C4F01E28D6E400DAA376 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B53C4EF1E28D6E400DAA376 /* main.m */; };
+		1B53C4F31E28D6E400DAA376 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B53C4F21E28D6E400DAA376 /* AppDelegate.m */; };
+		1B53C4F61E28D6E400DAA376 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B53C4F51E28D6E400DAA376 /* ViewController.m */; };
+		1B53C4F91E28D6E400DAA376 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B53C4F71E28D6E400DAA376 /* Main.storyboard */; };
+		1B53C4FC1E28D6E400DAA376 /* ______.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B53C4FA1E28D6E400DAA376 /* ______.xcdatamodeld */; };
+		1B53C4FE1E28D6E400DAA376 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B53C4FD1E28D6E400DAA376 /* Assets.xcassets */; };
+		1B53C5011E28D6E400DAA376 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B53C4FF1E28D6E400DAA376 /* LaunchScreen.storyboard */; };
+		1B53C50C1E28D6E500DAA376 /* ______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B53C50B1E28D6E500DAA376 /* ______Tests.m */; };
+		1B53C5171E28D6E500DAA376 /* ______UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B53C5161E28D6E500DAA376 /* ______UITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1B53C5081E28D6E500DAA376 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B53C4E31E28D6E400DAA376 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B53C4EA1E28D6E400DAA376;
+			remoteInfo = "微信下拉拍照";
+		};
+		1B53C5131E28D6E500DAA376 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B53C4E31E28D6E400DAA376 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B53C4EA1E28D6E400DAA376;
+			remoteInfo = "微信下拉拍照";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1B53C4EB1E28D6E400DAA376 /* 微信下拉拍照.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "微信下拉拍照.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B53C4EF1E28D6E400DAA376 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1B53C4F11E28D6E400DAA376 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1B53C4F21E28D6E400DAA376 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1B53C4F41E28D6E400DAA376 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1B53C4F51E28D6E400DAA376 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1B53C4F81E28D6E400DAA376 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B53C4FB1E28D6E400DAA376 /* ______.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "______.xcdatamodel"; sourceTree = "<group>"; };
+		1B53C4FD1E28D6E400DAA376 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B53C5001E28D6E400DAA376 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1B53C5021E28D6E400DAA376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B53C5071E28D6E500DAA376 /* 微信下拉拍照Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "微信下拉拍照Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B53C50B1E28D6E500DAA376 /* ______Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "______Tests.m"; sourceTree = "<group>"; };
+		1B53C50D1E28D6E500DAA376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B53C5121E28D6E500DAA376 /* 微信下拉拍照UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "微信下拉拍照UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B53C5161E28D6E500DAA376 /* ______UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "______UITests.m"; sourceTree = "<group>"; };
+		1B53C5181E28D6E500DAA376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B53C4E81E28D6E400DAA376 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B53C5041E28D6E500DAA376 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B53C50F1E28D6E500DAA376 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B53C4E21E28D6E400DAA376 = {
+			isa = PBXGroup;
+			children = (
+				1B53C4ED1E28D6E400DAA376 /* 微信下拉拍照 */,
+				1B53C50A1E28D6E500DAA376 /* 微信下拉拍照Tests */,
+				1B53C5151E28D6E500DAA376 /* 微信下拉拍照UITests */,
+				1B53C4EC1E28D6E400DAA376 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B53C4EC1E28D6E400DAA376 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B53C4EB1E28D6E400DAA376 /* 微信下拉拍照.app */,
+				1B53C5071E28D6E500DAA376 /* 微信下拉拍照Tests.xctest */,
+				1B53C5121E28D6E500DAA376 /* 微信下拉拍照UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B53C4ED1E28D6E400DAA376 /* 微信下拉拍照 */ = {
+			isa = PBXGroup;
+			children = (
+				1B53C4F11E28D6E400DAA376 /* AppDelegate.h */,
+				1B53C4F21E28D6E400DAA376 /* AppDelegate.m */,
+				1B53C4F41E28D6E400DAA376 /* ViewController.h */,
+				1B53C4F51E28D6E400DAA376 /* ViewController.m */,
+				1B53C4F71E28D6E400DAA376 /* Main.storyboard */,
+				1B53C4FD1E28D6E400DAA376 /* Assets.xcassets */,
+				1B53C4FF1E28D6E400DAA376 /* LaunchScreen.storyboard */,
+				1B53C5021E28D6E400DAA376 /* Info.plist */,
+				1B53C4FA1E28D6E400DAA376 /* ______.xcdatamodeld */,
+				1B53C4EE1E28D6E400DAA376 /* Supporting Files */,
+			);
+			path = "微信下拉拍照";
+			sourceTree = "<group>";
+		};
+		1B53C4EE1E28D6E400DAA376 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B53C4EF1E28D6E400DAA376 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1B53C50A1E28D6E500DAA376 /* 微信下拉拍照Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1B53C50B1E28D6E500DAA376 /* ______Tests.m */,
+				1B53C50D1E28D6E500DAA376 /* Info.plist */,
+			);
+			path = "微信下拉拍照Tests";
+			sourceTree = "<group>";
+		};
+		1B53C5151E28D6E500DAA376 /* 微信下拉拍照UITests */ = {
+			isa = PBXGroup;
+			children = (
+				1B53C5161E28D6E500DAA376 /* ______UITests.m */,
+				1B53C5181E28D6E500DAA376 /* Info.plist */,
+			);
+			path = "微信下拉拍照UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B53C4EA1E28D6E400DAA376 /* 微信下拉拍照 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B53C51B1E28D6E500DAA376 /* Build configuration list for PBXNativeTarget "微信下拉拍照" */;
+			buildPhases = (
+				1B53C4E71E28D6E400DAA376 /* Sources */,
+				1B53C4E81E28D6E400DAA376 /* Frameworks */,
+				1B53C4E91E28D6E400DAA376 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "微信下拉拍照";
+			productName = "微信下拉拍照";
+			productReference = 1B53C4EB1E28D6E400DAA376 /* 微信下拉拍照.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1B53C5061E28D6E500DAA376 /* 微信下拉拍照Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B53C51E1E28D6E500DAA376 /* Build configuration list for PBXNativeTarget "微信下拉拍照Tests" */;
+			buildPhases = (
+				1B53C5031E28D6E500DAA376 /* Sources */,
+				1B53C5041E28D6E500DAA376 /* Frameworks */,
+				1B53C5051E28D6E500DAA376 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1B53C5091E28D6E500DAA376 /* PBXTargetDependency */,
+			);
+			name = "微信下拉拍照Tests";
+			productName = "微信下拉拍照Tests";
+			productReference = 1B53C5071E28D6E500DAA376 /* 微信下拉拍照Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1B53C5111E28D6E500DAA376 /* 微信下拉拍照UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B53C5211E28D6E500DAA376 /* Build configuration list for PBXNativeTarget "微信下拉拍照UITests" */;
+			buildPhases = (
+				1B53C50E1E28D6E500DAA376 /* Sources */,
+				1B53C50F1E28D6E500DAA376 /* Frameworks */,
+				1B53C5101E28D6E500DAA376 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1B53C5141E28D6E500DAA376 /* PBXTargetDependency */,
+			);
+			name = "微信下拉拍照UITests";
+			productName = "微信下拉拍照UITests";
+			productReference = 1B53C5121E28D6E500DAA376 /* 微信下拉拍照UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B53C4E31E28D6E400DAA376 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = yosemite;
+				TargetAttributes = {
+					1B53C4EA1E28D6E400DAA376 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+					};
+					1B53C5061E28D6E500DAA376 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1B53C4EA1E28D6E400DAA376;
+					};
+					1B53C5111E28D6E500DAA376 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JTLQTXD9SF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1B53C4EA1E28D6E400DAA376;
+					};
+				};
+			};
+			buildConfigurationList = 1B53C4E61E28D6E400DAA376 /* Build configuration list for PBXProject "微信下拉拍照" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B53C4E21E28D6E400DAA376;
+			productRefGroup = 1B53C4EC1E28D6E400DAA376 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B53C4EA1E28D6E400DAA376 /* 微信下拉拍照 */,
+				1B53C5061E28D6E500DAA376 /* 微信下拉拍照Tests */,
+				1B53C5111E28D6E500DAA376 /* 微信下拉拍照UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B53C4E91E28D6E400DAA376 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B53C5011E28D6E400DAA376 /* LaunchScreen.storyboard in Resources */,
+				1B53C4FE1E28D6E400DAA376 /* Assets.xcassets in Resources */,
+				1B53C4F91E28D6E400DAA376 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B53C5051E28D6E500DAA376 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B53C5101E28D6E500DAA376 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B53C4E71E28D6E400DAA376 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B53C4F61E28D6E400DAA376 /* ViewController.m in Sources */,
+				1B53C4FC1E28D6E400DAA376 /* ______.xcdatamodeld in Sources */,
+				1B53C4F31E28D6E400DAA376 /* AppDelegate.m in Sources */,
+				1B53C4F01E28D6E400DAA376 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B53C5031E28D6E500DAA376 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B53C50C1E28D6E500DAA376 /* ______Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B53C50E1E28D6E500DAA376 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B53C5171E28D6E500DAA376 /* ______UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1B53C5091E28D6E500DAA376 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B53C4EA1E28D6E400DAA376 /* 微信下拉拍照 */;
+			targetProxy = 1B53C5081E28D6E500DAA376 /* PBXContainerItemProxy */;
+		};
+		1B53C5141E28D6E500DAA376 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B53C4EA1E28D6E400DAA376 /* 微信下拉拍照 */;
+			targetProxy = 1B53C5131E28D6E500DAA376 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1B53C4F71E28D6E400DAA376 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B53C4F81E28D6E400DAA376 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1B53C4FF1E28D6E400DAA376 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B53C5001E28D6E400DAA376 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B53C5191E28D6E500DAA376 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1B53C51A1E28D6E500DAA376 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B53C51C1E28D6E500DAA376 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "微信下拉拍照/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1B53C51D1E28D6E500DAA376 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "微信下拉拍照/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1B53C51F1E28D6E500DAA376 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "微信下拉拍照Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/微信下拉拍照.app/微信下拉拍照";
+			};
+			name = Debug;
+		};
+		1B53C5201E28D6E500DAA376 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "微信下拉拍照Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/微信下拉拍照.app/微信下拉拍照";
+			};
+			name = Release;
+		};
+		1B53C5221E28D6E500DAA376 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "微信下拉拍照UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "微信下拉拍照";
+			};
+			name = Debug;
+		};
+		1B53C5231E28D6E500DAA376 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				INFOPLIST_FILE = "微信下拉拍照UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "inentifier.organization.------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "微信下拉拍照";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B53C4E61E28D6E400DAA376 /* Build configuration list for PBXProject "微信下拉拍照" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B53C5191E28D6E500DAA376 /* Debug */,
+				1B53C51A1E28D6E500DAA376 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B53C51B1E28D6E500DAA376 /* Build configuration list for PBXNativeTarget "微信下拉拍照" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B53C51C1E28D6E500DAA376 /* Debug */,
+				1B53C51D1E28D6E500DAA376 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1B53C51E1E28D6E500DAA376 /* Build configuration list for PBXNativeTarget "微信下拉拍照Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B53C51F1E28D6E500DAA376 /* Debug */,
+				1B53C5201E28D6E500DAA376 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1B53C5211E28D6E500DAA376 /* Build configuration list for PBXNativeTarget "微信下拉拍照UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B53C5221E28D6E500DAA376 /* Debug */,
+				1B53C5231E28D6E500DAA376 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1B53C4FA1E28D6E400DAA376 /* ______.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1B53C4FB1E28D6E400DAA376 /* ______.xcdatamodel */,
+			);
+			currentVersion = 1B53C4FB1E28D6E400DAA376 /* ______.xcdatamodel */;
+			path = "______.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1B53C4E31E28D6E400DAA376 /* Project object */;
+}

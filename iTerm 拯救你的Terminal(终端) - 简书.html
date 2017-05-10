@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/p/deb5c35ff141 -->
+<html><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<script type="text/javascript" src="./iTerm 拯救你的Terminal(终端) - 简书_files/1255494d3a"></script><script src="./iTerm 拯救你的Terminal(终端) - 简书_files/nr-1026.min.js"></script><script src="./iTerm 拯救你的Terminal(终端) - 简书_files/push.js"></script><script async="" src="./iTerm 拯救你的Terminal(终端) - 简书_files/analytics.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"1255494d3a","applicationID":"15702971","transactionName":"e1daR0JWVV9RER9ZWkxdRxxDUVZE","queueTime":0,"applicationTime":195,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="description" content="作为技术人没有一个好用的命令行工具是不能忍受的而Mac自带的Terminal稍弱问有没有一个好用的命令行工具可以替代Terminal？今天介绍的iTerm或许可以满足你的需求1,下载安装移步iTerm官网点击Download下载2,常用Preferences配置菜单进入Preferences-&amp;gt;ProfilesProfiles在左侧白色窗口中我们可以看到有一个Default默认选项这个...">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=http://www.jianshu.com/p/deb5c35ff141">
+
+  <!-- Apple -->
+  <meta name="apple-mobile-web-app-title" content="简书">
+
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/4026983">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content="iTerm 拯救你的Terminal(终端)" property="twitter:title">
+  <meta content="作为技术人没有一个好用的命令行工具是不能忍受的而Mac自带的Terminal稍弱问有没有一个好用的命令行工具可以替代Terminal？今天介绍的iTerm或许可以满足你的需求1,下载安装移步iTerm官网点击Download下载2,常用Preferences配置菜单进入Preferences-&amp;gt;ProfilesProfiles在左侧白色窗口中我们可以看到有一个Default默认选项这个代表iTerm默认窗口模板当然你也可以添加新的窗口模板点击下方+号按钮新建模板出现如下界面..." property="twitter:description">
+  <meta content="http://www.jianshu.com/p/deb5c35ff141" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content="iTerm 拯救你的Terminal(终端)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.jianshu.com/p/deb5c35ff141">
+  <meta property="og:description" content="作为技术人没有一个好用的命令行工具是不能忍受的而Mac自带的Terminal稍弱问有没有一个好用的命令行工具可以替代Terminal？今天介绍的iTerm或许可以满足你的需求1,下载安装移步iT...">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/4026983">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/4026983">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+
+    <title>iTerm 拯救你的Terminal(终端) - 简书</title>
+
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="a5AdbNL8k6orKkzcRK5yMAD8CdJ0BOQ8FlGjVsn3YdwfWYjSoelA8nPonQ1DCawn9bNlezD5OqSW+IoAua5QkQ==">
+
+  <link rel="stylesheet" media="all" href="./iTerm 拯救你的Terminal(终端) - 简书_files/web-885d7fd7ff4f7bc4f6e0.css">
+  
+  <link rel="stylesheet" media="all" href="./iTerm 拯救你的Terminal(终端) - 简书_files/entry-885d7fd7ff4f7bc4f6e0.css">
+
+  <link href="http://cdn-qn0.jianshu.io/assets/favicons/favicon-ea87c042cbed82f63ec4cb18d1e1bc8b.ico" rel="icon">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/57-ce5a88a3e30a8f1f353e7b7e08710b47.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/72-d8f7a49ed070ff78bc7657785924d097.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/76-be915e70264c65090f03afff88e0f50c.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/114-fa410f47eef755b2aa43b94d63357102.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/120-50638ce65b8729b7761a4e68fe25724f.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/152-13b452db96e234a630d6d7bcbedbcd22.png" sizes="152x152">
+</head>
+
+  <body lang="zh-CN" class="reader-black-font">
+    <!-- 全局顶部导航栏 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="width-limit">
+    <!-- 左上方 Logo -->
+    <a class="logo" href="http://www.jianshu.com/"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/logo-58fd04f6f0de908401aa561cda6a0688.png" alt="Logo"></a>
+
+    <!-- 右上角 -->
+      <!-- 未登录显示登录/注册/写文章 -->
+      <a class="btn write-btn" target="_blank" href="http://www.jianshu.com/writer#/">
+        <i class="iconfont ic-write"></i>写文章
+</a>      <a class="btn sign-up" href="http://www.jianshu.com/sign_up">注册</a>
+      <a class="btn log-in" href="http://www.jianshu.com/sign_in">登录</a>
+
+    <!-- 如果用户登录，显示下拉菜单 -->
+
+    <div class="style-mode"><a class="style-mode-btn"><i class="iconfont ic-navigation-mode"></i></a> <div class="popover-modal" style="left: 0px; display: none;"><div class="meta"><i class="iconfont ic-navigation-night"></i><span>夜间模式</span></div> <div class="switch day-night-group"><a class="switch-btn">开</a> <a class="switch-btn active">关</a></div> <hr> <div class="switch font-family-group"><a class="switch-btn font-song">宋体</a> <a class="switch-btn font-hei active">黑体</a></div> <div class="switch"><a class="switch-btn active">简</a> <a class="switch-btn">繁</a></div></div></div>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav">
+            <li class="">
+              <a href="http://www.jianshu.com/">
+                <span class="menu-text">首页</span><i class="iconfont ic-navigation-discover menu-icon"></i>
+</a>            </li>
+            <li class="">
+              <a class="app-download-btn" href="http://www.jianshu.com/apps"><span class="menu-text">下载App</span><i class="iconfont ic-navigation-download menu-icon"></i></a>
+            </li>
+          <li class="search">
+            <form target="_blank" action="http://www.jianshu.com/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+              <input type="text" name="q" id="q" value="" placeholder="搜索" class="search-input">
+              <a class="search-btn" href="javascript:void(null)"><i class="iconfont ic-search"></i></a>
+              <!-- <div id="navbar-trending-search"></div> -->
+</form>          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+<div class="note">
+  <div class="post">
+    <div class="article">
+        <h1 class="title">iTerm 拯救你的Terminal(终端)</h1>
+
+        <!-- 作者区域 -->
+        <div class="author">
+          <a class="avatar" href="http://www.jianshu.com/u/c681b0bd8539">
+            <img src="./iTerm 拯救你的Terminal(终端) - 简书_files/233e4c4d7386.png" alt="144">
+</a>          <div class="info">
+            <span class="tag">作者</span>
+            <span class="name"><a href="http://www.jianshu.com/u/c681b0bd8539">sprint</a></span>
+            <!-- 关注用户按钮 -->
+            <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+            <!-- 文章数据信息 -->
+            <div class="meta">
+              <!-- 如果文章更新时间大于发布时间，那么使用 tooltip 显示更新时间 -->
+                <span class="publish-time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="最后编辑于 2016.05.20 14:21">2016.05.19 15:06*</span>
+              <span class="wordage">字数 1069</span>
+            <span class="views-count">阅读 1714</span><span class="comments-count">评论 4</span><span class="likes-count">喜欢 20</span></div>
+          </div>
+          <!-- 如果是当前作者，加入编辑按钮 -->
+        </div>
+        <!-- -->
+
+        <!-- 文章内容 -->
+        <div class="show-content">
+          <p>作为技术人 没有一个好用的命令行工具 是不能忍受的<br>而Mac自带的Terminal稍弱 问 有没有一个好用的命令行工具可以替代Terminal？<br>今天介绍的iTerm 或许可以满足你的需求</p>
+<h3>1, 下载安装</h3>
+<p>移步 <a href="http://www.iterm2.com/" target="_blank">iTerm官网</a> 点击 Download下载</p>
+<h3>2, 常用Preferences配置</h3>
+<p>菜单进入<strong>Preferences</strong> -&gt;<strong>Profiles</strong></p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-b509c58ba0f63cc9.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-b509c58ba0f63cc9.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">Profiles</div>
+</div>
+<p>在左侧白色窗口中 我们可以看到有一个Default默认选项<br>这个代表 iTerm默认窗口模板<br>当然你也可以添加新的窗口模板</p>
+<p>点击下方 + 号按钮新建模板 出现如下界面</p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-08a2931b4e6cab97.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-08a2931b4e6cab97.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">New Profile</div>
+</div>
+<p><strong>Name</strong>:模板名称 这里我们叫它Red 因为我们将要设置它为红色背景<br><strong>Shortcut key</strong>:打开此窗口的快捷键 可以看到<strong>control+command</strong>是固定前缀 选择你要设置的完整快捷键<br>在这里我们选择R<br><strong>Tags</strong>(标签): Tags将会作为搜索条件 （快速查找)</p>
+<p>搜索效果<br></p><div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-609fd1109f469c4f.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-609fd1109f469c4f.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">搜索Red</div>
+</div>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-cb084148ccfe00d3.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-cb084148ccfe00d3.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">Red</div>
+</div>
+<p>然后我们切换到 <strong>Colors</strong> 选项</p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-55738994d398750c.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-55738994d398750c.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">Red Colors</div>
+</div>
+<p><strong>Foreground</strong>：前景色 设置文字字体 这里我们设置为白色<br><strong>Background</strong>：设置窗口背景 这里我们设置为红色<br>其他选项不在一一介绍 设置完成后 关闭<strong>Preferences</strong><br>按下快捷键<strong>control+command+R </strong></p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-f6bb8d26ee50c571.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-f6bb8d26ee50c571.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">Red</div>
+</div>
+<p>可以看到我们打开了Red主题窗口</p>
+<h3>3, Hotkey Window (快速调出窗口)</h3>
+<p>实际使用时我们经常会遇到这种场景  有时候 只是执行几行命令 然后就不再使用它   可是我们还是必须要打开Terminal  然后使用后关闭它  在这种情况下借住iTerm的<strong>Hotkey Window </strong>功能我们将会得到前所未有的体验</p>
+<p>Hotkey Window支持一键调出iTerm 它将以半透明的形式 覆盖在屏幕上方 如下图</p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-defc5ec597ea2962.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-defc5ec597ea2962.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">Hotkey Window</div>
+</div>
+<p>使用Hotkey Window功能 需要我们做点工作 那就是启用Hotkey Window并设置调出快捷键</p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-320692cb0c54176c.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-320692cb0c54176c.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">开启Hotkey Window</div>
+</div>
+<p>如上图 菜单选择<strong>Preferences</strong> -&gt; <strong>Keys</strong> -&gt; 选中下方两个复选框<br>并在Hotkey处设置快捷键 这里我们设置为<strong>command+/</strong><br>关闭该窗口 按下<strong>command+/</strong>快捷键试试</p>
+<p>当我们再次回到<strong>Preferences</strong>-&gt;<strong>Profiles</strong>时 你将看到<br>如下界面 新增了一个Hotkey Window主题</p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-0f616cd8ff1e7c7c.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-0f616cd8ff1e7c7c.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">新增了一个Hotkey Window主题</div>
+</div>
+<p>当然我们也可以按照Red主题的方设置法 为Hotkey Window设置样式 这里不再赘述</p>
+<h3>4, 剪贴板历史记录</h3>
+<p>iTerm允许我们快速查看剪贴板内容 只需要按下快捷键<br><strong>Command + Shift + H </strong>如图所示</p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-66b5823982637dd4.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-66b5823982637dd4.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">剪贴板</div>
+</div>
+<h3>5, 时间轴（命令快照）</h3>
+<p>如果你查看某一段时间执行的操作  可以使用时间轴功能<br>按下快捷键 <strong>Command + Option + B</strong></p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-98759399cfec00d0.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-98759399cfec00d0.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">时间轴</div>
+</div>
+<h3>6,快速选择</h3>
+<p>使用命令行的优势是 可以脱离鼠标操作 专注事情本身<br>但是当我们想要选择一段文本时 Terminal必须借助鼠标才能完成（难道是我不知道？） 而iTerm要做的只是按下Tab键即可完成<br>比如我们需要选择FarBar文本<br>按下<strong>Command+F</strong> 输入Far 按下<strong>Tab</strong>键 自动进入剪贴板中<br>在合适的位置按下<strong>Command+V</strong>就可以粘贴内容</p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-4f5c0b4aab0c0943.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-4f5c0b4aab0c0943.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">快速选择</div>
+</div>
+<h3>7,快速预览所有标签页</h3>
+<p>如果你打开了很多标签页 想要快速查找某个标签<br>按下Command + Option + E键  iTerm将会为你展示所有标签页<br>有没有很熟悉这个效果？？？</p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-0ad9f685ed817bdc.png" data-original-src="http://upload-images.jianshu.io/upload_images/574653-0ad9f685ed817bdc.png?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">快速预览所有标签页</div>
+</div>
+<p>下面的命令 我们不再详细介绍</p>
+<p><strong>Command+T</strong> 新建标签页<br><strong>Command+W </strong>关闭标签页<br><strong>Command+左右方向键</strong> 切换显示标签页<br><strong>Command+shift+左右方向键</strong> 移动当前选中的标签页位置<br><strong>Command+上下方向键 </strong>上下滚动内容<br><strong>Command+数字(Number)</strong> 切换显示指定位置的标签页<br><strong>Command+alt+数字(Number) </strong>切换指定位置的窗口<br><strong>Command+, </strong>打开Perferences窗口<br><strong>Command + Shift + M</strong> 标记命令<br><strong>Command + Shift + J</strong> 回到标记处 结合上个快捷键使用</p>
+<p>以上命令感兴趣的 可以实际操作感受下<br>你准备好使用iTerm了吗？</p>
+<p>欢迎关注个人公众号：DevTipss</p>
+<div class="image-package">
+<img src="./iTerm 拯救你的Terminal(终端) - 简书_files/574653-30d23df8b18bcf83.jpg" data-original-src="http://upload-images.jianshu.io/upload_images/574653-30d23df8b18bcf83.jpg?imageMogr2/auto-orient/strip%7CimageView2/2" style="cursor: zoom-in;"><br><div class="image-caption">DevTipss</div>
+</div>
+
+        </div>
+        <!--  -->
+
+        <div class="show-foot">
+          <a class="notebook" href="http://www.jianshu.com/nb/1850818">
+            <i class="iconfont ic-search-notebook"></i> <span>IOS</span>
+</a>          <div class="copyright" data-toggle="tooltip" data-html="true" data-original-title="转载请联系作者获得授权，并标注“简书作者”。">
+            © 著作权归作者所有
+          </div>
+          <div class="modal-wrap" data-report-note="">
+            <a id="report-modal">举报文章</a>
+          </div>
+        </div>
+    </div>
+
+    <!-- 文章底部作者信息 -->
+      <div class="follow-detail">
+        <div class="info">
+          <a class="avatar" href="http://www.jianshu.com/u/c681b0bd8539">
+            <img src="./iTerm 拯救你的Terminal(终端) - 简书_files/233e4c4d7386.png" alt="144">
+</a>          <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+          <a class="title" href="http://www.jianshu.com/u/c681b0bd8539">sprint</a>
+        <p>写了 22846 字，被 477 人关注，获得了 366 个喜欢</p></div>
+          <div class="signature">
+            <span>欢迎关注微信公众号:DevTipss 
+iOS Android HTML5开发者
+</span>
+          </div>
+      </div>
+
+      <div class="support-author"><p>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p> <div class="btn btn-pay">赞赏支持</div> <!----> <!----> <!----></div>
+
+    <div class="meta-bottom">
+      <div class="like"><div class="btn like-group"><div class="btn-like"><a href="http://www.jianshu.com/sign_in"><i class="iconfont ic-like"></i>喜欢</a></div> <div class="modal-wrap"><a>20</a></div></div> <!----></div>
+      <div class="share-group">
+        <a class="share-circle" data-action="weixin-share" data-toggle="tooltip" data-original-title="分享到微信">
+          <i class="iconfont ic-wechat"></i>
+        </a>
+        <a class="share-circle" data-toggle="tooltip" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/4026983/weibo/image_76bff2701f33.jpg&#39;, &#39;推荐 @sprint-v 的文章《iTerm 拯救你的Terminal(终端)》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));" data-original-title="分享到微博">
+          <i class="iconfont ic-weibo"></i>
+        </a>
+          <a class="share-circle" data-toggle="tooltip" href="http://cwb.assets.jianshu.io/notes/images/4026983/weibo/image_76bff2701f33.jpg" target="_blank" data-original-title="下载长微博图片">
+            <i class="iconfont ic-picture"></i>
+          </a>
+        <a class="share-circle more-share" tabindex="0" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="
+          &lt;ul class=&quot;share-list&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 sprint 的文章《iTerm 拯救你的Terminal(终端)》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-zone&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 sprint 的文章《iTerm 拯救你的Terminal(终端)》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-twitter&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-facebook&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-google&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;iTerm 拯救你的Terminal(终端)&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-douban&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        " data-original-title="" title="">更多分享</a>
+      </div>
+    </div>
+    <div><div id="comment-list" class="comment-list"><div><form class="new-comment"><a class="avatar"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/avatar_default-78d4d1f68984cd6d4379508dd94b4210.png"></a> <div class="sign-container"><a href="http://www.jianshu.com/sign_in" class="btn btn-sign">登录</a> <span>后发表评论</span></div></form></div> <div id="normal-comment-list" class="normal-comment-list"><div><div><div class="top"><span>4条评论</span> <a class="author-only">只看作者</a> <a class="close-btn" style="display: none;">关闭评论</a> <div class="pull-right"><a class="active">按喜欢排序</a><a class="">按时间正序</a><a class="">按时间倒序</a></div></div></div> <!----> <!----> <div id="comment-2451198" class="comment"><div><div class="author"><a href="http://www.jianshu.com/u/62ff212c2a5d" target="_blank" class="avatar"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/7-0993d41a595d6ab6ef17b19496eb2f21.jpg"></a> <div class="info"><a href="http://www.jianshu.com/u/62ff212c2a5d" target="_blank" class="name">Terry明</a> <!----> <div class="meta"><span>2楼 · 2016.05.19 15:44</span></div></div></div> <div class="comment-wrap"><p>阿拉最吊！！！</p> <div class="tool-group"><a><i class="iconfont ic-zan"></i> <span>赞</span></a> <a><i class="iconfont ic-comment"></i> <span>回复</span></a> <!----> <!----></div></div></div> <div class="sub-comment-list hide"><!----> <!----></div></div><div id="comment-2451203" class="comment"><div><div class="author"><a href="http://www.jianshu.com/u/62ff212c2a5d" target="_blank" class="avatar"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/7-0993d41a595d6ab6ef17b19496eb2f21.jpg"></a> <div class="info"><a href="http://www.jianshu.com/u/62ff212c2a5d" target="_blank" class="name">Terry明</a> <!----> <div class="meta"><span>3楼 · 2016.05.19 15:45</span></div></div></div> <div class="comment-wrap"><p>阿拉最厉害</p> <div class="tool-group"><a><i class="iconfont ic-zan"></i> <span>赞</span></a> <a><i class="iconfont ic-comment"></i> <span>回复</span></a> <!----> <!----></div></div></div> <div class="sub-comment-list hide"><!----> <!----></div></div><div id="comment-2559891" class="comment"><div><div class="author"><a href="http://www.jianshu.com/u/f221deffdd5b" target="_blank" class="avatar"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/42b60c800f87.png"></a> <div class="info"><a href="http://www.jianshu.com/u/f221deffdd5b" target="_blank" class="name">饶曉文</a> <!----> <div class="meta"><span>4楼 · 2016.05.28 16:48</span></div></div></div> <div class="comment-wrap"><p>vim tmux zsh 足以</p> <div class="tool-group"><a><i class="iconfont ic-zan"></i> <span>赞</span></a> <a><i class="iconfont ic-comment"></i> <span>回复</span></a> <!----> <!----></div></div></div> <div class="sub-comment-list hide"><!----> <!----></div></div><div id="comment-2819268" class="comment"><div><div class="author"><a href="http://www.jianshu.com/u/afe9a4ed964f" target="_blank" class="avatar"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/12-aeeea4bedf10f2a12c0d50d626951489.jpg"></a> <div class="info"><a href="http://www.jianshu.com/u/afe9a4ed964f" target="_blank" class="name">Num116</a> <!----> <div class="meta"><span>5楼 · 2016.06.20 10:19</span></div></div></div> <div class="comment-wrap"><p>感谢楼主整理，Nice</p> <div class="tool-group"><a><i class="iconfont ic-zan"></i> <span>赞</span></a> <a><i class="iconfont ic-comment"></i> <span>回复</span></a> <!----> <!----></div></div></div> <div class="sub-comment-list hide"><!----> <!----></div></div> <div class="comments-placeholder" style="display: none;"><div class="author"><div class="avatar"></div> <div class="info"><div class="name"></div> <div class="meta"></div></div></div> <div class="text"></div> <div class="text animation-delay"></div> <div class="tool-group"><i class="iconfont ic-zan-active"></i><div class="zan"></div> <i class="iconfont ic-list-comments"></i><div class="zan"></div></div></div></div></div> <!----> <!----></div></div>
+  </div>
+
+  <div class="side-tool"><ul><li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="回到顶部" style="display: none;"><a href="http://www.jianshu.com/p/deb5c35ff141#" class="function-button"><i class="iconfont ic-backtop"></i></a></li> <!----> <!----> <li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="分享文章"><a tabindex="0" role="button" data-toggle="popover" data-placement="left" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="&lt;ul class=&#39;share-list&#39;&gt;
+                &lt;li&gt;&lt;a class=&quot;weixin-share&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-weixin&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到微信&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/4026983/weibo/image_76bff2701f33.jpg&#39;, &#39;推荐 @sprint-v 的文章《iTerm 拯救你的Terminal(终端)》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-weibo&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到微博&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://cwb.assets.jianshu.io/notes/images/4026983/weibo/image_76bff2701f33.jpg&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-picture&quot;&gt;&lt;/i&gt;&lt;span&gt;下载长微博图片&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 sprint 的文章《iTerm 拯救你的Terminal(终端)》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-zone&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 sprint 的文章《iTerm 拯救你的Terminal(终端)》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-twitter&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-facebook&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-google&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/deb5c35ff141?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;iTerm 拯救你的Terminal(终端)&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-douban&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;" data-original-title="" title="" class="function-button"><i class="iconfont ic-share"></i></a> <!----></li></ul></div>
+</div>
+<div class="note-bottom"><div class="main"><div class="title">被以下专题收入，发现更多相似内容</div> <!----> <div class="include-collection"><!----> <a href="http://www.jianshu.com/c/6d3cb0ab438f?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/267f9e2f0708283856a627f7ba99a9014d08f1ae.png"><div class="name">Swift开发实战</div></a><a href="http://www.jianshu.com/c/817d077ac2ab?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/Oval_1___WEB开发实战.png"><div class="name">WEB开发实战</div></a><a href="http://www.jianshu.com/c/3233d1a249ca?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/162902612251cbd95971b82.png"><div class="name">iOS Dev...</div></a><a href="http://www.jianshu.com/c/a6da567d3276?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/1429240158.jpg"><div class="name">iOS学习开发</div></a><a href="http://www.jianshu.com/c/73522dd264a7?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/1433558247.jpg"><div class="name">mac</div></a><a href="http://www.jianshu.com/c/072d578bf782?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/1461141850.jpg"><div class="name">iOS开发</div></a><a href="http://www.jianshu.com/c/38ca359b97c0?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/20160318114220_632.jpg"><div class="name">程序员如何优雅...</div></a><a href="http://www.jianshu.com/c/b4aee7772dad?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/4.png"><div class="name">Mac优雅使用指南</div></a><a href="http://www.jianshu.com/c/0700e326c6fb?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/1478445772.jpg"><div class="name">利器集合</div></a><a href="http://www.jianshu.com/c/152889fde467?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iTerm 拯救你的Terminal(终端) - 简书_files/1481273839.jpg"><div class="name">iOS开发</div></a></div> <!----></div> <!----> <!----></div>
+
+    <script type="application/json" data-name="page-data">{"user_signed_in":false,"locale":"zh-CN","os":"mac","read_mode":"day","read_font":"font2","note_show":{"is_author":false,"is_following_author":false,"is_liked_note":false,"uuid":"5b41ece3-aaa5-4926-9aa9-7a8e9cc60487"},"note":{"id":4026983,"slug":"deb5c35ff141","user_id":574653,"notebook_id":1850818,"commentable":true,"likes_count":20,"views_count":1714,"public_wordage":1069,"comments_count":4,"author":{"total_wordage":22846,"followers_count":477,"total_likes_count":366}}}</script>
+    
+    <script src="./iTerm 拯救你的Terminal(终端) - 简书_files/babel-polyfill-885d7fd7ff4f7bc4f6e0.js"></script>
+    <script src="./iTerm 拯救你的Terminal(终端) - 简书_files/web-base-885d7fd7ff4f7bc4f6e0.js"></script>
+<script src="./iTerm 拯救你的Terminal(终端) - 简书_files/web-885d7fd7ff4f7bc4f6e0.js"></script>
+    
+    <script src="./iTerm 拯救你的Terminal(终端) - 简书_files/entry-885d7fd7ff4f7bc4f6e0.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35169517-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<div style="display:none">
+  <script src="./iTerm 拯救你的Terminal(终端) - 简书_files/z_stat.php" language="JavaScript"></script><script src="./iTerm 拯救你的Terminal(终端) - 简书_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1258679142" target="_blank" title="站长统计">站长统计</a>
+</div>
+
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+  
+
+<!----><!----></body></html>

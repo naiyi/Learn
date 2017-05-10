@@ -1,0 +1,6 @@
+platform :ios, '9.0'
+target 'Wi-Fi实时监测网络状态' do
+pod 'AFNetworking'
+pod 'Reachability'
+pod 'RealReachability'
+end

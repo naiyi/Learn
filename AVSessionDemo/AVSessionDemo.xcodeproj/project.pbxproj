@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		177BDE071830A74800B609E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177BDE061830A74800B609E3 /* UIKit.framework */; };
+		177BDE091830A74800B609E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177BDE081830A74800B609E3 /* Foundation.framework */; };
+		177BDE0B1830A74800B609E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177BDE0A1830A74800B609E3 /* CoreGraphics.framework */; };
+		177BDE111830A74900B609E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE0F1830A74900B609E3 /* InfoPlist.strings */; };
+		177BDE131830A74900B609E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 177BDE121830A74900B609E3 /* main.m */; };
+		177BDE171830A74900B609E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 177BDE161830A74900B609E3 /* AppDelegate.m */; };
+		177BDE191830A74900B609E3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE181830A74900B609E3 /* Default.png */; };
+		177BDE1B1830A74900B609E3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE1A1830A74900B609E3 /* Default@2x.png */; };
+		177BDE1D1830A74900B609E3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE1C1830A74900B609E3 /* Default-568h@2x.png */; };
+		177BDE201830A74900B609E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 177BDE1F1830A74900B609E3 /* ViewController.m */; };
+		177BDE231830A74900B609E3 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE211830A74900B609E3 /* ViewController.xib */; };
+		177BDE331830A77B00B609E3 /* RecordingBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE2A1830A77B00B609E3 /* RecordingBkg.png */; };
+		177BDE341830A77B00B609E3 /* RecordingSignal001.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE2B1830A77B00B609E3 /* RecordingSignal001.png */; };
+		177BDE351830A77B00B609E3 /* RecordingSignal002.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE2C1830A77B00B609E3 /* RecordingSignal002.png */; };
+		177BDE361830A77B00B609E3 /* RecordingSignal003.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE2D1830A77B00B609E3 /* RecordingSignal003.png */; };
+		177BDE371830A77B00B609E3 /* RecordingSignal004.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE2E1830A77B00B609E3 /* RecordingSignal004.png */; };
+		177BDE381830A77B00B609E3 /* RecordingSignal005.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE2F1830A77B00B609E3 /* RecordingSignal005.png */; };
+		177BDE391830A77B00B609E3 /* RecordingSignal006.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE301830A77B00B609E3 /* RecordingSignal006.png */; };
+		177BDE3A1830A77B00B609E3 /* RecordingSignal007.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE311830A77B00B609E3 /* RecordingSignal007.png */; };
+		177BDE3B1830A77B00B609E3 /* RecordingSignal008.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE321830A77B00B609E3 /* RecordingSignal008.png */; };
+		177BDE441830A78800B609E3 /* RecordingSignal001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE3C1830A78800B609E3 /* RecordingSignal001@2x.png */; };
+		177BDE451830A78800B609E3 /* RecordingSignal002@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE3D1830A78800B609E3 /* RecordingSignal002@2x.png */; };
+		177BDE461830A78800B609E3 /* RecordingSignal003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE3E1830A78800B609E3 /* RecordingSignal003@2x.png */; };
+		177BDE471830A78800B609E3 /* RecordingSignal004@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE3F1830A78800B609E3 /* RecordingSignal004@2x.png */; };
+		177BDE481830A78800B609E3 /* RecordingSignal005@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE401830A78800B609E3 /* RecordingSignal005@2x.png */; };
+		177BDE491830A78800B609E3 /* RecordingSignal006@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE411830A78800B609E3 /* RecordingSignal006@2x.png */; };
+		177BDE4A1830A78800B609E3 /* RecordingSignal007@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE421830A78800B609E3 /* RecordingSignal007@2x.png */; };
+		177BDE4B1830A78800B609E3 /* RecordingSignal008@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE431830A78800B609E3 /* RecordingSignal008@2x.png */; };
+		177BDE4D1830A79200B609E3 /* RecordingBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177BDE4C1830A79200B609E3 /* RecordingBkg@2x.png */; };
+		177BDE4F1830AD3700B609E3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177BDE4E1830AD3700B609E3 /* AVFoundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		177BDE031830A74800B609E3 /* AVSessionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVSessionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		177BDE061830A74800B609E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		177BDE081830A74800B609E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		177BDE0A1830A74800B609E3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		177BDE0E1830A74900B609E3 /* AVSessionDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AVSessionDemo-Info.plist"; sourceTree = "<group>"; };
+		177BDE101830A74900B609E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		177BDE121830A74900B609E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		177BDE141830A74900B609E3 /* AVSessionDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVSessionDemo-Prefix.pch"; sourceTree = "<group>"; };
+		177BDE151830A74900B609E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		177BDE161830A74900B609E3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		177BDE181830A74900B609E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		177BDE1A1830A74900B609E3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		177BDE1C1830A74900B609E3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		177BDE1E1830A74900B609E3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		177BDE1F1830A74900B609E3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		177BDE221830A74900B609E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		177BDE2A1830A77B00B609E3 /* RecordingBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordingBkg.png; sourceTree = "<group>"; };
+		177BDE2B1830A77B00B609E3 /* RecordingSignal001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordingSignal001.png; sourceTree = "<group>"; };
+		177BDE2C1830A77B00B609E3 /* RecordingSignal002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordingSignal002.png; sourceTree = "<group>"; };
+		177BDE2D1830A77B00B609E3 /* RecordingSignal003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordingSignal003.png; sourceTree = "<group>"; };
+		177BDE2E1830A77B00B609E3 /* RecordingSignal004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordingSignal004.png; sourceTree = "<group>"; };
+		177BDE2F1830A77B00B609E3 /* RecordingSignal005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordingSignal005.png; sourceTree = "<group>"; };
+		177BDE301830A77B00B609E3 /* RecordingSignal006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordingSignal006.png; sourceTree = "<group>"; };
+		177BDE311830A77B00B609E3 /* RecordingSignal007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordingSignal007.png; sourceTree = "<group>"; };
+		177BDE321830A77B00B609E3 /* RecordingSignal008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordingSignal008.png; sourceTree = "<group>"; };
+		177BDE3C1830A78800B609E3 /* RecordingSignal001@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordingSignal001@2x.png"; sourceTree = "<group>"; };
+		177BDE3D1830A78800B609E3 /* RecordingSignal002@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordingSignal002@2x.png"; sourceTree = "<group>"; };
+		177BDE3E1830A78800B609E3 /* RecordingSignal003@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordingSignal003@2x.png"; sourceTree = "<group>"; };
+		177BDE3F1830A78800B609E3 /* RecordingSignal004@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordingSignal004@2x.png"; sourceTree = "<group>"; };
+		177BDE401830A78800B609E3 /* RecordingSignal005@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordingSignal005@2x.png"; sourceTree = "<group>"; };
+		177BDE411830A78800B609E3 /* RecordingSignal006@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordingSignal006@2x.png"; sourceTree = "<group>"; };
+		177BDE421830A78800B609E3 /* RecordingSignal007@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordingSignal007@2x.png"; sourceTree = "<group>"; };
+		177BDE431830A78800B609E3 /* RecordingSignal008@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordingSignal008@2x.png"; sourceTree = "<group>"; };
+		177BDE4C1830A79200B609E3 /* RecordingBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordingBkg@2x.png"; sourceTree = "<group>"; };
+		177BDE4E1830AD3700B609E3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		177BDE001830A74800B609E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				177BDE4F1830AD3700B609E3 /* AVFoundation.framework in Frameworks */,
+				177BDE071830A74800B609E3 /* UIKit.framework in Frameworks */,
+				177BDE091830A74800B609E3 /* Foundation.framework in Frameworks */,
+				177BDE0B1830A74800B609E3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		177BDDFA1830A74800B609E3 = {
+			isa = PBXGroup;
+			children = (
+				177BDE4E1830AD3700B609E3 /* AVFoundation.framework */,
+				177BDE0C1830A74800B609E3 /* AVSessionDemo */,
+				177BDE051830A74800B609E3 /* Frameworks */,
+				177BDE041830A74800B609E3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		177BDE041830A74800B609E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				177BDE031830A74800B609E3 /* AVSessionDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		177BDE051830A74800B609E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				177BDE061830A74800B609E3 /* UIKit.framework */,
+				177BDE081830A74800B609E3 /* Foundation.framework */,
+				177BDE0A1830A74800B609E3 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		177BDE0C1830A74800B609E3 /* AVSessionDemo */ = {
+			isa = PBXGroup;
+			children = (
+				177BDE291830A75F00B609E3 /* images */,
+				177BDE151830A74900B609E3 /* AppDelegate.h */,
+				177BDE161830A74900B609E3 /* AppDelegate.m */,
+				177BDE1E1830A74900B609E3 /* ViewController.h */,
+				177BDE1F1830A74900B609E3 /* ViewController.m */,
+				177BDE211830A74900B609E3 /* ViewController.xib */,
+				177BDE0D1830A74800B609E3 /* Supporting Files */,
+			);
+			path = AVSessionDemo;
+			sourceTree = "<group>";
+		};
+		177BDE0D1830A74800B609E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				177BDE0E1830A74900B609E3 /* AVSessionDemo-Info.plist */,
+				177BDE0F1830A74900B609E3 /* InfoPlist.strings */,
+				177BDE121830A74900B609E3 /* main.m */,
+				177BDE141830A74900B609E3 /* AVSessionDemo-Prefix.pch */,
+				177BDE181830A74900B609E3 /* Default.png */,
+				177BDE1A1830A74900B609E3 /* Default@2x.png */,
+				177BDE1C1830A74900B609E3 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		177BDE291830A75F00B609E3 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				177BDE2A1830A77B00B609E3 /* RecordingBkg.png */,
+				177BDE2B1830A77B00B609E3 /* RecordingSignal001.png */,
+				177BDE2C1830A77B00B609E3 /* RecordingSignal002.png */,
+				177BDE2D1830A77B00B609E3 /* RecordingSignal003.png */,
+				177BDE2E1830A77B00B609E3 /* RecordingSignal004.png */,
+				177BDE2F1830A77B00B609E3 /* RecordingSignal005.png */,
+				177BDE301830A77B00B609E3 /* RecordingSignal006.png */,
+				177BDE311830A77B00B609E3 /* RecordingSignal007.png */,
+				177BDE321830A77B00B609E3 /* RecordingSignal008.png */,
+				177BDE4C1830A79200B609E3 /* RecordingBkg@2x.png */,
+				177BDE3C1830A78800B609E3 /* RecordingSignal001@2x.png */,
+				177BDE3D1830A78800B609E3 /* RecordingSignal002@2x.png */,
+				177BDE3E1830A78800B609E3 /* RecordingSignal003@2x.png */,
+				177BDE3F1830A78800B609E3 /* RecordingSignal004@2x.png */,
+				177BDE401830A78800B609E3 /* RecordingSignal005@2x.png */,
+				177BDE411830A78800B609E3 /* RecordingSignal006@2x.png */,
+				177BDE421830A78800B609E3 /* RecordingSignal007@2x.png */,
+				177BDE431830A78800B609E3 /* RecordingSignal008@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		177BDE021830A74800B609E3 /* AVSessionDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 177BDE261830A74900B609E3 /* Build configuration list for PBXNativeTarget "AVSessionDemo" */;
+			buildPhases = (
+				177BDDFF1830A74800B609E3 /* Sources */,
+				177BDE001830A74800B609E3 /* Frameworks */,
+				177BDE011830A74800B609E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AVSessionDemo;
+			productName = AVSessionDemo;
+			productReference = 177BDE031830A74800B609E3 /* AVSessionDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		177BDDFB1830A74800B609E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "任海丽";
+				TargetAttributes = {
+					177BDE021830A74800B609E3 = {
+						DevelopmentTeam = JTLQTXD9SF;
+					};
+				};
+			};
+			buildConfigurationList = 177BDDFE1830A74800B609E3 /* Build configuration list for PBXProject "AVSessionDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 177BDDFA1830A74800B609E3;
+			productRefGroup = 177BDE041830A74800B609E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				177BDE021830A74800B609E3 /* AVSessionDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		177BDE011830A74800B609E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				177BDE111830A74900B609E3 /* InfoPlist.strings in Resources */,
+				177BDE191830A74900B609E3 /* Default.png in Resources */,
+				177BDE1B1830A74900B609E3 /* Default@2x.png in Resources */,
+				177BDE1D1830A74900B609E3 /* Default-568h@2x.png in Resources */,
+				177BDE231830A74900B609E3 /* ViewController.xib in Resources */,
+				177BDE331830A77B00B609E3 /* RecordingBkg.png in Resources */,
+				177BDE341830A77B00B609E3 /* RecordingSignal001.png in Resources */,
+				177BDE351830A77B00B609E3 /* RecordingSignal002.png in Resources */,
+				177BDE361830A77B00B609E3 /* RecordingSignal003.png in Resources */,
+				177BDE371830A77B00B609E3 /* RecordingSignal004.png in Resources */,
+				177BDE381830A77B00B609E3 /* RecordingSignal005.png in Resources */,
+				177BDE391830A77B00B609E3 /* RecordingSignal006.png in Resources */,
+				177BDE3A1830A77B00B609E3 /* RecordingSignal007.png in Resources */,
+				177BDE3B1830A77B00B609E3 /* RecordingSignal008.png in Resources */,
+				177BDE441830A78800B609E3 /* RecordingSignal001@2x.png in Resources */,
+				177BDE451830A78800B609E3 /* RecordingSignal002@2x.png in Resources */,
+				177BDE461830A78800B609E3 /* RecordingSignal003@2x.png in Resources */,
+				177BDE471830A78800B609E3 /* RecordingSignal004@2x.png in Resources */,
+				177BDE481830A78800B609E3 /* RecordingSignal005@2x.png in Resources */,
+				177BDE491830A78800B609E3 /* RecordingSignal006@2x.png in Resources */,
+				177BDE4A1830A78800B609E3 /* RecordingSignal007@2x.png in Resources */,
+				177BDE4B1830A78800B609E3 /* RecordingSignal008@2x.png in Resources */,
+				177BDE4D1830A79200B609E3 /* RecordingBkg@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		177BDDFF1830A74800B609E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				177BDE131830A74900B609E3 /* main.m in Sources */,
+				177BDE171830A74900B609E3 /* AppDelegate.m in Sources */,
+				177BDE201830A74900B609E3 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		177BDE0F1830A74900B609E3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				177BDE101830A74900B609E3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		177BDE211830A74900B609E3 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				177BDE221830A74900B609E3 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		177BDE241830A74900B609E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		177BDE251830A74900B609E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		177BDE271830A74900B609E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AVSessionDemo/AVSessionDemo-Prefix.pch";
+				INFOPLIST_FILE = "AVSessionDemo/AVSessionDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		177BDE281830A74900B609E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JTLQTXD9SF;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AVSessionDemo/AVSessionDemo-Prefix.pch";
+				INFOPLIST_FILE = "AVSessionDemo/AVSessionDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		177BDDFE1830A74800B609E3 /* Build configuration list for PBXProject "AVSessionDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				177BDE241830A74900B609E3 /* Debug */,
+				177BDE251830A74900B609E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		177BDE261830A74900B609E3 /* Build configuration list for PBXNativeTarget "AVSessionDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				177BDE271830A74900B609E3 /* Debug */,
+				177BDE281830A74900B609E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 177BDDFB1830A74800B609E3 /* Project object */;
+}

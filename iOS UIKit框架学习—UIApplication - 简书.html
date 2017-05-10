@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/p/2089f5f1f712 -->
+<html><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<script type="text/javascript" src="./iOS UIKit框架学习—UIApplication - 简书_files/1255494d3a"></script><script src="./iOS UIKit框架学习—UIApplication - 简书_files/nr-1026.min.js"></script><script src="./iOS UIKit框架学习—UIApplication - 简书_files/push.js"></script><script async="" src="./iOS UIKit框架学习—UIApplication - 简书_files/analytics.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"1255494d3a","applicationID":"15702971","transactionName":"e1daR0JWVV9RER9ZWkxdRxxDUVZE","queueTime":3,"applicationTime":78,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="description" content="在iOS中UIApplication类提供一个集中点控制和协调应用程序的运行。每个APP都有一个UIApplication实例对象，当程序启动的时候通过调用UIApplicationMain方法，创建单例对象UIApplication。此后可以通过sharedApplication()可以得到方法。">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=http://www.jianshu.com/p/2089f5f1f712">
+
+  <!-- Apple -->
+  <meta name="apple-mobile-web-app-title" content="简书">
+
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/8521372">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content="iOS UIKit框架学习—UIApplication" property="twitter:title">
+  <meta content="在iOS中UIApplication类提供一个集中点控制和协调应用程序的运行。每个APP都有一个UIApplication实例对象，当程序启动的时候通过调用UIApplicationMain方法，创建单例对象UIApplication。此后可以通过sharedApplication()可以得到方法。" property="twitter:description">
+  <meta content="http://www.jianshu.com/p/2089f5f1f712" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content="iOS UIKit框架学习—UIApplication">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.jianshu.com/p/2089f5f1f712">
+  <meta property="og:description" content="在iOS中UIApplication类提供一个集中点控制和协调应用程序的运行。每个APP都有一个UIApplication实例对象，当程序启动的时候通过调用UIApplicationMain方法...">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/8521372">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/8521372">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+
+    <title>iOS UIKit框架学习—UIApplication - 简书</title>
+
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="itzpPWDfH9e95zTJbA0/B2aXYiroJWnaR1LaTXwTf003DvyBZ0AjguBcmbRPE7+EgQ3aKBixlxqZ3joM2JsBQg==">
+
+  <link rel="stylesheet" media="all" href="./iOS UIKit框架学习—UIApplication - 简书_files/web-eaff0cf50b070924d304.css">
+  
+  <link rel="stylesheet" media="all" href="./iOS UIKit框架学习—UIApplication - 简书_files/entry-eaff0cf50b070924d304.css">
+
+  <link href="http://cdn-qn0.jianshu.io/assets/favicons/favicon-ea87c042cbed82f63ec4cb18d1e1bc8b.ico" rel="icon">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/57-ce5a88a3e30a8f1f353e7b7e08710b47.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/72-d8f7a49ed070ff78bc7657785924d097.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/76-be915e70264c65090f03afff88e0f50c.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/114-fa410f47eef755b2aa43b94d63357102.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/120-50638ce65b8729b7761a4e68fe25724f.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/152-13b452db96e234a630d6d7bcbedbcd22.png" sizes="152x152">
+</head>
+
+  <body lang="zh-CN" class="reader-black-font">
+    <!-- 全局顶部导航栏 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="width-limit">
+    <!-- 左上方 Logo -->
+    <a class="logo" href="http://www.jianshu.com/"><img src="./iOS UIKit框架学习—UIApplication - 简书_files/logo-58fd04f6f0de908401aa561cda6a0688.png" alt="Logo"></a>
+
+    <!-- 右上角 -->
+      <!-- 登录显示写文章 -->
+      <a class="btn write-btn" target="_blank" href="http://www.jianshu.com/writer#/">
+        <i class="iconfont ic-write"></i>写文章
+</a>
+    <!-- 如果用户登录，显示下拉菜单 -->
+      <div class="user">
+        <div data-hover="dropdown">
+          <a class="avatar" href="http://www.jianshu.com/u/06c4ffbfd0c1"><img src="./iOS UIKit框架学习—UIApplication - 简书_files/aad0f551edf0.png" alt="120"></a>
+        </div>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="http://www.jianshu.com/u/06c4ffbfd0c1">
+              <i class="iconfont ic-navigation-profile"></i><span>我的主页</span>
+</a>          </li>
+          <li>
+            <!-- TODO bookmarks_path -->
+            <a href="http://www.jianshu.com/bookmarks">
+              <i class="iconfont ic-navigation-mark"></i><span>收藏的文章</span>
+</a>          </li>
+          <li>
+            <a href="http://www.jianshu.com/users/06c4ffbfd0c1/liked_notes">
+              <i class="iconfont ic-navigation-like"></i><span>喜欢的文章</span>
+</a>          </li>
+          <li>
+            <a href="http://www.jianshu.com/wallet">
+              <i class="iconfont ic-navigation-wallet"></i><span>我的钱包</span>
+</a>          </li>
+          <li>
+            <a href="http://www.jianshu.com/settings">
+              <i class="iconfont ic-navigation-settings"></i><span>设置</span>
+</a>          </li>
+          <li>
+            <a href="http://www.jianshu.com/help">
+              <i class="iconfont ic-navigation-feedback"></i><span>帮助与反馈</span>
+</a>          </li>
+          <li>
+            <a rel="nofollow" data-method="delete" href="http://www.jianshu.com/sign_out">
+              <i class="iconfont ic-navigation-signout"></i><span>退出</span>
+</a>          </li>
+        </ul>
+      </div>
+
+    <div class="style-mode"><a class="style-mode-btn"><i class="iconfont ic-navigation-mode"></i></a> <div class="popover-modal" style="left: 0px; display: none;"><div class="meta"><i class="iconfont ic-navigation-night"></i><span>夜间模式</span></div> <div class="switch day-night-group"><a class="switch-btn">开</a> <a class="switch-btn active">关</a></div> <hr> <div class="switch font-family-group"><a class="switch-btn font-song">宋体</a> <a class="switch-btn font-hei active">黑体</a></div> <div class="switch"><a class="switch-btn active">简</a> <a class="switch-btn">繁</a></div></div></div>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav">
+            <li class="">
+              <a href="http://www.jianshu.com/">
+                <span class="menu-text">发现</span><i class="iconfont ic-navigation-discover menu-icon"></i>
+</a>            </li>
+            <li class="">
+              <a href="http://www.jianshu.com/subscriptions">
+                <span class="menu-text">关注</span><i class="iconfont ic-navigation-follow menu-icon"></i>
+</a>            </li>
+            <li class="notification"><a data-hover="dropdown" href="http://www.jianshu.com/notifications" class="notification-btn"><span class="menu-text">消息</span> <i class="iconfont ic-navigation-notification menu-icon"></i> <!----> <!----></a> <ul class="dropdown-menu"><li><a href="http://www.jianshu.com/notifications#/comments"><i class="iconfont ic-comments"></i> <span>评论</span> <!----></a></li><li><a href="http://www.jianshu.com/notifications#/chats"><i class="iconfont ic-chats"></i> <span>简信</span> <!----></a></li><li><a href="http://www.jianshu.com/notifications#/requests"><i class="iconfont ic-requests"></i> <span>投稿请求</span> <!----></a></li><li><a href="http://www.jianshu.com/notifications#/likes"><i class="iconfont ic-likes"></i> <span>喜欢和赞</span> <!----></a></li><li><a href="http://www.jianshu.com/notifications#/follows"><i class="iconfont ic-follows"></i> <span>关注</span> <!----></a></li><li><a href="http://www.jianshu.com/notifications#/money"><i class="iconfont ic-money"></i> <span>赞赏</span> <!----></a></li><li><a href="http://www.jianshu.com/notifications#/others"><i class="iconfont ic-others"></i> <span>其他消息</span> <!----></a></li></ul></li>
+          <li class="search">
+            <form target="_blank" action="http://www.jianshu.com/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+              <input type="text" name="q" id="q" value="" placeholder="搜索" class="search-input">
+              <a class="search-btn" href="javascript:void(null)"><i class="iconfont ic-search"></i></a>
+              <!-- <div id="navbar-trending-search"></div> -->
+</form>          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+<div class="note">
+  <div class="post">
+    <div class="article">
+        <h1 class="title">iOS UIKit框架学习—UIApplication</h1>
+
+        <!-- 作者区域 -->
+        <div class="author">
+          <a class="avatar" href="http://www.jianshu.com/u/8b9cef3b9fa8">
+            <img src="./iOS UIKit框架学习—UIApplication - 简书_files/74902d3bf29f.jpg" alt="144">
+</a>          <div class="info">
+            <span class="tag">作者</span>
+            <span class="name"><a href="http://www.jianshu.com/u/8b9cef3b9fa8">Wynter_Wang</a></span>
+            <!-- 关注用户按钮 -->
+            <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+            <!-- 文章数据信息 -->
+            <div class="meta">
+              <!-- 如果文章更新时间大于发布时间，那么使用 tooltip 显示更新时间 -->
+                <span class="publish-time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="最后编辑于 2017.01.19 14:54">2017.01.17 16:28*</span>
+              <span class="wordage">字数 76</span>
+            <span class="views-count">阅读 45</span><span class="comments-count">评论 0</span><span class="likes-count">喜欢 0</span></div>
+          </div>
+          <!-- 如果是当前作者，加入编辑按钮 -->
+        </div>
+        <!-- -->
+
+        <!-- 文章内容 -->
+        <div class="show-content">
+          <p>在iOS中UIApplication类提供一个集中点控制和协调应用程序的运行。每个APP都有一个UIApplication实例对象，当程序启动的时候通过调用UIApplicationMain方法，创建单例对象UIApplication。此后可以通过sharedApplication()可以得到方法。</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">UIApplicationDelegate</span>;</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIApplication</span> : <span class="hljs-title">UIResponder</span></span>
+
+<span class="hljs-meta">#if UIKIT_DEFINE_AS_PROPERTIES</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">class</span>, <span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">UIApplication</span> *sharedApplication <span class="hljs-built_in">NS_EXTENSION_UNAVAILABLE_IOS</span>(<span class="hljs-string">"Use view controller based solutions where appropriate instead."</span>);
+<span class="hljs-meta">#else</span>
++ (<span class="hljs-built_in">UIApplication</span> *)sharedApplication <span class="hljs-built_in">NS_EXTENSION_UNAVAILABLE_IOS</span>(<span class="hljs-string">"Use view controller based solutions where appropriate instead."</span>);
+<span class="hljs-meta">#endif</span>
+
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nullable</span>, <span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">assign</span>) <span class="hljs-keyword">id</span>&lt;<span class="hljs-built_in">UIApplicationDelegate</span>&gt; delegate;
+
+<span class="hljs-comment">// 开始、结束响应事件</span>
+- (<span class="hljs-keyword">void</span>)beginIgnoringInteractionEvents <span class="hljs-built_in">NS_EXTENSION_UNAVAILABLE_IOS</span>(<span class="hljs-string">""</span>);
+- (<span class="hljs-keyword">void</span>)endIgnoringInteractionEvents <span class="hljs-built_in">NS_EXTENSION_UNAVAILABLE_IOS</span>(<span class="hljs-string">""</span>);
+<span class="hljs-comment">// 是否响应事件</span>
+<span class="hljs-meta">#if UIKIT_DEFINE_AS_PROPERTIES</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">readonly</span>, <span class="hljs-keyword">getter</span>=isIgnoringInteractionEvents) <span class="hljs-built_in">BOOL</span> ignoringInteractionEvents;
+<span class="hljs-meta">#else</span>
+- (<span class="hljs-built_in">BOOL</span>)isIgnoringInteractionEvents;
+<span class="hljs-meta">#endif</span>
+<span class="hljs-comment">// 屏幕长亮</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">getter</span>=isIdleTimerDisabled)       <span class="hljs-built_in">BOOL</span> idleTimerDisabled;      <span class="hljs-comment">// default is NO</span>
+<span class="hljs-comment">// 打开URL资源</span>
+- (<span class="hljs-built_in">BOOL</span>)openURL:(<span class="hljs-built_in">NSURL</span>*)url <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">2</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Please use openURL:options:completionHandler: instead"</span>) <span class="hljs-built_in">NS_EXTENSION_UNAVAILABLE_IOS</span>(<span class="hljs-string">""</span>);
+<span class="hljs-comment">// 返回一个bool值， 是否从已经安装的 apps 中跳转</span>
+- (<span class="hljs-built_in">BOOL</span>)canOpenURL:(<span class="hljs-built_in">NSURL</span> *)url <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">3</span>_0);
+
+<span class="hljs-comment">// 异步打开URL资源</span>
+- (<span class="hljs-keyword">void</span>)openURL:(<span class="hljs-built_in">NSURL</span>*)url options:(<span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">NSString</span> *, <span class="hljs-keyword">id</span>&gt; *)options completionHandler:(<span class="hljs-keyword">void</span> (^ __<span class="hljs-keyword">nullable</span>)(<span class="hljs-built_in">BOOL</span> success))completion <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">10</span>_0) <span class="hljs-built_in">NS_EXTENSION_UNAVAILABLE_IOS</span>(<span class="hljs-string">""</span>);
+
+<span class="hljs-comment">// 发送事件给app内适用的响应者</span>
+- (<span class="hljs-keyword">void</span>)sendEvent:(<span class="hljs-built_in">UIEvent</span> *)event;
+<span class="hljs-comment">// app的主视图</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nullable</span>, <span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">UIWindow</span> *keyWindow;
+<span class="hljs-comment">// 隐藏和可见的所有window</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">NSArray</span>&lt;__kindof <span class="hljs-built_in">UIWindow</span> *&gt;  *windows;
+<span class="hljs-comment">// 发送一个含选择器的动作消息到指定的目标</span>
+- (<span class="hljs-built_in">BOOL</span>)sendAction:(SEL)action to:(<span class="hljs-keyword">nullable</span> <span class="hljs-keyword">id</span>)target from:(<span class="hljs-keyword">nullable</span> <span class="hljs-keyword">id</span>)sender forEvent:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">UIEvent</span> *)event;
+<span class="hljs-comment">// 是否在状态栏展示网络请求活动</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">getter</span>=isNetworkActivityIndicatorVisible) <span class="hljs-built_in">BOOL</span> networkActivityIndicatorVisible __TVOS_PROHIBITED; <span class="hljs-comment">// default is NO</span>
+<span class="hljs-comment">// 获取状态栏的风格</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">readonly</span>, <span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">UIStatusBarStyle</span> statusBarStyle __TVOS_PROHIBITED;
+<span class="hljs-comment">// 状态栏是否隐藏</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">readonly</span>, <span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">getter</span>=isStatusBarHidden) <span class="hljs-built_in">BOOL</span> statusBarHidden __TVOS_PROHIBITED;
+<span class="hljs-comment">// 当前状态栏的方向 </span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">readonly</span>, <span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">UIInterfaceOrientation</span> statusBarOrientation __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 实现代理设置屏幕支持的方向</span>
+- (<span class="hljs-built_in">UIInterfaceOrientationMask</span>)supportedInterfaceOrientationsForWindow:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">UIWindow</span> *)window <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 获取旋转屏幕的时间</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">NSTimeInterval</span> statusBarOrientationAnimationDuration __TVOS_PROHIBITED;
+<span class="hljs-comment">// 获取状态栏的frame</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">CGRect</span> statusBarFrame __TVOS_PROHIBITED;
+<span class="hljs-comment">// 应用角标未读消息数字，设置0的时候隐藏，在iOS 8 必须注册后才能使用： -[UIApplication registerUserNotificationSettings:]</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">NSInteger</span> applicationIconBadgeNumber;
+<span class="hljs-comment">// 是否支持摇动手势</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">BOOL</span> applicationSupportsShakeToEdit <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">3</span>_0) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 应用的运行状态</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">UIApplicationState</span> applicationState <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+<span class="hljs-comment">// 后台运行剩余时间</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">NSTimeInterval</span> backgroundTimeRemaining <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+<span class="hljs-comment">// 后台任务管理</span>
+- (<span class="hljs-built_in">UIBackgroundTaskIdentifier</span>)beginBackgroundTaskWithExpirationHandler:(<span class="hljs-keyword">void</span>(^ __<span class="hljs-keyword">nullable</span>)(<span class="hljs-keyword">void</span>))handler  <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0) <span class="hljs-built_in">NS_REQUIRES_SUPER</span>;
+- (<span class="hljs-built_in">UIBackgroundTaskIdentifier</span>)beginBackgroundTaskWithName:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSString</span> *)taskName expirationHandler:(<span class="hljs-keyword">void</span>(^ __<span class="hljs-keyword">nullable</span>)(<span class="hljs-keyword">void</span>))handler <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0) <span class="hljs-built_in">NS_REQUIRES_SUPER</span>;
+- (<span class="hljs-keyword">void</span>)endBackgroundTask:(<span class="hljs-built_in">UIBackgroundTaskIdentifier</span>)identifier <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0) <span class="hljs-built_in">NS_REQUIRES_SUPER</span>;
+
+<span class="hljs-comment">// 设置后台拉去数据的时间</span>
+- (<span class="hljs-keyword">void</span>)setMinimumBackgroundFetchInterval:(<span class="hljs-built_in">NSTimeInterval</span>)minimumBackgroundFetchInterval <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 获取后台刷新状态</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">UIBackgroundRefreshStatus</span> backgroundRefreshStatus <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 是否启用数据保护 YES：未启用</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">readonly</span>,<span class="hljs-keyword">getter</span>=isProtectedDataAvailable) <span class="hljs-built_in">BOOL</span> protectedDataAvailable <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+<span class="hljs-comment">// 返回界面的布局方向</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">UIUserInterfaceLayoutDirection</span> userInterfaceLayoutDirection <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">5</span>_0);
+
+<span class="hljs-comment">// 返回字体大小</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">UIContentSizeCategory</span> preferredContentSizeCategory <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0);
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-comment">// 远程通知</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIApplication</span> (<span class="hljs-title">UIRemoteNotifications</span>)</span>
+
+<span class="hljs-comment">// 通过苹果推送通知注册接收远程通知服务</span>
+- (<span class="hljs-keyword">void</span>)registerForRemoteNotifications <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0);
+<span class="hljs-comment">// 注销远程通知服务</span>
+- (<span class="hljs-keyword">void</span>)unregisterForRemoteNotifications <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">3</span>_0);
+
+<span class="hljs-comment">// 应用是否注册了远程通知服务</span>
+<span class="hljs-meta">#if UIKIT_DEFINE_AS_PROPERTIES</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">readonly</span>, <span class="hljs-keyword">getter</span>=isRegisteredForRemoteNotifications) <span class="hljs-built_in">BOOL</span> registeredForRemoteNotifications <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0);
+<span class="hljs-meta">#else</span>
+- (<span class="hljs-built_in">BOOL</span>)isRegisteredForRemoteNotifications <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0);
+<span class="hljs-meta">#endif</span>
+<span class="hljs-comment">// 通过注册苹果的远程推送通知，接收指定类型的服务</span>
+- (<span class="hljs-keyword">void</span>)registerForRemoteNotificationTypes:(<span class="hljs-built_in">UIRemoteNotificationType</span>)types <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">3</span>_0, <span class="hljs-number">8</span>_0, <span class="hljs-string">"Use -[UIApplication registerForRemoteNotifications] and UserNotifications Framework's -[UNUserNotificationCenter requestAuthorizationWithOptions:completionHandler:]"</span>) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 返回应用通知的接收类型</span>
+- (<span class="hljs-built_in">UIRemoteNotificationType</span>)enabledRemoteNotificationTypes <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">3</span>_0, <span class="hljs-number">8</span>_0, <span class="hljs-string">"Use -[UIApplication isRegisteredForRemoteNotifications] and UserNotifications Framework's -[UNUserNotificationCenter getNotificationSettingsWithCompletionHandler:] to retrieve user-enabled remote notification and user notification settings"</span>) __TVOS_PROHIBITED;
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-comment">// 本地通知</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIApplication</span> (<span class="hljs-title">UILocalNotifications</span>)</span>
+
+<span class="hljs-comment">// 立即呈现本地通知</span>
+- (<span class="hljs-keyword">void</span>)presentLocalNotificationNow:(<span class="hljs-built_in">UILocalNotification</span> *)notification <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">4</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenter addNotificationRequest:withCompletionHandler:]"</span>) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 本地安排通知</span>
+- (<span class="hljs-keyword">void</span>)scheduleLocalNotification:(<span class="hljs-built_in">UILocalNotification</span> *)notification <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">4</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenter addNotificationRequest:withCompletionHandler:]"</span>) __TVOS_PROHIBITED;  <span class="hljs-comment">// copies notification</span>
+<span class="hljs-comment">// 取消指定的本地通吃</span>
+- (<span class="hljs-keyword">void</span>)cancelLocalNotification:(<span class="hljs-built_in">UILocalNotification</span> *)notification <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">4</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenter removePendingNotificationRequestsWithIdentifiers:]"</span>) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 取消所有的本地通知</span>
+- (<span class="hljs-keyword">void</span>)cancelAllLocalNotifications <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">4</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenter removeAllPendingNotificationRequests]"</span>) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 返回本地日程安排通知数组</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nullable</span>,<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-built_in">UILocalNotification</span> *&gt; *scheduledLocalNotifications <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">4</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenter getPendingNotificationRequestsWithCompletionHandler:]"</span>) __TVOS_PROHIBITED;
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-comment">// 设置通知</span>
+<span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">UIUserNotificationSettings</span>;</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIApplication</span> (<span class="hljs-title">UIUserNotificationSettings</span>)</span>
+
+<span class="hljs-comment">// 注册通知</span>
+- (<span class="hljs-keyword">void</span>)registerUserNotificationSettings:(<span class="hljs-built_in">UIUserNotificationSettings</span> *)notificationSettings <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 返回当前用户启用的通知</span>
+<span class="hljs-meta">#if UIKIT_DEFINE_AS_PROPERTIES</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">readonly</span>, <span class="hljs-keyword">nullable</span>) <span class="hljs-built_in">UIUserNotificationSettings</span> *currentUserNotificationSettings <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0) __TVOS_PROHIBITED;
+<span class="hljs-meta">#else</span>
+- (<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">UIUserNotificationSettings</span> *)currentUserNotificationSettings <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0) __TVOS_PROHIBITED;
+<span class="hljs-meta">#endif</span>
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-comment">// 远程控制事件</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIApplication</span> (<span class="hljs-title">UIRemoteControlEvents</span>)</span>
+
+<span class="hljs-comment">// 开始接受远程遥控事件</span>
+- (<span class="hljs-keyword">void</span>)beginReceivingRemoteControlEvents <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+<span class="hljs-comment">// 停止接受远程遥控事件</span>
+- (<span class="hljs-keyword">void</span>)endReceivingRemoteControlEvents <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIApplication</span> (<span class="hljs-title">UINewsstand</span>)</span>
+<span class="hljs-comment">// 设置一个报摊的icon</span>
+- (<span class="hljs-keyword">void</span>)setNewsstandIconImage:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">UIImage</span> *)image <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">5</span>_0, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Newsstand apps now behave like normal apps on SpringBoard"</span>) __TVOS_PROHIBITED;
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">UIApplicationShortcutItem</span>;</span>
+<span class="hljs-comment">// 管理3D Touch的快速操作</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIApplication</span> (<span class="hljs-title">UIShortcutItems</span>)</span>
+<span class="hljs-comment">// 主屏幕用户使用3D Touch功能的菜单数组</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nullable</span>, <span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-built_in">UIApplicationShortcutItem</span> *&gt; *shortcutItems <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">9</span>_0) __TVOS_PROHIBITED;
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-comment">// 管理恢复状态行为</span>
+<span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">UIStateRestoring</span>;</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIApplication</span> (<span class="hljs-title">UIStateRestoration</span>)</span>
+<span class="hljs-comment">// 正在恢复状态</span>
+- (<span class="hljs-keyword">void</span>)extendStateRestoration  <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0);
+<span class="hljs-comment">// 恢复完成状态</span>
+- (<span class="hljs-keyword">void</span>)completeStateRestoration  <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0);
+<span class="hljs-comment">// 防止应用在一个启动的声明周期使用最近的屏幕快照</span>
+- (<span class="hljs-keyword">void</span>)ignoreSnapshotOnNextApplicationLaunch <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0);
+<span class="hljs-comment">// 注册一个恢复状态对象的id</span>
++ (<span class="hljs-keyword">void</span>)registerObjectForStateRestoration:(<span class="hljs-keyword">id</span>&lt;<span class="hljs-built_in">UIStateRestoring</span>&gt;)object restorationIdentifier:(<span class="hljs-built_in">NSString</span> *)restorationIdentifier <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0);
+<span class="hljs-keyword">@end</span>
+
+
+<span class="hljs-meta">#if UIKIT_STRING_ENUMS</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NSString</span> * <span class="hljs-built_in">UIApplicationLaunchOptionsKey</span> <span class="hljs-built_in">NS_EXTENSIBLE_STRING_ENUM</span>;
+<span class="hljs-meta">#else</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NSString</span> * <span class="hljs-built_in">UIApplicationLaunchOptionsKey</span>;
+<span class="hljs-meta">#endif</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">UIApplicationDelegate</span>&lt;<span class="hljs-title">NSObject</span>&gt;</span>
+
+<span class="hljs-keyword">@optional</span>
+<span class="hljs-comment">// 应用生命周期</span>
+<span class="hljs-comment">// 应用启动完成执行</span>
+- (<span class="hljs-keyword">void</span>)applicationDidFinishLaunching:(<span class="hljs-built_in">UIApplication</span> *)application;
+<span class="hljs-meta">#if UIKIT_STRING_ENUMS</span>
+<span class="hljs-comment">// 应用启动进程已经开始，但部分状态没有完全恢复</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application willFinishLaunchingWithOptions:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">UIApplicationLaunchOptionsKey</span>, <span class="hljs-keyword">id</span>&gt; *)launchOptions <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0);
+<span class="hljs-comment">//  告诉代理启动基本完成程序准备开始运行（加载到窗口，可以看到）</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">UIApplicationLaunchOptionsKey</span>, <span class="hljs-keyword">id</span>&gt; *)launchOptions <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">3</span>_0);
+<span class="hljs-meta">#else</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application willFinishLaunchingWithOptions:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSDictionary</span> *)launchOptions <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0);
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSDictionary</span> *)launchOptions <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">3</span>_0);
+<span class="hljs-meta">#endif</span>
+<span class="hljs-comment">// 当应用程序回到激活状态执行 （回到窗口，可以看到)</span>
+- (<span class="hljs-keyword">void</span>)applicationDidBecomeActive:(<span class="hljs-built_in">UIApplication</span> *)application;
+<span class="hljs-comment">// 当应用程序将要进入非活动状态执行，在此期间，应用程序不接收消息或事件，比如来电话了</span>
+- (<span class="hljs-keyword">void</span>)applicationWillResignActive:(<span class="hljs-built_in">UIApplication</span> *)application;
+<span class="hljs-comment">// 请求委托打开由url标示的资源</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application handleOpenURL:(<span class="hljs-built_in">NSURL</span> *)url <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">2</span>_0, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Please use application:openURL:options:"</span>) __TVOS_PROHIBITED;
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application openURL:(<span class="hljs-built_in">NSURL</span> *)url sourceApplication:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSString</span> *)sourceApplication annotation:(<span class="hljs-keyword">id</span>)annotation <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">4</span>_2, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Please use application:openURL:options:"</span>) __TVOS_PROHIBITED;
+
+
+<span class="hljs-meta">#if UIKIT_STRING_ENUMS</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NSString</span> * <span class="hljs-built_in">UIApplicationOpenURLOptionsKey</span> <span class="hljs-built_in">NS_EXTENSIBLE_STRING_ENUM</span>;
+<span class="hljs-meta">#else</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NSString</span> * <span class="hljs-built_in">UIApplicationOpenURLOptionsKey</span>;
+<span class="hljs-meta">#endif</span>
+<span class="hljs-comment">// 请求委托打开由url标示的资源</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)app openURL:(<span class="hljs-built_in">NSURL</span> *)url options:(<span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">UIApplicationOpenURLOptionsKey</span>, <span class="hljs-keyword">id</span>&gt; *)options <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">9</span>_0);
+<span class="hljs-comment">// 接收来自系统内存警告</span>
+- (<span class="hljs-keyword">void</span>)applicationDidReceiveMemoryWarning:(<span class="hljs-built_in">UIApplication</span> *)application;
+<span class="hljs-comment">// 当程序将要退出是被调用，通常是用来保存数据和一些退出前的清理工作。这个需要要设置</span>
+- (<span class="hljs-keyword">void</span>)applicationWillTerminate:(<span class="hljs-built_in">UIApplication</span> *)application;
+<span class="hljs-comment">// 重要时间的变化</span>
+- (<span class="hljs-keyword">void</span>)applicationSignificantTimeChange:(<span class="hljs-built_in">UIApplication</span> *)application;        <span class="hljs-comment">// midnight, carrier time update, daylight savings time change</span>
+<span class="hljs-comment">// 当状态栏的方向即将要发生改变时执行</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application willChangeStatusBarOrientation:(<span class="hljs-built_in">UIInterfaceOrientation</span>)newStatusBarOrientation duration:(<span class="hljs-built_in">NSTimeInterval</span>)duration __TVOS_PROHIBITED;
+<span class="hljs-comment">// 当状态栏的方向发生改变时执行</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didChangeStatusBarOrientation:(<span class="hljs-built_in">UIInterfaceOrientation</span>)oldStatusBarOrientation __TVOS_PROHIBITED;
+<span class="hljs-comment">// 当状态栏的frame即将要发生改变时执行</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application willChangeStatusBarFrame:(<span class="hljs-built_in">CGRect</span>)newStatusBarFrame __TVOS_PROHIBITED;   <span class="hljs-comment">// in screen coordinates</span>
+<span class="hljs-comment">// 当状态栏的frame发生改变时执行</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didChangeStatusBarFrame:(<span class="hljs-built_in">CGRect</span>)oldStatusBarFrame __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 处理本地和远程通知</span>
+<span class="hljs-comment">// 注册本地或远程通知类型</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didRegisterUserNotificationSettings:(<span class="hljs-built_in">UIUserNotificationSettings</span> *)notificationSettings <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 远程推送通知注册成功回调</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didRegisterForRemoteNotificationsWithDeviceToken:(<span class="hljs-built_in">NSData</span> *)deviceToken <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">3</span>_0);
+<span class="hljs-comment">// 无法成功注册推送通知服务回调</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didFailToRegisterForRemoteNotificationsWithError:(<span class="hljs-built_in">NSError</span> *)error <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">3</span>_0);
+<span class="hljs-comment">// 收到远程推送通知执行</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didReceiveRemoteNotification:(<span class="hljs-built_in">NSDictionary</span> *)userInfo <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">3</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] or -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:] for user visible notifications and -[UIApplicationDelegate application:didReceiveRemoteNotification:fetchCompletionHandler:] for silent remote notifications"</span>);
+<span class="hljs-comment">// 收到本地推送通知执行</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didReceiveLocalNotification:(<span class="hljs-built_in">UILocalNotification</span> *)notification <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">4</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] or -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]"</span>) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 当应用被激活时，处理用户从本地推送通知中选择操作的事件</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application handleActionWithIdentifier:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSString</span> *)identifier forLocalNotification:(<span class="hljs-built_in">UILocalNotification</span> *)notification completionHandler:(<span class="hljs-keyword">void</span>(^)())completionHandler <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">8</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]"</span>) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 当应用被激活时，处理用户从远程推送通知中选择操作的事件</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application handleActionWithIdentifier:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSString</span> *)identifier forRemoteNotification:(<span class="hljs-built_in">NSDictionary</span> *)userInfo withResponseInfo:(<span class="hljs-built_in">NSDictionary</span> *)responseInfo completionHandler:(<span class="hljs-keyword">void</span>(^)())completionHandler <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">9</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]"</span>) __TVOS_PROHIBITED;
+
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application handleActionWithIdentifier:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSString</span> *)identifier forRemoteNotification:(<span class="hljs-built_in">NSDictionary</span> *)userInfo completionHandler:(<span class="hljs-keyword">void</span>(^)())completionHandler <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">8</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]"</span>) __TVOS_PROHIBITED;
+
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application handleActionWithIdentifier:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSString</span> *)identifier forLocalNotification:(<span class="hljs-built_in">UILocalNotification</span> *)notification withResponseInfo:(<span class="hljs-built_in">NSDictionary</span> *)responseInfo completionHandler:(<span class="hljs-keyword">void</span>(^)())completionHandler <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">9</span>_0, <span class="hljs-number">10</span>_0, <span class="hljs-string">"Use UserNotifications Framework's -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]"</span>) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 一个远程通知到达，表明有数据要获取</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didReceiveRemoteNotification:(<span class="hljs-built_in">NSDictionary</span> *)userInfo fetchCompletionHandler:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-built_in">UIBackgroundFetchResult</span> result))completionHandler <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0);
+
+<span class="hljs-comment">// 如果有有数据下载，它可以开始获取操作</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application performFetchWithCompletionHandler:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-built_in">UIBackgroundFetchResult</span> result))completionHandler <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 主屏幕3D Touch快捷选项操作启动应用执行</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application performActionForShortcutItem:(<span class="hljs-built_in">UIApplicationShortcutItem</span> *)shortcutItem completionHandler:(<span class="hljs-keyword">void</span>(^)(<span class="hljs-built_in">BOOL</span> succeeded))completionHandler <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">9</span>_0) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 与URL有关的事件正等待处理</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application handleEventsForBackgroundURLSession:(<span class="hljs-built_in">NSString</span> *)identifier completionHandler:(<span class="hljs-keyword">void</span> (^)())completionHandler <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0);
+
+<span class="hljs-comment">// 相应Watch的配对请求</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application handleWatchKitExtensionRequest:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">NSDictionary</span> *)userInfo reply:(<span class="hljs-keyword">void</span>(^)(<span class="hljs-built_in">NSDictionary</span> * __<span class="hljs-keyword">nullable</span> replyInfo))reply <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_2);
+
+<span class="hljs-comment">// 应用将要获取用户健康数据时调用</span>
+- (<span class="hljs-keyword">void</span>)applicationShouldRequestHealthAuthorization:(<span class="hljs-built_in">UIApplication</span> *)application <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">9</span>_0);
+
+<span class="hljs-comment">// 当程序被推送到后台的时候调用</span>
+- (<span class="hljs-keyword">void</span>)applicationDidEnterBackground:(<span class="hljs-built_in">UIApplication</span> *)application <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+<span class="hljs-comment">// 当程序将要被推送到前台的时候调用</span>
+- (<span class="hljs-keyword">void</span>)applicationWillEnterForeground:(<span class="hljs-built_in">UIApplication</span> *)application <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+
+<span class="hljs-comment">// 保护文件不可用</span>
+- (<span class="hljs-keyword">void</span>)applicationProtectedDataWillBecomeUnavailable:(<span class="hljs-built_in">UIApplication</span> *)application <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+<span class="hljs-comment">// 保护文件可用</span>
+- (<span class="hljs-keyword">void</span>)applicationProtectedDataDidBecomeAvailable:(<span class="hljs-built_in">UIApplication</span> *)application    <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+
+<span class="hljs-comment">// 呈现的故事版</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nullable</span>, <span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">UIWindow</span> *window <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">5</span>_0);
+
+<span class="hljs-comment">// 应用视图支持的方向</span>
+- (<span class="hljs-built_in">UIInterfaceOrientationMask</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application supportedInterfaceOrientationsForWindow:(<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">UIWindow</span> *)window  <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0) __TVOS_PROHIBITED;
+
+<span class="hljs-meta">#if UIKIT_STRING_ENUMS</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NSString</span> * <span class="hljs-built_in">UIApplicationExtensionPointIdentifier</span> <span class="hljs-built_in">NS_EXTENSIBLE_STRING_ENUM</span>;
+<span class="hljs-meta">#else</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NSString</span> * <span class="hljs-built_in">UIApplicationExtensionPointIdentifier</span>;
+<span class="hljs-meta">#endif</span>
+
+<span class="hljs-comment">// 将要扩展的指定标识符的应用</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application shouldAllowExtensionPointIdentifier:(<span class="hljs-built_in">UIApplicationExtensionPointIdentifier</span>)extensionPointIdentifier <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0);
+
+<span class="hljs-meta">#pragma mark -- State Restoration protocol adopted by UIApplication delegate --</span>
+
+<span class="hljs-comment">// 提供指定视图控制器</span>
+- (<span class="hljs-keyword">nullable</span> <span class="hljs-built_in">UIViewController</span> *) application:(<span class="hljs-built_in">UIApplication</span> *)application viewControllerWithRestorationIdentifierPath:(<span class="hljs-built_in">NSArray</span> *)identifierComponents coder:(<span class="hljs-built_in">NSCoder</span> *)coder <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0);
+<span class="hljs-comment">// 是否保存应用的状态信息 ↓</span>
+- (<span class="hljs-built_in">BOOL</span>) application:(<span class="hljs-built_in">UIApplication</span> *)application shouldSaveApplicationState:(<span class="hljs-built_in">NSCoder</span> *)coder <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0);
+<span class="hljs-comment">// 是否恢复应用保存的状态信息 ↑</span>
+- (<span class="hljs-built_in">BOOL</span>) application:(<span class="hljs-built_in">UIApplication</span> *)application shouldRestoreApplicationState:(<span class="hljs-built_in">NSCoder</span> *)coder <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0);
+<span class="hljs-comment">// 处理保存高级状态的信息</span>
+- (<span class="hljs-keyword">void</span>) application:(<span class="hljs-built_in">UIApplication</span> *)application willEncodeRestorableStateWithCoder:(<span class="hljs-built_in">NSCoder</span> *)coder <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0);
+<span class="hljs-comment">// 恢复一部分保存的高级状态的信息</span>
+- (<span class="hljs-keyword">void</span>) application:(<span class="hljs-built_in">UIApplication</span> *)application didDecodeRestorableStateWithCoder:(<span class="hljs-built_in">NSCoder</span> *)coder <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">6</span>_0);
+
+<span class="hljs-meta">#pragma mark -- User Activity Continuation protocol adopted by UIApplication delegate --</span>
+
+<span class="hljs-comment">// 当活动比预期时间长的时候，是否继续通知</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application willContinueUserActivityWithType:(<span class="hljs-built_in">NSString</span> *)userActivityType <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0);
+
+<span class="hljs-comment">// 告诉继续活动期间数据是否可用</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application continueUserActivity:(<span class="hljs-built_in">NSUserActivity</span> *)userActivity restorationHandler:(<span class="hljs-keyword">void</span>(^)(<span class="hljs-built_in">NSArray</span> * __<span class="hljs-keyword">nullable</span> restorableObjects))restorationHandler <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0);
+
+<span class="hljs-comment">// 应用注册远程推送通知失败时激发该方法</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didFailToContinueUserActivityWithType:(<span class="hljs-built_in">NSString</span> *)userActivityType error:(<span class="hljs-built_in">NSError</span> *)error <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0);
+
+<span class="hljs-comment">// 更新活动</span>
+- (<span class="hljs-keyword">void</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application didUpdateUserActivity:(<span class="hljs-built_in">NSUserActivity</span> *)userActivity <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">8</span>_0);
+
+<span class="hljs-meta">#pragma mark -- CloudKit Sharing Invitation Handling --</span>
+<span class="hljs-comment">// 同意接受云共享请求</span>
+- (<span class="hljs-keyword">void</span>) application:(<span class="hljs-built_in">UIApplication</span> *)application userDidAcceptCloudKitShareWithMetadata:(CKShareMetadata *)cloudKitShareMetadata <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">10</span>_0);
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIApplication</span>(<span class="hljs-title">UIApplicationDeprecated</span>)</span>
+
+<span class="hljs-comment">// 获取状态栏的方向</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">readwrite</span>, <span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">UIInterfaceOrientation</span> statusBarOrientation <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">2</span>_0, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Explicit setting of the status bar orientation is more limited in iOS 6.0 and later"</span>) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 设置状态栏的方向</span>
+- (<span class="hljs-keyword">void</span>)setStatusBarOrientation:(<span class="hljs-built_in">UIInterfaceOrientation</span>)interfaceOrientation animated:(<span class="hljs-built_in">BOOL</span>)animated <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">2</span>_0, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Explicit setting of the status bar orientation is more limited in iOS 6.0 and later"</span>) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 当前状态栏的样式</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">readwrite</span>, <span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">UIStatusBarStyle</span> statusBarStyle <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">2</span>_0, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Use -[UIViewController preferredStatusBarStyle]"</span>) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 设置状态栏的样式</span>
+- (<span class="hljs-keyword">void</span>)setStatusBarStyle:(<span class="hljs-built_in">UIStatusBarStyle</span>)statusBarStyle animated:(<span class="hljs-built_in">BOOL</span>)animated <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">2</span>_0, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Use -[UIViewController preferredStatusBarStyle]"</span>) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 当前状态栏是否隐藏</span>
+<span class="hljs-keyword">@property</span>(<span class="hljs-keyword">readwrite</span>, <span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">getter</span>=isStatusBarHidden) <span class="hljs-built_in">BOOL</span> statusBarHidden <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">2</span>_0, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Use -[UIViewController prefersStatusBarHidden]"</span>) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 隐藏状态栏</span>
+- (<span class="hljs-keyword">void</span>)setStatusBarHidden:(<span class="hljs-built_in">BOOL</span>)hidden withAnimation:(<span class="hljs-built_in">UIStatusBarAnimation</span>)animation <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">3</span>_2, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Use -[UIViewController prefersStatusBarHidden]"</span>) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 设置后台停留时间</span>
+- (<span class="hljs-built_in">BOOL</span>)setKeepAliveTimeout:(<span class="hljs-built_in">NSTimeInterval</span>)timeout handler:(<span class="hljs-keyword">void</span>(^ __<span class="hljs-keyword">nullable</span>)(<span class="hljs-keyword">void</span>))keepAliveHandler <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">4</span>_0, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Please use UIRemoteNotificationTypeVoIP remote notifications for VoIP applications"</span>) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 清除后台停留时间</span>
+- (<span class="hljs-keyword">void</span>)clearKeepAliveTimeout <span class="hljs-built_in">NS_DEPRECATED_IOS</span>(<span class="hljs-number">4</span>_0, <span class="hljs-number">9</span>_0, <span class="hljs-string">"Please use UIRemoteNotificationTypeVoIP remote notifications for VoIP applications"</span>) __TVOS_PROHIBITED;
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-comment">// 创建应用程序的主要入口</span>
+<span class="hljs-built_in">UIKIT_EXTERN</span> <span class="hljs-keyword">int</span> <span class="hljs-built_in">UIApplicationMain</span>(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[], <span class="hljs-built_in">NSString</span> * __<span class="hljs-keyword">nullable</span> principalClassName, <span class="hljs-built_in">NSString</span> * __<span class="hljs-keyword">nullable</span> delegateClassName);
+<span class="hljs-comment">// 省略一部分全局变量</span>
+
+<span class="hljs-keyword">@end</span></code></pre>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">// 状态栏风格</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_ENUM</span>(<span class="hljs-built_in">NSInteger</span>, <span class="hljs-built_in">UIStatusBarStyle</span>) {
+<span class="hljs-built_in">UIStatusBarStyleDefault</span>                                     = <span class="hljs-number">0</span>, <span class="hljs-comment">// 黑色，用于亮的背景</span>
+<span class="hljs-built_in">UIStatusBarStyleLightContent</span>     <span class="hljs-built_in">NS_ENUM_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0) = <span class="hljs-number">1</span>, <span class="hljs-comment">// 白色，用于深色背景</span>
+
+<span class="hljs-built_in">UIStatusBarStyleBlackTranslucent</span> <span class="hljs-built_in">NS_ENUM_DEPRECATED_IOS</span>(<span class="hljs-number">2</span>_0, <span class="hljs-number">7</span>_0, <span class="hljs-string">"Use UIStatusBarStyleLightContent"</span>) = <span class="hljs-number">1</span>,
+<span class="hljs-built_in">UIStatusBarStyleBlackOpaque</span>      <span class="hljs-built_in">NS_ENUM_DEPRECATED_IOS</span>(<span class="hljs-number">2</span>_0, <span class="hljs-number">7</span>_0, <span class="hljs-string">"Use UIStatusBarStyleLightContent"</span>) = <span class="hljs-number">2</span>,
+} __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 状态栏动画效果</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_ENUM</span>(<span class="hljs-built_in">NSInteger</span>, <span class="hljs-built_in">UIStatusBarAnimation</span>) {
+<span class="hljs-built_in">UIStatusBarAnimationNone</span>, <span class="hljs-comment">// 无</span>
+<span class="hljs-built_in">UIStatusBarAnimationFade</span> <span class="hljs-built_in">NS_ENUM_AVAILABLE_IOS</span>(<span class="hljs-number">3</span>_2), <span class="hljs-comment">// 褪去</span>
+<span class="hljs-built_in">UIStatusBarAnimationSlide</span> <span class="hljs-built_in">NS_ENUM_AVAILABLE_IOS</span>(<span class="hljs-number">3</span>_2), <span class="hljs-comment">// 滑出</span>
+} __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 支持屏幕旋转的方向</span>
+<span class="hljs-comment">// UIDeviceOrientation：是机器硬件的当前旋转方向，这个你只能取值，不能设置</span>
+<span class="hljs-comment">// UIInterfaceOrientation：是你程序界面的当前旋转方向，这个可以设置</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_ENUM</span>(<span class="hljs-built_in">NSInteger</span>, <span class="hljs-built_in">UIInterfaceOrientation</span>) {
+<span class="hljs-built_in">UIInterfaceOrientationUnknown</span>            = <span class="hljs-built_in">UIDeviceOrientationUnknown</span>, <span class="hljs-comment">// 不支持屏幕旋转</span>
+<span class="hljs-built_in">UIInterfaceOrientationPortrait</span>           = <span class="hljs-built_in">UIDeviceOrientationPortrait</span>, <span class="hljs-comment">// 支持旋转</span>
+<span class="hljs-built_in">UIInterfaceOrientationPortraitUpsideDown</span> = <span class="hljs-built_in">UIDeviceOrientationPortraitUpsideDown</span>, <span class="hljs-comment">// 旋转180°</span>
+<span class="hljs-built_in">UIInterfaceOrientationLandscapeLeft</span>      = <span class="hljs-built_in">UIDeviceOrientationLandscapeRight</span>, <span class="hljs-comment">// 顺时针 向右旋转90°</span>
+<span class="hljs-built_in">UIInterfaceOrientationLandscapeRight</span>     = <span class="hljs-built_in">UIDeviceOrientationLandscapeLeft</span> <span class="hljs-comment">// 逆时针旋转 向左旋转90°</span>
+} __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 设置屏幕支持旋转的方向</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_OPTIONS</span>(<span class="hljs-built_in">NSUInteger</span>, <span class="hljs-built_in">UIInterfaceOrientationMask</span>) {
+<span class="hljs-built_in">UIInterfaceOrientationMaskPortrait</span> = (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-built_in">UIInterfaceOrientationPortrait</span>),
+<span class="hljs-built_in">UIInterfaceOrientationMaskLandscapeLeft</span> = (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-built_in">UIInterfaceOrientationLandscapeLeft</span>), <span class="hljs-comment">// 向左旋转90°</span>
+<span class="hljs-built_in">UIInterfaceOrientationMaskLandscapeRight</span> = (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-built_in">UIInterfaceOrientationLandscapeRight</span>), <span class="hljs-comment">// 向右旋转90°</span>
+<span class="hljs-built_in">UIInterfaceOrientationMaskPortraitUpsideDown</span> = (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-built_in">UIInterfaceOrientationPortraitUpsideDown</span>), <span class="hljs-comment">// 旋转180°</span>
+<span class="hljs-built_in">UIInterfaceOrientationMaskLandscape</span> = (<span class="hljs-built_in">UIInterfaceOrientationMaskLandscapeLeft</span> | <span class="hljs-built_in">UIInterfaceOrientationMaskLandscapeRight</span>), <span class="hljs-comment">// 向左右旋转即横屏</span>
+<span class="hljs-built_in">UIInterfaceOrientationMaskAll</span> = (<span class="hljs-built_in">UIInterfaceOrientationMaskPortrait</span> | <span class="hljs-built_in">UIInterfaceOrientationMaskLandscapeLeft</span> | <span class="hljs-built_in">UIInterfaceOrientationMaskLandscapeRight</span> | <span class="hljs-built_in">UIInterfaceOrientationMaskPortraitUpsideDown</span>), <span class="hljs-comment">// 支持任意方向旋转</span>
+<span class="hljs-built_in">UIInterfaceOrientationMaskAllButUpsideDown</span> = (<span class="hljs-built_in">UIInterfaceOrientationMaskPortrait</span> | <span class="hljs-built_in">UIInterfaceOrientationMaskLandscapeLeft</span> | <span class="hljs-built_in">UIInterfaceOrientationMaskLandscapeRight</span>), <span class="hljs-comment">// 除旋转180°所有方向</span>
+} __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 判断旋转是否有效</span>
+<span class="hljs-meta">#define UIDeviceOrientationIsValidInterfaceOrientation(orientation) ((UIDeviceOrientation)(orientation) == UIDeviceOrientationPortrait || (UIDeviceOrientation)(orientation) == UIDeviceOrientationPortraitUpsideDown || (UIDeviceOrientation)(orientation) == UIDeviceOrientationLandscapeLeft || (UIDeviceOrientation)(orientation) == UIDeviceOrientationLandscapeRight)</span>
+
+<span class="hljs-comment">// 屏幕是否横屏</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">inline</span> <span class="hljs-built_in">BOOL</span> <span class="hljs-built_in">UIInterfaceOrientationIsPortrait</span>(<span class="hljs-built_in">UIInterfaceOrientation</span> orientation) __TVOS_PROHIBITED {
+<span class="hljs-keyword">return</span> ((orientation) == <span class="hljs-built_in">UIInterfaceOrientationPortrait</span> || (orientation) == <span class="hljs-built_in">UIInterfaceOrientationPortraitUpsideDown</span>);
+}
+
+<span class="hljs-comment">// 屏幕是否竖屏</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">inline</span> <span class="hljs-built_in">BOOL</span> <span class="hljs-built_in">UIInterfaceOrientationIsLandscape</span>(<span class="hljs-built_in">UIInterfaceOrientation</span> orientation) __TVOS_PROHIBITED {
+<span class="hljs-keyword">return</span> ((orientation) == <span class="hljs-built_in">UIInterfaceOrientationLandscapeLeft</span> || (orientation) == <span class="hljs-built_in">UIInterfaceOrientationLandscapeRight</span>);
+}
+
+<span class="hljs-comment">// 注册远程通知 角标、声音、提示</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_OPTIONS</span>(<span class="hljs-built_in">NSUInteger</span>, <span class="hljs-built_in">UIRemoteNotificationType</span>) {
+<span class="hljs-built_in">UIRemoteNotificationTypeNone</span>    = <span class="hljs-number">0</span>,
+<span class="hljs-built_in">UIRemoteNotificationTypeBadge</span>   = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">0</span>,
+<span class="hljs-built_in">UIRemoteNotificationTypeSound</span>   = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">1</span>,
+<span class="hljs-built_in">UIRemoteNotificationTypeAlert</span>   = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">2</span>,
+<span class="hljs-built_in">UIRemoteNotificationTypeNewsstandContentAvailability</span> = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">3</span>,
+} <span class="hljs-built_in">NS_ENUM_DEPRECATED_IOS</span>(<span class="hljs-number">3</span>_0, <span class="hljs-number">8</span>_0, <span class="hljs-string">"Use UserNotifications Framework's UNAuthorizationOptions for user notifications and registerForRemoteNotifications for receiving remote notifications instead."</span>) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">// 后台处理拉取数据结果类型</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_ENUM</span>(<span class="hljs-built_in">NSUInteger</span>, <span class="hljs-built_in">UIBackgroundFetchResult</span>) {
+<span class="hljs-built_in">UIBackgroundFetchResultNewData</span>, <span class="hljs-comment">// 成功拉去数据</span>
+<span class="hljs-built_in">UIBackgroundFetchResultNoData</span>, <span class="hljs-comment">// 没有数据</span>
+<span class="hljs-built_in">UIBackgroundFetchResultFailed</span> <span class="hljs-comment">// 拉出数据失败或超时</span>
+} <span class="hljs-built_in">NS_ENUM_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0);
+
+<span class="hljs-comment">// 后台刷新状态</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_ENUM</span>(<span class="hljs-built_in">NSInteger</span>, <span class="hljs-built_in">UIBackgroundRefreshStatus</span>) {
+<span class="hljs-built_in">UIBackgroundRefreshStatusRestricted</span>, <span class="hljs-comment">// 受限制</span>
+<span class="hljs-built_in">UIBackgroundRefreshStatusDenied</span>, <span class="hljs-comment">// 被拒绝</span>
+<span class="hljs-built_in">UIBackgroundRefreshStatusAvailable</span> <span class="hljs-comment">// 可用</span>
+} <span class="hljs-built_in">NS_ENUM_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0) __TVOS_PROHIBITED;
+
+<span class="hljs-comment">//  app 运行状态</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_ENUM</span>(<span class="hljs-built_in">NSInteger</span>, <span class="hljs-built_in">UIApplicationState</span>) {
+<span class="hljs-built_in">UIApplicationStateActive</span>, <span class="hljs-comment">// 在前台运行</span>
+<span class="hljs-built_in">UIApplicationStateInactive</span>, <span class="hljs-comment">// 待激活状态：锁屏、下拉看通知、任务管理</span>
+<span class="hljs-built_in">UIApplicationStateBackground</span> <span class="hljs-comment">// 在后台运行：按下home键</span>
+} <span class="hljs-built_in">NS_ENUM_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+
+<span class="hljs-comment">// 任务标示</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NSUInteger</span> <span class="hljs-built_in">UIBackgroundTaskIdentifier</span>;
+<span class="hljs-comment">// 设置无效的任务</span>
+<span class="hljs-built_in">UIKIT_EXTERN</span> <span class="hljs-keyword">const</span> <span class="hljs-built_in">UIBackgroundTaskIdentifier</span> <span class="hljs-built_in">UIBackgroundTaskInvalid</span>  <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+<span class="hljs-comment">// 后台保持的最小时间</span>
+<span class="hljs-built_in">UIKIT_EXTERN</span> <span class="hljs-keyword">const</span> <span class="hljs-built_in">NSTimeInterval</span> <span class="hljs-built_in">UIMinimumKeepAliveTimeout</span>  <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">4</span>_0);
+<span class="hljs-comment">// 请求的最小间隔(刷新最频繁)</span>
+<span class="hljs-built_in">UIKIT_EXTERN</span> <span class="hljs-keyword">const</span> <span class="hljs-built_in">NSTimeInterval</span> <span class="hljs-built_in">UIApplicationBackgroundFetchIntervalMinimum</span> <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0) __TVOS_PROHIBITED;
+<span class="hljs-comment">// 请求的最大间隔，阻止请求(不刷新)</span>
+<span class="hljs-built_in">UIKIT_EXTERN</span> <span class="hljs-keyword">const</span> <span class="hljs-built_in">NSTimeInterval</span> <span class="hljs-built_in">UIApplicationBackgroundFetchIntervalNever</span> <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">7</span>_0) __TVOS_PROHIBITED;</code></pre>
+
+        </div>
+        <!--  -->
+
+        <div class="show-foot">
+          <a class="notebook" href="http://www.jianshu.com/nb/1906453">
+            <i class="iconfont ic-search-notebook"></i> <span>日记本</span>
+</a>          <div class="copyright" data-toggle="tooltip" data-html="true" data-original-title="转载请联系作者获得授权，并标注“简书作者”。">
+            © 著作权归作者所有
+          </div>
+          <div class="modal-wrap" data-report-note="">
+            <a id="report-modal">举报文章</a>
+          </div>
+        </div>
+    </div>
+
+    <!-- 文章底部作者信息 -->
+      <div class="follow-detail">
+        <div class="info">
+          <a class="avatar" href="http://www.jianshu.com/u/8b9cef3b9fa8">
+            <img src="./iOS UIKit框架学习—UIApplication - 简书_files/74902d3bf29f.jpg" alt="144">
+</a>          <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+          <a class="title" href="http://www.jianshu.com/u/8b9cef3b9fa8">Wynter_Wang</a>
+        <p>写了 7420 字，被 0 人关注，获得了 1 个喜欢</p></div>
+          <div class="signature">
+            <span>一个不甘平庸的年轻人~</span>
+          </div>
+      </div>
+
+      <div class="support-author"><p>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p> <div class="btn btn-pay">赞赏支持</div> <!----> <!----> <!----></div>
+
+    <div class="meta-bottom">
+      <div class="like"><div class="btn like-group"><div class="btn-like"><a><i class="iconfont ic-like"></i>喜欢</a></div> <div class="modal-wrap"><a>0</a></div></div> <!----></div>
+      <div class="share-group">
+        <a class="share-circle" data-action="weixin-share" data-toggle="tooltip" data-original-title="分享到微信">
+          <i class="iconfont ic-wechat"></i>
+        </a>
+        <a class="share-circle" data-toggle="tooltip" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/8521372/weibo/image_82e948be7364.jpg&#39;, &#39;推荐 Wynter_Wang 的文章《iOS UIKit框架学习—UIApplication》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));" data-original-title="分享到微博">
+          <i class="iconfont ic-weibo"></i>
+        </a>
+          <a class="share-circle" data-toggle="tooltip" href="http://cwb.assets.jianshu.io/notes/images/8521372/weibo/image_82e948be7364.jpg" target="_blank" data-original-title="下载长微博图片">
+            <i class="iconfont ic-picture"></i>
+          </a>
+        <a class="share-circle more-share" tabindex="0" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="
+          &lt;ul class=&quot;share-list&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 Wynter_Wang 的文章《iOS UIKit框架学习—UIApplication》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-zone&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 Wynter_Wang 的文章《iOS UIKit框架学习—UIApplication》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-twitter&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-facebook&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-google&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;iOS UIKit框架学习—UIApplication&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-douban&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        " data-original-title="" title="">更多分享</a>
+      </div>
+    </div>
+    <div><div id="comment-list" class="comment-list"><div><form class="new-comment"><a class="avatar"><img src="./iOS UIKit框架学习—UIApplication - 简书_files/aad0f551edf0(1).png"></a> <textarea placeholder="写下你的评论..."></textarea> <!----></form></div> <div id="normal-comment-list" class="normal-comment-list"><div><!----> <div><div class="top"><span>评论</span> <a class="close-btn" style="display: none;">关闭评论</a></div> <div class="no-comment"></div> <div class="text">
+            智慧如你，不想<a>发表一点想法</a>咩~
+          </div></div> <!---->  <div class="comments-placeholder" style="display: none;"><div class="author"><div class="avatar"></div> <div class="info"><div class="name"></div> <div class="meta"></div></div></div> <div class="text"></div> <div class="text animation-delay"></div> <div class="tool-group"><i class="iconfont ic-zan-active"></i><div class="zan"></div> <i class="iconfont ic-list-comments"></i><div class="zan"></div></div></div></div></div> <!----> <!----></div></div>
+  </div>
+
+  <div class="side-tool"><ul><li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="回到顶部" style="display: none;"><a href="http://www.jianshu.com/p/2089f5f1f712#" class="function-button"><i class="iconfont ic-backtop"></i></a></li> <li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="将文章加入专题"><a class="js-submit-button"><i class="iconfont ic-addcollectionmodal"></i></a> <!----></li> <li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="收藏文章"><a class="function-button"><i class="iconfont ic-mark"></i></a></li> <li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="分享文章"><a tabindex="0" role="button" data-toggle="popover" data-placement="left" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="&lt;ul class=&#39;share-list&#39;&gt;
+                &lt;li&gt;&lt;a class=&quot;weixin-share&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-weixin&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到微信&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/8521372/weibo/image_82e948be7364.jpg&#39;, &#39;推荐 Wynter_Wang 的文章《iOS UIKit框架学习—UIApplication》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-weibo&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到微博&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://cwb.assets.jianshu.io/notes/images/8521372/weibo/image_82e948be7364.jpg&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-picture&quot;&gt;&lt;/i&gt;&lt;span&gt;下载长微博图片&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 Wynter_Wang 的文章《iOS UIKit框架学习—UIApplication》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-zone&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 Wynter_Wang 的文章《iOS UIKit框架学习—UIApplication》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-twitter&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-facebook&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-google&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/2089f5f1f712?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;iOS UIKit框架学习—UIApplication&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-douban&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;" data-original-title="" title="" class="function-button"><i class="iconfont ic-share"></i></a> <!----></li></ul></div>
+</div>
+<div class="note-bottom"><div class="main"><div class="title">被以下专题收入，发现更多相似内容</div> <!----> <div class="include-collection"><div class="modal-wrap add-collection-wrap"><a class="add-collection"><i class="iconfont ic-follow"></i><div>我的专题</div></a></div> <a href="http://www.jianshu.com/c/7b9f6042bf1c?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./iOS UIKit框架学习—UIApplication - 简书_files/os_ios_72px_1116442_easyicon.net.png"><div class="name">iOS UIK...</div></a></div> <!----></div> <!----> <!----></div>
+
+    <script type="application/json" data-name="page-data">{"user_signed_in":true,"locale":"zh-CN","os":"mac","read_mode":"day","read_font":"font2","current_user":{"id":4120050,"nickname":"iOSer1234","slug":"06c4ffbfd0c1","avatar":"http://upload.jianshu.io/users/upload_avatars/4120050/aad0f551edf0.png","unread_counts":{"chats":0,"total":0},"has_editable_collection":true},"note_show":{"is_author":false,"is_following_author":false,"is_liked_note":false,"uuid":"0b11319d-0fdb-46c9-b213-2bb12dba48e5"},"note":{"id":8521372,"slug":"2089f5f1f712","user_id":937490,"notebook_id":1906453,"commentable":true,"likes_count":0,"views_count":45,"public_wordage":76,"comments_count":0,"author":{"total_wordage":7420,"followers_count":0,"total_likes_count":1}}}</script>
+    
+    <script src="./iOS UIKit框架学习—UIApplication - 简书_files/babel-polyfill-eaff0cf50b070924d304.js"></script>
+    <script src="./iOS UIKit框架学习—UIApplication - 简书_files/web-base-eaff0cf50b070924d304.js"></script>
+<script src="./iOS UIKit框架学习—UIApplication - 简书_files/web-eaff0cf50b070924d304.js"></script>
+    
+    <script src="./iOS UIKit框架学习—UIApplication - 简书_files/entry-eaff0cf50b070924d304.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35169517-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<div style="display:none">
+  <script src="./iOS UIKit框架学习—UIApplication - 简书_files/z_stat.php" language="JavaScript"></script><script src="./iOS UIKit框架学习—UIApplication - 简书_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1258679142" target="_blank" title="站长统计">站长统计</a>
+</div>
+
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+  
+
+<!----><!----></body></html>
